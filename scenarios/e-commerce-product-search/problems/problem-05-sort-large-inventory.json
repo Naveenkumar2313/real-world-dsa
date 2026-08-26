@@ -1,0 +1,63 @@
+{
+    "problem_id": "PROB-ECOM-005",
+    "scenario_id": "SCN-ECOM-001",
+    "sequence": 5,
+    "title": "Sort a Large Product Catalog",
+    "difficulty": "Medium",
+    "concepts": [
+        "Sorting",
+        "Divide and Conquer"
+    ],
+    "real_world_story": "The e-commerce platform has grown from a few thousand products to a very large catalog. Sorting the entire catalog using a simple O(N^2) algorithm is now too slow. Implement an efficient sorting algorithm to arrange product prices in ascending order.",
+    "real_world_connection": {
+        "system": "Large-scale product catalog",
+        "input_represents": "A large product-price dataset",
+        "output_represents": "The catalog sorted by product price",
+        "algorithm_represents": "Efficient large-scale sorting"
+    },
+    "problem_statement": "Given N product prices, sort them in non-decreasing order using an efficient sorting algorithm.",
+    "task": "Sort the entire product catalog efficiently.",
+    "input_format": "The first line contains N. The second line contains N integers representing product prices.",
+    "output_format": "Print the sorted prices in non-decreasing order.",
+    "constraints": [
+        "1 <= N <= 200000",
+        "1 <= price <= 1000000000"
+    ],
+    "examples": [
+        {
+            "input": "6\n900 200 500 1000 300 700",
+            "output": "200 300 500 700 900 1000",
+            "explanation": "The product catalog is sorted from the lowest price to the highest price."
+        }
+    ],
+    "expected_algorithm": {
+        "preferred_algorithms": [
+            {
+                "name": "Merge Sort",
+                "module_key": "merge-sort"
+            },
+            {
+                "name": "Quick Sort",
+                "module_key": "quick-sort"
+            }
+        ],
+        "reason": "The catalog is large enough that O(N^2) sorting approaches may become impractical. More efficient sorting algorithms provide better performance on large datasets."
+    },
+    "complexity": {
+        "expected_time": "O(N log N)"
+    },
+    "hint": [
+        "Think about dividing the catalog into smaller portions.",
+        "Sort the smaller portions.",
+        "Combine them into a fully sorted catalog."
+    ],
+    "real_world_takeaway": "As the size of a dataset increases, algorithmic complexity becomes increasingly important. An approach that works for 1,000 products may become impractical for millions of products.",
+    "tags": [
+        "arrays",
+        "merge-sort",
+        "quick-sort",
+        "sorting",
+        "large-data",
+        "e-commerce"
+    ]
+}

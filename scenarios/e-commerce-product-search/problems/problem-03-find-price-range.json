@@ -1,0 +1,57 @@
+{
+    "problem_id": "PROB-ECOM-003",
+    "scenario_id": "SCN-ECOM-001",
+    "sequence": 3,
+    "title": "Find Products in a Price Range",
+    "difficulty": "Medium",
+    "concepts": [
+        "Sorted Array",
+        "Binary Search"
+    ],
+    "real_world_story": "A customer wants to see all products priced between a minimum and maximum budget. The e-commerce platform maintains product prices in sorted order so that price-based searches can be performed efficiently.",
+    "real_world_connection": {
+        "system": "E-commerce price filter",
+        "input_represents": "Sorted product prices",
+        "query_represents": "Customer's minimum and maximum budget",
+        "algorithm_represents": "Efficiently locating the boundaries of the requested price range"
+    },
+    "problem_statement": "Given a sorted array of product prices and two values L and R, find the number of products whose prices are between L and R inclusive.",
+    "task": "Determine how many products fall within the customer's requested price range.",
+    "input_format": "The first line contains an integer N. The second line contains N integers representing product prices in non-decreasing order. The third line contains two integers L and R representing the minimum and maximum allowed price.",
+    "output_format": "Print the number of products whose prices satisfy L <= price <= R.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "1 <= price <= 1000000000",
+        "1 <= L <= R <= 1000000000"
+    ],
+    "examples": [
+        {
+            "input": "7\n100 250 450 500 700 900 1200\n400 900",
+            "output": "5",
+            "explanation": "The prices 450, 500, 700, 900 and 900? No duplicate exists in this dataset; therefore the qualifying prices are 450, 500, 700 and 900, giving 4."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Binary Search",
+        "module_key": "binary-search",
+        "reason": "Because the prices are sorted, binary search can be used to find the first and last positions belonging to the requested range without scanning the entire array."
+    },
+    "complexity": {
+        "time": "O(log N)",
+        "space": "O(1)"
+    },
+    "hint": [
+        "The array is already sorted.",
+        "Find the first position where the price is at least L.",
+        "Find the first position where the price is greater than R.",
+        "The difference between these positions gives the number of products in the range."
+    ],
+    "real_world_takeaway": "Sorted product data allows price filters to be processed much more efficiently than repeatedly scanning the entire catalog.",
+    "tags": [
+        "arrays",
+        "binary-search",
+        "range-query",
+        "e-commerce",
+        "filtering"
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "required": [
+        "problem_id",
+        "scenario_id",
+        "sequence",
+        "title",
+        "difficulty",
+        "concepts",
+        "real_world_story",
+        "problem_statement",
+        "task",
+        "input_format",
+        "output_format",
+        "constraints",
+        "examples",
+        "expected_algorithm",
+        "complexity",
+        "real_world_takeaway",
+        "tags"
+    ]
+}

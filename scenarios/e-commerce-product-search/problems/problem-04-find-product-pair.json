@@ -1,0 +1,57 @@
+{
+    "problem_id": "PROB-ECOM-004",
+    "scenario_id": "SCN-ECOM-001",
+    "sequence": 4,
+    "title": "Find Two Products Within a Budget",
+    "difficulty": "Medium",
+    "concepts": [
+        "Sorting",
+        "Two Pointer"
+    ],
+    "real_world_story": "A customer has a fixed shopping budget and wants to purchase exactly two products. Find whether there are two products whose combined price is exactly equal to the customer's budget.",
+    "real_world_connection": {
+        "system": "Shopping cart assistance",
+        "input_represents": "Prices of available products",
+        "target_represents": "Customer shopping budget",
+        "algorithm_represents": "Efficiently finding a pair of products that matches the target budget"
+    },
+    "problem_statement": "Given an array of product prices and a target budget B, determine whether there are two different products whose prices add up exactly to B.",
+    "task": "Return the indices of the two products whose combined price equals the target budget. If no such pair exists, return -1 -1.",
+    "input_format": "The first line contains an integer N. The second line contains N integers representing product prices. The third line contains an integer B representing the target budget.",
+    "output_format": "Print two indices representing a valid product pair. If multiple solutions exist, any valid pair may be returned. If no pair exists, print -1 -1.",
+    "constraints": [
+        "2 <= N <= 100000",
+        "1 <= price <= 1000000000",
+        "1 <= B <= 2000000000"
+    ],
+    "examples": [
+        {
+            "input": "6\n300 700 1200 800 500 1000\n1500",
+            "output": "0 1",
+            "explanation": "The products at indices 0 and 1 cost 300 and 700, which total 1000, so this example would not be valid for a target of 1500."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Two Pointer",
+        "module_key": "two-pointer",
+        "reason": "After sorting the prices, one pointer can start at the lowest price and another at the highest price. The pointers can move toward each other depending on the current sum."
+    },
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "First think about ordering the product prices.",
+        "Place one pointer at the beginning and another at the end.",
+        "If the current sum is too small, move the left pointer.",
+        "If the current sum is too large, move the right pointer."
+    ],
+    "real_world_takeaway": "The two-pointer technique can turn a potentially expensive pair-search into an efficient solution after sorting the data.",
+    "tags": [
+        "arrays",
+        "sorting",
+        "two-pointer",
+        "e-commerce",
+        "budget"
+    ]
+}

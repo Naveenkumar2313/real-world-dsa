@@ -1,0 +1,15 @@
+{
+    "required": [
+        "scenario_id",
+        "title",
+        "slug",
+        "short_description",
+        "category",
+        "industry",
+        "difficulty",
+        "real_world_context",
+        "learning_objectives",
+        "algorithms",
+        "learning_path"
+    ]
+}

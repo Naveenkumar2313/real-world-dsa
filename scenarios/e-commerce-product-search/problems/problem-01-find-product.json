@@ -1,0 +1,59 @@
+{
+    "problem_id": "PROB-ECOM-001",
+    "scenario_id": "SCN-ECOM-001",
+    "sequence": 1,
+    "title": "Find a Product",
+    "difficulty": "Easy",
+    "concepts": [
+        "Array",
+        "Linear Search"
+    ],
+    "real_world_story": "A customer searches for a product using its product ID. The product catalog is currently stored as an unsorted list of product IDs. Determine whether the requested product exists in the catalog.",
+    "real_world_connection": {
+        "system": "E-commerce product catalog",
+        "input_represents": "Product IDs currently stored in the catalog",
+        "target_represents": "Product ID requested by the customer",
+        "algorithm_represents": "Searching through the catalog to locate a product"
+    },
+    "problem_statement": "Given an array of product IDs and a target product ID, determine whether the target product exists in the catalog. Return the index of the product if it exists; otherwise return -1.",
+    "task": "Search the product catalog and return the index of the requested product.",
+    "input_format": "The first line contains an integer N, the number of products. The second line contains N integers representing product IDs. The third line contains an integer target representing the product ID to search for.",
+    "output_format": "Print the zero-based index of the target product if it exists. Otherwise, print -1.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "1 <= product ID <= 1000000000"
+    ],
+    "examples": [
+        {
+            "input": "5\n104 208 305 412 509\n305",
+            "output": "2",
+            "explanation": "Product ID 305 is present at index 2."
+        },
+        {
+            "input": "5\n104 208 305 412 509\n700",
+            "output": "-1",
+            "explanation": "Product ID 700 does not exist in the catalog."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Linear Search",
+        "module_key": "linear-search",
+        "reason": "The product IDs are not guaranteed to be sorted, so each product may need to be checked sequentially."
+    },
+    "complexity": {
+        "time": "O(N)",
+        "space": "O(1)"
+    },
+    "hint": [
+        "Start from the first product.",
+        "Compare each product ID with the target ID.",
+        "Stop when the target is found."
+    ],
+    "real_world_takeaway": "A straightforward search can be sufficient for small or unsorted datasets, but repeatedly scanning a very large catalog can become expensive.",
+    "tags": [
+        "arrays",
+        "linear-search",
+        "e-commerce",
+        "product-search"
+    ]
+}

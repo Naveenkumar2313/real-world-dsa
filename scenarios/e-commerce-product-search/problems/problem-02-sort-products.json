@@ -1,0 +1,61 @@
+{
+    "problem_id": "PROB-ECOM-002",
+    "scenario_id": "SCN-ECOM-001",
+    "sequence": 2,
+    "title": "Sort Products by Price",
+    "difficulty": "Easy",
+    "concepts": [
+        "Array",
+        "Sorting"
+    ],
+    "real_world_story": "An e-commerce website allows customers to sort products from the cheapest to the most expensive. The product prices are currently stored in an arbitrary order.",
+    "real_world_connection": {
+        "system": "E-commerce product listing",
+        "input_represents": "Prices of products in the catalog",
+        "output_represents": "Products arranged from lowest price to highest price",
+        "algorithm_represents": "Sorting product data before displaying it"
+    },
+    "problem_statement": "Given an array containing the prices of N products, sort the prices in non-decreasing order.",
+    "task": "Arrange all product prices from the lowest price to the highest price.",
+    "input_format": "The first line contains an integer N. The second line contains N integers representing product prices.",
+    "output_format": "Print the sorted product prices in non-decreasing order.",
+    "constraints": [
+        "1 <= N <= 5000",
+        "1 <= price <= 1000000"
+    ],
+    "examples": [
+        {
+            "input": "5\n1200 450 799 2500 300",
+            "output": "300 450 799 1200 2500",
+            "explanation": "The products are arranged from cheapest to most expensive."
+        }
+    ],
+    "expected_algorithm": {
+        "accepted_algorithms": [
+            "Bubble Sort",
+            "Selection Sort"
+        ],
+        "module_keys": [
+            "bubble-sort",
+            "selection-sort"
+        ],
+        "reason": "The purpose of this introductory problem is to practice basic sorting algorithms."
+    },
+    "complexity": {
+        "expected_time": "O(N^2)",
+        "expected_space": "O(1)"
+    },
+    "hint": [
+        "Compare elements that are out of order.",
+        "Swap them when necessary.",
+        "Continue until the complete catalog is sorted."
+    ],
+    "real_world_takeaway": "Sorting allows an e-commerce platform to provide useful product views such as price low-to-high and high-to-low.",
+    "tags": [
+        "arrays",
+        "bubble-sort",
+        "selection-sort",
+        "sorting",
+        "e-commerce"
+    ]
+}

@@ -1,0 +1,81 @@
+{
+    "scenario_id": "SCN-ECOM-001",
+    "title": "E-Commerce Product Search",
+    "slug": "e-commerce-product-search",
+    "short_description": "Learn how e-commerce platforms search, organize and filter millions of products efficiently.",
+    "category": "Arrays and Searching",
+    "industry": "E-Commerce",
+    "difficulty": "Beginner to Intermediate",
+    "estimated_time_minutes": 90,
+    "real_world_context": {
+        "problem": "An e-commerce platform may have thousands or millions of products. Customers need to find products quickly, browse products in a useful order, filter products by price, and identify combinations of products that fit a budget.",
+        "why_it_matters": "Efficient searching and sorting allow an e-commerce platform to respond quickly even when the product catalog becomes very large.",
+        "real_world_entities": [
+            "Product",
+            "Product ID",
+            "Product Name",
+            "Price",
+            "Category",
+            "Inventory"
+        ]
+    },
+    "learning_objectives": [
+        "Understand how a product catalog can be represented using arrays.",
+        "Understand the difference between linear search and binary search.",
+        "Understand why sorting can make searching more efficient.",
+        "Recognize when the two-pointer technique can be applied.",
+        "Understand how algorithm choice affects performance as data size increases."
+    ],
+    "prerequisites": [
+        "Arrays",
+        "Loops",
+        "Conditional statements",
+        "Basic time complexity"
+    ],
+    "algorithms": [
+        {
+            "name": "Linear Search",
+            "module_key": "linear-search"
+        },
+        {
+            "name": "Bubble Sort",
+            "module_key": "bubble-sort"
+        },
+        {
+            "name": "Selection Sort",
+            "module_key": "selection-sort"
+        },
+        {
+            "name": "Binary Search",
+            "module_key": "binary-search"
+        },
+        {
+            "name": "Two Pointer",
+            "module_key": "two-pointer"
+        },
+        {
+            "name": "Merge Sort",
+            "module_key": "merge-sort"
+        },
+        {
+            "name": "Quick Sort",
+            "module_key": "quick-sort"
+        }
+    ],
+    "real_world_mapping": {
+        "product_catalog": "Array",
+        "product_id": "Search key",
+        "product_price": "Numeric value used for sorting/filtering",
+        "sorted_catalog": "Sorted array",
+        "price_range": "Search range",
+        "shopping_budget": "Target constraint"
+    },
+    "learning_path": [
+        "PROB-ECOM-001",
+        "PROB-ECOM-002",
+        "PROB-ECOM-003",
+        "PROB-ECOM-004",
+        "PROB-ECOM-005"
+    ],
+    "completion_message": "You have completed the E-Commerce Product Search mission. You have learned how searching, sorting and array-based techniques can be applied to common e-commerce problems."
+}
