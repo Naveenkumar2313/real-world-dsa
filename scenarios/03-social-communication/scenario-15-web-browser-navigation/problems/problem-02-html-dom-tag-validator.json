@@ -1,0 +1,49 @@
+{
+    "problem_id": "PROB-BROWSER-002",
+    "scenario_id": "SCN-BROWSER-001",
+    "sequence": 2,
+    "title": "HTML DOM Tag Validator",
+    "difficulty": "Medium",
+    "concepts": [
+        "Valid Parenthesis"
+    ],
+    "real_world_story": "When a browser parses downloaded HTML, its rendering engine tokenizes elements (like <div>, <p>, </div>) to construct the DOM tree. If a closing tag doesn't match the most recent unclosed opening tag, or if tags remain unclosed at the end of the document, the parser reports a structural syntax violation.",
+    "problem_statement": "Given a sequence of N tokenized HTML tags, verify whether every opening tag has a matching closing tag properly nested in LIFO order. An opening tag has the format '<tag>' and its corresponding closing tag is '</tag>' where 'tag' is a lowercase string. Self-closing tags are not present. If the markup is valid, print 'VALID'. If a violation occurs, print 'INVALID <index>' where <index> is the 1-based token index of the first mismatched tag. If the document ends with unclosed tags, print 'INVALID <N+1>'.",
+    "task": "Validate the nesting of N HTML tag tokens and print VALID or INVALID <index>.",
+    "input_format": "The first line contains an integer N, the number of tag tokens.\nThe second line contains N space-separated tag tokens.",
+    "output_format": "Print 'VALID' if the document is properly nested and closed, or 'INVALID <index>' if an error is encountered.",
+    "constraints": {
+        "token_count": "1 <= N <= 10^5",
+        "tag_length": "3 <= |tag| <= 20",
+        "tag_format": "Starts with '<' and ends with '>'. Lowercase tag names."
+    },
+    "examples": [
+        {
+            "input": "6\n<div> <p> </p> <span> </span> </div>",
+            "output": "VALID",
+            "explanation": "All opening tags are matched and closed in proper nested order: <div> surrounds <p></p> and <span></span>."
+        },
+        {
+            "input": "4\n<div> <p> </div> </p>",
+            "output": "INVALID 3",
+            "explanation": "At index 3, token '</div>' is encountered while '<p>' is at the top of the stack, causing a nesting violation at token index 3."
+        },
+        {
+            "input": "3\n<div> <p> </p>",
+            "output": "INVALID 4",
+            "explanation": "Token '<div>' remains unclosed when input terminates at token 3. Error is reported at index N + 1 = 4."
+        }
+    ],
+    "expected_algorithm": "Valid Parenthesis",
+    "complexity": {
+        "time": "O(total characters)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Stack-based syntax validators underpin HTML, XML, and JSON parsers, detecting structural document errors before DOM construction.",
+    "tags": [
+        "stack",
+        "valid-parenthesis",
+        "html-parser",
+        "dom-validation"
+    ]
+}

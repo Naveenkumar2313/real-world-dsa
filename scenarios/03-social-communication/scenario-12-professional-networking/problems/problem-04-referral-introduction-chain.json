@@ -1,0 +1,44 @@
+{
+    "problem_id": "PROB-PROF-004",
+    "scenario_id": "SCN-PROF-001",
+    "sequence": 4,
+    "title": "Referral Introduction Chain",
+    "difficulty": "Medium",
+    "concepts": [
+        "Graph BFS"
+    ],
+    "real_world_story": "A job seeker wants to contact a hiring manager at a dream company through trusted professional mutuals (a 'warm introduction'). To maximize response rate, the networking platform identifies the shortest chain of colleagues connecting the candidate to the hiring manager and reconstructs the full path of profile IDs for introduction routing.",
+    "problem_statement": "Given a professional network of N profiles and M bidirectional connections, find the shortest path of connections linking candidate S to hiring manager T. If multiple shortest paths exist with the same minimal number of hops, choose the lexicographically smallest path of profile IDs. If no introduction chain exists between S and T, print -1.",
+    "task": "Reconstruct and output the space-separated profile IDs along the shortest referral introduction chain from S to T, or -1 if unreachable.",
+    "input_format": "The first line contains two space-separated integers N and M, denoting the number of profiles and connections.\nThe next M lines each contain two space-separated integers u and v, representing a bidirectional connection.\nThe final line contains two space-separated integers S and T, the source candidate and target hiring manager IDs.",
+    "output_format": "Print the space-separated profile IDs along the optimal referral chain from S to T. If no path exists, print -1.",
+    "constraints": {
+        "profiles": "1 <= N <= 10^5",
+        "connections": "0 <= M <= 2 * 10^5",
+        "endpoints": "1 <= S, T <= N"
+    },
+    "examples": [
+        {
+            "input": "5 5\n1 2\n2 5\n1 3\n3 4\n4 5\n1 5",
+            "output": "1 2 5",
+            "explanation": "Paths from 1 to 5: (1 -> 2 -> 5) has length 2 hops. (1 -> 3 -> 4 -> 5) has length 3 hops. The shortest path is 1 -> 2 -> 5."
+        },
+        {
+            "input": "4 2\n1 2\n3 4\n1 4",
+            "output": "-1",
+            "explanation": "Profiles 1 and 4 belong to disconnected components; no introduction chain exists."
+        }
+    ],
+    "expected_algorithm": "Graph BFS",
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N + M)"
+    },
+    "real_world_takeaway": "Breadth-First Search with parent pointer reconstruction allows networking platforms to discover optimal referral routes that minimize social friction in corporate hiring.",
+    "tags": [
+        "graph",
+        "bfs",
+        "path-reconstruction",
+        "referral-network"
+    ]
+}

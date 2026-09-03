@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-PROF-001",
+    "title": "Professional Networking",
+    "slug": "scenario-12-professional-networking",
+    "short_description": "Model corporate management reporting lines, validate administrative chains of command, and trace shortest warm-introduction referral pathways.",
+    "category": "Social & Communication Platforms",
+    "industry": "Professional Networking & Career Services",
+    "difficulty": "Medium",
+    "real_world_context": "Professional networking systems and enterprise talent hubs (such as LinkedIn and internal corporate org directories) model employment relationships, reporting chains, and professional introduction networks. These platforms process hierarchical reporting trees to broadcast announcements tier-by-tier, validate executive approval authority chains, and search multi-degree referral networks to help candidates identify the most direct warm-introduction path to hiring managers.",
+    "learning_objectives": [
+        "Model enterprise organizational structures as hierarchical trees and level-order traverse them using Tree BFS.",
+        "Validate managerial reporting lines and compute chain-of-command distances using Tree DFS.",
+        "Apply Depth-Limited Search to calculate connection reach across professional degree tiers.",
+        "Reconstruct shortest referral pathways between candidates and recruiters using Graph BFS."
+    ],
+    "algorithms": [
+        "Tree BFS",
+        "Tree DFS",
+        "Depth-Limited Search",
+        "Graph BFS"
+    ],
+    "learning_path": [
+        "PROB-PROF-001",
+        "PROB-PROF-002",
+        "PROB-PROF-003",
+        "PROB-PROF-004"
+    ]
+}

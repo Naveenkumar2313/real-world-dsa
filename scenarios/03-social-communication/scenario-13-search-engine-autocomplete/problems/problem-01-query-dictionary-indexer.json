@@ -1,0 +1,40 @@
+{
+    "problem_id": "PROB-SEARCH-001",
+    "scenario_id": "SCN-SEARCH-001",
+    "sequence": 1,
+    "title": "Query Dictionary Indexer",
+    "difficulty": "Easy",
+    "concepts": [
+        "Trie Operations"
+    ],
+    "real_world_story": "A search engine suggestion pipeline maintains an in-memory dictionary of verified search keywords. As new trending terms are discovered, they are added to the dictionary, and incoming search requests are validated against the index to confirm whether a query term exists as a complete search token.",
+    "problem_statement": "Design an in-memory query dictionary engine that supports Q sequential operations:\n1. 'INSERT <word>': Adds the lowercase string 'word' to the query index.\n2. 'SEARCH <word>': Checks whether the exact string 'word' exists in the index. Output 'TRUE' if present, or 'FALSE' otherwise.",
+    "task": "Process all Q dictionary commands and print the result of each SEARCH command on a separate line.",
+    "input_format": "The first line contains an integer Q, the number of operations.\nThe next Q lines each contain an operation: either 'INSERT <word>' or 'SEARCH <word>', where <word> is a non-empty string of lowercase English letters.",
+    "output_format": "For each SEARCH command, print 'TRUE' if the word exists in the dictionary, or 'FALSE' if it does not, each on a new line.",
+    "constraints": {
+        "operations": "1 <= Q <= 10^5",
+        "word_length": "1 <= |word| <= 50",
+        "characters": "Lowercase English letters 'a'-'z'",
+        "total_chars": "Sum of word lengths <= 5 * 10^5"
+    },
+    "examples": [
+        {
+            "input": "6\nINSERT code\nINSERT coding\nSEARCH code\nSEARCH cod\nSEARCH coding\nSEARCH algo",
+            "output": "TRUE\nFALSE\nTRUE\nFALSE",
+            "explanation": "Searching 'code' returns TRUE (inserted). Searching 'cod' returns FALSE (only a prefix, not marked as complete word). Searching 'coding' returns TRUE. Searching 'algo' returns FALSE (never inserted)."
+        }
+    ],
+    "expected_algorithm": "Trie Operations",
+    "complexity": {
+        "time": "O(L) per operation where L is word length",
+        "space": "O(total characters * 26)"
+    },
+    "real_world_takeaway": "Trie structures provide string search operations bounded by word length rather than dictionary size, making them resilient to massive index growth.",
+    "tags": [
+        "trie",
+        "prefix-tree",
+        "search-engine",
+        "dictionary"
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-SEARCH-002",
+    "scenario_id": "SCN-SEARCH-001",
+    "sequence": 2,
+    "title": "Prefix Query Suggestions",
+    "difficulty": "Medium",
+    "concepts": [
+        "Words with Prefix"
+    ],
+    "real_world_story": "When a search engine user types a partial query into the search bar, the autocomplete frontend triggers a prefix query to suggest completions. The suggestions must include all dictionary terms sharing that prefix, presented in alphabetical order for predictable user scanning.",
+    "problem_statement": "Given a dictionary of N search queries and a prefix string P, find all unique queries in the dictionary that start with P. Output the matching queries in ascending alphabetical (lexicographical) order separated by a single space. If no query starts with P, print NONE.",
+    "task": "Retrieve all words from the dictionary that begin with prefix P and output them in alphabetical order, or NONE.",
+    "input_format": "The first line contains an integer N, the number of indexed queries.\nThe next N lines each contain a lowercase string representing a dictionary query.\nThe final line contains a string P, the search prefix.",
+    "output_format": "Print the matching queries sorted in ascending alphabetical order separated by a single space. If no words match, print NONE.",
+    "constraints": {
+        "dictionary_size": "1 <= N <= 5 * 10^4",
+        "query_length": "1 <= |word| <= 50",
+        "prefix_length": "1 <= |P| <= 50",
+        "characters": "Lowercase English letters 'a'-'z'"
+    },
+    "examples": [
+        {
+            "input": "5\napple\napplication\napply\nbanana\nband\napp",
+            "output": "apple application apply",
+            "explanation": "The queries starting with 'app' are 'apple', 'application', and 'apply'. They are printed in alphabetical order."
+        },
+        {
+            "input": "3\ncloud\nserver\ndatabase\ndev",
+            "output": "NONE",
+            "explanation": "No query starts with 'dev', so print NONE."
+        }
+    ],
+    "expected_algorithm": "Words with Prefix",
+    "complexity": {
+        "time": "O(|P| + K log K) where K is number of matched words",
+        "space": "O(total characters)"
+    },
+    "real_world_takeaway": "Locating the prefix node in a Trie allows instant subtree collection of candidate terms, powering interactive autocomplete suggestions.",
+    "tags": [
+        "trie",
+        "prefix-search",
+        "autocomplete",
+        "lexicographical-order"
+    ]
+}

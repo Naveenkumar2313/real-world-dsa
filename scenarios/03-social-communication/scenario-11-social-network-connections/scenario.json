@@ -1,0 +1,29 @@
+{
+    "scenario_id": "SCN-SOCIAL-001",
+    "title": "Social Network Connections",
+    "slug": "scenario-11-social-network-connections",
+    "short_description": "Analyze friendship networks to compute degrees of separation, discover isolated social communities, and serve bounded friend recommendations.",
+    "category": "Social & Communication Platforms",
+    "industry": "Social Media & Community Networking",
+    "difficulty": "Medium",
+    "real_world_context": "Modern social networking platforms maintain massive friendship graphs connecting hundreds of millions of user profiles. To deliver features like friend recommendations ('People You May Know'), mutual connection distance badges ('2nd-degree connection'), and community partitioning for viral content propagation, backend graph engines perform high-speed breadth-first searches, connected component analysis, and bounded graph traversals with strict latency budgets.",
+    "learning_objectives": [
+        "Model large-scale social networks as unweighted bidirectional graphs.",
+        "Compute shortest path degrees of separation between users using Breadth-First Search (BFS).",
+        "Identify independent social clusters and evaluate community sizes using Depth-First Search (DFS).",
+        "Implement Depth-Limited Search to generate bounded friend recommendations within latency constraints.",
+        "Manipulate singly linked lists to audit and reverse relationship timeline logs."
+    ],
+    "algorithms": [
+        "Graph BFS",
+        "Graph DFS",
+        "Depth-Limited Search",
+        "Reverse Linked List"
+    ],
+    "learning_path": [
+        "PROB-SOCIAL-001",
+        "PROB-SOCIAL-002",
+        "PROB-SOCIAL-003",
+        "PROB-SOCIAL-004"
+    ]
+}

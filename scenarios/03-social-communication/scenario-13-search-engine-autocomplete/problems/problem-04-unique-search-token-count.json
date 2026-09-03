@@ -1,0 +1,44 @@
+{
+    "problem_id": "PROB-SEARCH-004",
+    "scenario_id": "SCN-SEARCH-001",
+    "sequence": 4,
+    "title": "Unique Search Token Count",
+    "difficulty": "Hard",
+    "concepts": [
+        "Count Unique Substrings"
+    ],
+    "real_world_story": "Natural language processing pipelines in search engines decompose search terms and trending hashtags into distinct sub-tokens to evaluate query richness, intent entropy, and matching potential. To index all potential multi-character sub-queries without duplicate storage, the ingestion system must determine the total number of distinct non-empty substrings present within a query string.",
+    "problem_statement": "Given a search query string S consisting of lowercase English letters, compute the total number of distinct non-empty substrings contained within S. Two substrings are considered distinct if their character sequences differ, even if they appear multiple times at different positions within S.",
+    "task": "Calculate the total count of unique non-empty substrings in string S and print the result.",
+    "input_format": "A single line containing the string S.",
+    "output_format": "Print a single integer representing the number of distinct non-empty substrings in S.",
+    "constraints": {
+        "string_length": "1 <= |S| <= 2000",
+        "characters": "Lowercase English letters 'a'-'z'"
+    },
+    "examples": [
+        {
+            "input": "aba",
+            "output": "5",
+            "explanation": "The substrings are 'a' (at index 0 and 2), 'b', 'ab', 'ba', 'aba'. The distinct non-empty substrings are {'a', 'b', 'ab', 'ba', 'aba'}, total 5."
+        },
+        {
+            "input": "aaaa",
+            "output": "4",
+            "explanation": "The distinct non-empty substrings are {'a', 'aa', 'aaa', 'aaaa'}, total 4."
+        }
+    ],
+    "expected_algorithm": "Count Unique Substrings",
+    "complexity": {
+        "time": "O(|S|^2)",
+        "space": "O(|S|^2)"
+    },
+    "real_world_takeaway": "Counting distinct substrings via suffix tries or rolling hashes provides key analytical metrics for search query tokenization and natural language compression.",
+    "tags": [
+        "trie",
+        "substrings",
+        "count-unique-substrings",
+        "nlp",
+        "tokenization"
+    ]
+}

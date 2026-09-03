@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-SOCIAL-002",
+    "scenario_id": "SCN-SOCIAL-001",
+    "sequence": 2,
+    "title": "Community Cluster Detection",
+    "difficulty": "Medium",
+    "concepts": [
+        "Graph DFS"
+    ],
+    "real_world_story": "Social platforms shard their graph databases across independent regional clusters and distribute viral content within cohesive communities. To optimize server resource allocation, data infrastructure engineers must identify all disconnected sub-networks (connected components) of users who share direct or indirect friendship chains, reporting the total number of distinct communities and the size of the largest community.",
+    "problem_statement": "Given a social network of N registered users numbered 1 to N and M bidirectional friendships, partition the network into connected components where two users belong to the same component if and only if there is a path of friendships between them. Users with zero friendships each form an isolated community of size 1. Determine the total number of disconnected communities and the number of users in the largest community.",
+    "task": "Compute the number of connected components and the maximum component size in the social graph, then output both values separated by a space.",
+    "input_format": "The first line contains two space-separated integers N and M, denoting the number of users and friendships.\nThe next M lines each contain two space-separated integers u and v (1 <= u, v <= N), representing an undirected friendship between user u and user v.",
+    "output_format": "Print two space-separated integers: the total number of distinct communities, followed by the size (user count) of the largest community.",
+    "constraints": {
+        "users": "1 <= N <= 10^5",
+        "friendships": "0 <= M <= 2 * 10^5",
+        "user_ids": "1 <= u, v <= N"
+    },
+    "examples": [
+        {
+            "input": "7 5\n1 2\n2 3\n3 1\n4 5\n6 7",
+            "output": "3 3",
+            "explanation": "There are 3 connected components: {1, 2, 3} of size 3, {4, 5} of size 2, and {6, 7} of size 2. Total communities = 3, largest community size = 3."
+        },
+        {
+            "input": "4 0",
+            "output": "4 1",
+            "explanation": "With zero friendships, each of the 4 users forms an isolated community of size 1. Total communities = 4, largest size = 1."
+        }
+    ],
+    "expected_algorithm": "Graph DFS",
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N + M)"
+    },
+    "real_world_takeaway": "Connected component detection via Depth-First Search allows distributed graph databases to discover natural cluster boundaries for parallel query processing and regional cache distribution.",
+    "tags": [
+        "graph",
+        "dfs",
+        "connected-components",
+        "social-network",
+        "community-detection"
+    ]
+}

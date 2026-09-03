@@ -1,0 +1,48 @@
+{
+    "problem_id": "PROB-BROWSER-004",
+    "scenario_id": "SCN-BROWSER-001",
+    "sequence": 4,
+    "title": "Session Tab Reversal",
+    "difficulty": "Medium",
+    "concepts": [
+        "Reverse Linked List"
+    ],
+    "real_world_story": "When a browser user switches display modes between Left-to-Right (LTR) and Right-to-Left (RTL), or triggers an 'Invert Tab Order' session rearrangement, the underlying tab list must be reversed in-place. The tab nodes' next pointers must be inverted directly in memory without allocating auxiliary list nodes.",
+    "problem_statement": "Given a singly linked list representing the sequence of N open browser tab IDs from leftmost to rightmost, reverse the linked list in-place by updating the node pointers. Output the tab IDs in the reversed order. If the list is empty (N = 0), print 'EMPTY'.",
+    "task": "Reverse the given singly linked list of tab IDs and print the resulting sequence from new head to tail.",
+    "input_format": "The first line contains an integer N, the number of open tabs.\nThe second line contains N space-separated integers representing the tab IDs from left to right. If N = 0, this line is empty or omitted.",
+    "output_format": "Print the space-separated tab IDs in reversed order. If N = 0, print EMPTY.",
+    "constraints": {
+        "tab_count": "0 <= N <= 10^5",
+        "tab_id": "1 <= id <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "5\n10 20 30 40 50",
+            "output": "50 40 30 20 10",
+            "explanation": "The linked list 10 -> 20 -> 30 -> 40 -> 50 is reversed in-place to 50 -> 40 -> 30 -> 20 -> 10."
+        },
+        {
+            "input": "1\n100",
+            "output": "100",
+            "explanation": "A single-element list remains unchanged when reversed."
+        },
+        {
+            "input": "0",
+            "output": "EMPTY",
+            "explanation": "For 0 tabs, the output is EMPTY."
+        }
+    ],
+    "expected_algorithm": "Reverse Linked List",
+    "complexity": {
+        "time": "O(N)",
+        "space": "O(1)"
+    },
+    "real_world_takeaway": "In-place pointer reversal avoids memory overhead and garbage collection pauses when restructuring large linear UI session state.",
+    "tags": [
+        "linked-list",
+        "reverse-linked-list",
+        "tab-session",
+        "in-place"
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-PROF-003",
+    "scenario_id": "SCN-PROF-001",
+    "sequence": 3,
+    "title": "Professional Degree Reach",
+    "difficulty": "Medium",
+    "concepts": [
+        "Depth-Limited Search"
+    ],
+    "real_world_story": "On a professional networking platform, a user's search and profile visibility depend on their network reach within K degrees of connection (1st, 2nd, or 3rd degree). To compute a member's effective network size without traversing millions of distant profiles across the global graph, the platform executes a depth-limited exploration bounded at K degrees.",
+    "problem_statement": "Given a professional network of N profiles and M bidirectional connections, count the total number of distinct professionals reachable from a source professional S within a maximum search radius of K degrees. The source professional S themselves is not counted. Only professionals whose shortest distance d from S satisfies 1 <= d <= K should be included.",
+    "task": "Compute and print the total count of distinct profiles reachable within at most K connection hops from professional S.",
+    "input_format": "The first line contains three space-separated integers N, M, and K, denoting the number of profiles, connections, and maximum degree radius.\nThe next M lines each contain two space-separated integers u and v, representing a bidirectional connection.\nThe final line contains an integer S, the source professional ID.",
+    "output_format": "Print a single integer representing the total count of distinct profiles within K degrees of professional S.",
+    "constraints": {
+        "professionals": "1 <= N <= 10^5",
+        "connections": "0 <= M <= 2 * 10^5",
+        "max_degree": "1 <= K <= 10",
+        "source_id": "1 <= S <= N"
+    },
+    "examples": [
+        {
+            "input": "6 5 2\n1 2\n2 3\n3 4\n4 5\n5 6\n1",
+            "output": "2",
+            "explanation": "From professional 1, distances are: profile 2 (distance 1), profile 3 (distance 2), profile 4 (distance 3), profile 5 (distance 4), profile 6 (distance 5). Profiles within degree K = 2 are {2, 3}, giving a total count of 2."
+        },
+        {
+            "input": "5 2 3\n1 2\n3 4\n5",
+            "output": "0",
+            "explanation": "Professional 5 has no connections. Zero profiles are reachable within 3 degrees."
+        }
+    ],
+    "expected_algorithm": "Depth-Limited Search",
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N + M)"
+    },
+    "real_world_takeaway": "Restricting graph traversal to a bounded degree radius ensures responsive profile analytics while strictly containing memory and computation overhead.",
+    "tags": [
+        "graph",
+        "depth-limited-search",
+        "networking",
+        "reachability"
+    ]
+}

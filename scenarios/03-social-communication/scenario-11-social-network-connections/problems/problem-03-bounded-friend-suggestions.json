@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-SOCIAL-003",
+    "scenario_id": "SCN-SOCIAL-001",
+    "sequence": 3,
+    "title": "Bounded Friend Suggestions",
+    "difficulty": "Medium",
+    "concepts": [
+        "Depth-Limited Search"
+    ],
+    "real_world_story": "When recommending new connections ('People You May Know'), a social network cannot explore the entire global graph of hundreds of millions of users without timing out. Instead, recommendation workers perform a bounded search constrained to a depth limit K (such as K = 2 for friends-of-friends). The engine must identify all candidate users reachable within at most K hops who are not already direct friends of the target user and not the target user themselves.",
+    "problem_statement": "Given an unweighted network of N users and M bidirectional friendships, discover all candidate friend suggestions for a target user S within a maximum search depth of K hops. A candidate user C is eligible if the shortest path distance d between S and C satisfies 2 <= d <= K. Direct friends (distance 1) and user S itself (distance 0) are excluded. Return all eligible candidate IDs in ascending numerical order. If no eligible candidate exists, print NONE.",
+    "task": "Find all users whose shortest path distance d from user S satisfies 2 <= d <= K, and print their IDs sorted in ascending order separated by a single space, or NONE.",
+    "input_format": "The first line contains three space-separated integers N, M, and K, denoting the number of users, friendships, and maximum depth limit.\nThe next M lines each contain two space-separated integers u and v, representing an undirected friendship.\nThe final line contains an integer S, the source user ID.",
+    "output_format": "Print the space-separated list of candidate user IDs in ascending numerical order. If no candidates satisfy the condition, print NONE.",
+    "constraints": {
+        "users": "1 <= N <= 10^5",
+        "friendships": "0 <= M <= 2 * 10^5",
+        "max_depth": "1 <= K <= 5",
+        "source_user": "1 <= S <= N"
+    },
+    "examples": [
+        {
+            "input": "6 6 2\n1 2\n1 3\n2 4\n3 4\n4 5\n5 6\n1",
+            "output": "4",
+            "explanation": "From user 1: direct friends at distance 1 are {2, 3}. User 4 is at distance 2 (via 1->2->4 or 1->3->4), which is <= K=2. User 5 is at distance 3 (> K). Thus, user 4 is the only suggestion."
+        },
+        {
+            "input": "4 3 2\n1 2\n1 3\n1 4\n1",
+            "output": "NONE",
+            "explanation": "All other users (2, 3, 4) are direct friends at distance 1. No users exist at distance 2 <= d <= 2, so output NONE."
+        }
+    ],
+    "expected_algorithm": "Depth-Limited Search",
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N + M)"
+    },
+    "real_world_takeaway": "Imposing strict depth boundaries on graph exploration prevents combinatorial explosion in high-degree social networks, ensuring real-time recommendation responses.",
+    "tags": [
+        "graph",
+        "depth-limited-search",
+        "recommendation-system",
+        "social-network"
+    ]
+}

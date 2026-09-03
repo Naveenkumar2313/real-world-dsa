@@ -1,0 +1,39 @@
+{
+    "problem_id": "PROB-PROF-002",
+    "scenario_id": "SCN-PROF-001",
+    "sequence": 2,
+    "title": "Reporting Chain Validation",
+    "difficulty": "Medium",
+    "concepts": [
+        "Tree DFS"
+    ],
+    "real_world_story": "When corporate employees submit expense claims or equity grants, automated compliance workflows must verify whether an approving manager possesses supervisory authority over the employee. The system traverses the managerial reporting line upward from the employee or checks subtree reachability from the manager to determine if the manager is an ancestor in the management tree and compute the exact managerial distance.",
+    "problem_statement": "Given a corporate hierarchy tree of N employees rooted at employee 1, process Q approval queries. Each query consists of two employee IDs: prospective manager A and employee B. Determine whether employee A is an ancestor (direct manager, or manager's manager, etc.) of employee B in the organizational tree. If A is an ancestor of B, output 'YES <distance>' where distance is the number of managerial links between them. If A is not an ancestor of B, output 'NO'.",
+    "task": "For each query (A, B), verify if A is an ancestor of B in the tree and print 'YES <distance>' or 'NO'.",
+    "input_format": "The first line contains two space-separated integers N and Q, the number of employees and the number of queries.\nThe next N - 1 lines each contain two space-separated integers u and v, indicating that employee u is the direct manager of employee v.\nThe next Q lines each contain two space-separated integers A and B, representing the manager and subordinate IDs to validate.",
+    "output_format": "For each of the Q queries, print on a separate line 'YES <distance>' if A is an ancestor of B, or 'NO' otherwise.",
+    "constraints": {
+        "employees": "1 <= N <= 10^5",
+        "queries": "1 <= Q <= 10^5",
+        "employee_ids": "1 <= u, v, A, B <= N"
+    },
+    "examples": [
+        {
+            "input": "5 3\n1 2\n1 3\n2 4\n4 5\n1 5\n3 5\n2 4",
+            "output": "YES 3\nNO\nYES 1",
+            "explanation": "Query 1: Employee 1 is the great-grandfather manager of employee 5 (1 -> 2 -> 4 -> 5), distance 3. Output: YES 3.\nQuery 2: Employee 3 is in a separate branch from employee 5. Output: NO.\nQuery 3: Employee 2 is the direct manager of employee 4 (distance 1). Output: YES 1."
+        }
+    ],
+    "expected_algorithm": "Tree DFS",
+    "complexity": {
+        "time": "O(N + Q)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Tree traversal algorithms and DFS entry/exit timestamps enable fast chain-of-command authority verification for corporate governance and workflow routing.",
+    "tags": [
+        "tree",
+        "dfs",
+        "ancestor-queries",
+        "corporate-hierarchy"
+    ]
+}

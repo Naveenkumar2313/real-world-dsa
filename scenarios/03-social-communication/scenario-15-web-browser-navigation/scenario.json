@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-BROWSER-001",
+    "title": "Web Browser Navigation",
+    "slug": "scenario-15-web-browser-navigation",
+    "short_description": "Implement browser history back-forward stacks, HTML DOM tag validators, and linked-list tab session managers.",
+    "category": "Social & Communication Platforms",
+    "industry": "Web Browsers & Client Applications",
+    "difficulty": "Medium",
+    "real_world_context": "Modern web browser engines (such as Chromium, WebKit, and Gecko) power everyday web navigation and interactive communication apps. Browser engines manage session state, tab reordering, historical URL traversal via dual-stack Back/Forward navigation, and structural HTML DOM tree parsing to validate document tag hierarchies.",
+    "learning_objectives": [
+        "Implement dual LIFO stack architectures to manage browser Back and Forward page histories.",
+        "Validate nested HTML element tag streams using stack-based syntax parsers.",
+        "Manage linear sequences of open browser tabs using Linked List pointer manipulations.",
+        "Invert active tab session orders using in-place Reverse Linked List algorithms."
+    ],
+    "algorithms": [
+        "Stack Operations",
+        "Valid Parenthesis",
+        "Linked List",
+        "Reverse Linked List"
+    ],
+    "learning_path": [
+        "PROB-BROWSER-001",
+        "PROB-BROWSER-002",
+        "PROB-BROWSER-003",
+        "PROB-BROWSER-004"
+    ]
+}

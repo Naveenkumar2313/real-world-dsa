@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-CHAT-001",
+    "title": "Chat & Messaging System",
+    "slug": "scenario-14-chat-messaging-system",
+    "short_description": "Architect FIFO message dispatchers, circular history caches, rich-text tag validators, and sliding-window rate limiters.",
+    "category": "Social & Communication Platforms",
+    "industry": "Instant Messaging & Real-Time Communications",
+    "difficulty": "Medium",
+    "real_world_context": "High-scale instant messaging platforms (such as WhatsApp, Telegram, Slack, and Discord) handle billions of real-time messages every day. The messaging infrastructure must guarantee ordered delivery via FIFO message queues, maintain bounded conversation history on client devices via circular ring buffers, validate paired styling markup tags in rich text messages, and deploy sliding-window rate limiters to shield public channels against automated bot flooding.",
+    "learning_objectives": [
+        "Implement FIFO message dispatch queues with constant-time enqueue, dequeue, and peek operations.",
+        "Design fixed-capacity circular ring buffers to maintain recent message history without reallocation.",
+        "Validate nested bracket syntax in chat markup formatting strings using stack verification.",
+        "Apply the sliding window technique to detect high-frequency spam message bursts."
+    ],
+    "algorithms": [
+        "Queue Operations",
+        "Circular Queue Operations",
+        "Valid Parenthesis",
+        "Sliding Window"
+    ],
+    "learning_path": [
+        "PROB-CHAT-001",
+        "PROB-CHAT-002",
+        "PROB-CHAT-003",
+        "PROB-CHAT-004"
+    ]
+}

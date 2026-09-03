@@ -1,0 +1,39 @@
+{
+    "problem_id": "PROB-CHAT-002",
+    "scenario_id": "SCN-CHAT-001",
+    "sequence": 2,
+    "title": "Circular Recent Chats Buffer",
+    "difficulty": "Medium",
+    "concepts": [
+        "Circular Queue Operations"
+    ],
+    "real_world_story": "Mobile chat clients maintain an in-memory ring buffer of fixed capacity K to display the most recent K messages of an active chat channel. When new messages arrive and the buffer is full, the oldest message is overwritten automatically without requiring dynamic array reallocations or shifting elements in memory.",
+    "problem_statement": "Implement a circular ring buffer with a fixed capacity of K messages supporting Q operations:\n1. 'PUSH <msg_id>': Appends msg_id. If the buffer is full (contains K messages), the oldest message is overwritten and discarded, and the front pointer advances.\n2. 'POP': Removes and prints the oldest message in the buffer. If empty, print 'EMPTY'.\n3. 'DISPLAY': Prints all message IDs currently in the buffer from oldest to newest separated by a single space. If empty, print 'EMPTY'.",
+    "task": "Execute Q circular queue operations and print the output of each POP and DISPLAY command on a new line.",
+    "input_format": "The first line contains two space-separated integers K and Q, the maximum capacity and the number of operations.\nThe next Q lines each contain a command: 'PUSH <msg_id>', 'POP', or 'DISPLAY'.",
+    "output_format": "For each POP and DISPLAY command, print the corresponding output on a new line.",
+    "constraints": {
+        "capacity": "1 <= K <= 10^4",
+        "operations": "1 <= Q <= 10^5",
+        "msg_id": "1 <= msg_id <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "3 7\nPUSH 10\nPUSH 20\nPUSH 30\nDISPLAY\nPUSH 40\nDISPLAY\nPOP",
+            "output": "10 20 30\n20 30 40\n20",
+            "explanation": "Capacity K = 3. PUSH 10, 20, 30 fills buffer: DISPLAY outputs '10 20 30'. PUSH 40 overwrites 10: DISPLAY outputs '20 30 40'. POP removes the oldest message (20), outputting '20'."
+        }
+    ],
+    "expected_algorithm": "Circular Queue Operations",
+    "complexity": {
+        "time": "O(1) for PUSH and POP, O(K) for DISPLAY",
+        "space": "O(K)"
+    },
+    "real_world_takeaway": "Circular ring buffers provide bounded memory footprints and zero-allocation updates for streaming telemetry and message caching.",
+    "tags": [
+        "queue",
+        "circular-queue",
+        "ring-buffer",
+        "chat-cache"
+    ]
+}

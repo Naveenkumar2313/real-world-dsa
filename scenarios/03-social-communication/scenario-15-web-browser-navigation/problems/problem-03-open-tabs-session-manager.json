@@ -1,0 +1,38 @@
+{
+    "problem_id": "PROB-BROWSER-003",
+    "scenario_id": "SCN-BROWSER-001",
+    "sequence": 3,
+    "title": "Open Tabs Session Manager",
+    "difficulty": "Easy",
+    "concepts": [
+        "Linked List"
+    ],
+    "real_world_story": "A browser tab bar manages open tabs as an ordered list. Users can open a new tab directly next to their current active tab, navigate between adjacent tabs, or close the active tab (transferring focus to the right neighbor if it exists, or the left neighbor if no right neighbor exists).",
+    "problem_statement": "A browser session starts with a single active tab with ID 1. Process Q commands:\n1. 'OPEN <tab_id>': Inserts a new tab with ID tab_id immediately after the active tab and sets the new tab as active.\n2. 'CLOSE': Closes the currently active tab. If a right neighbor exists, it becomes active; otherwise the left neighbor becomes active. If only one tab remains in the session, the close command is ignored.\n3. 'LEFT': Moves active focus one tab to the left (if not already at the leftmost tab).\n4. 'RIGHT': Moves active focus one tab to the right (if not already at the rightmost tab).\n5. 'STATUS': Prints all open tab IDs from left to right separated by spaces, with the active tab ID enclosed in asterisks (e.g. '*id*').",
+    "task": "Execute all Q operations and print the result for each STATUS command on a new line.",
+    "input_format": "The first line contains an integer Q, the number of tab commands.\nThe next Q lines each contain an operation: 'OPEN <tab_id>', 'CLOSE', 'LEFT', 'RIGHT', or 'STATUS'.",
+    "output_format": "For each STATUS command, print the space-separated list of tab IDs from left to right, wrapping the active tab ID in asterisks.",
+    "constraints": {
+        "operations": "1 <= Q <= 5 * 10^4",
+        "tab_id": "1 <= tab_id <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "8\nSTATUS\nOPEN 2\nOPEN 3\nSTATUS\nLEFT\nSTATUS\nCLOSE\nSTATUS",
+            "output": "*1*\n1 2 *3*\n1 *2* 3\n1 *3*",
+            "explanation": "1. STATUS -> '*1*'\n2. OPEN 2 -> tabs [1, 2], active 2\n3. OPEN 3 -> tabs [1, 2, 3], active 3\n4. STATUS -> '1 2 *3*'\n5. LEFT -> active becomes 2\n6. STATUS -> '1 *2* 3'\n7. CLOSE -> tab 2 closed; right neighbor 3 becomes active, tabs [1, 3]\n8. STATUS -> '1 *3*'"
+        }
+    ],
+    "expected_algorithm": "Linked List",
+    "complexity": {
+        "time": "O(1) for OPEN, CLOSE, LEFT, RIGHT; O(T) for STATUS where T is tab count",
+        "space": "O(Q)"
+    },
+    "real_world_takeaway": "Doubly linked lists provide constant-time insertions, deletions, and focus updates for UI tab strips and window session managers.",
+    "tags": [
+        "linked-list",
+        "session-manager",
+        "browser-tabs",
+        "doubly-linked-list"
+    ]
+}

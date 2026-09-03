@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-PROF-001",
+    "scenario_id": "SCN-PROF-001",
+    "sequence": 1,
+    "title": "Corporate Hierarchy Traversal",
+    "difficulty": "Easy",
+    "concepts": [
+        "Tree BFS"
+    ],
+    "real_world_story": "An enterprise communication tool needs to broadcast company-wide updates tier-by-tier down the management structure. The broadcast starts with the Chief Executive Officer (CEO) at tier 0, rolls out to executive vice presidents at tier 1, then department directors at tier 2, and so forth down to individual contributors. Within each tier, employee profiles must be listed in numerical order of their employee ID.",
+    "problem_statement": "An enterprise org chart consists of N employees with unique IDs from 1 to N, where employee 1 is the CEO (root). Each employee except the CEO reports to exactly one direct manager, forming a valid tree. Traverse the organizational tree level-by-level from top to bottom. For each level, print the employee IDs sorted in ascending numerical order on a separate line.",
+    "task": "Perform a level-order traversal of the management tree, printing each level's employee IDs sorted in ascending order on a distinct line.",
+    "input_format": "The first line contains an integer N, the number of employees.\nThe next N - 1 lines each contain two space-separated integers u and v, indicating that employee u is the direct manager of employee v.",
+    "output_format": "Print L lines corresponding to the L levels of the corporate hierarchy (root tier first). Each line contains the space-separated employee IDs at that level in ascending numerical order.",
+    "constraints": {
+        "employees": "1 <= N <= 10^5",
+        "manager_edges": "1 <= u, v <= N",
+        "ceo_root": "Employee 1 is always the root"
+    },
+    "examples": [
+        {
+            "input": "6\n1 2\n1 3\n2 4\n2 5\n3 6",
+            "output": "1\n2 3\n4 5 6",
+            "explanation": "Level 0 contains the CEO (1). Level 1 contains direct reports of 1 ({2, 3}). Level 2 contains reports of 2 and 3 ({4, 5, 6}). Each tier is sorted in ascending order."
+        },
+        {
+            "input": "3\n1 3\n3 2",
+            "output": "1\n3\n2",
+            "explanation": "Level 0 is 1, Level 1 is 3, Level 2 is 2."
+        }
+    ],
+    "expected_algorithm": "Tree BFS",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Breadth-First Search on tree structures naturally models organizational hierarchies, enabling phased policy rollouts and level-by-level enterprise directory grouping.",
+    "tags": [
+        "tree",
+        "bfs",
+        "level-order",
+        "hierarchy",
+        "enterprise"
+    ]
+}

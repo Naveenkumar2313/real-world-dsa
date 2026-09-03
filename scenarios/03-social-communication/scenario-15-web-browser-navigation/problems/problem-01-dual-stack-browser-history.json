@@ -1,0 +1,40 @@
+{
+    "problem_id": "PROB-BROWSER-001",
+    "scenario_id": "SCN-BROWSER-001",
+    "sequence": 1,
+    "title": "Dual Stack Browser History",
+    "difficulty": "Easy",
+    "concepts": [
+        "Stack Operations"
+    ],
+    "real_world_story": "In every web browser, clicking Back and Forward enables swift navigation through viewed pages. A browser initializes at 'home.html'. When a new page is visited, the current page is stored in the back stack and forward history is cleared. Clicking Back pushes the current page onto the forward stack and pops from the back stack. Clicking Forward pushes the current page onto the back stack and pops from the forward stack.",
+    "problem_statement": "Simulate a browser history navigation engine starting at 'home.html'. Process Q commands:\n1. 'VISIT <url>': Navigate to <url>. Push the current page to back history and clear forward history. Output the new active URL.\n2. 'BACK <steps>': Move back up to <steps> pages. If <steps> exceeds available back history, move back as many steps as possible. Output the new active URL.\n3. 'FORWARD <steps>': Move forward up to <steps> pages. If <steps> exceeds available forward history, move forward as many steps as possible. Output the new active URL.",
+    "task": "Process all Q browser navigation operations and print the active URL after each command on a separate line.",
+    "input_format": "The first line contains an integer Q, the number of navigation operations.\nThe next Q lines each contain a command: 'VISIT <url>', 'BACK <steps>', or 'FORWARD <steps>'.",
+    "output_format": "For each command, print the active URL after the operation on a new line.",
+    "constraints": {
+        "operations": "1 <= Q <= 10^5",
+        "url_length": "1 <= |url| <= 100",
+        "steps": "1 <= steps <= 10^5",
+        "characters": "Alphanumeric and dot/hyphen characters without spaces"
+    },
+    "examples": [
+        {
+            "input": "6\nVISIT google.com\nVISIT github.com\nBACK 1\nFORWARD 1\nVISIT youtube.com\nBACK 2",
+            "output": "google.com\ngithub.com\ngoogle.com\ngithub.com\nyoutube.com\ngoogle.com",
+            "explanation": "1. VISIT google.com -> active: google.com\n2. VISIT github.com -> active: github.com\n3. BACK 1 -> back to google.com\n4. FORWARD 1 -> forward to github.com\n5. VISIT youtube.com -> forward history cleared, active: youtube.com\n6. BACK 2 -> moves back through github.com to google.com"
+        }
+    ],
+    "expected_algorithm": "Stack Operations",
+    "complexity": {
+        "time": "O(1) amortized per operation",
+        "space": "O(Q * max_url_len)"
+    },
+    "real_world_takeaway": "Dual-stack data structures provide constant-time bidirectional history navigation across browser tabs and mobile view controllers.",
+    "tags": [
+        "stack",
+        "browser-history",
+        "navigation",
+        "dual-stack"
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "problem_id": "PROB-CHAT-001",
+    "scenario_id": "SCN-CHAT-001",
+    "sequence": 1,
+    "title": "FIFO Message Delivery Queue",
+    "difficulty": "Easy",
+    "concepts": [
+        "Queue Operations"
+    ],
+    "real_world_story": "In a real-time messaging gateway, outbound message packets must be dispatched in the exact order they were received by the server. As networking bandwidth becomes available, the oldest pending message is popped from the delivery queue and transmitted over WebSockets to the recipient. Gateway diagnostics regularly poll the head message and current queue backlog.",
+    "problem_statement": "Build a FIFO message delivery queue supporting Q sequential operations:\n1. 'ENQUEUE <msg_id>': Adds message <msg_id> to the back of the queue.\n2. 'DEQUEUE': Dispatches the oldest message, removing it and printing its ID. If the queue is empty, print 'EMPTY'.\n3. 'PEEK': Prints the ID of the oldest message at the front of the queue without removing it. If empty, print 'EMPTY'.\n4. 'SIZE': Prints the total number of pending messages currently in the queue.",
+    "task": "Process all Q operations on the message delivery queue and print the output for each DEQUEUE, PEEK, and SIZE command.",
+    "input_format": "The first line contains an integer Q, the number of queue operations.\nThe next Q lines each contain an operation command: 'ENQUEUE <msg_id>', 'DEQUEUE', 'PEEK', or 'SIZE'.",
+    "output_format": "For each DEQUEUE, PEEK, and SIZE command, print the corresponding result on a new line.",
+    "constraints": {
+        "operations": "1 <= Q <= 10^5",
+        "msg_id": "1 <= msg_id <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "7\nENQUEUE 101\nENQUEUE 102\nPEEK\nSIZE\nDEQUEUE\nDEQUEUE\nDEQUEUE",
+            "output": "101\n2\n101\n102\nEMPTY",
+            "explanation": "After enqueuing 101 and 102: PEEK shows 101, SIZE shows 2. First DEQUEUE pops 101, second pops 102, third finds the queue empty and prints EMPTY."
+        }
+    ],
+    "expected_algorithm": "Queue Operations",
+    "complexity": {
+        "time": "O(1) amortized per operation",
+        "space": "O(Q)"
+    },
+    "real_world_takeaway": "FIFO queues preserve strict chronological message ordering across asynchronous networking threads in distributed messaging servers.",
+    "tags": [
+        "queue",
+        "fifo",
+        "messaging",
+        "real-time"
+    ]
+}

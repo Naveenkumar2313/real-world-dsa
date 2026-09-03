@@ -1,0 +1,43 @@
+{
+    "problem_id": "PROB-SOCIAL-004",
+    "scenario_id": "SCN-SOCIAL-001",
+    "sequence": 4,
+    "title": "Connection Audit Log Reversal",
+    "difficulty": "Easy",
+    "concepts": [
+        "Reverse Linked List"
+    ],
+    "real_world_story": "A social platform records user connection actions (such as sending requests, accepting friendships, and unfriending) as a chronological singly linked audit stream. When displaying a user's recent security history on mobile devices, compliance rules require rendering the activity feed in reverse chronological order (newest event first). To avoid allocating additional memory on memory-constrained client devices, the pointer chain must be inverted in-place.",
+    "problem_statement": "A sequence of N connection audit event records is stored as a singly linked list where each node contains an integer event ID and a pointer to the next chronologically created event. Invert the pointer chain of the linked list in-place so that the head node points to the most recent event and subsequent nodes follow in reverse chronological order. Output the event IDs in the reversed sequence. If the log is empty (N = 0), print EMPTY.",
+    "task": "Reverse the given singly linked list of N event IDs and print the resulting sequence from new head to tail.",
+    "input_format": "The first line contains an integer N, the number of audit event records.\nThe second line contains N space-separated integers e_1, e_2, ..., e_N, representing the event IDs in chronological order. If N = 0, this line is empty or omitted.",
+    "output_format": "Print the N space-separated event IDs in reverse chronological order. If N = 0, print EMPTY.",
+    "constraints": {
+        "event_count": "0 <= N <= 10^5",
+        "event_ids": "1 <= e_i <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "4\n101 102 103 104",
+            "output": "104 103 102 101",
+            "explanation": "The linked list 101 -> 102 -> 103 -> 104 is reversed to 104 -> 103 -> 102 -> 101."
+        },
+        {
+            "input": "0",
+            "output": "EMPTY",
+            "explanation": "The event log contains 0 records, so the output is EMPTY."
+        }
+    ],
+    "expected_algorithm": "Reverse Linked List",
+    "complexity": {
+        "time": "O(N)",
+        "space": "O(1)"
+    },
+    "real_world_takeaway": "In-place pointer reversal of linked list streams allows audit and feed systems to switch presentation order in linear time with zero secondary memory allocation.",
+    "tags": [
+        "linked-list",
+        "reverse-linked-list",
+        "audit-trail",
+        "data-structures"
+    ]
+}

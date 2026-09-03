@@ -1,0 +1,44 @@
+{
+    "problem_id": "PROB-SEARCH-003",
+    "scenario_id": "SCN-SEARCH-001",
+    "sequence": 3,
+    "title": "Search URL Common Prefix",
+    "difficulty": "Easy",
+    "concepts": [
+        "Longest Common Prefix"
+    ],
+    "real_world_story": "In search engine result breadcrumbs and site clustering, web crawlers group related URLs under a unified site hierarchy prefix (such as 'https://example.com/docs/api/'). Determining the longest common prefix among a cluster of grouped URLs allows the search frontend to collapse redundant prefixes and render clean navigational breadcrumbs.",
+    "problem_statement": "Given an array of N search URL path strings, find the longest common prefix shared by all N strings. A common prefix is a substring that occurs at the beginning of every string in the collection. If there is no common prefix (or if the strings share no common first character), print EMPTY.",
+    "task": "Compute and print the longest common prefix among the N URL path strings, or EMPTY.",
+    "input_format": "The first line contains an integer N, the number of URL strings.\nThe next N lines each contain a non-empty string.",
+    "output_format": "Print the longest common prefix string. If no common prefix exists, print EMPTY.",
+    "constraints": {
+        "num_strings": "1 <= N <= 10^4",
+        "string_length": "1 <= |S_i| <= 1000",
+        "total_chars": "Sum of string lengths <= 2 * 10^5"
+    },
+    "examples": [
+        {
+            "input": "3\napi/v1/users/profile\napi/v1/users/settings\napi/v1/users/billing",
+            "output": "api/v1/users/",
+            "explanation": "All three URL strings share the initial prefix 'api/v1/users/'."
+        },
+        {
+            "input": "3\nsearch/query\ndocs/guide\nhome/feed",
+            "output": "EMPTY",
+            "explanation": "The strings start with 's', 'd', and 'h' respectively. There is no shared prefix, so output EMPTY."
+        }
+    ],
+    "expected_algorithm": "Longest Common Prefix",
+    "complexity": {
+        "time": "O(N * min_len)",
+        "space": "O(min_len)"
+    },
+    "real_world_takeaway": "Longest Common Prefix extraction enables URL routing compression and cleaner hierarchy abstraction in web navigation and search result pages.",
+    "tags": [
+        "string",
+        "longest-common-prefix",
+        "urls",
+        "search-engine"
+    ]
+}

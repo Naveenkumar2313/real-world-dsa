@@ -1,0 +1,44 @@
+{
+    "problem_id": "PROB-CHAT-003",
+    "scenario_id": "SCN-CHAT-001",
+    "sequence": 3,
+    "title": "Chat Formatting Tag Validator",
+    "difficulty": "Easy",
+    "concepts": [
+        "Valid Parenthesis"
+    ],
+    "real_world_story": "In chat applications with rich text support, users type bracketed formatting syntax such as parentheses (), square brackets [], and curly braces {} to represent bold, italics, and code blocks. Before a message is broadcast to channel members, the client markdown sanitizer must verify that all opening brackets have corresponding matching closing brackets properly nested in the correct order.",
+    "problem_statement": "Given T chat formatting strings containing only bracket characters '(', ')', '[', ']', '{', '}', verify for each string whether the bracket sequence is valid. A bracket string is valid if:\n1. Every opening bracket is closed by the exact same type of bracket.\n2. Open brackets are closed in the correct, properly nested order.\nAn empty string is considered valid. For each string, print 'VALID' if it is well-formed, or 'INVALID' otherwise.",
+    "task": "Determine whether each bracket sequence is balanced and output VALID or INVALID on separate lines.",
+    "input_format": "The first line contains an integer T, the number of test messages.\nThe next T lines each contain a string of bracket characters.",
+    "output_format": "For each test string, print 'VALID' or 'INVALID' on a new line.",
+    "constraints": {
+        "test_cases": "1 <= T <= 100",
+        "string_length": "0 <= |S| <= 10^5",
+        "characters": "Only '(', ')', '[', ']', '{', '}'"
+    },
+    "examples": [
+        {
+            "input": "3\n{[()]}\n{[(])}\n(([]))",
+            "output": "VALID\nINVALID\nVALID",
+            "explanation": "1. '{[()]}' is properly nested: VALID.\n2. '{[(])}' has mismatched closing ']' before closing ')': INVALID.\n3. '(([]))' is properly nested: VALID."
+        },
+        {
+            "input": "2\n(\n)",
+            "output": "INVALID\nINVALID",
+            "explanation": "Single unclosed '(' is INVALID. Single unexpected closing ')' is INVALID."
+        }
+    ],
+    "expected_algorithm": "Valid Parenthesis",
+    "complexity": {
+        "time": "O(|S|)",
+        "space": "O(|S|)"
+    },
+    "real_world_takeaway": "Stack-based validation ensures rich text formatting is parsed deterministically without causing client-side rendering crashes.",
+    "tags": [
+        "stack",
+        "valid-parenthesis",
+        "syntax-validation",
+        "chat-formatting"
+    ]
+}

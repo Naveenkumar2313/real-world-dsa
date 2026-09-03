@@ -1,0 +1,49 @@
+{
+    "problem_id": "PROB-SOCIAL-001",
+    "scenario_id": "SCN-SOCIAL-001",
+    "sequence": 1,
+    "title": "Degrees of Separation",
+    "difficulty": "Easy",
+    "concepts": [
+        "Graph BFS"
+    ],
+    "real_world_story": "In a social network, measuring how closely two members are connected is critical for recommendation relevance and privacy settings. Each direct friendship represents 1 connection hop. If two users are not directly connected but share a mutual friend, they are separated by 2 hops. The platform must compute the minimum number of friendship hops between any two members.",
+    "problem_statement": "Given an unweighted social network graph of N users numbered 1 to N and M bidirectional friendships, determine the minimum number of friendship hops needed to connect a source user S and a destination user D. If S and D are the same user, the distance is 0. If no sequence of friendships connects S and D, return -1.",
+    "task": "Read the graph description and query pair (S, D), then print the minimum friendship distance from S to D, or -1 if unreachable.",
+    "input_format": "The first line contains two space-separated integers N and M, denoting the number of users and friendships.\nThe next M lines each contain two space-separated integers u and v (1 <= u, v <= N), representing an undirected friendship between user u and user v.\nThe final line contains two space-separated integers S and D, representing the source and destination user IDs.",
+    "output_format": "Print a single integer representing the minimum number of friendship hops from user S to user D, or -1 if no path exists.",
+    "constraints": {
+        "users": "1 <= N <= 10^5",
+        "friendships": "0 <= M <= 2 * 10^5",
+        "endpoints": "1 <= S, D, u, v <= N"
+    },
+    "examples": [
+        {
+            "input": "5 4\n1 2\n2 3\n3 4\n4 5\n1 4",
+            "output": "3",
+            "explanation": "The shortest path from user 1 to user 4 is 1 -> 2 -> 3 -> 4, which consists of 3 friendship hops."
+        },
+        {
+            "input": "4 1\n1 2\n1 4",
+            "output": "-1",
+            "explanation": "User 4 is completely disconnected from user 1. No friendship chain exists, so output -1."
+        },
+        {
+            "input": "3 2\n1 2\n2 3\n2 2",
+            "output": "0",
+            "explanation": "The source user and destination user are identical (user 2), requiring 0 hops."
+        }
+    ],
+    "expected_algorithm": "Graph BFS",
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N + M)"
+    },
+    "real_world_takeaway": "Breadth-First Search on an unweighted graph explores layer-by-layer, guaranteeing that the first time a destination is reached, the path taken has the minimal number of hops.",
+    "tags": [
+        "graph",
+        "bfs",
+        "shortest-path",
+        "social-network"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-SEARCH-001",
+    "title": "Search Engine Autocomplete",
+    "slug": "scenario-13-search-engine-autocomplete",
+    "short_description": "Engineer high-throughput search query suggestion systems using trie indexers, prefix lookups, and token analyzers.",
+    "category": "Social & Communication Platforms",
+    "industry": "Search Engines & Information Retrieval",
+    "difficulty": "Medium",
+    "real_world_context": "Web search engines and real-time social search bars process tens of billions of keystrokes each day. Every time a user types a letter, the autocomplete backend must match prefix queries in sub-millisecond response windows, compress query URL navigation breadcrumbs, and dissect search phrases into unique substring tokens for query intent classification and search ad targeting.",
+    "learning_objectives": [
+        "Implement an in-memory prefix tree (Trie) supporting rapid query insertion and exact match lookups.",
+        "Query prefix subtrees to retrieve lexicographically ordered autocomplete suggestions.",
+        "Analyze URL paths and routing keys to determine the Longest Common Prefix (LCP) for query compression.",
+        "Count distinct query sub-tokens to evaluate search intent entropy using substring analysis."
+    ],
+    "algorithms": [
+        "Trie Operations",
+        "Words with Prefix",
+        "Longest Common Prefix",
+        "Count Unique Substrings"
+    ],
+    "learning_path": [
+        "PROB-SEARCH-001",
+        "PROB-SEARCH-002",
+        "PROB-SEARCH-003",
+        "PROB-SEARCH-004"
+    ]
+}
