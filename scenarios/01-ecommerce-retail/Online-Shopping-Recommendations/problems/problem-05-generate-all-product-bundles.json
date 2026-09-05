@@ -1,0 +1,47 @@
+{
+    "problem_id": "PROB-REC-005",
+    "scenario_id": "SCN-REC-001",
+    "sequence": 5,
+    "title": "Generate All Product Bundles",
+    "difficulty": "Medium",
+    "concepts": ["Power Set", "Recursion"],
+    "real_world_story": "An e-commerce platform wants to explore every possible combination of a small set of products so that different product bundles can be considered for recommendations.",
+    "real_world_connection": {
+      "system": "Product bundle recommendation",
+      "input_represents": "A small collection of available products",
+      "output_represents": "Every possible product combination",
+      "algorithm_represents": "Generating all subsets of the product collection"
+    },
+    "problem_statement": "Given N distinct product IDs, generate all possible subsets of the products, including the empty set and the complete set.",
+    "task": "Generate the power set of the given product IDs.",
+    "input_format": "The first line contains an integer N. The second line contains N distinct integers representing product IDs.",
+    "output_format": "Print all possible subsets, one subset per line. The order of subsets does not matter.",
+    "constraints": [
+      "1 <= N <= 15",
+      "1 <= product ID <= 1000000000",
+      "All product IDs are distinct"
+    ],
+    "examples": [
+      {
+        "input": "3\n101 202 303",
+        "output": "{}\n{101}\n{202}\n{303}\n{101,202}\n{101,303}\n{202,303}\n{101,202,303}",
+        "explanation": "Three products produce 2^3 = 8 possible combinations, including the empty set."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Power Set",
+      "module_key": "power-set",
+      "reason": "Each product can either be included or excluded from a bundle, producing all possible subsets."
+    },
+    "complexity": {
+      "time": "O(N * 2^N)",
+      "space": "O(N * 2^N)"
+    },
+    "hint": [
+      "For every product, consider two choices: include it or exclude it.",
+      "Continue this decision for every product.",
+      "Each complete sequence of choices forms one possible bundle."
+    ],
+    "real_world_takeaway": "Power sets can help generate possible product bundles when the number of products is small.",
+    "tags": ["arrays", "power-set", "recursion", "e-commerce", "product-bundles", "recommendations"]
+  }

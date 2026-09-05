@@ -1,0 +1,51 @@
+
+   { "problem_id": "PROB-REC-001",
+    "scenario_id": "SCN-REC-001",
+    "sequence": 1,
+    "title": "Find Products Within Budget",
+    "difficulty": "Easy",
+    "concepts": ["Array", "Sorting", "Binary Search"],
+    "real_world_story": "An e-commerce platform wants to quickly recommend products that fit a customer's maximum budget. The product prices are maintained in sorted order.",
+    "real_world_connection": {
+      "system": "Online shopping recommendation system",
+      "input_represents": "Sorted product prices",
+      "target_represents": "Customer's maximum budget",
+      "algorithm_represents": "Efficiently finding the most expensive product that does not exceed the budget"
+    },
+    "problem_statement": "Given a sorted array of product prices and a customer's budget B, find the index of the most expensive product whose price is less than or equal to B. If no product fits the budget, return -1.",
+    "task": "Find the best-priced product that the customer can afford.",
+    "input_format": "The first line contains an integer N. The second line contains N integers representing product prices in non-decreasing order. The third line contains an integer B representing the customer's budget.",
+    "output_format": "Print the zero-based index of the most expensive product whose price is at most B. Otherwise, print -1.",
+    "constraints": [
+      "1 <= N <= 100000",
+      "1 <= price <= 1000000000",
+      "1 <= B <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "6\n200 450 700 900 1200 1500\n950",
+        "output": "3",
+        "explanation": "The most expensive product within the budget is priced at 900, which is at index 3."
+      },
+      {
+        "input": "5\n500 800 1200 1500 2000\n300",
+        "output": "-1",
+        "explanation": "No product has a price less than or equal to 300."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Binary Search",
+      "module_key": "binary-search",
+      "reason": "The prices are sorted, allowing the platform to efficiently locate the highest affordable price."
+    },
+    "complexity": {
+      "time": "O(log N)",
+      "space": "O(1)"
+    },
+    "hint": [
+      "The prices are already sorted.",
+      "Use binary search to find the rightmost price less than or equal to B."
+    ],
+    "real_world_takeaway": "Sorted product data allows recommendation systems to quickly find products that satisfy a customer's budget.",
+    "tags": ["arrays", "sorting", "binary-search", "e-commerce", "recommendations"]
+  }

@@ -1,0 +1,52 @@
+{
+    "problem_id": "PROB-REC-004",
+    "scenario_id": "SCN-REC-001",
+    "sequence": 4,
+    "title": "Find the Best Consecutive Product Group",
+    "difficulty": "Medium",
+    "concepts": ["Sliding Window", "Array"],
+    "real_world_story": "A shopping platform displays products in a ranked sequence and wants to identify a consecutive group of products whose total price is closest to a customer's preferred spending amount.",
+    "real_world_connection": {
+      "system": "Product recommendation ranking",
+      "input_represents": "Prices of consecutively displayed products",
+      "target_represents": "Customer's preferred spending amount",
+      "algorithm_represents": "Efficiently evaluating consecutive product groups"
+    },
+    "problem_statement": "Given an array of positive product prices, a window size K, and a target value T, find the consecutive group of K products whose total price is closest to T. Return the starting index of that group.",
+    "task": "Find the K consecutive products whose combined price is closest to the customer's preferred spending amount.",
+    "input_format": "The first line contains two integers N and K. The second line contains N integers representing product prices. The third line contains an integer T representing the target spending amount.",
+    "output_format": "Print the zero-based starting index of the K-product group whose sum is closest to T. If multiple groups have the same difference, return the smallest starting index.",
+    "constraints": [
+      "1 <= K <= N <= 100000",
+      "1 <= price <= 1000000000",
+      "1 <= T <= 100000000000"
+    ],
+    "examples": [
+      {
+        "input": "6 3\n200 400 500 700 300 600\n1600",
+        "output": "1",
+        "explanation": "The group starting at index 1 contains 400, 500 and 700, whose total is exactly 1600."
+      },
+      {
+        "input": "5 2\n200 300 700 800 1000\n1200",
+        "output": "2",
+        "explanation": "The group starting at index 2 contains 700 and 800, whose total is 1500. This is the closest group to the target of 1200."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Sliding Window",
+      "module_key": "sliding-window",
+      "reason": "Because the products form consecutive groups of a fixed size, a sliding window can update each group sum efficiently."
+    },
+    "complexity": {
+      "time": "O(N)",
+      "space": "O(1)"
+    },
+    "hint": [
+      "Calculate the sum of the first K products.",
+      "Slide the window one position at a time.",
+      "Remove the outgoing price and add the incoming price."
+    ],
+    "real_world_takeaway": "Sliding windows are useful when recommendation systems need to evaluate consecutive groups of items efficiently.",
+    "tags": ["arrays", "sliding-window", "e-commerce", "recommendations", "product-groups"]
+  }

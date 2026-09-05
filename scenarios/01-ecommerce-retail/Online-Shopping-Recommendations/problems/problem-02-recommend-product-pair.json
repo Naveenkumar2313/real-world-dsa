@@ -1,0 +1,52 @@
+{
+    "problem_id": "PROB-REC-002",
+    "scenario_id": "SCN-REC-001",
+    "sequence": 2,
+    "title": "Recommend a Product Pair",
+    "difficulty": "Medium",
+    "concepts": ["Sorting", "Two Pointer"],
+    "real_world_story": "A customer wants to buy exactly two products while spending as close as possible to a given budget without exceeding it.",
+    "real_world_connection": {
+      "system": "Shopping recommendation system",
+      "input_represents": "Prices of available products",
+      "target_represents": "Customer's budget",
+      "algorithm_represents": "Finding the best two-product combination within the budget"
+    },
+    "problem_statement": "Given an array of product prices and a budget B, find two different products whose combined price is the maximum possible value that does not exceed B. Return their original indices. If no valid pair exists, return -1 -1.",
+    "task": "Find the pair of products that uses the customer's budget most efficiently without exceeding it.",
+    "input_format": "The first line contains an integer N. The second line contains N integers representing product prices. The third line contains an integer B representing the budget.",
+    "output_format": "Print the original indices of the two selected products. If no valid pair exists, print -1 -1.",
+    "constraints": [
+      "2 <= N <= 100000",
+      "1 <= price <= 1000000000",
+      "1 <= B <= 2000000000"
+    ],
+    "examples": [
+      {
+        "input": "6\n300 700 1200 800 500 1000\n1500",
+        "output": "1 3",
+        "explanation": "The products at indices 1 and 3 cost 700 and 800, giving a total of exactly 1500, which matches the budget."
+      },
+      {
+        "input": "5\n200 400 900 1000 1200\n500",
+        "output": "0 1",
+        "explanation": "The products at indices 0 and 1 cost 200 and 400, giving a total of 600, which exceeds the budget. Therefore, this example is not valid."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Two Pointer",
+      "module_key": "two-pointer",
+      "reason": "After sorting the products by price, two pointers can efficiently search for the pair with the largest sum not exceeding the budget."
+    },
+    "complexity": {
+      "time": "O(N log N)",
+      "space": "O(N)"
+    },
+    "hint": [
+      "Sort the products while preserving their original indices.",
+      "Place one pointer at the lowest price and another at the highest.",
+      "Move the pointers based on whether their sum exceeds the budget."
+    ],
+    "real_world_takeaway": "Two-pointer searching can efficiently identify product combinations that make effective use of a customer's budget.",
+    "tags": ["arrays", "sorting", "two-pointer", "e-commerce", "budget", "recommendations"]
+  }

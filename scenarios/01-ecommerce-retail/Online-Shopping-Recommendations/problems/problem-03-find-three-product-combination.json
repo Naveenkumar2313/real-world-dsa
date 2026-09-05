@@ -1,0 +1,52 @@
+{
+    "problem_id": "PROB-REC-003",
+    "scenario_id": "SCN-REC-001",
+    "sequence": 3,
+    "title": "Find a Three-Product Combination",
+    "difficulty": "Medium",
+    "concepts": ["Sorting", "Three Sum"],
+    "real_world_story": "An e-commerce platform wants to recommend three products whose combined price exactly matches a customer's shopping budget.",
+    "real_world_connection": {
+      "system": "Product bundle recommendation",
+      "input_represents": "Prices of available products",
+      "target_represents": "Customer's bundle budget",
+      "algorithm_represents": "Finding three products whose prices add up to the target"
+    },
+    "problem_statement": "Given an array of product prices and a target budget B, determine whether three different products have prices whose sum is exactly B. Return their original indices if such a combination exists; otherwise return -1 -1 -1.",
+    "task": "Find three products whose combined price exactly matches the customer's budget.",
+    "input_format": "The first line contains an integer N. The second line contains N integers representing product prices. The third line contains an integer B representing the target budget.",
+    "output_format": "Print the original indices of three products whose prices sum to B. If no such combination exists, print -1 -1 -1.",
+    "constraints": [
+      "3 <= N <= 5000",
+      "1 <= price <= 1000000000",
+      "1 <= B <= 3000000000"
+    ],
+    "examples": [
+      {
+        "input": "6\n200 500 700 800 1000 1200\n1700",
+        "output": "0 1 4",
+        "explanation": "The products at indices 0, 1 and 4 cost 200, 500 and 1000, giving a total of exactly 1700."
+      },
+      {
+        "input": "5\n100 250 400 600 900\n2000",
+        "output": "-1 -1 -1",
+        "explanation": "No three different products have prices that sum to 2000."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Three Sum",
+      "module_key": "three-sum",
+      "reason": "Sorting followed by a two-pointer search for each fixed product efficiently finds a three-product combination."
+    },
+    "complexity": {
+      "time": "O(N^2)",
+      "space": "O(N)"
+    },
+    "hint": [
+      "Sort the prices while preserving original indices.",
+      "Fix one product at a time.",
+      "Use two pointers to search for the remaining two prices."
+    ],
+    "real_world_takeaway": "Three-sum techniques can help recommendation systems identify suitable multi-product bundles.",
+    "tags": ["arrays", "sorting", "three-sum", "two-pointer", "e-commerce", "recommendations"]
+  }
