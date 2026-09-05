@@ -1,0 +1,62 @@
+{
+    "problem_id": "PROB-HEALTH-002",
+    "scenario_id": "SCN-HEALTH-001",
+    "sequence": 2,
+    "title": "Is There a Route to the Hospital",
+    "difficulty": "Easy",
+    "concepts": [
+        "Graph",
+        "Depth-First Search"
+    ],
+    "real_world_story": "The response system needs to know whether an ambulance can travel from its location to a hospital through any sequence of roads. The road network is modeled as a directed graph. Use a depth-first traversal to determine whether the hospital is reachable from the ambulance location.",
+    "real_world_connection": {
+        "system": "Route availability check",
+        "input_represents": "Directed roads between locations",
+        "start_represents": "The ambulance location",
+        "target_represents": "The hospital",
+        "algorithm_represents": "Following roads as far as possible to discover whether a route exists"
+    },
+    "problem_statement": "Given a directed graph with N nodes and M edges, and two nodes S and T, determine whether there is a path from S to T. Print YES if T is reachable from S, otherwise print NO.",
+    "task": "Use DFS to check whether the hospital is reachable from the ambulance location.",
+    "input_format": "The first line contains four integers N, M, S and T, where N is the number of nodes (numbered 1 to N), M is the number of directed edges, S is the ambulance location, and T is the hospital. The next M lines each contain two integers U and V indicating a directed road from node U to node V.",
+    "output_format": "Print YES if node T is reachable from node S, otherwise print NO.",
+    "constraints": [
+        "1 <= N <= 10000",
+        "0 <= M <= 50000",
+        "1 <= S, T <= N"
+    ],
+    "examples": [
+        {
+            "input": "4 4 1 4\n1 2\n2 3\n3 4\n2 4",
+            "output": "YES",
+            "explanation": "A route to the hospital exists: 1 -> 2 -> 3 -> 4, and also 1 -> 2 -> 4."
+        },
+        {
+            "input": "4 2 1 4\n1 2\n3 4",
+            "output": "NO",
+            "explanation": "There is no road leading from node 1 toward node 4, so the hospital is unreachable."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph DFS",
+        "module_key": "graph-dfs",
+        "reason": "DFS explores one connected route as far as possible and can determine whether the target is reachable using recursion or an explicit stack."
+    },
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Begin the traversal at the ambulance node S.",
+        "Visit a neighbor and follow it as far as possible before backtracking.",
+        "If the hospital T is visited, it is reachable."
+    ],
+    "real_world_takeaway": "DFS helps an emergency-response system quickly confirm whether a hospital is reachable, identifying viable destinations early.",
+    "tags": [
+        "graphs",
+        "graph-dfs",
+        "depth-first-search",
+        "emergency",
+        "reachability"
+    ]
+}

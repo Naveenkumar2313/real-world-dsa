@@ -1,0 +1,61 @@
+{
+    "problem_id": "PROB-HEALTH-001",
+    "scenario_id": "SCN-HEALTH-001",
+    "sequence": 1,
+    "title": "Reachable Areas from the Ambulance Location",
+    "difficulty": "Easy",
+    "concepts": [
+        "Graph",
+        "Breadth-First Search"
+    ],
+    "real_world_story": "A paramedic wants to know which areas are reachable from the ambulance location using the road network. The network is modeled as an unweighted, undirected graph where intersections are nodes and roads are edges. The response system lists reachable areas in the order they are first discovered from the ambulance location.",
+    "real_world_connection": {
+        "system": "Emergency response coverage",
+        "input_represents": "Intersections and areas as nodes with roads connecting them",
+        "start_represents": "The ambulance location",
+        "algorithm_represents": "Exploring the road network level by level to find reachable areas"
+    },
+    "problem_statement": "Given an undirected graph with N nodes and M edges, and a starting node S representing the ambulance location, perform a breadth-first traversal starting from S. Print all nodes visited, in the order they are first discovered (by increasing graph distance from S).",
+    "task": "Perform a BFS from the ambulance location and print the nodes in the order they are visited.",
+    "input_format": "The first line contains three integers N, M and S, where N is the number of nodes (numbered 1 to N), M is the number of edges, and S is the ambulance location. The next M lines each contain two integers U and V indicating an undirected road between node U and node V.",
+    "output_format": "Print the nodes visited during BFS starting from S, separated by spaces, in the order they are first discovered.",
+    "constraints": [
+        "1 <= N <= 10000",
+        "0 <= M <= 50000",
+        "1 <= S <= N"
+    ],
+    "examples": [
+        {
+            "input": "6 5 1\n1 2\n1 3\n2 4\n2 5\n3 6",
+            "output": "1 2 3 4 5 6",
+            "explanation": "From ambulance location 1 the paramedic first reaches areas 2 and 3, then areas 4, 5 and 6."
+        },
+        {
+            "input": "4 2 1\n1 2\n3 4",
+            "output": "1 2",
+            "explanation": "Areas 3 and 4 are in a separate component and are not reachable from ambulance location 1."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph BFS",
+        "module_key": "graph-bfs",
+        "reason": "BFS explores the graph level by level, so it visits nodes in order of increasing distance from the ambulance location."
+    },
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Use a queue to keep track of nodes to visit next.",
+        "Visit all neighbors of the current node before moving deeper.",
+        "Track visited nodes so each node is discovered exactly once."
+    ],
+    "real_world_takeaway": "BFS tells an emergency-response system which areas an ambulance can reach and how close they are, useful for coverage and dispatch decisions.",
+    "tags": [
+        "graphs",
+        "graph-bfs",
+        "breadth-first-search",
+        "emergency",
+        "reachability"
+    ]
+}

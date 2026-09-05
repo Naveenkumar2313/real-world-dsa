@@ -1,0 +1,81 @@
+{
+    "scenario_id": "SCN-HEALTH-001",
+    "title": "Emergency Ambulance Routing",
+    "slug": "emergency-ambulance-routing",
+    "short_description": "Learn how an emergency-response system models roads as a graph to route an ambulance to a hospital while minimizing travel time or distance.",
+    "category": "Graphs and Pathfinding",
+    "industry": "Healthcare and Emergency Response",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 120,
+    "real_world_context": {
+        "problem": "An emergency-response system must identify an efficient route from an ambulance location to a hospital. The road network is modeled as a graph where intersections are nodes and roads are edges carrying travel time or distance. The system must explore reachable areas, confirm a route exists, find the fastest path, guide the search toward the hospital, and decide which hospitals are reachable within a maximum allowed travel time.",
+        "why_it_matters": "Every second matters in an emergency. Modeling the road network as a graph and choosing the right algorithm helps the system send an ambulance along the fastest possible route to the nearest reachable hospital.",
+        "real_world_entities": [
+            "Ambulance",
+            "Ambulance Location",
+            "Hospital",
+            "Intersection",
+            "Road",
+            "Travel Time",
+            "Travel Distance",
+            "Paramedic"
+        ]
+    },
+    "learning_objectives": [
+        "Understand how a road network can be represented as a graph for emergency response.",
+        "Use Graph BFS to explore areas reachable from the ambulance location.",
+        "Use Graph DFS to detect whether a route to a hospital exists.",
+        "Use Dijkstra's Algorithm to find the fastest route to a hospital by travel time.",
+        "Use A* Pathfinding to guide the search toward the hospital with a heuristic.",
+        "Use Binary Search on Answer to find hospitals reachable within a maximum travel time budget."
+    ],
+    "prerequisites": [
+        "Graphs",
+        "Adjacency lists",
+        "Queues",
+        "Stacks",
+        "Priority queues",
+        "Binary search",
+        "Basic time complexity"
+    ],
+    "algorithms": [
+        {
+            "name": "Graph BFS",
+            "module_key": "graph-bfs"
+        },
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "Dijkstra's Algorithm",
+            "module_key": "dijkstras-algorithm"
+        },
+        {
+            "name": "A* Pathfinding",
+            "module_key": "a-star-pathfinding"
+        },
+        {
+            "name": "Binary Search on Answer",
+            "module_key": "binary-search-on-answer"
+        }
+    ],
+    "real_world_mapping": {
+        "ambulance_location": "Graph node",
+        "hospital": "Graph node",
+        "intersection": "Graph node",
+        "road": "Graph edge",
+        "travel_time": "Edge weight",
+        "travel_distance": "Edge weight",
+        "route_to_hospital": "Path in the graph",
+        "maximum_travel_time_budget": "Binary-searchable answer threshold"
+    },
+    "learning_path": [
+        "PROB-HEALTH-001",
+        "PROB-HEALTH-002",
+        "PROB-HEALTH-003",
+        "PROB-HEALTH-004",
+        "PROB-HEALTH-005"
+    ],
+    "completion_message": "You have completed the Emergency Ambulance Routing mission. You have learned how graph traversal, weighted shortest-path, guided search and binary-search-on-answer techniques help an emergency-response system route an ambulance to a hospital efficiently."
+}
