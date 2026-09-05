@@ -1,0 +1,52 @@
+{
+    "problem_id": "PROB-ASA-003",
+    "scenario_id": "SCN-ASA-001",
+    "sequence": 3,
+    "title": "Choose Maximum Ads",
+    "difficulty": "Medium",
+    "concepts": ["Greedy", "Sorting"],
+    "real_world_story": "An advertising platform has a fixed amount of available display time and wants to show as many advertisements as possible. Each advertisement requires a different amount of time, and all advertisements provide equal priority.",
+    "real_world_connection": {
+      "system": "Advertising time allocation",
+      "input_represents": "Display duration of advertisements",
+      "target_represents": "Total available advertising time",
+      "algorithm_represents": "Choosing shorter advertisements first to maximize the number displayed"
+    },
+    "problem_statement": "Given N advertisements with different durations and a total available time T, determine the maximum number of advertisements that can be displayed without exceeding T.",
+    "task": "Find the maximum number of advertisements that fit within the available display time.",
+    "input_format": "The first line contains two integers N and T. The second line contains N integers representing advertisement durations.",
+    "output_format": "Print the maximum number of advertisements that can be displayed.",
+    "constraints": [
+      "1 <= N <= 100000",
+      "1 <= T <= 1000000000",
+      "1 <= duration <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "6 15\n4 8 3 5 6 2",
+        "output": "4",
+        "explanation": "The four shortest advertisements have durations 2, 3, 4, and 5. Their total duration is 14, while adding the next shortest advertisement would exceed 15."
+      },
+      {
+        "input": "5 10\n2 4 6 8 10",
+        "output": "2",
+        "explanation": "The two shortest advertisements require 2 + 4 = 6 units of time. Adding the next advertisement would require 12 units, exceeding the limit."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Greedy",
+      "module_key": "greedy",
+      "reason": "Selecting the shortest advertisements first leaves the most available time and therefore maximizes the number of advertisements displayed."
+    },
+    "complexity": {
+      "time": "O(N log N)",
+      "space": "O(1)"
+    },
+    "hint": [
+      "Sort advertisements by duration.",
+      "Start with the shortest advertisement.",
+      "Keep selecting advertisements while the total duration does not exceed T."
+    ],
+    "real_world_takeaway": "A greedy strategy can maximize the number of advertisements displayed when every advertisement has equal priority.",
+    "tags": ["greedy", "sorting", "advertising", "time-allocation", "scheduling"]
+  }

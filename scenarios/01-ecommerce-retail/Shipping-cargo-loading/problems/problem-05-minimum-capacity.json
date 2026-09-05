@@ -1,0 +1,53 @@
+ {
+    "problem_id": "PROB-SCL-005",
+    "scenario_id": "SCN-SCL-001",
+    "sequence": 5,
+    "title": "Find Minimum Capacity",
+    "difficulty": "Medium",
+    "concepts": ["Binary Search on Answer", "Greedy"],
+    "real_world_story": "A logistics company needs to ship packages in a fixed number of trips. The packages must be shipped in their given order, and the company wants to determine the minimum vehicle capacity required to complete all shipments within the allowed number of trips.",
+    "real_world_connection": {
+      "system": "Shipment planning system",
+      "input_represents": "Package weights in shipping order",
+      "target_represents": "Minimum vehicle capacity",
+      "algorithm_represents": "Searching for the smallest capacity that allows all packages to be shipped within the required number of trips"
+    },
+    "problem_statement": "Given N packages in a fixed order and D available trips, find the minimum vehicle capacity required to ship all packages within D trips. Packages cannot be reordered, and each trip must contain a consecutive group of packages.",
+    "task": "Determine the minimum vehicle capacity needed to deliver all packages within D trips.",
+    "input_format": "The first line contains two integers N and D. The second line contains N integers representing package weights in shipping order.",
+    "output_format": "Print the minimum vehicle capacity required.",
+    "constraints": [
+      "1 <= N <= 100000",
+      "1 <= D <= N",
+      "1 <= weight <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "5 3\n1 2 3 4 5",
+        "output": "6",
+        "explanation": "With capacity 6, the packages can be shipped as [1,2,3], [4], [5]. A capacity smaller than 6 cannot ship all packages within 3 trips."
+      },
+      {
+        "input": "5 2\n5 5 5 5 5",
+        "output": "15",
+        "explanation": "The packages can be divided into [5,5,5] and [5,5], requiring a minimum capacity of 15."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Binary Search on Answer",
+      "module_key": "binary-search-on-answer",
+      "reason": "The minimum possible capacity lies between the heaviest package and the total weight. Binary search can efficiently find the smallest capacity that allows all packages to be shipped within D trips."
+    },
+    "complexity": {
+      "time": "O(N log S)",
+      "space": "O(1)"
+    },
+    "hint": [
+      "The capacity cannot be smaller than the heaviest package.",
+      "The capacity cannot be larger than the total weight of all packages.",
+      "For a chosen capacity, greedily determine how many trips are required.",
+      "Use binary search to find the smallest feasible capacity."
+    ],
+    "real_world_takeaway": "Binary Search on Answer helps logistics systems determine the minimum vehicle capacity required to satisfy shipment constraints efficiently.",
+    "tags": ["binary-search", "binary-search-on-answer", "greedy", "shipping", "cargo", "capacity"]
+  }

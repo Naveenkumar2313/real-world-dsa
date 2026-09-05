@@ -1,0 +1,51 @@
+{
+    "problem_id": "PROB-ASA-004",
+    "scenario_id": "SCN-ASA-001",
+    "sequence": 4,
+    "title": "Rank Ads by Revenue",
+    "difficulty": "Easy",
+    "concepts": ["Sorting", "Array"],
+    "real_world_story": "An advertising platform wants to review its advertisements from highest expected revenue to lowest expected revenue before allocating premium slots.",
+    "real_world_connection": {
+      "system": "Advertising revenue management",
+      "input_represents": "Expected revenue of advertisements",
+      "output_represents": "Advertisements ranked by revenue",
+      "algorithm_represents": "Ordering advertisements to identify the highest-value opportunities"
+    },
+    "problem_statement": "Given an array containing the expected revenues of N advertisements, sort the revenues in non-increasing order.",
+    "task": "Arrange advertisements from the highest expected revenue to the lowest.",
+    "input_format": "The first line contains an integer N. The second line contains N integers representing advertisement revenues.",
+    "output_format": "Print the advertisement revenues in non-increasing order.",
+    "constraints": [
+      "1 <= N <= 5000",
+      "1 <= revenue <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "6\n450 1200 700 300 1500 900",
+        "output": "1500 1200 900 700 450 300",
+        "explanation": "The advertisement revenues are arranged from highest to lowest."
+      },
+      {
+        "input": "5\n800 200 800 500 300",
+        "output": "800 800 500 300 200",
+        "explanation": "The revenues are sorted in non-increasing order, with equal revenues appearing together."
+      }
+    ],
+    "expected_algorithm": {
+      "accepted_algorithms": ["Bubble Sort", "Selection Sort"],
+      "module_keys": ["bubble-sort", "selection-sort"],
+      "reason": "Basic sorting algorithms can be used to organize advertisements by expected revenue before slot allocation."
+    },
+    "complexity": {
+      "expected_time": "O(N^2)",
+      "expected_space": "O(1)"
+    },
+    "hint": [
+      "Compare advertisement revenues that are out of order.",
+      "Swap them when the larger revenue should appear first.",
+      "Continue until the complete list is sorted."
+    ],
+    "real_world_takeaway": "Sorting advertisements by expected revenue helps platforms identify high-value advertisements for premium slots.",
+    "tags": ["arrays", "sorting", "advertising", "revenue", "slot-allocation"]
+  }

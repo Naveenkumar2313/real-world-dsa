@@ -1,0 +1,51 @@
+{
+    "problem_id": "PROB-WH-001",
+    "scenario_id": "SCN-WH-001",
+    "sequence": 1,
+    "title": "Locate Inventory",
+    "difficulty": "Easy",
+    "concepts": ["Sorting", "Binary Search"],
+    "real_world_story": "A warehouse stores product IDs in an unsorted inventory list. When a worker needs to locate a product, the system first organizes the IDs and then searches efficiently for the requested product.",
+    "real_world_connection": {
+      "system": "Warehouse inventory system",
+      "input_represents": "Product IDs stored in the warehouse",
+      "target_represents": "Product ID requested by the worker",
+      "algorithm_represents": "Sorting inventory data and efficiently locating a product"
+    },
+    "problem_statement": "Given an array of product IDs and a target product ID, sort the IDs in non-decreasing order and use binary search to find the target. Return its index in the sorted array. If the target does not exist, return -1.",
+    "task": "Organize the inventory and efficiently locate the requested product.",
+    "input_format": "The first line contains an integer N. The second line contains N integers representing product IDs. The third line contains an integer target representing the product ID to search for.",
+    "output_format": "Print the zero-based index of the target product in the sorted array. If the product does not exist, print -1.",
+    "constraints": [
+      "1 <= N <= 100000",
+      "1 <= product ID <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "6\n405 102 708 301 509 204\n509",
+        "output": "4",
+        "explanation": "After sorting, the product IDs are 102, 204, 301, 405, 509, 708. Product ID 509 is at index 4."
+      },
+      {
+        "input": "5\n800 200 600 400 100\n700",
+        "output": "-1",
+        "explanation": "After sorting, 700 is not present in the inventory."
+      }
+    ],
+    "expected_algorithm": {
+      "accepted_algorithms": ["Sorting", "Binary Search"],
+      "module_keys": ["sorting", "binary-search"],
+      "reason": "Sorting organizes the inventory, after which binary search can locate the requested product efficiently."
+    },
+    "complexity": {
+      "time": "O(N log N)",
+      "space": "O(1)"
+    },
+    "hint": [
+      "First sort the product IDs.",
+      "Use binary search on the sorted array.",
+      "Return the position of the target if it is found."
+    ],
+    "real_world_takeaway": "Organizing inventory data before searching allows warehouse systems to locate products much faster.",
+    "tags": ["arrays", "sorting", "binary-search", "warehouse", "inventory"]
+  }

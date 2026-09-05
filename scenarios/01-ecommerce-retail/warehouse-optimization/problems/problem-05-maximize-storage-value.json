@@ -1,0 +1,54 @@
+{
+    "problem_id": "PROB-WH-005",
+    "scenario_id": "SCN-WH-001",
+    "sequence": 5,
+    "title": "Maximize Storage Value",
+    "difficulty": "Medium",
+    "concepts": ["Fractional Knapsack", "Sorting"],
+    "real_world_story": "A warehouse has limited space and stores bulk materials that can be divided into smaller quantities. The warehouse manager wants to maximize the total value stored by choosing materials based on their value per unit of space.",
+    "real_world_connection": {
+      "system": "Warehouse resource allocation",
+      "input_represents": "Storage requirements and values of materials",
+      "target_represents": "Available storage capacity",
+      "algorithm_represents": "Prioritizing materials with the highest value-to-space ratio"
+    },
+    "problem_statement": "Given N materials, each with a weight representing required storage space and a value representing its total value, maximize the value stored in a warehouse with capacity C. Fractions of materials may be stored.",
+    "task": "Maximize the total value stored by selecting whole or fractional quantities of materials.",
+    "input_format": "The first line contains two integers N and C. The second line contains N integers representing the weights of the materials. The third line contains N integers representing their values.",
+    "output_format": "Print the maximum total value that can be stored, rounded to exactly two decimal places.",
+    "constraints": [
+      "1 <= N <= 100000",
+      "1 <= C <= 1000000000",
+      "1 <= weight <= 1000000000",
+      "1 <= value <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "3 50\n10 20 30\n60 100 120",
+        "output": "240.00",
+        "explanation": "The value-to-weight ratios are 6, 5 and 4. Take the first two materials completely for value 160 and 20 units of the third material for value 80, giving a maximum value of 240."
+      },
+      {
+        "input": "3 15\n5 10 20\n50 80 100",
+        "output": "130.00",
+        "explanation": "Take the first material completely for value 50 and the second material completely for value 80. The capacity is exactly filled."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Fractional Knapsack",
+      "module_key": "fractional-knapsack",
+      "reason": "Since materials can be divided, sorting them by value-to-weight ratio and taking the highest ratio first produces the maximum value."
+    },
+    "complexity": {
+      "time": "O(N log N)",
+      "space": "O(N)"
+    },
+    "hint": [
+      "Calculate the value-to-weight ratio for every material.",
+      "Sort materials by this ratio in descending order.",
+      "Take the highest-value material first.",
+      "If the remaining capacity is smaller than the material weight, take only the required fraction."
+    ],
+    "real_world_takeaway": "Fractional knapsack models warehouse situations where bulk materials can be divided and storage space must be used for maximum value.",
+    "tags": ["greedy", "fractional-knapsack", "sorting", "warehouse", "storage", "optimization"]
+  }

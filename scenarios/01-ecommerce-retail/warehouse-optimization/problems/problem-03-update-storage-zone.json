@@ -1,0 +1,50 @@
+{
+    "problem_id": "PROB-WH-003",
+    "scenario_id": "SCN-WH-001",
+    "sequence": 3,
+    "title": "Update Storage Zone",
+    "difficulty": "Medium",
+    "concepts": ["Graph DFS", "Flood Fill"],
+    "real_world_story": "A warehouse is divided into connected storage cells. When a storage zone is reassigned to a new category, every connected cell belonging to the same zone must be updated.",
+    "real_world_connection": {
+      "system": "Warehouse storage management",
+      "input_represents": "A grid of storage zones",
+      "target_represents": "The zone selected for reassignment",
+      "algorithm_represents": "Finding and updating all connected cells of the selected zone"
+    },
+    "problem_statement": "Given a grid representing warehouse storage zones, replace the zone value at a specified starting cell with a new value. Only cells connected to the starting cell through adjacent cells having the same original value should be changed.",
+    "task": "Update the complete connected storage zone starting from the given cell.",
+    "input_format": "The first line contains two integers R and C. The next R lines contain C integers representing storage zones. The final line contains four integers sr, sc, and newValue, where sr and sc are the zero-based starting row and column.",
+    "output_format": "Print the updated grid after performing the flood fill operation.",
+    "constraints": [
+      "1 <= R, C <= 100",
+      "0 <= storage zone <= 100",
+      "0 <= sr < R",
+      "0 <= sc < C",
+      "0 <= newValue <= 100"
+    ],
+    "examples": [
+      {
+        "input": "4 5\n1 1 1 2 2\n1 1 0 2 2\n1 0 0 2 3\n2 2 3 3 3\n0 1 4",
+        "output": "4 4 4 2 2\n4 4 0 2 2\n4 0 0 2 3\n2 2 3 3 3",
+        "explanation": "Starting from cell (0,1), all connected cells containing the original value 1 are changed to 4."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Flood Fill using DFS",
+      "module_key": "flood-fill",
+      "reason": "DFS can visit every connected cell belonging to the same storage zone and update it with the new value."
+    },
+    "complexity": {
+      "time": "O(R * C)",
+      "space": "O(R * C)"
+    },
+    "hint": [
+      "Store the original value of the starting cell.",
+      "Visit its four neighboring cells.",
+      "Change only cells having the same original value.",
+      "Continue recursively or using a stack until the complete zone is processed."
+    ],
+    "real_world_takeaway": "Flood fill can model operations where an entire connected warehouse section must be reassigned or updated.",
+    "tags": ["graph", "dfs", "flood-fill", "grid", "warehouse", "storage"]
+  }

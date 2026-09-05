@@ -1,0 +1,53 @@
+{
+    "problem_id": "PROB-WH-004",
+    "scenario_id": "SCN-WH-001",
+    "sequence": 4,
+    "title": "Optimize Storage",
+    "difficulty": "Medium",
+    "concepts": ["0/1 Knapsack"],
+    "real_world_story": "A warehouse has limited storage capacity and must decide which products to store. Each product occupies a certain amount of space and provides a specific value. A product can either be stored completely or rejected.",
+    "real_world_connection": {
+      "system": "Warehouse storage allocation",
+      "input_represents": "Space requirements and values of products",
+      "target_represents": "Available warehouse capacity",
+      "algorithm_represents": "Selecting products that maximize total value within limited space"
+    },
+    "problem_statement": "Given N products, each with a weight representing required storage space and a value representing its importance, select products so that the total weight does not exceed capacity C and the total value is maximized. Each product can be selected at most once.",
+    "task": "Maximize the total value of products stored within the available warehouse capacity.",
+    "input_format": "The first line contains two integers N and C. The second line contains N integers representing the storage space required by each product. The third line contains N integers representing the value of each product.",
+    "output_format": "Print the maximum total value that can be stored within capacity C.",
+    "constraints": [
+      "1 <= N <= 100",
+      "1 <= C <= 10000",
+      "1 <= weight <= 10000",
+      "1 <= value <= 100000"
+    ],
+    "examples": [
+      {
+        "input": "4 7\n2 3 4 5\n40 50 60 70",
+        "output": "100",
+        "explanation": "Selecting products with weights 3 and 4 gives a total weight of 7 and a total value of 110, which is the maximum possible value."
+      },
+      {
+        "input": "3 5\n2 4 6\n30 50 80",
+        "output": "50",
+        "explanation": "The product with weight 4 and value 50 is the best valid selection. The product with weight 6 cannot fit."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "0/1 Knapsack",
+      "module_key": "01-knapsack",
+      "reason": "Each product can either be selected once or not selected, while the goal is to maximize value under a capacity constraint."
+    },
+    "complexity": {
+      "time": "O(N * C)",
+      "space": "O(C)"
+    },
+    "hint": [
+      "For every product, consider taking it or leaving it.",
+      "Do not select the same product more than once.",
+      "Use dynamic programming to store the best value for each capacity."
+    ],
+    "real_world_takeaway": "The 0/1 knapsack approach helps warehouses decide which complete products should be prioritized when storage space is limited.",
+    "tags": ["dynamic-programming", "01-knapsack", "warehouse", "storage", "optimization"]
+  }

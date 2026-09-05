@@ -1,0 +1,53 @@
+{
+    "problem_id": "PROB-SCL-004",
+    "scenario_id": "SCN-SCL-001",
+    "sequence": 4,
+    "title": "Maximize Packages",
+    "difficulty": "Medium",
+    "concepts": ["Greedy", "Sorting"],
+    "real_world_story": "A delivery vehicle has limited weight capacity and the logistics company wants to load the maximum possible number of packages. Every package provides equal delivery priority, so lighter packages should be loaded first.",
+    "real_world_connection": {
+      "system": "Delivery vehicle loading system",
+      "input_represents": "Weights of packages",
+      "target_represents": "Vehicle weight capacity",
+      "algorithm_represents": "Choosing the largest possible number of packages using a greedy strategy"
+    },
+    "problem_statement": "Given N packages with different weights and a vehicle capacity C, determine the maximum number of packages that can be loaded without exceeding the capacity.",
+    "task": "Load the maximum possible number of packages into the vehicle.",
+    "input_format": "The first line contains two integers N and C. The second line contains N integers representing package weights.",
+    "output_format": "Print the maximum number of packages that can be loaded.",
+    "constraints": [
+      "1 <= N <= 100000",
+      "1 <= C <= 1000000000",
+      "1 <= weight <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "6 15\n4 8 3 5 6 2",
+        "output": "4",
+        "explanation": "Sorting the weights gives 2, 3, 4, 5, 6, 8. Loading the four lightest packages uses 2 + 3 + 4 + 5 = 14 units of capacity. Five packages would require at least 2 + 3 + 4 + 5 + 6 = 20, which exceeds the capacity."
+      },
+      {
+        "input": "5 10\n2 4 6 8 10",
+        "output": "2",
+        "explanation": "The two lightest packages weigh 2 and 4, using 6 units. Adding the next package would make the total 12, exceeding the capacity."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Greedy",
+      "module_key": "greedy",
+      "reason": "To maximize the number of packages, always selecting the lightest remaining package gives the maximum possible count."
+    },
+    "complexity": {
+      "time": "O(N log N)",
+      "space": "O(1)"
+    },
+    "hint": [
+      "Sort the packages by weight.",
+      "Start loading from the lightest package.",
+      "Keep adding packages while the capacity is not exceeded.",
+      "Stop when the next package cannot fit."
+    ],
+    "real_world_takeaway": "A greedy strategy of prioritizing lighter packages can maximize the number of deliveries made by a capacity-limited vehicle.",
+    "tags": ["greedy", "sorting", "packages", "shipping", "cargo", "optimization"]
+  }

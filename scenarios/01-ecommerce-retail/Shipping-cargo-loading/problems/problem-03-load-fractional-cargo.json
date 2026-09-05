@@ -1,0 +1,54 @@
+{
+    "problem_id": "PROB-SCL-003",
+    "scenario_id": "SCN-SCL-001",
+    "sequence": 3,
+    "title": "Load Fractional Cargo",
+    "difficulty": "Medium",
+    "concepts": ["Fractional Knapsack", "Greedy"],
+    "real_world_story": "A cargo vehicle has limited capacity and carries materials that can be divided into smaller quantities. The company wants to maximize the value of the cargo by choosing materials with the highest value per unit of weight.",
+    "real_world_connection": {
+      "system": "Bulk cargo loading system",
+      "input_represents": "Weights and values of divisible cargo materials",
+      "target_represents": "Vehicle capacity",
+      "algorithm_represents": "Prioritizing cargo based on value per unit weight"
+    },
+    "problem_statement": "Given N divisible cargo materials, each with a weight and total value, maximize the total value loaded into a vehicle with capacity C. A fraction of any material may be loaded.",
+    "task": "Find the maximum possible cargo value that can be loaded into the vehicle.",
+    "input_format": "The first line contains two integers N and C. The second line contains N integers representing material weights. The third line contains N integers representing material values.",
+    "output_format": "Print the maximum total value that can be loaded, rounded to exactly two decimal places.",
+    "constraints": [
+      "1 <= N <= 100000",
+      "1 <= C <= 1000000000",
+      "1 <= weight <= 1000000000",
+      "1 <= value <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "3 50\n10 20 30\n60 100 120",
+        "output": "240.00",
+        "explanation": "The value-to-weight ratios are 6, 5 and 4. Load the first two materials completely and 20 units of the third material. The total value is 60 + 100 + 80 = 240."
+      },
+      {
+        "input": "3 15\n5 10 20\n50 80 100",
+        "output": "130.00",
+        "explanation": "The first material has value-to-weight ratio 10 and the second has ratio 8. Loading both completely uses all 15 units of capacity and gives a total value of 130."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Fractional Knapsack",
+      "module_key": "fractional-knapsack",
+      "reason": "Since materials can be divided, selecting them in descending order of value-to-weight ratio maximizes the total cargo value."
+    },
+    "complexity": {
+      "time": "O(N log N)",
+      "space": "O(N)"
+    },
+    "hint": [
+      "Calculate the value-to-weight ratio of every material.",
+      "Sort the materials by ratio in descending order.",
+      "Take the highest-ratio materials first.",
+      "If the remaining capacity is smaller than a material's weight, take only the required fraction."
+    ],
+    "real_world_takeaway": "Fractional Knapsack is useful when cargo consists of divisible materials and the goal is to maximize value within limited capacity.",
+    "tags": ["greedy", "fractional-knapsack", "sorting", "shipping", "cargo", "optimization"]
+  }

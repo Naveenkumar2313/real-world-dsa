@@ -1,0 +1,53 @@
+ {
+    "problem_id": "PROB-ASA-005",
+    "scenario_id": "SCN-ASA-001",
+    "sequence": 5,
+    "title": "Reach Revenue Target",
+    "difficulty": "Medium",
+    "concepts": ["Sorting", "Binary Search"],
+    "real_world_story": "An advertising platform ranks advertisements by expected revenue and wants to know the minimum number of highest-revenue advertisements required to reach a target revenue.",
+    "real_world_connection": {
+      "system": "Advertising revenue planning",
+      "input_represents": "Expected revenues of advertisements",
+      "target_represents": "Required revenue target",
+      "algorithm_represents": "Finding the smallest number of top advertisements needed to reach the target"
+    },
+    "problem_statement": "Given N advertisement revenues and a target revenue R, sort the revenues in descending order and determine the minimum number of highest-revenue advertisements whose combined revenue is at least R. If the target cannot be reached using all advertisements, return -1.",
+    "task": "Find the minimum number of top-revenue advertisements required to reach the target revenue.",
+    "input_format": "The first line contains an integer N. The second line contains N integers representing advertisement revenues. The third line contains an integer R representing the target revenue.",
+    "output_format": "Print the minimum number of advertisements required to reach at least R. Print -1 if the total revenue of all advertisements is less than R.",
+    "constraints": [
+      "1 <= N <= 100000",
+      "1 <= revenue <= 1000000000",
+      "1 <= R <= 100000000000"
+    ],
+    "examples": [
+      {
+        "input": "6\n400 1200 700 300 1500 900\n2500",
+        "output": "2",
+        "explanation": "After sorting, the revenues are 1500, 1200, 900, 700, 400, 300. The first two advertisements generate 2700, reaching the target of 2500."
+      },
+      {
+        "input": "5\n500 300 700 400 600\n2000",
+        "output": "4",
+        "explanation": "The sorted revenues are 700, 600, 500, 400, 300. The first three total 1800, while the first four total 2200, so four advertisements are required."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Binary Search",
+      "module_key": "binary-search",
+      "reason": "After sorting the revenues and creating prefix sums, the prefix sums are non-decreasing. Binary search can find the smallest number of advertisements whose cumulative revenue reaches the target."
+    },
+    "complexity": {
+      "time": "O(N log N)",
+      "space": "O(N)"
+    },
+    "hint": [
+      "Sort advertisement revenues in descending order.",
+      "Create a prefix sum of the sorted revenues.",
+      "Use binary search to find the first prefix sum that is at least R.",
+      "If no prefix sum reaches R, return -1."
+    ],
+    "real_world_takeaway": "Binary search on cumulative revenue can quickly determine how many high-value advertisements are needed to meet a revenue target.",
+    "tags": ["sorting", "binary-search", "prefix-sum", "advertising", "revenue", "slot-allocation"]
+  }

@@ -1,0 +1,52 @@
+{
+    "problem_id": "PROB-WH-002",
+    "scenario_id": "SCN-WH-001",
+    "sequence": 2,
+    "title": "Find Shortest Route",
+    "difficulty": "Easy",
+    "concepts": ["Graph BFS"],
+    "real_world_story": "A warehouse contains aisles and storage positions connected by walkable paths. A worker needs to move from one location to another using the minimum number of moves.",
+    "real_world_connection": {
+      "system": "Warehouse navigation system",
+      "input_represents": "Warehouse locations and connections",
+      "target_represents": "Destination storage location",
+      "algorithm_represents": "Finding the shortest route between warehouse locations"
+    },
+    "problem_statement": "Given an unweighted warehouse graph with N locations and M connections, find the minimum number of connections required to travel from a starting location S to a destination D. If the destination cannot be reached, return -1.",
+    "task": "Find the shortest route between two warehouse locations.",
+    "input_format": "The first line contains two integers N and M. The next M lines contain two integers u and v representing a bidirectional connection between locations u and v. The last line contains two integers S and D representing the starting and destination locations.",
+    "output_format": "Print the minimum number of connections required to reach D from S. Print -1 if D is unreachable.",
+    "constraints": [
+      "1 <= N <= 100000",
+      "0 <= M <= 200000",
+      "1 <= u, v, S, D <= N"
+    ],
+    "examples": [
+      {
+        "input": "6 6\n1 2\n1 3\n2 4\n3 5\n4 6\n5 6\n1 6",
+        "output": "3",
+        "explanation": "A shortest route is 1 -> 2 -> 4 -> 6, which requires 3 connections."
+      },
+      {
+        "input": "5 3\n1 2\n2 3\n4 5\n1 5",
+        "output": "-1",
+        "explanation": "There is no path connecting location 1 to location 5."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Graph BFS",
+      "module_key": "graph-bfs",
+      "reason": "Breadth-first search explores an unweighted graph level by level and therefore finds the shortest route in terms of connections."
+    },
+    "complexity": {
+      "time": "O(N + M)",
+      "space": "O(N)"
+    },
+    "hint": [
+      "Start from the source location.",
+      "Visit all locations at the current distance before moving farther.",
+      "Track the distance of every visited location."
+    ],
+    "real_world_takeaway": "BFS can help warehouse navigation systems find the shortest route between storage locations.",
+    "tags": ["graph", "bfs", "shortest-path", "warehouse", "navigation"]
+  }

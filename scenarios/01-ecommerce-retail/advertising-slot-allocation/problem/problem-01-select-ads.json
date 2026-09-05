@@ -1,0 +1,51 @@
+{
+    "problem_id": "PROB-ASA-001",
+    "scenario_id": "SCN-ASA-001",
+    "sequence": 1,
+    "title": "Select Non-Overlapping Ads",
+    "difficulty": "Easy",
+    "concepts": ["Sorting", "Activity Selection", "Greedy"],
+    "real_world_story": "An advertising platform has a limited number of time slots during a day. Each advertisement has a start time and an end time, and overlapping advertisements cannot use the same slot. Select the maximum number of advertisements that can be scheduled without overlap.",
+    "real_world_connection": {
+      "system": "Advertising slot scheduling",
+      "input_represents": "Start and end times of advertisements",
+      "output_represents": "Maximum number of non-overlapping advertisements",
+      "algorithm_represents": "Selecting advertisements that leave the most remaining time for other ads"
+    },
+    "problem_statement": "Given N advertisements with start and end times, select the maximum number of non-overlapping advertisements. An advertisement that starts at the same time another advertisement ends can be scheduled.",
+    "task": "Find the maximum number of advertisements that can be scheduled without overlapping.",
+    "input_format": "The first line contains an integer N. The second line contains N integers representing the start times. The third line contains N integers representing the end times.",
+    "output_format": "Print the maximum number of non-overlapping advertisements that can be scheduled.",
+    "constraints": [
+      "1 <= N <= 100000",
+      "0 <= start time < end time <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "5\n1 3 0 5 8\n2 4 6 7 9",
+        "output": "3",
+        "explanation": "After sorting by end time, advertisements (1,2), (3,4), and (8,9) can be selected without overlap."
+      },
+      {
+        "input": "4\n1 2 4 6\n3 5 7 8",
+        "output": "2",
+        "explanation": "Advertisements (1,3) and (4,7) can be selected, giving two non-overlapping advertisements."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "Activity Selection",
+      "module_key": "activity-selection",
+      "reason": "Selecting the advertisement that finishes earliest leaves the maximum possible remaining time for future advertisements."
+    },
+    "complexity": {
+      "time": "O(N log N)",
+      "space": "O(N)"
+    },
+    "hint": [
+      "Sort advertisements by their ending time.",
+      "Select the first advertisement that finishes earliest.",
+      "Continue selecting an advertisement only when its start time is at least the end time of the last selected advertisement."
+    ],
+    "real_world_takeaway": "Activity selection helps advertising platforms schedule the largest possible number of non-overlapping advertisements.",
+    "tags": ["activity-selection", "greedy", "sorting", "advertising", "scheduling"]
+  }

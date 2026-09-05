@@ -1,0 +1,51 @@
+{
+    "problem_id": "PROB-SCL-002",
+    "scenario_id": "SCN-SCL-001",
+    "sequence": 2,
+    "title": "Sort Packages",
+    "difficulty": "Easy",
+    "concepts": ["Sorting", "Array"],
+    "real_world_story": "A logistics company receives packages in random order. Before loading them, the system needs to arrange the packages from lightest to heaviest so that loading can be planned systematically.",
+    "real_world_connection": {
+      "system": "Package loading system",
+      "input_represents": "Weights of incoming packages",
+      "output_represents": "Packages arranged by weight",
+      "algorithm_represents": "Sorting packages before loading"
+    },
+    "problem_statement": "Given an array containing the weights of N packages, sort the package weights in non-decreasing order.",
+    "task": "Arrange all packages from the lightest to the heaviest.",
+    "input_format": "The first line contains an integer N. The second line contains N integers representing package weights.",
+    "output_format": "Print the package weights in non-decreasing order.",
+    "constraints": [
+      "1 <= N <= 5000",
+      "1 <= weight <= 1000000"
+    ],
+    "examples": [
+      {
+        "input": "6\n40 15 80 25 60 10",
+        "output": "10 15 25 40 60 80",
+        "explanation": "The packages are arranged from the lightest weight to the heaviest weight."
+      },
+      {
+        "input": "5\n500 200 200 800 100",
+        "output": "100 200 200 500 800",
+        "explanation": "The package weights are sorted in non-decreasing order, keeping equal weights together."
+      }
+    ],
+    "expected_algorithm": {
+      "accepted_algorithms": ["Bubble Sort", "Selection Sort"],
+      "module_keys": ["bubble-sort", "selection-sort"],
+      "reason": "The problem is designed to practice basic sorting techniques for organizing packages before loading."
+    },
+    "complexity": {
+      "expected_time": "O(N^2)",
+      "expected_space": "O(1)"
+    },
+    "hint": [
+      "Compare package weights that are out of order.",
+      "Swap them when necessary.",
+      "Continue until all package weights are sorted."
+    ],
+    "real_world_takeaway": "Sorting packages by weight can help logistics systems organize and plan cargo loading more effectively.",
+    "tags": ["arrays", "sorting", "bubble-sort", "selection-sort", "shipping", "cargo"]
+  }

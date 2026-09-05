@@ -1,0 +1,53 @@
+  {
+    "problem_id": "PROB-SCL-001",
+    "scenario_id": "SCN-SCL-001",
+    "sequence": 1,
+    "title": "Select Cargo",
+    "difficulty": "Medium",
+    "concepts": ["0/1 Knapsack"],
+    "real_world_story": "A logistics company has a vehicle with limited weight capacity and several packages with different weights and values. The company wants to select packages that maximize the total cargo value without exceeding the vehicle capacity.",
+    "real_world_connection": {
+      "system": "Cargo loading system",
+      "input_represents": "Package weights and values",
+      "target_represents": "Vehicle weight capacity",
+      "algorithm_represents": "Selecting the most valuable combination of complete packages"
+    },
+    "problem_statement": "Given N packages, each with a weight and value, select a subset of packages such that the total weight does not exceed the vehicle capacity C and the total value is maximized. Each package can be loaded at most once.",
+    "task": "Find the maximum total value of packages that can be loaded into the vehicle.",
+    "input_format": "The first line contains two integers N and C. The second line contains N integers representing package weights. The third line contains N integers representing package values.",
+    "output_format": "Print the maximum total value that can be loaded without exceeding capacity C.",
+    "constraints": [
+      "1 <= N <= 100",
+      "1 <= C <= 10000",
+      "1 <= weight <= 10000",
+      "1 <= value <= 100000"
+    ],
+    "examples": [
+      {
+        "input": "4 7\n2 3 4 5\n40 50 60 70",
+        "output": "110",
+        "explanation": "Packages with weights 3 and 4 have values 50 and 60. Their total weight is 7 and their total value is 110, which is optimal."
+      },
+      {
+        "input": "3 5\n2 4 6\n30 50 80",
+        "output": "50",
+        "explanation": "The package with weight 4 and value 50 is the most valuable package that can be loaded within the capacity."
+      }
+    ],
+    "expected_algorithm": {
+      "name": "0/1 Knapsack",
+      "module_key": "01-knapsack",
+      "reason": "Each package must either be completely loaded or left behind, making the 0/1 Knapsack approach suitable."
+    },
+    "complexity": {
+      "time": "O(N * C)",
+      "space": "O(C)"
+    },
+    "hint": [
+      "For every package, consider two choices: load it or skip it.",
+      "A package cannot be selected more than once.",
+      "Use dynamic programming to store the best value for each capacity."
+    ],
+    "real_world_takeaway": "0/1 Knapsack helps logistics systems choose the most valuable combination of complete packages when vehicle capacity is limited.",
+    "tags": ["dynamic-programming", "01-knapsack", "cargo", "shipping", "optimization"]
+  }
