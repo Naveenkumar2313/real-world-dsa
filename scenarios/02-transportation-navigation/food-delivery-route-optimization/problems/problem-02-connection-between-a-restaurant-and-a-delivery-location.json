@@ -1,0 +1,62 @@
+{
+    "problem_id": "PROB-TRAN-002",
+    "scenario_id": "SCN-TRAN-001",
+    "sequence": 2,
+    "title": "Connection Between a Restaurant and a Delivery Location",
+    "difficulty": "Easy",
+    "concepts": [
+        "Graph",
+        "Depth-First Search"
+    ],
+    "real_world_story": "The platform needs to know whether a rider can travel from a restaurant to a delivery location through any sequence of roads. The delivery region is modeled as a directed graph. Use a depth-first traversal to determine whether the delivery location is reachable from the restaurant.",
+    "real_world_connection": {
+        "system": "Order feasibility check",
+        "input_represents": "Directed roads between locations",
+        "start_represents": "The restaurant preparing the order",
+        "target_represents": "The customer delivery location",
+        "algorithm_represents": "Following roads as far as possible to discover whether the delivery is possible"
+    },
+    "problem_statement": "Given a directed graph with N nodes and M edges, and two nodes S and T, determine whether there is a path from S to T. Print YES if T is reachable from S, otherwise print NO.",
+    "task": "Use DFS to check whether the delivery location is reachable from the restaurant.",
+    "input_format": "The first line contains four integers N, M, S and T, where N is the number of nodes (numbered 1 to N), M is the number of directed edges, S is the restaurant, and T is the delivery location. The next M lines each contain two integers U and V indicating a directed road from node U to node V.",
+    "output_format": "Print YES if node T is reachable from node S, otherwise print NO.",
+    "constraints": [
+        "1 <= N <= 10000",
+        "0 <= M <= 50000",
+        "1 <= S, T <= N"
+    ],
+    "examples": [
+        {
+            "input": "4 4 1 4\n1 2\n2 3\n3 4\n2 4",
+            "output": "YES",
+            "explanation": "The rider can follow 1 -> 2 -> 3 -> 4 (and also 1 -> 2 -> 4) to reach the delivery location."
+        },
+        {
+            "input": "4 2 1 4\n1 2\n3 4",
+            "output": "NO",
+            "explanation": "There is no road leading from node 1 toward node 4, so the delivery location is unreachable."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph DFS",
+        "module_key": "graph-dfs",
+        "reason": "DFS explores one connected route as far as possible and can determine whether the target is reachable using recursion or an explicit stack."
+    },
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Begin the traversal at the restaurant node S.",
+        "Visit a neighbor and follow it as far as possible before backtracking.",
+        "If the delivery location T is visited, it is reachable."
+    ],
+    "real_world_takeaway": "DFS helps a delivery platform quickly confirm whether an order can even be served, avoiding dispatch attempts for impossible routes.",
+    "tags": [
+        "graphs",
+        "graph-dfs",
+        "depth-first-search",
+        "delivery",
+        "reachability"
+    ]
+}

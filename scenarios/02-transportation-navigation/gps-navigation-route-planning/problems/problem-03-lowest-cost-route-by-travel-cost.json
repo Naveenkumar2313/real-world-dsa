@@ -1,0 +1,58 @@
+{
+    "problem_id": "PROB-NAV-003",
+    "scenario_id": "SCN-NAV-001",
+    "sequence": 3,
+    "title": "Lowest-Cost Route by Travel Cost",
+    "difficulty": "Medium",
+    "concepts": [
+        "Graph",
+        "Dijkstra's Algorithm"
+    ],
+    "real_world_story": "A driver wants the route from one location to another that has the lowest total travel cost. Different roads have different travel costs, such as time or fuel. The road network is modeled as a weighted, undirected graph where each edge has a travel cost. Find the minimum total travel cost between the starting location and the destination.",
+    "real_world_connection": {
+        "system": "GPS route planner",
+        "input_represents": "Intersections as nodes with roads as weighted edges representing travel cost",
+        "start_represents": "The starting location",
+        "target_represents": "The destination location",
+        "algorithm_represents": "Computing the cheapest route in terms of total travel cost"
+    },
+    "problem_statement": "Given a weighted, undirected graph with N nodes and M edges, and a start node S and target node T, find the minimum total travel cost from S to T.",
+    "task": "Compute the lowest travel cost between the starting location and the destination.",
+    "input_format": "The first line contains four integers N, M, S and T, where N is the number of nodes (numbered 1 to N), M is the number of edges, S is the starting location, and T is the destination. The next M lines each contain three integers U, V and W indicating an undirected road between node U and node V with travel cost W.",
+    "output_format": "Print the minimum total travel cost from S to T. If T is unreachable from S, print -1.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "0 <= M <= 200000",
+        "1 <= S, T <= N",
+        "1 <= W <= 1000000000"
+    ],
+    "examples": [
+        {
+            "input": "5 6 1 5\n1 2 4\n1 3 2\n2 4 3\n3 4 1\n4 5 2\n2 5 10",
+            "output": "5",
+            "explanation": "The route 1 -> 3 -> 4 -> 5 has travel cost 2 + 1 + 2 = 5, which is the minimum. The direct route 1 -> 2 -> 5 costs 4 + 10 = 14."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Dijkstra's Algorithm",
+        "module_key": "dijkstras-algorithm",
+        "reason": "The road edges have non-negative travel costs, so Dijkstra's Algorithm correctly computes the lowest-cost path from a single source."
+    },
+    "complexity": {
+        "time": "O((N + M) log N)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Keep a cost value for every node, initially infinite except the start.",
+        "Use a priority queue to always expand the lowest-cost unvisited node.",
+        "Relax each edge by updating a neighbor's cost when a cheaper route is found."
+    ],
+    "real_world_takeaway": "Dijkstra's Algorithm lets a navigation system give drivers the route with the lowest travel cost, saving time and fuel.",
+    "tags": [
+        "graphs",
+        "dijkstras-algorithm",
+        "shortest-path",
+        "navigation",
+        "weighted-graph"
+    ]
+}
