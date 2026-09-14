@@ -1,0 +1,54 @@
+{
+  "scenario_id": "SCN-SCL-001",
+  "title": "Shipping & Cargo Loading",
+  "slug": "shipping-cargo-loading",
+  "short_description": "Learn how logistics systems select, organize, and load packages efficiently while respecting vehicle capacity and maximizing cargo value.",
+  "category": "Greedy, Sorting and Dynamic Programming",
+  "industry": "Logistics and Transportation",
+  "difficulty": "Beginner to Intermediate",
+  "estimated_time_minutes": 120,
+  "real_world_context": "A logistics company needs to decide which packages should be loaded into a vehicle while respecting weight and capacity limitations and maximizing value.",
+  "learning_objectives": [
+    "Understand how package weights and values can be represented using arrays.",
+    "Apply 0/1 Knapsack to select complete packages while maximizing cargo value within a capacity limit.",
+    "Use sorting to organize packages by weight for systematic cargo loading.",
+    "Apply Fractional Knapsack and Greedy strategies when cargo materials can be divided.",
+    "Use a Greedy approach to maximize the number of packages loaded into a capacity-limited vehicle.",
+    "Apply Binary Search on Answer to determine the minimum vehicle capacity required for a fixed number of trips.",
+    "Choose an appropriate optimization strategy based on whether packages are indivisible, divisible, or must be shipped in a fixed order."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Basic sorting",
+    "Basic time complexity",
+    "Basic greedy concepts",
+    "Basic dynamic programming concepts",
+    "Basic binary search concepts"
+  ],
+  "algorithms": [
+    "0/1 Knapsack",
+    "Fractional Knapsack",
+    "Greedy",
+    "Sorting",
+    "Binary Search on Answer"
+  ],
+  "real_world_mapping": {
+    "package_weights": "Weights of packages to be loaded or shipped",
+    "package_values": "Value or priority associated with packages",
+    "vehicle_capacity": "Maximum weight the vehicle can carry",
+    "cargo_materials": "Divisible materials that can be loaded in partial quantities",
+    "package_order": "Fixed order in which packages must be shipped",
+    "trips": "Number of available vehicle trips",
+    "cargo_loading": "Selecting and arranging packages within vehicle capacity"
+  },
+  "learning_path": [
+    "PROB-SCL-001",
+    "PROB-SCL-002",
+    "PROB-SCL-003",
+    "PROB-SCL-004",
+    "PROB-SCL-005"
+  ],
+  "completion_message": "Great job! You have completed the Shipping & Cargo Loading scenario and practiced knapsack, sorting, greedy, and binary search on answer techniques used in logistics and cargo planning."
+}

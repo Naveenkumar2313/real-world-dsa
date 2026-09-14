@@ -1,0 +1,58 @@
+{
+  "scenario_id": "SCN-WH-001",
+  "title": "Warehouse Optimization",
+  "slug": "warehouse-optimization",
+  "short_description": "Learn how warehouses organize inventory, navigate storage locations, update storage zones, and allocate limited space efficiently.",
+  "category": "Graphs, Searching and Optimization",
+  "industry": "Warehousing and Logistics",
+  "difficulty": "Intermediate",
+  "estimated_time_minutes": 120,
+  "real_world_context": "A warehouse must organize products, locate inventory, manage storage areas, and decide how products should be allocated within limited space.",
+  "learning_objectives": [
+    "Understand how sorting and binary search can be used to locate products efficiently.",
+    "Represent warehouse locations and connections as graphs.",
+    "Use BFS to find the shortest route between warehouse locations.",
+    "Use DFS and flood fill to update connected storage zones.",
+    "Apply 0/1 Knapsack to maximize product value within limited storage capacity.",
+    "Apply Fractional Knapsack to maximize the value of divisible materials using value-to-weight ratios.",
+    "Choose an appropriate algorithm based on the warehouse optimization problem."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Basic sorting",
+    "Basic time complexity",
+    "Basic graph concepts",
+    "Basic dynamic programming concepts",
+    "Basic greedy algorithm concepts"
+  ],
+  "algorithms": [
+    "Sorting",
+    "Binary Search",
+    "Graph BFS",
+    "Graph DFS",
+    "Flood Fill",
+    "0/1 Knapsack",
+    "Fractional Knapsack"
+  ],
+  "real_world_mapping": {
+    "product_ids": "Products stored in the warehouse inventory",
+    "sorted_inventory": "Organized product IDs used for efficient searching",
+    "warehouse_locations": "Storage locations represented as graph vertices",
+    "warehouse_connections": "Walkable paths between storage locations represented as graph edges",
+    "storage_zone": "Connected cells belonging to the same warehouse storage area",
+    "storage_capacity": "Available warehouse space",
+    "product_weight": "Storage space required by a product",
+    "product_value": "Importance or value of storing a product",
+    "material_ratio": "Value per unit of storage space for divisible materials"
+  },
+  "learning_path": [
+    "PROB-WH-001",
+    "PROB-WH-002",
+    "PROB-WH-003",
+    "PROB-WH-004",
+    "PROB-WH-005"
+  ],
+  "completion_message": "Great job! You have completed the Warehouse Optimization scenario and practiced searching, graph traversal, flood fill, dynamic programming, and greedy optimization techniques."
+}

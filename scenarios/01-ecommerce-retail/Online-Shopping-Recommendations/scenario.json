@@ -1,0 +1,52 @@
+{
+  "scenario_id": "SCN-REC-001",
+  "title": "Online Shopping Recommendations",
+  "slug": "online-shopping-recommendations",
+  "short_description": "Learn how e-commerce platforms identify product combinations that match customer budgets, preferences, and purchasing patterns.",
+  "category": "Arrays and Problem Solving",
+  "industry": "E-Commerce",
+  "difficulty": "Beginner to Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": "An e-commerce platform wants to identify combinations of products that match customer preferences, budgets, or purchasing patterns and efficiently search a large catalog.",
+  "learning_objectives": [
+    "Understand how arrays can represent product prices and product IDs.",
+    "Use sorting and binary search to efficiently find products within a customer's budget.",
+    "Apply the two-pointer technique to identify efficient product pairs.",
+    "Use the Three Sum technique to find three-product combinations matching a target budget.",
+    "Apply the sliding window technique to evaluate consecutive product groups.",
+    "Understand recursion and the Power Set technique for generating possible product bundles.",
+    "Choose appropriate algorithms for different recommendation and product-combination problems."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Basic sorting concepts",
+    "Basic time complexity",
+    "Basic recursion concepts"
+  ],
+  "algorithms": [
+    "Two Pointer",
+    "Three Sum",
+    "Binary Search",
+    "Sorting",
+    "Sliding Window",
+    "Power Set"
+  ],
+  "real_world_mapping": {
+    "product_prices": "Array of prices of available products",
+    "customer_budget": "Maximum or target amount the customer wants to spend",
+    "product_indices": "Original positions of products in the catalog",
+    "product_group": "Consecutive products displayed in a ranked sequence",
+    "product_bundle": "A possible combination or subset of products",
+    "recommendation_system": "E-commerce system that identifies products or combinations matching customer requirements"
+  },
+  "learning_path": [
+    "PROB-REC-001",
+    "PROB-REC-002",
+    "PROB-REC-003",
+    "PROB-REC-004",
+    "PROB-REC-005"
+  ],
+  "completion_message": "Great job! You have completed the Online Shopping Recommendations scenario and practiced searching, sorting, product combination, sliding window, and power set techniques used in recommendation systems."
+}

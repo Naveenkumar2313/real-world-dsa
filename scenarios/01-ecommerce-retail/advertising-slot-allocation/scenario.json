@@ -1,0 +1,56 @@
+{
+  "scenario_id": "SCN-ASA-001",
+  "title": "Advertising Slot Allocation",
+  "slug": "advertising-slot-allocation",
+  "short_description": "Learn how e-commerce and media platforms select, schedule, rank, and allocate advertisements to maximize revenue while satisfying time and scheduling constraints.",
+  "category": "Greedy, Sorting and Scheduling",
+  "industry": "Advertising and Media",
+  "difficulty": "Beginner to Intermediate",
+  "estimated_time_minutes": 120,
+  "real_world_context": "An e-commerce or media platform has limited advertising slots and needs to select advertisements to maximize revenue while satisfying scheduling constraints.",
+  "learning_objectives": [
+    "Understand how advertisement schedules, durations, deadlines, and revenues can be represented using arrays.",
+    "Apply Activity Selection to schedule the maximum number of non-overlapping advertisements.",
+    "Apply Job Sequencing with Deadlines to maximize advertising revenue under slot constraints.",
+    "Use Greedy strategies to maximize the number of advertisements displayed within limited time.",
+    "Apply sorting techniques to rank advertisements by expected revenue.",
+    "Use Binary Search with prefix sums to determine the minimum number of high-revenue advertisements required to reach a target revenue.",
+    "Choose an appropriate algorithm based on advertising time, deadline, revenue, and target constraints."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Basic sorting",
+    "Basic time complexity",
+    "Basic greedy concepts",
+    "Basic binary search concepts",
+    "Basic prefix sum concepts"
+  ],
+  "algorithms": [
+    "Activity Selection",
+    "Job Sequencing with Deadlines",
+    "Greedy",
+    "Sorting",
+    "Binary Search"
+  ],
+  "real_world_mapping": {
+    "advertisement": "An ad that needs to be scheduled or displayed",
+    "time_slot": "Available advertising time during which an ad can be displayed",
+    "start_time": "Time at which an advertisement can begin",
+    "end_time": "Time at which an advertisement finishes",
+    "deadline": "Latest time or slot by which an advertisement must be completed",
+    "revenue": "Expected earnings from displaying an advertisement",
+    "display_duration": "Amount of advertising time required by an advertisement",
+    "revenue_target": "Required total advertising revenue",
+    "premium_slot": "High-value advertising position allocated to high-revenue opportunities"
+  },
+  "learning_path": [
+    "PROB-ASA-001",
+    "PROB-ASA-002",
+    "PROB-ASA-003",
+    "PROB-ASA-004",
+    "PROB-ASA-005"
+  ],
+  "completion_message": "Great job! You have completed the Advertising Slot Allocation scenario and practiced activity selection, job sequencing, greedy strategies, sorting, and binary search techniques used in advertising systems."
+}
