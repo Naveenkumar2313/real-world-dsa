@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-CLOUDRES-001",
+    "title": "Cloud Resource Allocation",
+    "slug": "scenario-25-cloud-resource-allocation",
+    "short_description": "Provision minimum cluster node RAM capacities using binary search on answer, maximize single-server VM billing revenue, pack servers using First-Fit Decreasing, and sort container workloads.",
+    "category": "Business & Productivity",
+    "industry": "Enterprise Software & Resource Management",
+    "difficulty": "Medium",
+    "real_world_context": "Hyperscale cloud providers (such as AWS, Google Cloud, and Microsoft Azure) and container orchestration platforms (such as Kubernetes) continuously bin-pack virtual machines (VMs) and containerized microservices onto bare-metal server infrastructure. Cluster autoscalers use Binary Search on Answer to determine the minimum per-node RAM capacity needed to schedule sequential pod deployment manifests across at most K nodes, cloud billing optimizers solve 0/1 Knapsack models to maximize monthly VM rental revenues on high-performance host servers, datacenter schedulers apply the First-Fit Decreasing (FFD) greedy bin packing heuristic to minimize the number of booted physical machines, and container orchestrators sort multi-dimensional compute demands to prioritize heavy workloads.",
+    "learning_objectives": [
+        "Apply Binary Search on Answer over monotonic capacity spaces to determine minimum server node provisioning thresholds.",
+        "Solve 0/1 Knapsack dynamic programming to maximize server VM rental revenue under physical memory constraints.",
+        "Implement the First-Fit Decreasing (FFD) greedy heuristic to bin-pack batch workloads into the minimum number of physical servers.",
+        "Sort containerized workloads by multi-resource computational demands (CPU cores and RAM)."
+    ],
+    "algorithms": [
+        "Binary Search on Answer",
+        "0/1 Knapsack",
+        "Greedy",
+        "Sorting"
+    ],
+    "learning_path": [
+        "PROB-CLOUDRES-001",
+        "PROB-CLOUDRES-002",
+        "PROB-CLOUDRES-003",
+        "PROB-CLOUDRES-004"
+    ]
+}

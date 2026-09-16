@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-HOSPEMERG-001",
+    "title": "Hospital Emergency Queue",
+    "slug": "scenario-16-hospital-emergency-queue",
+    "short_description": "Manage emergency triage patient intake, waiting room telemetry buffers, multi-criteria clinical sorting, and optimal procedure scheduling.",
+    "category": "Healthcare & Emergency Systems",
+    "industry": "Healthcare & Clinical Operations",
+    "difficulty": "Medium",
+    "real_world_context": "Hospital Emergency Departments (ED) operate in high-stress, unpredictable environments where incoming patient volumes fluctuate drastically. Clinical triage nurses must register patients in precise arrival order, stream continuous telemetry vitals to wall monitors with strictly bounded memory buffers, sort patients by the Emergency Severity Index (ESI) to prioritize acute clinical emergencies over minor ailments, and greedily schedule urgent minor surgical interventions to minimize aggregate waiting delays. Backend hospital information systems (HIS) rely on robust fundamental queues, ring buffers, multi-key sorting, and greedy algorithms to coordinate life-critical emergency care.",
+    "learning_objectives": [
+        "Implement First-In-First-Out (FIFO) queue operations for walk-in patient triage registration and physician room admission.",
+        "Design a fixed-capacity circular ring buffer to display real-time vital telemetry streams without buffer overflow.",
+        "Apply multi-key sorting algorithms to prioritize emergency patients by Emergency Severity Index (ESI) and arrival timestamps.",
+        "Apply greedy scheduling strategies (Shortest Processing Time) to minimize cumulative patient waiting times in emergency surgical suites."
+    ],
+    "algorithms": [
+        "Queue Operations",
+        "Circular Queue Operations",
+        "Sorting",
+        "Greedy"
+    ],
+    "learning_path": [
+        "PROB-HOSPEMERG-001",
+        "PROB-HOSPEMERG-002",
+        "PROB-HOSPEMERG-003",
+        "PROB-HOSPEMERG-004"
+    ]
+}

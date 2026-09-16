@@ -1,0 +1,51 @@
+{
+    "problem_id": "PROB-PATDATA-001",
+    "scenario_id": "SCN-PATDATA-001",
+    "sequence": 1,
+    "title": "Pathogen Genomic Signature Detection",
+    "difficulty": "Medium",
+    "concepts": [
+        "KMP Pattern Matching",
+        "String Algorithms"
+    ],
+    "real_world_story": "A medical bioinformatics lab is screening patient blood samples for the presence of a known respiratory virus. Sequenced genomic strands consist of nucleotide bases: 'A', 'C', 'G', and 'T'. The lab has a specific biomarker gene signature pattern P that uniquely identifies the pathogen. Given the patient's sequenced DNA strand T, the diagnostic pipeline must locate all exact occurrences of pattern P to quantify viral load and mutation boundaries. If pattern P does not occur in T, the test is negative.",
+    "problem_statement": "Given a patient genome text string T of length N and a pathogen biomarker pattern string P of length M (both strings consisting solely of characters 'A', 'C', 'G', 'T'), find all 0-based starting indices where P occurs as a substring in T. Output the indices in ascending order separated by a single space. If P does not appear in T, print -1.",
+    "task": "Find all occurrences of P in T and print their 0-based starting indices separated by a single space, or print -1 if none exist.",
+    "input_format": "The first line contains the text string T.\nThe second line contains the pattern string P.",
+    "output_format": "Print all 0-based start indices in ascending order on a single line separated by a single space, or print -1 if pattern P does not appear in T.",
+    "constraints": {
+        "text_length": "1 <= |T| <= 2 * 10^5",
+        "pattern_length": "1 <= |P| <= |T|",
+        "alphabet": "T and P contain only characters 'A', 'C', 'G', 'T'"
+    },
+    "examples": [
+        {
+            "input": "ACGTACGTACGT\nACGT",
+            "output": "0 4 8",
+            "explanation": "Pattern 'ACGT' appears at 0-based indices 0, 4, and 8 in the text 'ACGTACGTACGT'."
+        },
+        {
+            "input": "AAAAA\nAA",
+            "output": "0 1 2 3",
+            "explanation": "Pattern 'AA' occurs with overlapping matches starting at indices 0, 1, 2, and 3."
+        },
+        {
+            "input": "ACGTACGT\nTTT",
+            "output": "-1",
+            "explanation": "Pattern 'TTT' does not appear anywhere in 'ACGTACGT', so output -1."
+        }
+    ],
+    "expected_algorithm": "KMP Pattern Matching",
+    "complexity": {
+        "time": "O(|T| + |P|)",
+        "space": "O(|P|)"
+    },
+    "real_world_takeaway": "Knuth-Morris-Pratt preprocessing constructs a failure table that prevents redundant character comparisons, achieving guaranteed linear time in genomic string matching.",
+    "tags": [
+        "kmp-pattern-matching",
+        "string-algorithms",
+        "bioinformatics",
+        "genomics",
+        "dna"
+    ]
+}

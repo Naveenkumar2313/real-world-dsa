@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-BUDGET-001",
+    "title": "Budget & Investment Planning",
+    "slug": "scenario-24-budget-investment-planning",
+    "short_description": "Maximize enterprise capital portfolio net present value, allocate divisible treasury liquidity, rank departmental project ROI, and maximize innovation seed grants.",
+    "category": "Business & Productivity",
+    "industry": "Enterprise Software & Resource Management",
+    "difficulty": "Medium",
+    "real_world_context": "Corporate finance committees, strategic treasury departments, and enterprise capital investment committees allocate limited annual expenditure budgets across competing investment opportunities. Financial analysts must solve discrete 0/1 Knapsack optimization to select the highest-yielding combination of indivisible enterprise software transformations under strict budget ceilings, use Fractional Knapsack algorithms to apportion continuous corporate cash reserves across interest-bearing liquidity instruments, sort departmental project proposals by Return on Investment (ROI) ratios, and apply greedy funding heuristics to maximize the total number of employee grassroots innovation proposals approved.",
+    "learning_objectives": [
+        "Solve 0/1 Knapsack optimization to maximize capital project Net Present Value (NPV) under fixed corporate budgets.",
+        "Implement Fractional Knapsack allocation to maximize investment yield across continuously divisible treasury assets.",
+        "Sort project initiatives by Return on Investment (ROI) efficiency ratios using cross-multiplication tie-breaking.",
+        "Apply greedy heuristics to maximize the number of funded strategic innovation grant proposals."
+    ],
+    "algorithms": [
+        "0/1 Knapsack",
+        "Fractional Knapsack",
+        "Sorting",
+        "Greedy"
+    ],
+    "learning_path": [
+        "PROB-BUDGET-001",
+        "PROB-BUDGET-002",
+        "PROB-BUDGET-003",
+        "PROB-BUDGET-004"
+    ]
+}

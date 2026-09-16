@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-PROJPLAN-001",
+    "scenario_id": "SCN-PROJPLAN-001",
+    "sequence": 1,
+    "title": "Circular Task Dependency Detector",
+    "difficulty": "Medium",
+    "concepts": [
+        "Graph DFS"
+    ],
+    "real_world_story": "An enterprise build orchestrator schedules N engineering tasks (numbered 1 to N). Teams declare prerequisite dependencies between tasks: a directed edge from task u to task v indicates that task u must be completed before task v can commence. If a set of dependencies forms a directed cycle (e.g., task A depends on B, B depends on C, and C depends on A), none of the tasks can ever start, causing an automated deadlock. The pipeline scheduler must detect whether the dependency graph contains any circular dependency before initiating builds.",
+    "problem_statement": "Given a directed graph with N vertices and M directed edges (where edge u -> v denotes that u is a prerequisite for v), determine whether the graph contains any directed cycle. If at least one cycle exists, print 'CYCLE DETECTED'. Otherwise, print 'VALID PIPELINE'.",
+    "task": "Detect if any directed cycle exists in the task dependency graph using Depth-First Search.",
+    "input_format": "The first line contains two space-separated integers N and M, the number of tasks and dependencies.\nThe next M lines each contain two space-separated integers u and v (1 <= u, v <= N), representing a directed dependency from u to v.",
+    "output_format": "Print 'CYCLE DETECTED' if the graph contains a cycle; otherwise, print 'VALID PIPELINE'.",
+    "constraints": {
+        "tasks": "1 <= N <= 10^5",
+        "dependencies": "0 <= M <= 2 * 10^5",
+        "endpoints": "1 <= u, v <= N"
+    },
+    "examples": [
+        {
+            "input": "3 3\n1 2\n2 3\n3 1",
+            "output": "CYCLE DETECTED",
+            "explanation": "Dependencies 1 -> 2 -> 3 -> 1 form a closed circular loop. A cycle is detected."
+        },
+        {
+            "input": "4 3\n1 2\n2 3\n2 4",
+            "output": "VALID PIPELINE",
+            "explanation": "Task 1 precedes 2; task 2 precedes both 3 and 4. There are no directed cycles. The pipeline is valid."
+        }
+    ],
+    "expected_algorithm": "Graph DFS",
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N + M)"
+    },
+    "real_world_takeaway": "Depth-First Search with recursion stack state tracking reliably detects back-edges in directed dependency graphs in linear time, preventing catastrophic pipeline deadlocks.",
+    "tags": [
+        "graph-dfs",
+        "cycle-detection",
+        "directed-graph",
+        "dependencies",
+        "build-systems"
+    ]
+}

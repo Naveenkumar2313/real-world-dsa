@@ -1,0 +1,649 @@
+export const medicalResourceSolutions = {
+  'PROB-MEDRES-001': {
+    python: `import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    W = int(input_data[1])
+    weights = []
+    values = []
+    ptr = 2
+    for _ in range(N):
+        weights.append(int(input_data[ptr]))
+        values.append(int(input_data[ptr+1]))
+        ptr += 2
+
+    dp = [0] * (W + 1)
+    for i in range(N):
+        w = weights[i]
+        v = values[i]
+        for j in range(W, w - 1, -1):
+            if dp[j - w] + v > dp[j]:
+                dp[j] = dp[j - w] + v
+
+    print(dp[W])
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    const W = parseInt(input[ptr++]);
+    const weights = [];
+    const values = [];
+    for (let i = 0; i < N; i++) {
+        weights.push(parseInt(input[ptr++]));
+        values.push(parseInt(input[ptr++]));
+    }
+
+    const dp = new Array(W + 1).fill(0);
+    for (let i = 0; i < N; i++) {
+        const w = weights[i];
+        const v = values[i];
+        for (let j = W; j >= w; j--) {
+            if (dp[j - w] + v > dp[j]) {
+                dp[j] = dp[j - w] + v;
+            }
+        }
+    }
+    console.log(dp[W]);
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        int W = sc.nextInt();
+        int[] weights = new int[N];
+        int[] values = new int[N];
+        for (int i = 0; i < N; i++) {
+            weights[i] = sc.nextInt();
+            values[i] = sc.nextInt();
+        }
+        int[] dp = new int[W + 1];
+        for (int i = 0; i < N; i++) {
+            int w = weights[i];
+            int v = values[i];
+            for (int j = W; j >= w; j--) {
+                dp[j] = Math.max(dp[j], dp[j - w] + v);
+            }
+        }
+        System.out.println(dp[W]);
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int N, W;
+    if (!(cin >> N >> W)) return 0;
+    vector<int> w(N), v(N);
+    for (int i = 0; i < N; ++i) {
+        cin >> w[i] >> v[i];
+    }
+    vector<int> dp(W + 1, 0);
+    for (int i = 0; i < N; ++i) {
+        for (int j = W; j >= w[i]; --j) {
+            dp[j] = max(dp[j], dp[j - w[i]] + v[i]);
+        }
+    }
+    cout << dp[W] << endl;
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+
+int max(int a, int b) { return a > b ? a : b; }
+
+int main() {
+    int N, W;
+    if (scanf("%d %d", &N, &W) != 2) return 0;
+    int* weights = (int*)malloc(N * sizeof(int));
+    int* values = (int*)malloc(N * sizeof(int));
+    for (int i = 0; i < N; i++) {
+        scanf("%d %d", &weights[i], &values[i]);
+    }
+    int* dp = (int*)calloc(W + 1, sizeof(int));
+    for (int i = 0; i < N; i++) {
+        int w = weights[i];
+        int v = values[i];
+        for (int j = W; j >= w; j--) {
+            dp[j] = max(dp[j], dp[j - w] + v);
+        }
+    }
+    printf("%d\\n", dp[W]);
+    free(weights);
+    free(values);
+    free(dp);
+    return 0;
+}`
+  },
+  'PROB-MEDRES-002': {
+    python: `import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    C = int(input_data[1])
+    items = []
+    ptr = 2
+    for _ in range(N):
+        w = int(input_data[ptr])
+        v = int(input_data[ptr+1])
+        items.append((w, v, v/w))
+        ptr += 2
+
+    items.sort(key=lambda x: x[2], reverse=True)
+
+    total_efficacy = 0.0
+    remaining_C = C
+    for w, v, ratio in items:
+        if remaining_C >= w:
+            total_efficacy += v
+            remaining_C -= w
+        else:
+            total_efficacy += ratio * remaining_C
+            remaining_C = 0
+            break
+
+    print(f"{total_efficacy:.2f}")
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    const C = parseInt(input[ptr++]);
+    const items = [];
+    for (let i = 0; i < N; i++) {
+        const w = parseInt(input[ptr++]);
+        const v = parseInt(input[ptr++]);
+        items.push({ w, v, ratio: v / w });
+    }
+
+    items.sort((a, b) => b.ratio - a.ratio);
+
+    let totalEfficacy = 0.0;
+    let remainingC = C;
+    for (const item of items) {
+        if (remainingC >= item.w) {
+            totalEfficacy += item.v;
+            remainingC -= item.w;
+        } else {
+            totalEfficacy += item.ratio * remainingC;
+            remainingC = 0;
+            break;
+        }
+    }
+    process.stdout.write(totalEfficacy.toFixed(2) + "\\n");
+}
+
+solve();`,
+    java: `import java.util.*;
+
+class Item implements Comparable<Item> {
+    int w, v;
+    double ratio;
+    Item(int w, int v) {
+        this.w = w; this.v = v; this.ratio = (double)v / w;
+    }
+    public int compareTo(Item other) {
+        return Double.compare(other.ratio, this.ratio);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        int C = sc.nextInt();
+        List<Item> items = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            items.add(new Item(sc.nextInt(), sc.nextInt()));
+        }
+        Collections.sort(items);
+        double totalEfficacy = 0;
+        int remainingC = C;
+        for (Item item : items) {
+            if (remainingC >= item.w) {
+                totalEfficacy += item.v;
+                remainingC -= item.w;
+            } else {
+                totalEfficacy += item.ratio * remainingC;
+                remainingC = 0;
+                break;
+            }
+        }
+        System.out.printf("%.2f\\n", totalEfficacy);
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iomanip>
+
+using namespace std;
+
+struct Item {
+    int w, v;
+    double ratio;
+    bool operator<(const Item& other) const {
+        return ratio > other.ratio;
+    }
+};
+
+int main() {
+    int N, C;
+    if (!(cin >> N >> C)) return 0;
+    vector<Item> items(N);
+    for (int i = 0; i < N; ++i) {
+        cin >> items[i].w >> items[i].v;
+        items[i].ratio = (double)items[i].v / items[i].w;
+    }
+    sort(items.begin(), items.end());
+    double totalEfficacy = 0;
+    int remainingC = C;
+    for (const auto& item : items) {
+        if (remainingC >= item.w) {
+            totalEfficacy += item.v;
+            remainingC -= item.w;
+        } else {
+            totalEfficacy += item.ratio * remainingC;
+            remainingC = 0;
+            break;
+        }
+    }
+    cout << fixed << setprecision(2) << totalEfficacy << endl;
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int w, v;
+    double ratio;
+} Item;
+
+int compare(const void* a, const void* b) {
+    double r1 = ((Item*)a)->ratio;
+    double r2 = ((Item*)b)->ratio;
+    if (r1 < r2) return 1;
+    if (r1 > r2) return -1;
+    return 0;
+}
+
+int main() {
+    int N, C;
+    if (scanf("%d %d", &N, &C) != 2) return 0;
+    Item* items = (Item*)malloc(N * sizeof(Item));
+    for (int i = 0; i < N; i++) {
+        scanf("%d %d", &items[i].w, &items[i].v);
+        items[i].ratio = (double)items[i].v / items[i].w;
+    }
+    qsort(items, N, sizeof(Item), compare);
+    double totalEfficacy = 0;
+    int remainingC = C;
+    for (int i = 0; i < N; i++) {
+        if (remainingC >= items[i].w) {
+            totalEfficacy += items[i].v;
+            remainingC -= items[i].w;
+        } else {
+            totalEfficacy += items[i].ratio * remainingC;
+            remainingC = 0;
+            break;
+        }
+    }
+    printf("%.2f\\n", totalEfficacy);
+    free(items);
+    return 0;
+}`
+  },
+  'PROB-MEDRES-003': {
+    python: `import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    M = int(input_data[1])
+    deficits = [int(x) for x in input_data[2:]]
+
+    deficits.sort(reverse=True)
+    print(sum(deficits[:min(N, M)]))
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    const M = parseInt(input[ptr++]);
+    const deficits = [];
+    for (let i = 0; i < N; i++) {
+        deficits.push(parseInt(input[ptr++]));
+    }
+
+    deficits.sort((a, b) => b - a);
+    let sum = 0;
+    for (let i = 0; i < Math.min(N, M); i++) {
+        sum += deficits[i];
+    }
+    console.log(sum);
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        Integer[] deficits = new Integer[N];
+        for (int i = 0; i < N; i++) deficits[i] = sc.nextInt();
+        Arrays.sort(deficits, Collections.reverseOrder());
+        long sum = 0;
+        for (int i = 0; i < Math.min(N, M); i++) {
+            sum += deficits[i];
+        }
+        System.out.println(sum);
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+
+using namespace std;
+
+int main() {
+    int N, M;
+    if (!(cin >> N >> M)) return 0;
+    vector<int> deficits(N);
+    for (int i = 0; i < N; ++i) cin >> deficits[i];
+    sort(deficits.rbegin(), deficits.rend());
+    long long sum = 0;
+    for (int i = 0; i < min(N, M); ++i) {
+        sum += deficits[i];
+    }
+    cout << sum << endl;
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+
+int compare(const void* a, const void* b) {
+    return (*(int*)b - *(int*)a);
+}
+
+int main() {
+    int N, M;
+    if (scanf("%d %d", &N, &M) != 2) return 0;
+    int* deficits = (int*)malloc(N * sizeof(int));
+    for (int i = 0; i < N; i++) scanf("%d", &deficits[i]);
+    qsort(deficits, N, sizeof(int), compare);
+    long long sum = 0;
+    int limit = N < M ? N : M;
+    for (int i = 0; i < limit; i++) {
+        sum += deficits[i];
+    }
+    printf("%lld\\n", sum);
+    free(deficits);
+    return 0;
+}`
+  },
+  'PROB-MEDRES-004': {
+    python: `import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    D = int(input_data[1])
+    weights = [int(x) for x in input_data[2:]]
+
+    def can_deliver(capacity):
+        trips = 1
+        current_sum = 0
+        for w in weights:
+            if w > capacity: return False
+            if current_sum + w > capacity:
+                trips += 1
+                current_sum = w
+            else:
+                current_sum += w
+        return trips <= D
+
+    low = max(weights)
+    high = sum(weights)
+    ans = high
+
+    while low <= high:
+        mid = (low + high) // 2
+        if can_deliver(mid):
+            ans = mid
+            high = mid - 1
+        else:
+            low = mid + 1
+
+    print(ans)
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    const D = parseInt(input[ptr++]);
+    const weights = [];
+    let sumW = 0;
+    let maxW = 0;
+    for (let i = 0; i < N; i++) {
+        const w = parseInt(input[ptr++]);
+        weights.push(w);
+        sumW += w;
+        if (w > maxW) maxW = w;
+    }
+
+    const canDeliver = (capacity) => {
+        let trips = 1;
+        let currentSum = 0;
+        for (const w of weights) {
+            if (currentSum + w > capacity) {
+                trips++;
+                currentSum = w;
+            } else {
+                currentSum += w;
+            }
+        }
+        return trips <= D;
+    };
+
+    let low = maxW;
+    let high = sumW;
+    let ans = sumW;
+    while (low <= high) {
+        let mid = Math.floor((low + high) / 2);
+        if (canDeliver(mid)) {
+            ans = mid;
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+    console.log(ans);
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        int D = sc.nextInt();
+        int[] weights = new int[N];
+        int maxW = 0;
+        long sumW = 0;
+        for (int i = 0; i < N; i++) {
+            weights[i] = sc.nextInt();
+            if (weights[i] > maxW) maxW = weights[i];
+            sumW += weights[i];
+        }
+        long low = maxW;
+        long high = sumW;
+        long ans = sumW;
+        while (low <= high) {
+            long mid = low + (high - low) / 2;
+            if (canDeliver(weights, N, D, mid)) {
+                ans = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        System.out.println(ans);
+    }
+
+    static boolean canDeliver(int[] w, int N, int D, long cap) {
+        int trips = 1;
+        long currentSum = 0;
+        for (int i = 0; i < N; i++) {
+            if (currentSum + w[i] > cap) {
+                trips++;
+                currentSum = w[i];
+            } else {
+                currentSum += w[i];
+            }
+        }
+        return trips <= D;
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <numeric>
+#include <algorithm>
+
+using namespace std;
+
+bool canDeliver(const vector<int>& w, int D, long long cap) {
+    int trips = 1;
+    long long currentSum = 0;
+    for (int x : w) {
+        if (currentSum + x > cap) {
+            trips++;
+            currentSum = x;
+        } else {
+            currentSum += x;
+        }
+    }
+    return trips <= D;
+}
+
+int main() {
+    int N, D;
+    if (!(cin >> N >> D)) return 0;
+    vector<int> w(N);
+    long long sumW = 0;
+    int maxW = 0;
+    for (int i = 0; i < N; ++i) {
+        cin >> w[i];
+        sumW += w[i];
+        if (w[i] > maxW) maxW = w[i];
+    }
+    long long low = maxW;
+    long long high = sumW;
+    long long ans = sumW;
+    while (low <= high) {
+        long long mid = low + (high - low) / 2;
+        if (canDeliver(w, D, mid)) {
+            ans = mid;
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+    cout << ans << endl;
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+
+int can_deliver(int* w, int N, int D, long long cap) {
+    int trips = 1;
+    long long current_sum = 0;
+    for (int i = 0; i < N; i++) {
+        if (current_sum + w[i] > cap) {
+            trips++;
+            current_sum = w[i];
+        } else {
+            current_sum += w[i];
+        }
+    }
+    return trips <= D;
+}
+
+int main() {
+    int N, D;
+    if (scanf("%d %d", &N, &D) != 2) return 0;
+    int* w = (int*)malloc(N * sizeof(int));
+    long long sumW = 0;
+    int maxW = 0;
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &w[i]);
+        sumW += w[i];
+        if (w[i] > maxW) maxW = w[i];
+    }
+    long long low = maxW;
+    long long high = sumW;
+    long long ans = sumW;
+    while (low <= high) {
+        long long mid = low + (high - low) / 2;
+        if (can_deliver(w, N, D, mid)) {
+            ans = mid;
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+    printf("%lld\\n", ans);
+    free(w);
+    return 0;
+}`
+  }
+};

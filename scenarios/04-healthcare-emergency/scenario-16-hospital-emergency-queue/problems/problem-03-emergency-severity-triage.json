@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-HOSPEMERG-003",
+    "scenario_id": "SCN-HOSPEMERG-001",
+    "sequence": 3,
+    "title": "Emergency Severity Index Triage Sorting",
+    "difficulty": "Easy",
+    "concepts": [
+        "Sorting"
+    ],
+    "real_world_story": "During mass casualty events or busy shifts, emergency departments assign an Emergency Severity Index (ESI) score from 1 (resuscitation, most critical) to 5 (non-urgent) to every incoming patient. The clinical coordination software must sort all pending triage records so that acute patients are examined first. If two patients have identical ESI scores, the patient who arrived earlier must be examined first. If both ESI and arrival times match, sort by patient ID ascending.",
+    "problem_statement": "Given N patient admission records, each consisting of an integer patient_id, an integer esi_score (1 to 5), and an integer arrival_minute, order the patients according to clinical priority:\n1. Primarily by esi_score ascending (lower score indicates higher clinical urgency).\n2. Secondarily by arrival_minute ascending (earlier arrival gets priority).\n3. Tertiarily by patient_id ascending (lower ID wins tie-breaker).",
+    "task": "Sort the N patient records according to the specified multi-key priority criteria and print the sorted sequence of patient IDs as a single space-separated line.",
+    "input_format": "The first line contains a single integer N, the number of patients.\nThe next N lines each contain three space-separated integers: patient_id, esi_score, and arrival_minute.",
+    "output_format": "Print the sorted sequence of patient IDs on a single line, separated by a single space.",
+    "constraints": {
+        "patients": "1 <= N <= 10^5",
+        "patient_id": "1 <= patient_id <= 10^9",
+        "esi_score": "1 <= esi_score <= 5",
+        "arrival_minute": "0 <= arrival_minute <= 1440"
+    },
+    "examples": [
+        {
+            "input": "4\n101 3 15\n102 1 20\n103 3 10\n104 2 5",
+            "output": "102 104 103 101",
+            "explanation": "Patient 102 has ESI 1 (highest priority). Patient 104 has ESI 2. Patients 103 and 101 both have ESI 3, but patient 103 arrived at minute 10, earlier than patient 101 (minute 15). The sorted order of patient IDs is 102 104 103 101."
+        },
+        {
+            "input": "3\n201 2 30\n202 2 30\n203 1 45",
+            "output": "203 201 202",
+            "explanation": "Patient 203 has ESI 1 and is first. Patients 201 and 202 have equal ESI (2) and equal arrival times (minute 30); tie-breaking by patient ID places 201 before 202."
+        }
+    ],
+    "expected_algorithm": "Sorting",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Stable multi-criteria sorting ensures life-critical triage rules are upheld while maintaining fairness for patients with identical clinical urgency.",
+    "tags": [
+        "sorting",
+        "multi-key-sort",
+        "healthcare",
+        "triage",
+        "hospital"
+    ]
+}

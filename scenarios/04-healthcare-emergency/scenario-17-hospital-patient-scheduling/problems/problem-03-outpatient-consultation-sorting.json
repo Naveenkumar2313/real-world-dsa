@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-PATSCHED-003",
+    "scenario_id": "SCN-PATSCHED-001",
+    "sequence": 3,
+    "title": "Outpatient Consultation Timeline Sorting",
+    "difficulty": "Easy",
+    "concepts": [
+        "Sorting"
+    ],
+    "real_world_story": "Outpatient department digital monitors display all confirmed specialist appointments for the day. Bookings are submitted dynamically throughout the week. To display a coherent daily schedule across reception desks, the system must sort all appointment records chronologically by start minute, then by end minute, and finally by appointment ID in case of identical time blocks.",
+    "problem_statement": "Given N outpatient consultation records containing appointment_id, doctor_id, start_minute, and end_minute, sort the appointments according to the following order:\n1. Primarily by start_minute ascending.\n2. Secondarily by end_minute ascending.\n3. Tertiarily by appointment_id ascending.\n\nPrint the sorted appointment IDs as a single space-separated sequence.",
+    "task": "Read the consultation appointments and output the sorted appointment IDs on a single line separated by a space.",
+    "input_format": "The first line contains a single integer N, the number of appointments.\nThe next N lines each contain four space-separated integers: appointment_id, doctor_id, start_minute, and end_minute.",
+    "output_format": "Print the sorted appointment IDs on a single line, separated by a single space.",
+    "constraints": {
+        "appointments": "1 <= N <= 10^5",
+        "appointment_id": "1 <= appointment_id <= 10^9",
+        "doctor_id": "1 <= doctor_id <= 10^5",
+        "time_range": "0 <= start_minute < end_minute <= 1440"
+    },
+    "examples": [
+        {
+            "input": "3\n501 12 540 600\n502 14 480 540\n503 12 480 510",
+            "output": "503 502 501",
+            "explanation": "Appointments 502 and 503 both start at minute 480. Appointment 503 ends at 510 while 502 ends at 540, so 503 precedes 502. Appointment 501 starts later at minute 540. Order: 503 502 501."
+        },
+        {
+            "input": "2\n901 5 600 660\n902 8 600 660",
+            "output": "901 902",
+            "explanation": "Both appointments have identical start and end times; tie-breaking by appointment_id places 901 before 902."
+        }
+    ],
+    "expected_algorithm": "Sorting",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Deterministic multi-attribute sorting prevents timeline ambiguity on clinical dashboards, ensuring doctors and patients view an orderly sequence of events.",
+    "tags": [
+        "sorting",
+        "outpatient",
+        "scheduling",
+        "healthcare",
+        "calendar"
+    ]
+}

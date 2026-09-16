@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-PROJPLAN-004",
+    "scenario_id": "SCN-PROJPLAN-001",
+    "sequence": 4,
+    "title": "Milestone Subtree Hierarchy Depth Rollup",
+    "difficulty": "Medium",
+    "concepts": [
+        "Tree DFS"
+    ],
+    "real_world_story": "In a corporate Work Breakdown Structure (WBS) tree of N deliverable nodes (numbered 1 to N, rooted at master milestone 1), project directors need to analyze delegation depth and subtask counts. Given target milestone K:\n1. Find the maximum depth of the entire project tree (defined as the number of nodes on the longest downward path from root 1 to any leaf).\n2. Find the total number of subtasks located strictly within the subtree rooted at milestone K (excluding milestone K itself).",
+    "problem_statement": "Given a rooted tree of N nodes rooted at node 1 and a designated node K, calculate:\n1. The maximum depth of the tree from root 1.\n2. The number of strict descendants of node K.\n\nPrint these two integers separated by a single space.",
+    "task": "Compute the overall tree depth and the strict subtree size beneath node K using Tree DFS, and print them separated by a space.",
+    "input_format": "The first line contains two space-separated integers N and K, the total number of nodes and the target milestone ID.\nThe next N - 1 lines each contain two space-separated integers parent and child (1 <= parent, child <= N), representing a tree branch.",
+    "output_format": "Print two space-separated integers: the maximum depth of the overall tree, followed by the count of subtasks strictly beneath milestone K.",
+    "constraints": {
+        "nodes": "1 <= N <= 10^5",
+        "target_node": "1 <= K <= N",
+        "structure": "Tree is valid and rooted at node 1"
+    },
+    "examples": [
+        {
+            "input": "5 2\n1 2\n1 3\n2 4\n4 5",
+            "output": "4 2",
+            "explanation": "Longest path from root 1 is 1 -> 2 -> 4 -> 5, containing 4 nodes. Milestone K = 2 has strict descendants 4 and 5 (count = 2). Output: 4 2."
+        },
+        {
+            "input": "4 1\n1 2\n2 3\n3 4",
+            "output": "4 3",
+            "explanation": "The tree is a chain of 4 nodes, so depth is 4. For K = 1, strict descendants are 2, 3, and 4 (count = 3). Output: 4 3."
+        }
+    ],
+    "expected_algorithm": "Tree DFS",
+    "complexity": {
+        "time": "O(N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Recursive Depth-First Search traverses hierarchical trees to evaluate delegation depth and aggregate subproject workloads in linear time.",
+    "tags": [
+        "tree-dfs",
+        "tree-depth",
+        "subtree-size",
+        "wbs",
+        "project-planning"
+    ]
+}

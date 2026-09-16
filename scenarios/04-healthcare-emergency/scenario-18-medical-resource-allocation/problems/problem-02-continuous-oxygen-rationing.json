@@ -1,0 +1,47 @@
+{
+    "problem_id": "PROB-MEDRES-002",
+    "scenario_id": "SCN-MEDRES-001",
+    "sequence": 2,
+    "title": "Continuous Medical Oxygen Rationing",
+    "difficulty": "Medium",
+    "concepts": [
+        "Fractional Knapsack",
+        "Greedy"
+    ],
+    "real_world_story": "A field hospital operating during a respiratory illness surge has an emergency bulk supply of C liters of liquid medical oxygen. N hospital wards have requested oxygen allocations. Ward i requires up to w_i liters of oxygen and will achieve an aggregate clinical efficacy score of v_i if its full request is granted. Liquid oxygen is a continuous fluid: delivering a fraction f (0 <= f <= 1) of ward i's request delivers f * v_i in clinical efficacy. The emergency coordinator must determine the maximum total clinical efficacy achievable from the available C liters.",
+    "problem_statement": "Given total capacity C and N items, each with maximum volume w_i and full efficacy value v_i, calculate the maximum clinical efficacy achievable by taking arbitrary fractions f_i (0 <= f_i <= 1) of items such that the total volume does not exceed C.",
+    "task": "Compute the maximum total clinical efficacy, formatted as a floating-point number with exactly two decimal places.",
+    "input_format": "The first line contains two space-separated integers N and C, the number of ward requests and the total oxygen capacity in liters.\nThe next N lines each contain two space-separated integers w_i and v_i, representing the volume requested and the total clinical efficacy for ward i.",
+    "output_format": "Print the maximum clinical efficacy as a floating-point number rounded and formatted to exactly 2 decimal places.",
+    "constraints": {
+        "requests": "1 <= N <= 10^5",
+        "capacity": "1 <= C <= 10^9",
+        "volume": "1 <= w_i <= 10^6",
+        "efficacy": "1 <= v_i <= 10^6"
+    },
+    "examples": [
+        {
+            "input": "3 50\n10 60\n20 100\n30 120",
+            "output": "240.00",
+            "explanation": "Efficacy ratios per liter: Ward 1 = 60/10 = 6.0; Ward 2 = 100/20 = 5.0; Ward 3 = 120/30 = 4.0. Take 10 L from Ward 1 (efficacy 60.0, remaining C = 40). Take 20 L from Ward 2 (efficacy 100.0, remaining C = 20). Take 20 L from Ward 3 (fraction 20/30 * 120 = 80.0). Total efficacy = 60 + 100 + 80 = 240.00."
+        },
+        {
+            "input": "2 15\n10 50\n10 30",
+            "output": "65.00",
+            "explanation": "Ward 1 ratio is 5.0, Ward 2 ratio is 3.0. Take all 10 L of Ward 1 (50) and 5 L of Ward 2 (5/10 * 30 = 15). Total efficacy = 50 + 15 = 65.00."
+        }
+    ],
+    "expected_algorithm": "Fractional Knapsack",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "When resources are continuous and divisible, sorting by value density (value per unit volume) yields the mathematically optimal allocation with greedy efficiency.",
+    "tags": [
+        "fractional-knapsack",
+        "greedy",
+        "rationing",
+        "healthcare",
+        "resources"
+    ]
+}

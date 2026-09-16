@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-TASKSCHED-001",
+    "title": "Employee Task Scheduling",
+    "slug": "scenario-22-employee-task-scheduling",
+    "short_description": "Maximize client billing revenue with job sequencing deadlines, sort enterprise SLA support tickets, schedule uninterrupted focus sessions, and minimize build pipeline latency.",
+    "category": "Business & Productivity",
+    "industry": "Enterprise Software & Resource Management",
+    "difficulty": "Medium",
+    "real_world_context": "Professional services consultancies, IT enterprise operations centers, and software development engineering teams balance client deliverables with tight contractual Service Level Agreements (SLAs). Project leads must schedule high-value client milestones before strict deadlines expire to maximize billing revenue, sort customer ticket queues according to contract tier urgency, arrange conflict-free focus blocks for deep work and design reviews, and dispatch continuous integration build tasks using greedy Shortest Processing Time heuristics to minimize developer wait times.",
+    "learning_objectives": [
+        "Implement Job Sequencing with Deadlines to maximize billing profit and deliverable throughput.",
+        "Sort enterprise customer service tickets by SLA tier, submission timestamp, and unique ticket ID.",
+        "Apply greedy Activity Selection to schedule maximum non-overlapping technical review focus blocks.",
+        "Use greedy Shortest Processing Time dispatching to minimize cumulative waiting latency in continuous integration queues."
+    ],
+    "algorithms": [
+        "Job Sequencing with Deadlines",
+        "Sorting",
+        "Activity Selection",
+        "Greedy"
+    ],
+    "learning_path": [
+        "PROB-TASKSCHED-001",
+        "PROB-TASKSCHED-002",
+        "PROB-TASKSCHED-003",
+        "PROB-TASKSCHED-004"
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-BUDGET-001",
+    "scenario_id": "SCN-BUDGET-001",
+    "sequence": 1,
+    "title": "Corporate Capital Project Portfolio Selection",
+    "difficulty": "Medium",
+    "concepts": [
+        "0/1 Knapsack"
+    ],
+    "real_world_story": "An enterprise capital expenditure (CapEx) committee has an approved investment budget of B million dollars. N major digital transformation initiatives have been proposed by various divisions. Initiative i requires a capital outlay of c_i million dollars and is projected to deliver an estimated Net Present Value (NPV) of v_i million dollars over its lifecycle. Initiatives are discrete and indivisible: each project must either receive full funding or zero funding. Determine the maximum total NPV achievable without exceeding budget B.",
+    "problem_statement": "Given budget B and N projects, where project i has cost c_i and NPV value v_i, find the maximum total NPV achievable by funding a subset of projects such that the sum of costs does not exceed B. Each project can be selected at most once.",
+    "task": "Compute the maximum total NPV achievable within the capital expenditure budget B.",
+    "input_format": "The first line contains two space-separated integers N and B, the number of projects and the total capital budget.\nThe next N lines each contain two space-separated integers c_i and v_i, the cost and NPV of the i-th project.",
+    "output_format": "Print a single integer representing the maximum total NPV.",
+    "constraints": {
+        "projects": "1 <= N <= 1000",
+        "budget": "1 <= B <= 10^4",
+        "cost": "1 <= c_i <= 10^4",
+        "value": "1 <= v_i <= 10^5"
+    },
+    "examples": [
+        {
+            "input": "4 10\n2 12\n1 10\n3 20\n2 15",
+            "output": "57",
+            "explanation": "Total cost of all 4 projects is 2 + 1 + 3 + 2 = 8 <= 10. All 4 projects can be funded, giving total NPV 12 + 10 + 20 + 15 = 57."
+        },
+        {
+            "input": "3 5\n2 30\n3 40\n4 60",
+            "output": "70",
+            "explanation": "Options within budget 5: Projects 1 and 2 (cost 2 + 3 = 5, NPV 30 + 40 = 70); Project 3 (cost 4, NPV 60). The maximum NPV is 70."
+        }
+    ],
+    "expected_algorithm": "0/1 Knapsack",
+    "complexity": {
+        "time": "O(N * B)",
+        "space": "O(B)"
+    },
+    "real_world_takeaway": "0/1 Knapsack dynamic programming guarantees mathematically optimal capital allocation across discrete, high-impact corporate investment portfolios.",
+    "tags": [
+        "0-1-knapsack",
+        "dynamic-programming",
+        "finance",
+        "budgeting",
+        "capital-allocation"
+    ]
+}

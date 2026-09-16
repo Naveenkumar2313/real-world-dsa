@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-PATDATA-002",
+    "scenario_id": "SCN-PATDATA-001",
+    "sequence": 2,
+    "title": "Continuous Heart Rate Anomaly Window",
+    "difficulty": "Medium",
+    "concepts": [
+        "Sliding Window"
+    ],
+    "real_world_story": "An ICU bedside telemetry monitor records a patient's heart rate in beats per minute once every minute over an N-minute observation shift: h_1, h_2, ..., h_N. Clinical monitoring guidelines state that acute hemodynamic instability is signaled when the spread between the maximum and minimum heart rate recorded within any contiguous time window of K minutes is greater than or equal to a critical threshold T (i.e., max(window) - min(window) >= T). The telemetry software must compute how many of the (N - K + 1) sliding time windows of length K trigger this instability alert.",
+    "problem_statement": "Given an array of N integers representing consecutive heart rate readings, a window size K (1 <= K <= N), and a threshold T, count how many contiguous subsegments of length K satisfy the condition (max(subsegment) - min(subsegment) >= T).",
+    "task": "Count the number of length-K windows where the difference between the maximum and minimum values is at least T.",
+    "input_format": "The first line contains three space-separated integers N, K, and T.\nThe second line contains N space-separated integers h_1, h_2, ..., h_N.",
+    "output_format": "Print a single integer representing the number of anomalous windows.",
+    "constraints": {
+        "readings": "1 <= N <= 10^5",
+        "window_size": "1 <= K <= N",
+        "threshold": "0 <= T <= 200",
+        "heart_rate": "30 <= h_i <= 250"
+    },
+    "examples": [
+        {
+            "input": "6 3 20\n70 75 95 80 60 65",
+            "output": "4",
+            "explanation": "Windows of length 3:\n1. [70, 75, 95]: max=95, min=70, diff=25 >= 20 (Alert)\n2. [75, 95, 80]: max=95, min=75, diff=20 >= 20 (Alert)\n3. [95, 80, 60]: max=95, min=60, diff=35 >= 20 (Alert)\n4. [80, 60, 65]: max=80, min=60, diff=20 >= 20 (Alert)\nTotal anomalous windows = 4."
+        },
+        {
+            "input": "5 2 15\n70 72 74 71 73",
+            "output": "0",
+            "explanation": "In all windows of length 2, the difference between consecutive values is at most 3, which is strictly less than 15. Output 0."
+        }
+    ],
+    "expected_algorithm": "Sliding Window",
+    "complexity": {
+        "time": "O(N)",
+        "space": "O(K)"
+    },
+    "real_world_takeaway": "Maintaining monotonic double-ended queues allows continuous calculation of sliding window extremes in amortized O(1) time per telemetry packet.",
+    "tags": [
+        "sliding-window",
+        "telemetry",
+        "icu",
+        "anomaly-detection",
+        "healthcare"
+    ]
+}

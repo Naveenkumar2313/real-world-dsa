@@ -1,0 +1,50 @@
+{
+    "problem_id": "PROB-PROJPLAN-002",
+    "scenario_id": "SCN-PROJPLAN-001",
+    "sequence": 2,
+    "title": "Task Pipeline Minimum Execution Stages",
+    "difficulty": "Medium",
+    "concepts": [
+        "Graph BFS"
+    ],
+    "real_world_story": "A distributed build system executes N tasks (numbered 1 to N) with M prerequisite dependencies (u -> v indicates task u must complete before v can start). In this system, any tasks whose prerequisite requirements have been fully satisfied can run simultaneously in parallel during the same execution stage. Stage 1 executes all tasks with zero prerequisites. Stage k executes all tasks whose prerequisites finished in stages < k. Determine the minimum number of parallel execution stages required to complete all N tasks. If the graph contains a circular dependency, the tasks can never complete; output -1.",
+    "problem_statement": "Given a directed graph of N vertices and M edges, calculate the length of the longest path (in terms of number of vertices) in any topological ordering, which equals the minimum number of parallel execution stages needed to complete all tasks. If the graph contains a directed cycle, output -1.",
+    "task": "Find the minimum number of parallel execution stages required, or print -1 if a cycle exists.",
+    "input_format": "The first line contains two space-separated integers N and M, the number of tasks and dependencies.\nThe next M lines each contain two space-separated integers u and v (1 <= u, v <= N), representing directed edge u -> v.",
+    "output_format": "Print a single integer representing the minimum number of execution stages, or -1 if a cycle is present.",
+    "constraints": {
+        "tasks": "1 <= N <= 10^5",
+        "dependencies": "0 <= M <= 2 * 10^5",
+        "endpoints": "1 <= u, v <= N"
+    },
+    "examples": [
+        {
+            "input": "4 3\n1 2\n1 3\n2 4",
+            "output": "3",
+            "explanation": "Stage 1 executes task 1. Once task 1 finishes, Stage 2 executes tasks 2 and 3 concurrently. Once task 2 finishes, Stage 3 executes task 4. Total stages required = 3."
+        },
+        {
+            "input": "3 3\n1 2\n2 3\n3 1",
+            "output": "-1",
+            "explanation": "Dependencies form a cycle 1 -> 2 -> 3 -> 1. Tasks can never complete, outputting -1."
+        },
+        {
+            "input": "3 0",
+            "output": "1",
+            "explanation": "There are no dependencies. All 3 tasks can run simultaneously in Stage 1. Output is 1."
+        }
+    ],
+    "expected_algorithm": "Graph BFS",
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N + M)"
+    },
+    "real_world_takeaway": "Kahn's level-by-level BFS computes parallel topological waves, determining the theoretical minimum turnaround time in distributed build clusters.",
+    "tags": [
+        "graph-bfs",
+        "topological-sort",
+        "kahn-algorithm",
+        "parallel-stages",
+        "dag"
+    ]
+}

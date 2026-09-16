@@ -1,0 +1,47 @@
+{
+    "problem_id": "PROB-TASKSCHED-001",
+    "scenario_id": "SCN-TASKSCHED-001",
+    "sequence": 1,
+    "title": "Client Deliverable Revenue Maximizer",
+    "difficulty": "Medium",
+    "concepts": [
+        "Job Sequencing with Deadlines",
+        "Greedy"
+    ],
+    "real_world_story": "A technical consulting agency has signed contracts for N client deliverables. Each deliverable requires exactly 1 business day of dedicated senior engineering time (time slot 1, 2, 3, ...). Deliverable i has a contractual deadline d_i (must be completed on or before day d_i) and yields an associated billing fee p_i if fulfilled. Only one deliverable can be executed per day. Any deliverable completed after its deadline yields zero revenue and incurs breach penalties. Project management must schedule deliverables to maximize total billing profit.",
+    "problem_statement": "Given N deliverables, each with a task_id, an integer deadline d_i, and an integer profit p_i, determine the schedule that yields the maximum possible total profit. Each task takes 1 unit of time. Output the maximum profit and the count of scheduled tasks separated by a space.",
+    "task": "Find the maximum total profit achievable and the number of scheduled deliverables.",
+    "input_format": "The first line contains a single integer N, the number of deliverables.\nThe next N lines each contain three space-separated integers: task_id, d_i, and p_i.",
+    "output_format": "Print two space-separated integers: the maximum total profit, followed by the number of deliverables completed.",
+    "constraints": {
+        "tasks": "1 <= N <= 10^4",
+        "task_id": "1 <= task_id <= 10^9",
+        "deadline": "1 <= d_i <= 10^4",
+        "profit": "1 <= p_i <= 10^5"
+    },
+    "examples": [
+        {
+            "input": "4\n1 4 20\n2 1 10\n3 1 40\n4 1 30",
+            "output": "60 2",
+            "explanation": "Sorted by profit descending: task 3 (d=1, p=40) placed on day 1; task 4 (d=1, p=30) cannot fit (day 1 occupied); task 1 (d=4, p=20) placed on day 4; task 2 (d=1, p=10) cannot fit. Total profit = 40 + 20 = 60 across 2 completed tasks."
+        },
+        {
+            "input": "5\n1 2 100\n2 1 19\n3 2 27\n4 1 25\n5 3 15",
+            "output": "142 3",
+            "explanation": "Sorted by profit: task 1 (d=2, p=100) -> day 2; task 3 (d=2, p=27) -> day 1; task 4 (d=1, p=25) -> no free slot <= 1; task 2 (d=1, p=19) -> no free slot <= 1; task 5 (d=3, p=15) -> day 3. Total profit = 100 + 27 + 15 = 142 across 3 tasks."
+        }
+    ],
+    "expected_algorithm": "Job Sequencing with Deadlines",
+    "complexity": {
+        "time": "O(N log N + N * min(N, max_deadline))",
+        "space": "O(N + max_deadline)"
+    },
+    "real_world_takeaway": "Greedy job sequencing schedules high-value deliverables into their latest feasible time slots, preserving earlier slots for deliverables with tighter deadlines.",
+    "tags": [
+        "job-sequencing-with-deadlines",
+        "greedy",
+        "scheduling",
+        "enterprise",
+        "revenue"
+    ]
+}

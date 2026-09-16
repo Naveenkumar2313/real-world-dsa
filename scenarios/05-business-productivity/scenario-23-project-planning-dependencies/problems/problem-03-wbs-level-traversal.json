@@ -1,0 +1,44 @@
+{
+    "problem_id": "PROB-PROJPLAN-003",
+    "scenario_id": "SCN-PROJPLAN-001",
+    "sequence": 3,
+    "title": "Work Breakdown Structure Tier Audit",
+    "difficulty": "Easy",
+    "concepts": [
+        "Tree BFS"
+    ],
+    "real_world_story": "An enterprise initiative is organized into a Work Breakdown Structure (WBS) tree of N deliverable nodes (numbered 1 to N), rooted at master initiative 1. Each non-root deliverable reports to exactly one parent milestone, forming N - 1 directed decomposition branches. During executive portfolio reviews, leadership reviews deliverables tier-by-tier (Tier 0 is the root initiative, Tier 1 are major epics, Tier 2 are core features, etc.). To format the audit dashboard, output the deliverable IDs level-by-level, printing each tier on a separate line with IDs sorted in ascending order within that tier.",
+    "problem_statement": "Given a rooted tree of N nodes rooted at node 1 with N - 1 directed edges (parent -> child), perform a level-order traversal. Print each level's node IDs on a separate line in ascending order.",
+    "task": "Perform a level-order traversal of the WBS tree and print each tier on a separate line with sorted node IDs.",
+    "input_format": "The first line contains a single integer N, the number of nodes in the WBS.\nThe next N - 1 lines each contain two space-separated integers parent and child (1 <= parent, child <= N), representing a branch.",
+    "output_format": "Print each tier of the tree on a new line, with node IDs separated by a single space and sorted ascending.",
+    "constraints": {
+        "nodes": "1 <= N <= 10^5",
+        "structure": "Tree is valid and rooted at node 1"
+    },
+    "examples": [
+        {
+            "input": "4\n1 2\n1 3\n3 4",
+            "output": "1\n2 3\n4",
+            "explanation": "Tier 0 is root 1. Tier 1 has direct children 2 and 3. Tier 2 has child 4 (under node 3)."
+        },
+        {
+            "input": "5\n1 2\n1 4\n2 3\n4 5",
+            "output": "1\n2 4\n3 5",
+            "explanation": "Tier 0: 1. Tier 1: 2 and 4. Tier 2: 3 and 5."
+        }
+    ],
+    "expected_algorithm": "Tree BFS",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Tree BFS level-order traversal formats hierarchical project decompositions into clean tier-by-tier reporting structures for executive reviews.",
+    "tags": [
+        "tree-bfs",
+        "level-order-traversal",
+        "wbs",
+        "project-management",
+        "hierarchy"
+    ]
+}

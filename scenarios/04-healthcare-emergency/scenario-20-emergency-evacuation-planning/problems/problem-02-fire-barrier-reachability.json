@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-EVAC-002",
+    "scenario_id": "SCN-EVAC-001",
+    "sequence": 2,
+    "title": "Fire Barrier Compartment Reachability",
+    "difficulty": "Medium",
+    "concepts": [
+        "Graph DFS"
+    ],
+    "real_world_story": "Automatic fire suppression barriers have sealed several wings of a hospital to contain smoke spread. The floor is divided into N room junctions (numbered 1 to N), with M surviving open corridors connecting them. An emergency search-and-rescue team is stationed at junction K. To ensure every patient in the accessible sector is accounted for, the search coordinator must identify the total number of junctions in K's connected fire compartment and output the list of all reachable room junctions in ascending numerical order.",
+    "problem_statement": "Given an undirected graph of N vertices and M edges, find all vertices in the connected component containing vertex K. Output the size of this connected component on the first line, and the sorted list of reachable vertex IDs on the second line separated by a single space.",
+    "task": "Find all vertices reachable from vertex K using depth-first search, count them, and list them in ascending order.",
+    "input_format": "The first line contains three space-separated integers N, M, and K, representing the total vertices, edges, and starting junction.\nThe next M lines each contain two space-separated integers u and v (1 <= u, v <= N), representing an open corridor.",
+    "output_format": "The first line of output must contain a single integer: the number of reachable junctions (including K itself).\nThe second line must contain the reachable junction IDs in ascending numerical order, separated by a single space.",
+    "constraints": {
+        "vertices": "1 <= N <= 10^5",
+        "edges": "0 <= M <= 2 * 10^5",
+        "start_node": "1 <= K <= N",
+        "corridors": "1 <= u, v <= N"
+    },
+    "examples": [
+        {
+            "input": "6 4 2\n1 2\n2 3\n4 5\n5 6",
+            "output": "3\n1 2 3",
+            "explanation": "Junctions 1, 2, and 3 form one connected compartment. Junctions 4, 5, and 6 form a separate compartment. Starting from junction K = 2, reachable junctions are 1, 2, and 3 (count = 3)."
+        },
+        {
+            "input": "4 0 3",
+            "output": "1\n3",
+            "explanation": "There are no open corridors (M = 0). Only junction 3 itself is in the compartment."
+        }
+    ],
+    "expected_algorithm": "Graph DFS",
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N + M)"
+    },
+    "real_world_takeaway": "Depth-First Search systematically traverses connected components to determine all reachable zones within partitioned facility infrastructure.",
+    "tags": [
+        "graph-dfs",
+        "connected-components",
+        "fire-safety",
+        "hospital",
+        "reachability"
+    ]
+}

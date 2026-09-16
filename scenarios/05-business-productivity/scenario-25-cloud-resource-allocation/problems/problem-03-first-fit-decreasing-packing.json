@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-CLOUDRES-003",
+    "scenario_id": "SCN-CLOUDRES-001",
+    "sequence": 3,
+    "title": "First-Fit Decreasing Workload Server Packing",
+    "difficulty": "Medium",
+    "concepts": [
+        "Greedy",
+        "Sorting"
+    ],
+    "real_world_story": "A cloud datacenter operator runs batch processing workloads on identical physical servers, each with capacity C compute units. N background batch jobs have arrived, with compute unit demands c_1, c_2, ..., c_N (where each c_i <= C). To minimize power consumption and datacenter cooling costs, the scheduler consolidates workloads into the minimum number of active servers using the First-Fit Decreasing (FFD) greedy heuristic:\n1. Sort all jobs in descending order of compute demand. If two jobs have the same demand, preserve their relative input order (stable sort).\n2. For each job in sorted order, iterate through all currently opened servers in order of creation (Server 1, Server 2, ...). Place the job into the first server that has enough remaining capacity to accommodate it.\n3. If no existing server has enough remaining capacity, boot a new server and place the job into it.\n\nCalculate the total number of physical servers booted under this heuristic.",
+    "problem_statement": "Given N job compute demands and server capacity C, simulate the First-Fit Decreasing (FFD) bin-packing algorithm and determine the total number of servers booted.",
+    "task": "Simulate First-Fit Decreasing packing and print the total number of servers booted.",
+    "input_format": "The first line contains two space-separated integers N and C, the number of jobs and server capacity.\nThe second line contains N space-separated integers c_1, c_2, ..., c_N, representing the compute demands of the jobs.",
+    "output_format": "Print a single integer representing the total number of servers booted.",
+    "constraints": {
+        "jobs": "1 <= N <= 10^4",
+        "capacity": "1 <= C <= 10^5",
+        "demands": "1 <= c_i <= C"
+    },
+    "examples": [
+        {
+            "input": "5 10\n4 8 2 5 6",
+            "output": "3",
+            "explanation": "Sorted demands descending: [8, 6, 5, 4, 2].\n- Job 8 placed in Server 1 (remaining capacity: 2).\n- Job 6 cannot fit in Server 1 (remaining 2 < 6); boot Server 2 (remaining: 4).\n- Job 5 cannot fit in Server 1 (2) or Server 2 (4); boot Server 3 (remaining: 5).\n- Job 4 fits in Server 2 (remaining: 0).\n- Job 2 fits in Server 1 (remaining: 0).\nTotal servers booted = 3."
+        },
+        {
+            "input": "3 10\n5 5 5",
+            "output": "2",
+            "explanation": "Demands: [5, 5, 5]. Job 1 -> Server 1 (rem 5). Job 2 -> Server 1 (rem 0). Job 3 -> Server 2 (rem 5). Total servers booted = 2."
+        }
+    ],
+    "expected_algorithm": "Greedy",
+    "complexity": {
+        "time": "O(N log N + N * S)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "First-Fit Decreasing provides a fast, provably near-optimal bin packing approximation, minimizing powered-on hardware and carbon footprint in cloud datacenters.",
+    "tags": [
+        "greedy",
+        "sorting",
+        "bin-packing",
+        "first-fit-decreasing",
+        "cloud"
+    ]
+}

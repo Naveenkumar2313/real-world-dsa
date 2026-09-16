@@ -1,0 +1,50 @@
+{
+    "problem_id": "PROB-EVAC-001",
+    "scenario_id": "SCN-EVAC-001",
+    "sequence": 1,
+    "title": "Hospital Evacuation Shortest Corridor Route",
+    "difficulty": "Easy",
+    "concepts": [
+        "Graph BFS"
+    ],
+    "real_world_story": "During a hospital emergency evacuation, navigation displays guide staff and patients from compromised inpatient wards to safe exterior assembly points. The hospital floor plan is mapped as an unweighted network of N junction points (numbered 1 to N) connected by M bidirectional hallways. Safety controllers need to find the minimum number of hallway transitions required to move patients from ward junction S to safe exit junction E. If S and E are the same junction, the distance is 0 hops. If no connected sequence of hallways connects S to E, report -1.",
+    "problem_statement": "Given an unweighted undirected graph with N vertices and M edges, and two designated vertices S and E, find the shortest path distance (measured in number of edges) from S to E. If S is not connected to E, output -1.",
+    "task": "Find the minimum number of corridor transitions between junction S and exit E, or print -1 if no path exists.",
+    "input_format": "The first line contains two space-separated integers N and M, the number of junctions and hallways.\nThe next M lines each contain two space-separated integers u and v (1 <= u, v <= N), representing an undirected hallway between junction u and junction v.\nThe last line contains two space-separated integers S and E, the starting junction and the exit junction.",
+    "output_format": "Print a single integer representing the minimum number of corridor hops from S to E, or -1 if unreachable.",
+    "constraints": {
+        "vertices": "1 <= N <= 10^5",
+        "edges": "0 <= M <= 2 * 10^5",
+        "endpoints": "1 <= S, E, u, v <= N"
+    },
+    "examples": [
+        {
+            "input": "5 5\n1 2\n2 3\n3 4\n4 5\n1 4\n1 5",
+            "output": "2",
+            "explanation": "Direct route 1 -> 4 -> 5 takes 2 hops, which is shorter than 1 -> 2 -> 3 -> 4 -> 5 (4 hops). Distance is 2."
+        },
+        {
+            "input": "4 1\n1 2\n1 4",
+            "output": "-1",
+            "explanation": "Junction 4 is completely disconnected from junction 1. Exit 4 cannot be reached from 1, outputting -1."
+        },
+        {
+            "input": "3 2\n1 2\n2 3\n2 2",
+            "output": "0",
+            "explanation": "Source and destination are the same node (2), requiring 0 hops."
+        }
+    ],
+    "expected_algorithm": "Graph BFS",
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N + M)"
+    },
+    "real_world_takeaway": "Breadth-First Search on unweighted graphs explores outward in concentric layers, guaranteeing that the first time a destination is reached, the route contains the minimum possible hops.",
+    "tags": [
+        "graph-bfs",
+        "shortest-path",
+        "evacuation",
+        "hospital",
+        "safety"
+    ]
+}

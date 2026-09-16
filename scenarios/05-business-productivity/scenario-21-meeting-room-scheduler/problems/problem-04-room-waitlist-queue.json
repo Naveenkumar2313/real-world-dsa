@@ -1,0 +1,44 @@
+{
+    "problem_id": "PROB-MEETSCHED-004",
+    "scenario_id": "SCN-MEETSCHED-001",
+    "sequence": 4,
+    "title": "Conference Room Waitlist Queue",
+    "difficulty": "Easy",
+    "concepts": [
+        "Queue Operations"
+    ],
+    "real_world_story": "An office campus maintains an automated reservation kiosk for ad-hoc huddle rooms. During peak afternoon hours, all huddle spaces are occupied, so project teams enter a First-In-First-Out (FIFO) waitlist. When an occupant checks out, the kiosk allocates the room to the team that joined the waitlist first. System monitoring periodically inspects the front of the queue and counts pending requests.",
+    "problem_statement": "Implement a FIFO room waitlist queue supporting Q sequential operations:\n1. 'REQUEST <team_id>': Adds team <team_id> to the rear of the waitlist.\n2. 'ALLOCATE': Removes and prints the <team_id> of the team at the front of the waitlist. If the waitlist is empty, print 'EMPTY'.\n3. 'PEEK': Prints the <team_id> at the front of the waitlist without removing them. If the waitlist is empty, print 'EMPTY'.\n4. 'PENDING': Prints the total count of teams currently waiting in the waitlist.",
+    "task": "Execute all Q waitlist operations and print the result for each ALLOCATE, PEEK, and PENDING command on a separate line.",
+    "input_format": "The first line contains a single integer Q, the number of queue operations.\nThe next Q lines each contain one command: 'REQUEST <team_id>', 'ALLOCATE', 'PEEK', or 'PENDING'.",
+    "output_format": "For each 'ALLOCATE', 'PEEK', and 'PENDING' command, print the corresponding result on a separate line.",
+    "constraints": {
+        "operations": "1 <= Q <= 10^5",
+        "team_id": "1 <= team_id <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "6\nREQUEST 11\nREQUEST 22\nPEEK\nPENDING\nALLOCATE\nALLOCATE",
+            "output": "11\n2\n11\n22",
+            "explanation": "Teams 11 and 22 join the waitlist. 'PEEK' shows team 11 at the head. 'PENDING' shows 2 teams waiting. The first 'ALLOCATE' assigns a room to team 11, and the second assigns a room to team 22."
+        },
+        {
+            "input": "3\nALLOCATE\nPEEK\nPENDING",
+            "output": "EMPTY\nEMPTY\n0",
+            "explanation": "With an initially empty waitlist, 'ALLOCATE' and 'PEEK' both print 'EMPTY', and 'PENDING' prints 0."
+        }
+    ],
+    "expected_algorithm": "Queue Operations",
+    "complexity": {
+        "time": "O(1) amortized per operation",
+        "space": "O(Q)"
+    },
+    "real_world_takeaway": "FIFO waitlist queues ensure equitable access to scarce corporate physical amenities, eliminating favoritism and priority inversion.",
+    "tags": [
+        "queue",
+        "fifo",
+        "waitlist",
+        "workplace",
+        "kiosk"
+    ]
+}

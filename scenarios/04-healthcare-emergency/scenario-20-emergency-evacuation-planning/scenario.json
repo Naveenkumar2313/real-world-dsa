@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-EVAC-001",
+    "title": "Emergency Evacuation Planning",
+    "slug": "scenario-20-emergency-evacuation-planning",
+    "short_description": "Compute shortest safe evacuation corridor hops, evaluate fire containment zones, broadcast incident alerts tier-by-tier, and audit ward tree hierarchies.",
+    "category": "Healthcare & Emergency Systems",
+    "industry": "Healthcare & Clinical Operations",
+    "difficulty": "Medium",
+    "real_world_context": "Hospital infrastructure must maintain rigorous emergency disaster evacuation protocols to safeguard immobile patients, medical personnel, and critical life-support apparatus during fires, gas leaks, or seismic events. Hospital safety management platforms model facility layouts as corridor networks and administrative command trees. During an evacuation, navigation systems use Breadth-First Search (BFS) to find the shortest unweighted corridor route from compromised wards to safe exterior exits, Depth-First Search (DFS) to map isolated fire-barrier compartments, Tree BFS to broadcast code-red incident instructions down chain-of-command tiers, and Tree DFS to audit hierarchical ward evacuation dependencies.",
+    "learning_objectives": [
+        "Apply Breadth-First Search (BFS) on unweighted corridor graphs to find the minimum number of transitions to a safe hospital exit.",
+        "Use Depth-First Search (DFS) to identify and inspect all reachable rooms within an isolated fire barrier compartment.",
+        "Execute Tree BFS (level-order traversal) to coordinate tier-by-tier emergency alert broadcasts across incident response hierarchies.",
+        "Apply Tree DFS to calculate hierarchy depth and dependent sub-ward capacity across hospital emergency trees."
+    ],
+    "algorithms": [
+        "Graph BFS",
+        "Graph DFS",
+        "Tree BFS",
+        "Tree DFS"
+    ],
+    "learning_path": [
+        "PROB-EVAC-001",
+        "PROB-EVAC-002",
+        "PROB-EVAC-003",
+        "PROB-EVAC-004"
+    ]
+}

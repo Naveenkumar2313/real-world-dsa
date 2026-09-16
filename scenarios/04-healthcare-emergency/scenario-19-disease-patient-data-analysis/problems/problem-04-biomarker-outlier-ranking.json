@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-PATDATA-004",
+    "scenario_id": "SCN-PATDATA-001",
+    "sequence": 4,
+    "title": "Biomarker Outlier Triage Ranking",
+    "difficulty": "Easy",
+    "concepts": [
+        "Sorting"
+    ],
+    "real_world_story": "An automated laboratory diagnostics analyzer processes routine blood chemistry panels for N patients. Each panel is tagged with a patient_id and a computed critical_biomarker_score (higher scores indicate severe deviations from normative homeostasis, such as elevated troponin or high serum potassium). To prevent delayed notifications for patients at risk of rapid deterioration, the alerting service must rank patient panels in descending order of critical_biomarker_score. If two patients have identical biomarker scores, tie-break by patient_id ascending.",
+    "problem_statement": "Given N patient test records, each with an integer patient_id and an integer critical_biomarker_score, sort the patients according to:\n1. critical_biomarker_score descending (higher risk first).\n2. patient_id ascending (tie-breaker).\n\nPrint the sorted patient IDs separated by a single space.",
+    "task": "Order the patients by biomarker severity and print their IDs on a single line separated by a space.",
+    "input_format": "The first line contains a single integer N, the number of patient records.\nThe next N lines each contain two space-separated integers: patient_id and critical_biomarker_score.",
+    "output_format": "Print the sorted sequence of patient IDs on a single line, separated by a single space.",
+    "constraints": {
+        "patients": "1 <= N <= 10^5",
+        "patient_id": "1 <= patient_id <= 10^9",
+        "biomarker_score": "0 <= critical_biomarker_score <= 10^6"
+    },
+    "examples": [
+        {
+            "input": "4\n104 88\n101 95\n103 88\n102 72",
+            "output": "101 103 104 102",
+            "explanation": "Patient 101 has the highest biomarker score (95). Patients 103 and 104 both have score 88; tie-breaking by patient ID places 103 before 104. Patient 102 has score 72. Sorted order: 101 103 104 102."
+        },
+        {
+            "input": "2\n500 120\n400 120",
+            "output": "400 500",
+            "explanation": "Both patients have identical biomarker scores (120). Tie-breaking by patient ID places 400 before 500."
+        }
+    ],
+    "expected_algorithm": "Sorting",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Sorting clinical outliers by risk magnitude ensures automated laboratory systems immediately flag patients requiring urgent intervention.",
+    "tags": [
+        "sorting",
+        "laboratory",
+        "pathology",
+        "biomarkers",
+        "healthcare"
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-TASKSCHED-003",
+    "scenario_id": "SCN-TASKSCHED-001",
+    "sequence": 3,
+    "title": "Uninterrupted Sprint Review Slot Selection",
+    "difficulty": "Medium",
+    "concepts": [
+        "Activity Selection",
+        "Greedy"
+    ],
+    "real_world_story": "A principal software architect needs to attend peer technical design review sessions throughout an intensive sprint review day. N sessions have been proposed across multiple engineering teams. Session i begins at start minute s_i and concludes at finish minute f_i. The architect can participate in only one session at any given time. If session A concludes at minute T, session B can begin at minute T. The architect wishes to participate in the maximum possible number of design review sessions.",
+    "problem_statement": "Given N proposed review sessions with start time s_i and finish time f_i (s_i < f_i), find the maximum number of non-overlapping review sessions that the architect can attend.",
+    "task": "Compute the maximum number of non-overlapping sessions that can be scheduled.",
+    "input_format": "The first line contains a single integer N, the number of proposed sessions.\nThe next N lines each contain two space-separated integers s_i and f_i.",
+    "output_format": "Print a single integer representing the maximum number of sessions the architect can attend.",
+    "constraints": {
+        "sessions": "1 <= N <= 10^5",
+        "times": "0 <= s_i < f_i <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "4\n100 200\n150 250\n200 300\n280 350",
+            "output": "2",
+            "explanation": "Sorted by finish time: [100, 200], [150, 250], [200, 300], [280, 350]. Selecting [100, 200] leaves [200, 300] compatible (one finishes at 200, the next begins at 200). Maximum sessions attended = 2."
+        },
+        {
+            "input": "3\n10 30\n20 40\n30 50",
+            "output": "2",
+            "explanation": "Selecting [10, 30] and [30, 50] yields 2 compatible sessions."
+        }
+    ],
+    "expected_algorithm": "Activity Selection",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Greedy activity selection based on earliest finish time maximizes individual professional engagement across dense calendar commitments.",
+    "tags": [
+        "activity-selection",
+        "greedy",
+        "calendar",
+        "productivity",
+        "workplace"
+    ]
+}

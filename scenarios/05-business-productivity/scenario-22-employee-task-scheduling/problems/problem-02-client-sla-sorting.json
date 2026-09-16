@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-TASKSCHED-002",
+    "scenario_id": "SCN-TASKSCHED-001",
+    "sequence": 2,
+    "title": "Enterprise SLA Ticket Turnaround Sorting",
+    "difficulty": "Easy",
+    "concepts": [
+        "Sorting"
+    ],
+    "real_world_story": "An enterprise SaaS customer support desk receives N incident tickets from corporate clients. Each ticket is tagged with ticket_id, client_sla_tier (1 = Platinum Enterprise, 2 = Gold Business, 3 = Silver Standard), and submission_minute. To prevent contractual financial SLA penalties, the ticketing engine sorts incoming tickets so that Platinum clients are handled first. If two tickets belong to the same SLA tier, the earlier submission must be processed first. If both tier and submission time match, break ties by ticket_id ascending.",
+    "problem_statement": "Given N incident tickets with ticket_id, client_sla_tier, and submission_minute, sort the tickets according to:\n1. client_sla_tier ascending (tier 1 before tier 2, etc.).\n2. submission_minute ascending (earlier submission first).\n3. ticket_id ascending (tie-breaker).\n\nPrint the sorted ticket IDs on a single line separated by a space.",
+    "task": "Sort the tickets according to contractual SLA criteria and print the ordered ticket IDs separated by a single space.",
+    "input_format": "The first line contains a single integer N, the number of tickets.\nThe next N lines each contain three space-separated integers: ticket_id, client_sla_tier, and submission_minute.",
+    "output_format": "Print the sorted sequence of ticket IDs on a single line, separated by a single space.",
+    "constraints": {
+        "tickets": "1 <= N <= 10^5",
+        "ticket_id": "1 <= ticket_id <= 10^9",
+        "sla_tier": "1 <= client_sla_tier <= 5",
+        "submission_minute": "0 <= submission_minute <= 1440"
+    },
+    "examples": [
+        {
+            "input": "4\n101 2 150\n102 1 200\n103 2 120\n104 1 180",
+            "output": "104 102 103 101",
+            "explanation": "Tickets 104 and 102 have SLA Tier 1; 104 arrived at minute 180, earlier than 102 (minute 200). Tickets 103 and 101 have SLA Tier 2; 103 arrived at minute 120, earlier than 101 (minute 150). Final order: 104 102 103 101."
+        },
+        {
+            "input": "2\n50 1 100\n40 1 100",
+            "output": "40 50",
+            "explanation": "Both tickets have identical SLA Tier (1) and submission time (100); tie-breaking by ticket_id places 40 before 50."
+        }
+    ],
+    "expected_algorithm": "Sorting",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Deterministic multi-criteria sorting ensures enterprise support desks prioritize revenue-critical customer contracts without violating first-come fairness within tiers.",
+    "tags": [
+        "sorting",
+        "sla",
+        "customer-support",
+        "enterprise",
+        "prioritization"
+    ]
+}

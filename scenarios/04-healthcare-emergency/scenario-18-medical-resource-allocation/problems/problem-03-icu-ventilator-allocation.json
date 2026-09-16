@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-MEDRES-003",
+    "scenario_id": "SCN-MEDRES-001",
+    "sequence": 3,
+    "title": "Critical ICU Ventilator Allocation",
+    "difficulty": "Easy",
+    "concepts": [
+        "Greedy",
+        "Sorting"
+    ],
+    "real_world_story": "An Intensive Care Unit (ICU) has M operational mechanical ventilators available. There are N patients currently suffering from acute hypoxemic respiratory distress. Clinical evaluation assigns each patient i an oxygen saturation deficit score d_i (representing how far their blood oxygen levels have plummeted below normal). Each ventilator can support exactly 1 patient. The clinical protocol dictates allocating ventilators to the patients with the highest deficit scores first. If M >= N, every patient receives a ventilator. Determine the maximum sum of deficit scores addressed by assigning the M ventilators.",
+    "problem_statement": "Given N patient deficit scores and M available ventilators, select at most min(N, M) patients such that the sum of their deficit scores is maximized.",
+    "task": "Compute the sum of oxygen deficit scores addressed for the selected patients.",
+    "input_format": "The first line contains two space-separated integers N and M, the number of patients and the number of available ventilators.\nThe second line contains N space-separated integers d_1, d_2, ..., d_N, the deficit scores of the patients.",
+    "output_format": "Print a single integer representing the maximum total deficit score addressed.",
+    "constraints": {
+        "patients": "1 <= N <= 10^5",
+        "ventilators": "1 <= M <= 10^5",
+        "deficit": "1 <= d_i <= 10^6"
+    },
+    "examples": [
+        {
+            "input": "5 3\n15 42 28 8 35",
+            "output": "105",
+            "explanation": "Sorting deficit scores in descending order gives [42, 35, 28, 15, 8]. Allocating the 3 ventilators to the top 3 patients yields 42 + 35 + 28 = 105."
+        },
+        {
+            "input": "3 5\n20 10 30",
+            "output": "60",
+            "explanation": "There are 5 ventilators and only 3 patients. All 3 patients receive a ventilator, addressing a total deficit of 30 + 20 + 10 = 60."
+        }
+    ],
+    "expected_algorithm": "Greedy",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Greedy priority selection ensures that life-saving ICU machinery is assigned to the patients at greatest acute risk, maximizing overall survival benefit.",
+    "tags": [
+        "greedy",
+        "sorting",
+        "icu",
+        "triage",
+        "healthcare"
+    ]
+}

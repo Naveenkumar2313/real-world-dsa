@@ -1,0 +1,47 @@
+{
+    "problem_id": "PROB-BUDGET-002",
+    "scenario_id": "SCN-BUDGET-001",
+    "sequence": 2,
+    "title": "Corporate Treasury Divisible Asset Allocation",
+    "difficulty": "Medium",
+    "concepts": [
+        "Fractional Knapsack",
+        "Greedy"
+    ],
+    "real_world_story": "A corporate treasury department holds B million dollars in short-term cash reserves. N financial securities (such as commercial paper, overnight repurchase agreements, and government treasury bills) are available. Security i can absorb up to c_i million dollars and generates an expected interest return of r_i million dollars if fully funded. Corporate treasury can allocate arbitrary fractional amounts of capital to any security (allocating fraction f of capacity c_i yields f * r_i in interest). The treasury director must determine the maximum total interest return achievable.",
+    "problem_statement": "Given total liquidity budget B and N securities, each with maximum capacity c_i and full return r_i, find the maximum return achievable by allocating funds fractionally such that the total capital allocated does not exceed B.",
+    "task": "Compute the maximum total return, rounded and formatted to exactly two decimal places.",
+    "input_format": "The first line contains two space-separated integers N and B, the number of securities and the liquidity budget.\nThe next N lines each contain two space-separated integers c_i and r_i, representing the maximum capacity and full return for security i.",
+    "output_format": "Print the maximum total return as a floating-point number formatted to exactly 2 decimal places.",
+    "constraints": {
+        "securities": "1 <= N <= 10^5",
+        "budget": "1 <= B <= 10^9",
+        "capacity": "1 <= c_i <= 10^6",
+        "return": "1 <= r_i <= 10^6"
+    },
+    "examples": [
+        {
+            "input": "3 50\n20 100\n30 120\n10 50",
+            "output": "230.00",
+            "explanation": "Yield ratios: Security 1: 100/20 = 5.0; Security 2: 120/30 = 4.0; Security 3: 50/10 = 5.0. Allocate 20 to Security 1 (return 100.0, remaining B = 30). Allocate 10 to Security 3 (return 50.0, remaining B = 20). Allocate 20 to Security 2 (fraction 20/30 * 120 = 80.0). Total return = 100 + 50 + 80 = 230.00."
+        },
+        {
+            "input": "2 25\n20 80\n20 60",
+            "output": "95.00",
+            "explanation": "Security 1 ratio = 4.0, Security 2 ratio = 3.0. Allocate 20 to Security 1 (80.0), and remaining 5 to Security 2 (5/20 * 60 = 15.0). Total return = 80 + 15 = 95.00."
+        }
+    ],
+    "expected_algorithm": "Fractional Knapsack",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "When investment capital is continuous and divisible, greedy allocation prioritized by yield density maximizes total financial return.",
+    "tags": [
+        "fractional-knapsack",
+        "greedy",
+        "treasury",
+        "finance",
+        "liquidity"
+    ]
+}

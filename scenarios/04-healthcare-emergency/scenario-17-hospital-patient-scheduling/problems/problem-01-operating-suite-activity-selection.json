@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-PATSCHED-001",
+    "scenario_id": "SCN-PATSCHED-001",
+    "sequence": 1,
+    "title": "Operating Suite Maximum Surgery Allocation",
+    "difficulty": "Medium",
+    "concepts": [
+        "Activity Selection",
+        "Greedy"
+    ],
+    "real_world_story": "A hospital has one sterile hybrid robotic operating room. Surgeons from various specialties have submitted N surgical booking requests for tomorrow. Each request i specifies a start minute s_i and finish minute f_i. Due to strict sterility protocols, only one surgery can occupy the suite at any moment. A surgery that finishes at minute T allows another surgery to commence immediately at minute T. Hospital management wants to perform as many procedures as possible.",
+    "problem_statement": "Given N surgical requests with start time s_i and finish time f_i (where s_i < f_i), determine the maximum number of mutually compatible, non-overlapping surgical procedures that can be conducted in the single operating suite.",
+    "task": "Calculate the maximum number of non-overlapping surgeries that can be scheduled.",
+    "input_format": "The first line contains a single integer N, the number of surgical requests.\nThe next N lines each contain two space-separated integers s_i and f_i, representing the start and finish times.",
+    "output_format": "Print a single integer representing the maximum number of surgeries that can be scheduled.",
+    "constraints": {
+        "requests": "1 <= N <= 10^5",
+        "time_range": "0 <= s_i < f_i <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "4\n1 4\n3 5\n0 6\n5 7",
+            "output": "2",
+            "explanation": "Surgeries sorted by finish time: [1, 4], [3, 5], [0, 6], [5, 7]. Selecting [1, 4] leaves next compatible surgery [5, 7]. Maximum scheduled surgeries = 2."
+        },
+        {
+            "input": "3\n10 20\n20 30\n30 40",
+            "output": "3",
+            "explanation": "All three surgeries are contiguous with no overlapping interior time: surgery 1 finishes at 20, surgery 2 starts at 20 and finishes at 30, surgery 3 starts at 30. All 3 can be scheduled."
+        }
+    ],
+    "expected_algorithm": "Activity Selection",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Greedy activity selection (earliest deadline / finish time first) mathematically guarantees the maximum count of compatible events in a single resource.",
+    "tags": [
+        "activity-selection",
+        "greedy",
+        "scheduling",
+        "operating-room",
+        "healthcare"
+    ]
+}

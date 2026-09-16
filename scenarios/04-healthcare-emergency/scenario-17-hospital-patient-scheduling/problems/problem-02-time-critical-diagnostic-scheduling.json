@@ -1,0 +1,47 @@
+{
+    "problem_id": "PROB-PATSCHED-002",
+    "scenario_id": "SCN-PATSCHED-001",
+    "sequence": 2,
+    "title": "Time-Critical Diagnostic Scan Scheduling",
+    "difficulty": "Medium",
+    "concepts": [
+        "Job Sequencing with Deadlines",
+        "Greedy"
+    ],
+    "real_world_story": "A specialized PET/CT radiodiagnostic scanner operates in discrete 1-hour unit time slots (hour 1, hour 2, hour 3, ...). There are N diagnostic requests. Each scan i requires exactly 1 hour of scanner time, has a deadline d_i (must be completed by or on hour d_i), and delivers diagnostic urgency value v_i if completed on time. If a scan cannot be completed by its deadline, it cannot be scheduled today. Only one patient can occupy the scanner in each 1-hour slot.",
+    "problem_statement": "Given N diagnostic scan requests, each with a unique ID scan_id, an integer deadline d_i, and an integer urgency score v_i, find the schedule that maximizes the total clinical urgency score achievable without violating any scan's deadline. Output the maximum total urgency score and the total number of scans successfully scheduled.",
+    "task": "Find the maximum diagnostic score achievable and the count of scheduled scans, separated by a single space.",
+    "input_format": "The first line contains a single integer N, the number of scan requests.\nThe next N lines each contain three space-separated integers: scan_id, d_i, and v_i.",
+    "output_format": "Print two space-separated integers: the maximum total urgency score, followed by the count of scheduled scans.",
+    "constraints": {
+        "scans": "1 <= N <= 10^4",
+        "scan_id": "1 <= scan_id <= 10^9",
+        "deadline": "1 <= d_i <= 10^4",
+        "urgency_score": "1 <= v_i <= 10^5"
+    },
+    "examples": [
+        {
+            "input": "4\n1 4 70\n2 1 80\n3 1 30\n4 2 100",
+            "output": "250 3",
+            "explanation": "Sorted by urgency score descending: scan 4 (d=2, v=100) -> placed in slot 2; scan 2 (d=1, v=80) -> placed in slot 1; scan 1 (d=4, v=70) -> placed in slot 4; scan 3 (d=1, v=30) -> deadline 1 has no free slot <= 1. Scheduled scans: 4, 2, 1. Total score = 100 + 80 + 70 = 250 across 3 scans."
+        },
+        {
+            "input": "3\n10 1 50\n20 1 60\n30 1 40",
+            "output": "60 1",
+            "explanation": "All three scans have deadline 1, meaning only 1 scan can be scheduled in slot 1. The maximum urgency scan is scan 20 with value 60. Output: 60 1."
+        }
+    ],
+    "expected_algorithm": "Job Sequencing with Deadlines",
+    "complexity": {
+        "time": "O(N log N + N * min(N, max_deadline))",
+        "space": "O(N + max_deadline)"
+    },
+    "real_world_takeaway": "Job Sequencing with Deadlines prioritizes the highest clinical value procedures into the latest possible feasible slots, leaving earlier slots available for scans with tighter deadlines.",
+    "tags": [
+        "job-sequencing-with-deadlines",
+        "greedy",
+        "scheduling",
+        "radiology",
+        "healthcare"
+    ]
+}

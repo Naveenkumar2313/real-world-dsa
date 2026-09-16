@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-PATDATA-003",
+    "scenario_id": "SCN-PATDATA-001",
+    "sequence": 3,
+    "title": "Therapeutic Drug Concentration Verification",
+    "difficulty": "Easy",
+    "concepts": [
+        "Binary Search"
+    ],
+    "real_world_story": "A hospital's automated prescription validation engine interfaces with a certified clinical pharmacovigilance database. The database maintains a strictly increasing sorted list of N approved therapeutic blood serum concentration thresholds (measured in mg/L). When an electronic prescription is entered, the clinical engine issues Q queries, each inquiring whether an exact target concentration X is present in the certified list. If X is present, the engine outputs its 1-based index in the approved registry; if not, it outputs -1 so that a clinical pharmacist is flagged for manual review.",
+    "problem_statement": "Given a strictly sorted array of N distinct integers and Q query values X, determine for each query whether X exists in the array. If it does, output its 1-based index; otherwise, output -1.",
+    "task": "For each of the Q query values, find its 1-based position using logarithmic search, or output -1 if absent.",
+    "input_format": "The first line contains two space-separated integers N and Q.\nThe second line contains N strictly increasing space-separated integers representing the certified concentration levels.\nThe next Q lines each contain a single integer X representing a query concentration.",
+    "output_format": "For each query, print its 1-based index in the array on a separate line, or print -1 if the value is not present.",
+    "constraints": {
+        "elements": "1 <= N <= 10^5",
+        "queries": "1 <= Q <= 10^5",
+        "values": "1 <= array[i], X <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "5 3\n12 25 38 54 80\n38\n10\n80",
+            "output": "3\n-1\n5",
+            "explanation": "Query 38 is present at 1-based index 3. Query 10 is not present in the array, so -1 is printed. Query 80 is present at 1-based index 5."
+        },
+        {
+            "input": "3 1\n100 200 300\n250",
+            "output": "-1",
+            "explanation": "Query 250 does not exist in the array, outputting -1."
+        }
+    ],
+    "expected_algorithm": "Binary Search",
+    "complexity": {
+        "time": "O(Q log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Binary search provides predictable O(log N) lookup latency across sorted pharmacological safety databases, enabling real-time clinical decision validation.",
+    "tags": [
+        "binary-search",
+        "pharmacology",
+        "clinical-safety",
+        "lookup",
+        "healthcare"
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-MEDRES-004",
+    "scenario_id": "SCN-MEDRES-001",
+    "sequence": 4,
+    "title": "Disaster Supply Convoy Capacity Provisioning",
+    "difficulty": "Hard",
+    "concepts": [
+        "Binary Search on Answer",
+        "Greedy"
+    ],
+    "real_world_story": "A central medical warehouse must ship N sealed containers of vaccines and trauma kits to an emergency disaster field station. The containers arrive on a conveyor belt in a fixed strict sequence: container 1, container 2, ..., container N, with weights w_1, w_2, ..., w_N. The containers must be loaded and dispatched across at most D consecutive convoy trips. In each trip, the transport vehicle loads a contiguous sequence of containers from the belt. Containers cannot be reordered. Relief authorities need to provision a transport fleet of minimum capacity: what is the minimum payload capacity C the transport vehicle must have so that all N containers are delivered within D trips?",
+    "problem_statement": "Given an array of N container weights w_1, w_2, ..., w_N and an integer D, find the minimum vehicle capacity C such that the containers can be partitioned into at most D contiguous subarrays where the sum of elements in each subarray does not exceed C.",
+    "task": "Find the minimum vehicle payload capacity C and print it.",
+    "input_format": "The first line contains two space-separated integers N and D, the number of containers and the maximum number of convoy days.\nThe second line contains N space-separated integers w_1, w_2, ..., w_N, representing the weights of the containers.",
+    "output_format": "Print a single integer representing the minimum vehicle capacity C.",
+    "constraints": {
+        "containers": "1 <= N <= 10^5",
+        "days": "1 <= D <= N",
+        "weights": "1 <= w_i <= 10^4"
+    },
+    "examples": [
+        {
+            "input": "6 3\n10 20 30 40 50 60",
+            "output": "90",
+            "explanation": "With capacity C = 90, the containers can be partitioned into 3 trips: Day 1: [10, 20, 30] (sum 60 <= 90); Day 2: [40, 50] (sum 90 <= 90); Day 3: [60] (sum 60 <= 90). No capacity smaller than 90 can deliver the containers in 3 trips."
+        },
+        {
+            "input": "5 1\n5 10 15 20 25",
+            "output": "75",
+            "explanation": "Since all containers must be shipped in D = 1 trip, the vehicle capacity must be at least the sum of all weights: 5 + 10 + 15 + 20 + 25 = 75."
+        }
+    ],
+    "expected_algorithm": "Binary Search on Answer",
+    "complexity": {
+        "time": "O(N log(sum(W)))",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Binary Search on Answer rapidly converges on optimal infrastructure sizing across large monotonic parameter spaces where direct algebraic inversion is impossible.",
+    "tags": [
+        "binary-search-on-answer",
+        "greedy",
+        "logistics",
+        "convoy",
+        "disaster-relief"
+    ]
+}

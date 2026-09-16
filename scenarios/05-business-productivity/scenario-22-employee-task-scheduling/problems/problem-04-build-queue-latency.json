@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-TASKSCHED-004",
+    "scenario_id": "SCN-TASKSCHED-001",
+    "sequence": 4,
+    "title": "CI/CD Build Queue Latency Minimization",
+    "difficulty": "Medium",
+    "concepts": [
+        "Greedy",
+        "Sorting"
+    ],
+    "real_world_story": "A company's continuous integration (CI/CD) system has a single high-performance build agent. At 9:00 AM (time t = 0), N pull-request test suites are queued. Suite i requires t_i seconds of uninterrupted execution on the runner. The waiting latency for suite i is the elapsed time from t = 0 until suite i starts running. To maximize developer velocity and minimize idle waiting time across engineering teams, the infrastructure architect must schedule the build jobs in optimal greedy order (Shortest Processing Time).",
+    "problem_statement": "Given N job execution times t_1, t_2, ..., t_N, schedule all N jobs on a single machine starting at time 0 such that the sum of waiting times of all jobs is minimized. Output the minimum total waiting latency.",
+    "task": "Compute and print the minimum possible total waiting latency.",
+    "input_format": "The first line contains a single integer N, the number of build jobs.\nThe second line contains N space-separated integers t_1, t_2, ..., t_N, representing the job execution times in seconds.",
+    "output_format": "Print a single integer representing the minimum total waiting latency.",
+    "constraints": {
+        "jobs": "1 <= N <= 10^5",
+        "execution_time": "1 <= t_i <= 10^4"
+    },
+    "examples": [
+        {
+            "input": "3\n4 2 8",
+            "output": "8",
+            "explanation": "Sorting jobs in ascending order of duration: [2, 4, 8]. Job 1 waits 0 s; Job 2 waits 2 s; Job 3 waits 2 + 4 = 6 s. Total waiting latency = 0 + 2 + 6 = 8 seconds."
+        },
+        {
+            "input": "4\n1 2 3 4",
+            "output": "10",
+            "explanation": "Wait times are: Job 1: 0; Job 2: 1; Job 3: 1 + 2 = 3; Job 4: 1 + 2 + 3 = 6. Total waiting latency = 0 + 1 + 3 + 6 = 10."
+        }
+    ],
+    "expected_algorithm": "Greedy",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Shortest Processing Time (SPT) dispatching minimizes aggregate waiting delays across shared infrastructure, maximizing team responsiveness.",
+    "tags": [
+        "greedy",
+        "sorting",
+        "ci-cd",
+        "infrastructure",
+        "latency"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-MEETSCHED-001",
+    "title": "Meeting & Room Scheduler",
+    "slug": "scenario-21-meeting-room-scheduler",
+    "short_description": "Maximize single-room meeting utilization, calculate minimum conference rooms required, sort reservation timelines, and process booking waitlist queues.",
+    "category": "Business & Productivity",
+    "industry": "Enterprise Software & Resource Management",
+    "difficulty": "Medium",
+    "real_world_context": "Corporate office facilities, coworking campuses, and enterprise workplace management software (such as Google Workspace, Microsoft Exchange, and Robin) handle thousands of conference room reservation requests daily. Facilities operations teams must solve critical space-planning problems: selecting the maximum number of non-overlapping executive meetings for a single high-demand boardroom, computing the minimum number of physical conference rooms required across a campus to prevent booking collisions, sorting daily meeting event timelines chronologically for lobby display kiosks, and managing fair FIFO waitlist queues for on-demand room requests.",
+    "learning_objectives": [
+        "Apply greedy Activity Selection to maximize non-overlapping meeting bookings in a single shared conference room.",
+        "Use interval partitioning and greedy sweep-line analysis to calculate the minimum conference rooms needed for overlapping meetings.",
+        "Sort enterprise calendar reservations chronologically using multi-key ordering rules.",
+        "Implement FIFO Queue Operations to manage automated conference room waitlist requests and allocations."
+    ],
+    "algorithms": [
+        "Activity Selection",
+        "Greedy",
+        "Sorting",
+        "Queue Operations"
+    ],
+    "learning_path": [
+        "PROB-MEETSCHED-001",
+        "PROB-MEETSCHED-002",
+        "PROB-MEETSCHED-003",
+        "PROB-MEETSCHED-004"
+    ]
+}

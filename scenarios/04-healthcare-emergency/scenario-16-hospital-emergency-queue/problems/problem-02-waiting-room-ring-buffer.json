@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-HOSPEMERG-002",
+    "scenario_id": "SCN-HOSPEMERG-001",
+    "sequence": 2,
+    "title": "Waiting Room Telemetry Ring Buffer",
+    "difficulty": "Medium",
+    "concepts": [
+        "Circular Queue Operations"
+    ],
+    "real_world_story": "Wall-mounted telemetry screens in emergency triage monitoring stations display vital sign packet alerts from the last K sensor broadcasts. Because client displays run continuously on embedded hardware with limited memory, the monitoring service maintains a fixed-capacity ring buffer of size K. When new telemetry packets arrive and the buffer is full, the oldest packet is overwritten automatically without allocating extra memory.",
+    "problem_statement": "Design a circular ring buffer with fixed capacity K supporting Q sequential operations:\n1. 'RECORD <packet_id>': Appends telemetry packet <packet_id> to the buffer. If the buffer is full (currently holding K packets), the oldest packet is overwritten and discarded, and the buffer advances.\n2. 'DISPATCH': Removes the oldest telemetry packet from the buffer and prints its <packet_id>. If the buffer is empty, print 'EMPTY'.\n3. 'ACTIVE': Prints all active telemetry packet IDs in the buffer from oldest to newest, separated by a single space. If the buffer is empty, print 'EMPTY'.",
+    "task": "Process all Q circular queue operations and print the result of each DISPATCH and ACTIVE operation on a separate line.",
+    "input_format": "The first line contains two space-separated integers K and Q, representing the buffer capacity and number of operations.\nThe next Q lines each contain an operation command: 'RECORD <packet_id>', 'DISPATCH', or 'ACTIVE'.",
+    "output_format": "For each 'DISPATCH' and 'ACTIVE' command, print the corresponding result on a separate line.",
+    "constraints": {
+        "capacity": "1 <= K <= 10^4",
+        "operations": "1 <= Q <= 10^5",
+        "packet_id": "1 <= packet_id <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "3 7\nRECORD 501\nRECORD 502\nRECORD 503\nACTIVE\nRECORD 504\nACTIVE\nDISPATCH",
+            "output": "501 502 503\n502 503 504\n502",
+            "explanation": "Buffer capacity is 3. After recording 501, 502, and 503, 'ACTIVE' displays '501 502 503'. When packet 504 arrives, the oldest packet (501) is overwritten, leaving '502 503 504'. 'DISPATCH' removes and outputs the oldest packet (502)."
+        },
+        {
+            "input": "2 4\nDISPATCH\nACTIVE\nRECORD 99\nACTIVE",
+            "output": "EMPTY\nEMPTY\n99",
+            "explanation": "Initial buffer is empty, so 'DISPATCH' and 'ACTIVE' produce 'EMPTY'. Recording 99 makes it the sole active entry, which 'ACTIVE' displays."
+        }
+    ],
+    "expected_algorithm": "Circular Queue Operations",
+    "complexity": {
+        "time": "O(1) for RECORD and DISPATCH, O(K) for ACTIVE",
+        "space": "O(K) auxiliary storage"
+    },
+    "real_world_takeaway": "Circular ring buffers enforce strict upper bounds on memory consumption in embedded clinical telemetry monitors while delivering constant-time write updates.",
+    "tags": [
+        "circular-queue",
+        "ring-buffer",
+        "telemetry",
+        "embedded-systems",
+        "healthcare"
+    ]
+}

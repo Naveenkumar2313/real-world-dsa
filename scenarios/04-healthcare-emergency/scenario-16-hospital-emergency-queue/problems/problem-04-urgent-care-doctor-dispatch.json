@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-HOSPEMERG-004",
+    "scenario_id": "SCN-HOSPEMERG-001",
+    "sequence": 4,
+    "title": "Urgent Care Waiting Time Minimization",
+    "difficulty": "Medium",
+    "concepts": [
+        "Greedy",
+        "Sorting"
+    ],
+    "real_world_story": "An urgent care outpatient surgical center has a single specialized procedural room staffed by an on-call surgeon. At the start of the shift (time t = 0), N patients are prepared and waiting for minor surgical treatments. Each procedure i takes an estimated duration of t_i minutes. Each patient waits in the recovery lounge until their surgery begins (the waiting time of patient i is the sum of procedure durations of all patients treated before them). To reduce patient anxiety and improve clinical satisfaction scores, the medical director must sequence the surgeries to minimize the total cumulative waiting time across all N patients.",
+    "problem_statement": "Given N patients and their required procedure durations t_1, t_2, ..., t_N, schedule all N surgeries sequentially on a single operational bay starting at time 0 so that the sum of waiting times of all patients is minimized. A patient scheduled first experiences 0 waiting time; the patient scheduled second waits for the duration of the first surgery, and so on.\n\nCompute and output the minimum possible total cumulative waiting time.",
+    "task": "Read the procedure durations and determine the minimum total cumulative waiting time across all N patients.",
+    "input_format": "The first line contains a single integer N, the number of patients.\nThe second line contains N space-separated integers t_1, t_2, ..., t_N, representing the surgery durations in minutes.",
+    "output_format": "Print a single integer representing the minimum total cumulative waiting time.",
+    "constraints": {
+        "patients": "1 <= N <= 10^5",
+        "durations": "1 <= t_i <= 10^4"
+    },
+    "examples": [
+        {
+            "input": "4\n3 8 1 5",
+            "output": "14",
+            "explanation": "Sorting durations in ascending order yields [1, 3, 5, 8]. Patient 1 waits 0 min, patient 2 waits 1 min, patient 3 waits 1 + 3 = 4 min, and patient 4 waits 1 + 3 + 5 = 9 min. Total waiting time = 0 + 1 + 4 + 9 = 14 minutes."
+        },
+        {
+            "input": "3\n5 5 5",
+            "output": "15",
+            "explanation": "Durations are all 5 minutes. Waiting times are 0, 5, and 10 minutes. Total waiting time = 0 + 5 + 10 = 15 minutes."
+        }
+    ],
+    "expected_algorithm": "Greedy",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Shortest Processing Time (SPT) greedy scheduling provably minimizes cumulative waiting time on a single resource, reducing aggregate patient distress in clinical queues.",
+    "tags": [
+        "greedy",
+        "sorting",
+        "scheduling",
+        "healthcare",
+        "optimization"
+    ]
+}

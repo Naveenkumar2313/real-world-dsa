@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-PATSCHED-001",
+    "title": "Hospital Patient Scheduling",
+    "slug": "scenario-17-hospital-patient-scheduling",
+    "short_description": "Maximize operating room surgical throughput, schedule time-critical diagnostic scans with deadlines, sort clinic appointment timelines, and calculate required theatre capacity.",
+    "category": "Healthcare & Emergency Systems",
+    "industry": "Healthcare & Clinical Operations",
+    "difficulty": "Medium",
+    "real_world_context": "Modern hospital systems coordinate expensive, finite surgical facilities, specialized MRI/PET imaging suites, and multi-specialty physician consultation rooms. Surgical management must select the maximum number of non-overlapping procedures that can fit within a single day's operating theater slot, assign discrete high-value diagnostic scans to tight time windows before clinical deadlines expire, sort outpatient booking logs chronologically for facility monitors, and determine the minimum number of operating theatres required to perform all scheduled procedures concurrently without conflict.",
+    "learning_objectives": [
+        "Apply the Activity Selection algorithm to maximize the number of conflict-free surgeries in a single operating room.",
+        "Implement Job Sequencing with Deadlines to maximize diagnostic clinical value within discrete unit time slots.",
+        "Sort multi-specialty appointment timelines to generate clear, ordered daily schedules.",
+        "Apply greedy interval scheduling to compute the minimum number of operating theatres required for overlapping surgical requests."
+    ],
+    "algorithms": [
+        "Activity Selection",
+        "Job Sequencing with Deadlines",
+        "Sorting",
+        "Greedy"
+    ],
+    "learning_path": [
+        "PROB-PATSCHED-001",
+        "PROB-PATSCHED-002",
+        "PROB-PATSCHED-003",
+        "PROB-PATSCHED-004"
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-CLOUDRES-001",
+    "scenario_id": "SCN-CLOUDRES-001",
+    "sequence": 1,
+    "title": "Cluster Node Minimum Memory Provisioning",
+    "difficulty": "Hard",
+    "concepts": [
+        "Binary Search on Answer",
+        "Greedy"
+    ],
+    "real_world_story": "A cloud platform autoscaler is provisioning a Kubernetes cluster with K identical worker nodes. An application deployment manifest contains N microservice pods that must be deployed in their exact declared sequence: pod 1, pod 2, ..., pod N. Each node can host a contiguous subsegment of pods from this sequence. Pod i requires r_i GB of RAM. The cloud infrastructure team needs to provision nodes with the minimum possible RAM capacity C (in GB) such that all N pods can be distributed across at most K nodes without any node exceeding capacity C.",
+    "problem_statement": "Given an array of N integers representing RAM requirements r_1, r_2, ..., r_N and an integer K, find the minimum integer node capacity C such that the pods can be partitioned into at most K contiguous subarrays where the sum of each subarray does not exceed C.",
+    "task": "Find and print the minimum per-node RAM capacity C.",
+    "input_format": "The first line contains two space-separated integers N and K, the number of pods and the maximum number of worker nodes.\nThe second line contains N space-separated integers r_1, r_2, ..., r_N, representing the RAM required by each pod.",
+    "output_format": "Print a single integer representing the minimum node RAM capacity C.",
+    "constraints": {
+        "pods": "1 <= N <= 10^5",
+        "nodes": "1 <= K <= N",
+        "ram": "1 <= r_i <= 10^4"
+    },
+    "examples": [
+        {
+            "input": "5 2\n1 2 3 4 5",
+            "output": "9",
+            "explanation": "With node capacity C = 9, the pods can be partitioned into 2 nodes: Node 1: [1, 2, 3] (sum 6 <= 9); Node 2: [4, 5] (sum 9 <= 9). Any capacity smaller than 9 would require at least 3 nodes."
+        },
+        {
+            "input": "4 4\n10 20 30 40",
+            "output": "40",
+            "explanation": "With K = 4 nodes for 4 pods, each node can host exactly 1 pod. The minimum capacity is the maximum single pod requirement: 40 GB."
+        }
+    ],
+    "expected_algorithm": "Binary Search on Answer",
+    "complexity": {
+        "time": "O(N log(sum(R)))",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Binary search on answer combined with greedy feasibility verification rapidly determines optimal cloud hardware provisioning boundaries without brute-force enumeration.",
+    "tags": [
+        "binary-search-on-answer",
+        "greedy",
+        "cloud",
+        "kubernetes",
+        "provisioning"
+    ]
+}

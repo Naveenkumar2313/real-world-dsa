@@ -1,0 +1,44 @@
+{
+    "problem_id": "PROB-HOSPEMERG-001",
+    "scenario_id": "SCN-HOSPEMERG-001",
+    "sequence": 1,
+    "title": "Emergency Intake Registration Queue",
+    "difficulty": "Easy",
+    "concepts": [
+        "Queue Operations"
+    ],
+    "real_world_story": "At an emergency department triage intake desk, newly arriving non-critical walk-in patients receive a sequential registration token. When an examination room becomes available, the triage nurse admits the patient who has been waiting the longest. System diagnostics periodically poll the queue to check the ID of the next patient in line and the total volume of waiting patients.",
+    "problem_statement": "Implement a First-In-First-Out (FIFO) patient intake queue supporting Q sequential operations:\n1. 'ARRIVE <patient_id>': Adds a patient with integer identifier <patient_id> to the rear of the intake queue.\n2. 'ADMIT': Removes the patient at the front of the queue and prints their <patient_id>. If the queue is empty, print 'EMPTY'.\n3. 'NEXT': Prints the <patient_id> of the patient at the front of the queue without removing them. If the queue is empty, print 'EMPTY'.\n4. 'COUNT': Prints the current number of patients waiting in the queue.",
+    "task": "Execute all Q intake operations in sequence and print the corresponding output for each ADMIT, NEXT, and COUNT operation.",
+    "input_format": "The first line contains a single integer Q, the number of queue operations.\nThe next Q lines each contain one operation: 'ARRIVE <patient_id>', 'ADMIT', 'NEXT', or 'COUNT'.",
+    "output_format": "For each 'ADMIT', 'NEXT', and 'COUNT' operation, print the resulting value on a separate line.",
+    "constraints": {
+        "operations": "1 <= Q <= 10^5",
+        "patient_id": "1 <= patient_id <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "7\nARRIVE 101\nARRIVE 102\nNEXT\nCOUNT\nADMIT\nADMIT\nADMIT",
+            "output": "101\n2\n101\n102\nEMPTY",
+            "explanation": "Patients 101 and 102 arrive. 'NEXT' reveals patient 101 at the front. 'COUNT' reports 2 patients waiting. The first 'ADMIT' admits patient 101, the second admits patient 102, and the third 'ADMIT' finds the queue empty, printing 'EMPTY'."
+        },
+        {
+            "input": "4\nADMIT\nNEXT\nARRIVE 205\nCOUNT",
+            "output": "EMPTY\nEMPTY\n1",
+            "explanation": "With an initially empty queue, 'ADMIT' and 'NEXT' both output 'EMPTY'. After patient 205 arrives, 'COUNT' outputs 1."
+        }
+    ],
+    "expected_algorithm": "Queue Operations",
+    "complexity": {
+        "time": "O(1) amortized per operation",
+        "space": "O(Q) auxiliary memory"
+    },
+    "real_world_takeaway": "FIFO queues guarantee fair, chronological processing of patient registrations, ensuring that early-arriving patients receive timely clinical intake without priority inversion.",
+    "tags": [
+        "queue",
+        "fifo",
+        "healthcare",
+        "triage",
+        "hospital"
+    ]
+}

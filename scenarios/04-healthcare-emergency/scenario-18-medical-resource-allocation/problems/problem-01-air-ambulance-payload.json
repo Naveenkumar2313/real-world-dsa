@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-MEDRES-001",
+    "scenario_id": "SCN-MEDRES-001",
+    "sequence": 1,
+    "title": "Air Ambulance Medical Payload Optimization",
+    "difficulty": "Medium",
+    "concepts": [
+        "0/1 Knapsack"
+    ],
+    "real_world_story": "An air ambulance helicopter is being dispatched to a remote mountain disaster zone. The helicopter has a strict maximum cargo weight capacity of W kg. Relief workers have prepared N discrete medical kits (such as field trauma surgical sets, portable blood refrigeration units, and pediatric stabilization kits). Kit i has a gross weight of w_i kg and an evaluated clinical utility score of v_i. Kits are sealed and indivisible\u2014each kit must either be completely loaded or left behind. Determine the maximum clinical utility score that can be transported without exceeding weight W.",
+    "problem_statement": "Given capacity W and N items, where item i has weight w_i and utility value v_i, find the maximum total utility value achievable by selecting a subset of items such that the sum of their weights does not exceed W. Each item can be selected at most once.",
+    "task": "Compute the maximum total utility score achievable within the helicopter weight capacity W.",
+    "input_format": "The first line contains two space-separated integers N and W, the number of kits and the maximum payload capacity.\nThe next N lines each contain two space-separated integers w_i and v_i, the weight and utility score of the i-th kit.",
+    "output_format": "Print a single integer representing the maximum total utility score.",
+    "constraints": {
+        "items": "1 <= N <= 1000",
+        "capacity": "1 <= W <= 10^4",
+        "weight": "1 <= w_i <= 10^4",
+        "utility": "1 <= v_i <= 10^5"
+    },
+    "examples": [
+        {
+            "input": "3 50\n10 60\n20 100\n30 120",
+            "output": "220",
+            "explanation": "Selecting kit 2 (weight 20, utility 100) and kit 3 (weight 30, utility 120) yields total weight 20 + 30 = 50 <= 50 and total utility 100 + 120 = 220. Selecting all three exceeds capacity (60 > 50). Maximum utility is 220."
+        },
+        {
+            "input": "3 10\n15 50\n20 80\n30 100",
+            "output": "0",
+            "explanation": "All kits exceed the total capacity of 10 kg. No kit can be loaded, yielding total utility 0."
+        }
+    ],
+    "expected_algorithm": "0/1 Knapsack",
+    "complexity": {
+        "time": "O(N * W)",
+        "space": "O(W)"
+    },
+    "real_world_takeaway": "0/1 Knapsack dynamic programming guarantees the optimal packing of indivisible life-support equipment under rigid aeronautical payload limits.",
+    "tags": [
+        "0-1-knapsack",
+        "dynamic-programming",
+        "optimization",
+        "air-ambulance",
+        "healthcare"
+    ]
+}

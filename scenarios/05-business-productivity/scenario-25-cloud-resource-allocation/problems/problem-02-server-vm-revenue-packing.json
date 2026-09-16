@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-CLOUDRES-002",
+    "scenario_id": "SCN-CLOUDRES-001",
+    "sequence": 2,
+    "title": "Bare-Metal Host VM Revenue Maximization",
+    "difficulty": "Medium",
+    "concepts": [
+        "0/1 Knapsack"
+    ],
+    "real_world_story": "A cloud infrastructure provider is commissioning a flagship bare-metal physical server equipped with M gigabytes of total RAM. N enterprise client virtual machines (VMs) are requesting placement on this server. VM i requires m_i GB of RAM and yields an agreed monthly rental revenue of p_i dollars. Due to hypervisor isolation constraints, each VM must reside entirely on a single host\u2014VMs cannot be split or shared. Determine the maximum total monthly revenue achievable on this host without exceeding memory capacity M.",
+    "problem_statement": "Given total RAM capacity M and N virtual machines, where VM i requires memory m_i and yields revenue p_i, determine the maximum total revenue achievable by selecting a subset of VMs such that the total memory does not exceed M. Each VM can be selected at most once.",
+    "task": "Compute the maximum monthly revenue achievable within the host RAM capacity M.",
+    "input_format": "The first line contains two space-separated integers N and M, the number of VMs and the host RAM capacity in GB.\nThe next N lines each contain two space-separated integers m_i and p_i, the RAM requirement and revenue of the i-th VM.",
+    "output_format": "Print a single integer representing the maximum monthly revenue.",
+    "constraints": {
+        "vms": "1 <= N <= 1000",
+        "capacity": "1 <= M <= 10^4",
+        "memory": "1 <= m_i <= 10^4",
+        "revenue": "1 <= p_i <= 10^5"
+    },
+    "examples": [
+        {
+            "input": "3 64\n16 50\n32 120\n32 110",
+            "output": "230",
+            "explanation": "Selecting VM 2 (32 GB, 120) and VM 3 (32 GB, 110) consumes 32 + 32 = 64 GB <= 64 GB and yields revenue 120 + 110 = 230. This exceeds selecting VM 1 + VM 2 (16 + 32 = 48 GB, revenue 170). Maximum revenue is 230."
+        },
+        {
+            "input": "2 32\n64 200\n128 500",
+            "output": "0",
+            "explanation": "Both VMs exceed the host memory capacity of 32 GB. Total revenue is 0."
+        }
+    ],
+    "expected_algorithm": "0/1 Knapsack",
+    "complexity": {
+        "time": "O(N * M)",
+        "space": "O(M)"
+    },
+    "real_world_takeaway": "0/1 Knapsack optimization allows cloud providers to maximize revenue yield per physical host while enforcing strict virtualization capacity limits.",
+    "tags": [
+        "0-1-knapsack",
+        "dynamic-programming",
+        "cloud",
+        "virtual-machines",
+        "revenue"
+    ]
+}

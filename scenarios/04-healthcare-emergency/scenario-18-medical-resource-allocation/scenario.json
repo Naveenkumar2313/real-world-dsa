@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-MEDRES-001",
+    "title": "Medical Resource Allocation",
+    "slug": "scenario-18-medical-resource-allocation",
+    "short_description": "Maximize emergency airlift medical payload, ration liquid oxygen continuously, allocate ICU ventilators by urgency deficit, and provision convoy payload thresholds.",
+    "category": "Healthcare & Emergency Systems",
+    "industry": "Healthcare & Clinical Operations",
+    "difficulty": "Medium",
+    "real_world_context": "During humanitarian crises, natural disasters, or pandemic outbreaks, critical medical resources\u2014such as medevac airlift payload capacities, liquid oxygen reserves, mechanical ventilators, and supply convoy vehicles\u2014are severely constrained. Disaster management teams must mathematically optimize resource distribution: deciding which indivisible trauma kits to load onto weight-constrained helicopters, how to fractionally apportion liquid oxygen supplies across hospital wards, which respiratory distress patients to assign to limited ICU ventilators, and determining the minimum vehicle capacity required to transport relief supplies over a fixed number of convoy days.",
+    "learning_objectives": [
+        "Solve the 0/1 Knapsack problem to maximize clinical utility within strict medical aircraft weight constraints.",
+        "Implement the Fractional Knapsack algorithm using greedy value-to-weight ratios for continuous resource rationing.",
+        "Apply greedy prioritization to allocate scarce ICU mechanical ventilators to maximize total oxygenation improvement.",
+        "Use Binary Search on Answer to determine the minimum transport payload capacity needed to distribute disaster supplies within deadline days."
+    ],
+    "algorithms": [
+        "0/1 Knapsack",
+        "Fractional Knapsack",
+        "Greedy",
+        "Binary Search on Answer"
+    ],
+    "learning_path": [
+        "PROB-MEDRES-001",
+        "PROB-MEDRES-002",
+        "PROB-MEDRES-003",
+        "PROB-MEDRES-004"
+    ]
+}

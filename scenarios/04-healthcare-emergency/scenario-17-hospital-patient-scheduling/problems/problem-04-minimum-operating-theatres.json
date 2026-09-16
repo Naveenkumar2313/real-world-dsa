@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-PATSCHED-004",
+    "scenario_id": "SCN-PATSCHED-001",
+    "sequence": 4,
+    "title": "Minimum Operating Theatres Provisioning",
+    "difficulty": "Medium",
+    "concepts": [
+        "Greedy",
+        "Sorting"
+    ],
+    "real_world_story": "A regional hospital has approved N scheduled surgeries for tomorrow, each characterized by a start minute s_i and end minute e_i. A surgery requires an exclusive operating theatre for the interval [s_i, e_i). If one surgery ends at minute T and another begins at minute T, the same operating theatre can be assigned to both. Hospital leadership must determine the minimum number of physical operating theatres that must be staffed and prepped to accommodate all surgeries simultaneously without conflict.",
+    "problem_statement": "Given N intervals [s_i, e_i) representing scheduled surgeries, calculate the minimum number of operating theatres required to host all procedures without overlap.",
+    "task": "Compute and print the minimum number of operating rooms required.",
+    "input_format": "The first line contains a single integer N, the number of surgeries.\nThe next N lines each contain two space-separated integers s_i and e_i.",
+    "output_format": "Print a single integer representing the minimum number of operating theatres required.",
+    "constraints": {
+        "surgeries": "1 <= N <= 10^5",
+        "times": "0 <= s_i < e_i <= 10^9"
+    },
+    "examples": [
+        {
+            "input": "3\n900 1000\n930 1100\n1000 1200",
+            "output": "2",
+            "explanation": "Surgery 1 (900-1000) and Surgery 2 (930-1100) overlap between 930 and 1000, requiring 2 theatres. At 1000, Surgery 1 finishes and Surgery 3 begins, reusing Theatre 1. At most 2 concurrent surgeries exist at any time, requiring 2 theatres."
+        },
+        {
+            "input": "3\n100 200\n200 300\n300 400",
+            "output": "1",
+            "explanation": "Each surgery starts exactly when the previous surgery ends. A single theatre is sufficient to accommodate all three sequentially."
+        }
+    ],
+    "expected_algorithm": "Greedy",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Tracking peak interval concurrency through sorting and greedy sweep-line analysis allows healthcare facilities to right-size capital-intensive physical infrastructure.",
+    "tags": [
+        "greedy",
+        "sorting",
+        "interval-partitioning",
+        "operating-room",
+        "healthcare"
+    ]
+}

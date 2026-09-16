@@ -1,0 +1,46 @@
+{
+    "problem_id": "PROB-BUDGET-004",
+    "scenario_id": "SCN-BUDGET-001",
+    "sequence": 4,
+    "title": "Maximum Innovation Grants Allocation",
+    "difficulty": "Medium",
+    "concepts": [
+        "Greedy",
+        "Sorting"
+    ],
+    "real_world_story": "An enterprise internal incubator committee has a discretionary grassroots innovation budget of B thousand dollars. N employee teams have submitted grant proposals, each requesting an exact fixed seed grant of g_i thousand dollars. To promote a culture of widespread experimentation across the company, the committee's objective is to fund the maximum possible number of distinct innovation proposals without exceeding the total budget B.",
+    "problem_statement": "Given budget B and an array of N grant request amounts g_1, g_2, ..., g_N, determine the maximum number of proposals that can be completely funded within budget B.",
+    "task": "Compute and print the maximum count of distinct proposals that can be funded.",
+    "input_format": "The first line contains two space-separated integers N and B, the number of proposals and the total grant budget.\nThe second line contains N space-separated integers g_1, g_2, ..., g_N, representing the grant amounts requested.",
+    "output_format": "Print a single integer representing the maximum number of proposals that can be funded.",
+    "constraints": {
+        "proposals": "1 <= N <= 10^5",
+        "budget": "1 <= B <= 10^9",
+        "grant_amount": "1 <= g_i <= 10^6"
+    },
+    "examples": [
+        {
+            "input": "5 100\n30 10 40 20 50",
+            "output": "4",
+            "explanation": "Sorting grant amounts in ascending order: [10, 20, 30, 40, 50]. Cumulative sum: 10 + 20 + 30 + 40 = 100 <= 100. Adding the next proposal (50) would exceed the budget (150 > 100). Maximum proposals funded = 4."
+        },
+        {
+            "input": "3 15\n10 10 10",
+            "output": "1",
+            "explanation": "Funding 1 proposal costs 10 <= 15. Funding 2 proposals would cost 20 > 15. Maximum funded = 1."
+        }
+    ],
+    "expected_algorithm": "Greedy",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Greedy selection of lowest-cost requests provably maximizes the cardinality of satisfied projects within a bounded financial endowment.",
+    "tags": [
+        "greedy",
+        "sorting",
+        "grants",
+        "innovation",
+        "budgeting"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-PROJPLAN-001",
+    "title": "Project Planning & Dependencies",
+    "slug": "scenario-23-project-planning-dependencies",
+    "short_description": "Detect circular deadlocks in task workflows, calculate minimum parallel pipeline stages, traverse work breakdown structures, and audit hierarchy depths.",
+    "category": "Business & Productivity",
+    "industry": "Enterprise Software & Resource Management",
+    "difficulty": "Medium",
+    "real_world_context": "Enterprise project portfolio management systems (such as Jira, Asana, and Microsoft Project) and build execution engines (such as Bazel, Make, and Maven) represent complex initiatives as directed dependency graphs and hierarchical Work Breakdown Structures (WBS). Execution engines must perform cycle detection via Depth-First Search (DFS) to prevent circular dependency deadlocks, level-order topological Breadth-First Search (BFS) to compute the minimum number of concurrent parallel stages required to deliver all tasks, Tree BFS to audit deliverables tier-by-tier for leadership reviews, and Tree DFS to compute overall work breakdown depths and subtask rollups.",
+    "learning_objectives": [
+        "Use Graph DFS with three-color state marking to detect circular dependency deadlocks in task prerequisite graphs.",
+        "Apply Graph BFS (Kahn's level-by-level algorithm) to compute the minimum parallel execution stages for DAG workflows.",
+        "Perform Tree BFS (level-order traversal) on Work Breakdown Structure trees to produce tier-by-tier status reporting.",
+        "Apply Tree DFS to calculate maximum hierarchy depth and subordinate deliverable rollups across WBS trees."
+    ],
+    "algorithms": [
+        "Graph DFS",
+        "Graph BFS",
+        "Tree BFS",
+        "Tree DFS"
+    ],
+    "learning_path": [
+        "PROB-PROJPLAN-001",
+        "PROB-PROJPLAN-002",
+        "PROB-PROJPLAN-003",
+        "PROB-PROJPLAN-004"
+    ]
+}

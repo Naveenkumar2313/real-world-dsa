@@ -1,0 +1,28 @@
+{
+    "scenario_id": "SCN-PATDATA-001",
+    "title": "Disease/Patient Data Analysis",
+    "slug": "scenario-19-disease-patient-data-analysis",
+    "short_description": "Detect viral genomic signatures using KMP, flag cardiac anomalies using sliding window ranges, verify drug dosages with binary search, and rank lab biomarkers.",
+    "category": "Healthcare & Emergency Systems",
+    "industry": "Healthcare & Clinical Operations",
+    "difficulty": "Medium",
+    "real_world_context": "Clinical informatics systems and computational bioinformatics labs ingest massive streams of physiological telemetry and genomic sequencing data. Diagnostic pipelines match viral RNA/DNA pathogen signatures within human genetic sequences to identify infections, monitor continuous electrocardiogram (ECG) and heart rate telemetry via sliding windows to detect sudden hemodynamic instability, perform rapid binary searches over certified pharmaceutical concentration registries to validate prescription safety, and sort multi-parameter blood biomarkers to alert oncologists and critical care specialists to abnormal test results.",
+    "learning_objectives": [
+        "Implement Knuth-Morris-Pratt (KMP) pattern matching to locate viral pathogen signatures within genomic DNA sequences in linear time.",
+        "Apply the Sliding Window technique to analyze continuous ICU heart rate telemetry and flag sudden variability anomalies.",
+        "Perform Binary Search over sorted pharmacological registries to verify safe therapeutic dosage thresholds.",
+        "Sort multi-parameter clinical biomarker records to prioritize urgent patient alerts for laboratory review."
+    ],
+    "algorithms": [
+        "KMP Pattern Matching",
+        "Sliding Window",
+        "Binary Search",
+        "Sorting"
+    ],
+    "learning_path": [
+        "PROB-PATDATA-001",
+        "PROB-PATDATA-002",
+        "PROB-PATDATA-003",
+        "PROB-PATDATA-004"
+    ]
+}

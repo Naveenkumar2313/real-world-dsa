@@ -1,0 +1,45 @@
+{
+    "problem_id": "PROB-MEETSCHED-003",
+    "scenario_id": "SCN-MEETSCHED-001",
+    "sequence": 3,
+    "title": "Room Booking Timeline Chronological Sort",
+    "difficulty": "Easy",
+    "concepts": [
+        "Sorting"
+    ],
+    "real_world_story": "Digital signage displays outside meeting rooms show the schedule of upcoming reservations. Booking records arrive asynchronously from calendar integrations. Before rendering the daily timeline, the calendar gateway must sort all reservation records chronologically by start minute, then by end minute, and by booking ID as a deterministic tie-breaker.",
+    "problem_statement": "Given N reservation records containing booking_id, start_minute, and end_minute, sort the reservations:\n1. Primarily by start_minute ascending.\n2. Secondarily by end_minute ascending.\n3. Tertiarily by booking_id ascending.\n\nPrint the sorted sequence of booking IDs on a single line separated by a space.",
+    "task": "Order the booking records by the specified criteria and output the sorted booking IDs separated by a single space.",
+    "input_format": "The first line contains a single integer N, the number of reservations.\nThe next N lines each contain three space-separated integers: booking_id, start_minute, and end_minute.",
+    "output_format": "Print the sorted booking IDs on a single line, separated by a single space.",
+    "constraints": {
+        "reservations": "1 <= N <= 10^5",
+        "booking_id": "1 <= booking_id <= 10^9",
+        "time_range": "0 <= start_minute < end_minute <= 1440"
+    },
+    "examples": [
+        {
+            "input": "4\n201 600 660\n202 540 600\n203 540 570\n204 720 780",
+            "output": "203 202 201 204",
+            "explanation": "Bookings 202 and 203 both start at minute 540. Booking 203 finishes earlier (570) than 202 (600), so 203 comes first. Booking 201 starts at 600, and 204 starts at 720. Final order: 203 202 201 204."
+        },
+        {
+            "input": "2\n10 100 200\n5 100 200",
+            "output": "5 10",
+            "explanation": "Both bookings have identical start and end times; tie-breaking by booking_id places 5 before 10."
+        }
+    ],
+    "expected_algorithm": "Sorting",
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "real_world_takeaway": "Stable multi-key sorting guarantees predictable calendar display timelines across client devices regardless of asynchronous event ingestion order.",
+    "tags": [
+        "sorting",
+        "calendar",
+        "workplace",
+        "timeline",
+        "reservations"
+    ]
+}
