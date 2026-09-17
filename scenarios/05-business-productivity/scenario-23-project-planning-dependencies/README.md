@@ -4,7 +4,7 @@
 
 Large-scale enterprise engineering programs encompass hundreds of interlinked deliverables, cross-functional dependencies, and multi-tier Work Breakdown Structures (WBS). Project management engines must validate dependency integrity before kickoff: circular dependencies introduce fatal deadlocks where tasks cannot commence, independent work items must be staged into concurrent execution waves to minimize total project turnaround, management audits require level-by-level milestone reporting, and project architects need structural metrics on deliverable delegation depth.
 
-In this scenario, you will build the foundational graph and tree analytics engines for an enterprise project planning system: cycle deadlock detection, concurrent pipeline stage estimation, WBS level-order audits, and deliverable hierarchy depth rollups.
+In this scenario, you will build the foundational graph and tree analytics engines for an enterprise project planning system: cycle deadlock detection, concurrent pipeline stage estimation, WBS level-order audits, deliverable hierarchy depth rollups, and critical path duration analysis.
 
 ---
 
@@ -20,6 +20,8 @@ An enterprise project planning and build management platform must address key de
 
 > How can project auditors compute the maximum delegation depth of a WBS hierarchy and count all sub-tasks nested under a specific milestone node?
 
+> How can the system determine the total minimum time required to complete a project by identifying the longest chain of dependent tasks (the Critical Path)?
+
 ---
 
 ## Real-World to DSA Mapping
@@ -30,6 +32,7 @@ An enterprise project planning and build management platform must address key de
 | Concurrent Execution Waves | Graph BFS (Topological Levels) | Minimum stages to complete DAG tasks in parallel |
 | WBS Tier-by-Tier Audit | Tree BFS (Level-Order) | Display deliverable tree hierarchy level-by-level |
 | Subproject Depth & Size Rollup | Tree DFS (Tree Metrics) | Compute tree height and subtree descendant count |
+| Project Duration Estimation | DAG Longest Path (DP) | Compute the Critical Path duration for a project |
 
 ---
 
@@ -41,6 +44,7 @@ After completing this scenario, you will be able to:
 2. Formulate topological level-order traversals using BFS to calculate minimum parallel schedule stages.
 3. Traverse hierarchical tree structures level-by-level using queue-based Tree BFS.
 4. Apply recursive Tree DFS to compute tree depths and count subordinate subtrees.
+5. Implement the Critical Path Method (CPM) using Topological Sort and Dynamic Programming to find the maximum path length in a DAG.
 
 ---
 
@@ -62,8 +66,12 @@ After completing this scenario, you will be able to:
 - **Focus:** Tree DFS
 - **Synopsis:** Analyze a WBS tree rooted at node 1 to compute the maximum hierarchy depth of the initiative and the total count of subtasks strictly beneath milestone $K$.
 
+### Problem 5 — Project Critical Path Duration Analysis (`PROB-PROJPLAN-005`)
+- **Focus:** DAG Longest Path (DP + Topological Sort)
+- **Synopsis:** Calculate the total duration of the critical path (the longest sequence of dependent tasks) in a project DAG to determine the minimum possible project completion time.
+
 ---
 
 ## Key Takeaway
 
-Enterprise project dependency analysis relies on graph and tree traversals. Graph DFS identifies deadlock-causing cycles before projects launch, topological BFS determines parallel execution waves, and tree traversals deliver clear hierarchical visibility from executive milestones to tactical subtasks.
+Enterprise project dependency analysis relies on graph and tree traversals. Graph DFS identifies deadlock-causing cycles before projects launch, topological BFS determines parallel execution waves, tree traversals deliver clear hierarchical visibility, and DAG longest-path analysis implements the Critical Path Method to ensure reliable project timelines.

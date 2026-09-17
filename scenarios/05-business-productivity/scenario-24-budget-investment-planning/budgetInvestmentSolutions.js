@@ -340,7 +340,6 @@ def solve():
         ptr += 3
 
     # Sort by ROI descending (ret/cost), then cost ascending, then pid ascending
-    # To avoid floating point, use: ret1/cost1 > ret2/cost2  => ret1*cost2 > ret2*cost1
     from functools import cmp_to_key
     def compare(a, b):
         # ROI comparison: a[2]/a[1] vs b[2]/b[1]
@@ -613,6 +612,138 @@ int main() {
     }
     printf("%d\\n", count);
     free(grants);
+    return 0;
+}`
+  },
+  'PROB-BUDGET-005': {
+    python: `import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    B = int(input_data[0])
+    N = int(input_data[1])
+    assets = []
+    ptr = 2
+    for _ in range(N):
+        c = int(input_data[ptr])
+        v = int(input_data[ptr+1])
+        assets.append((c, v))
+        ptr += 2
+
+    dp = [0] * (B + 1)
+    for c, v in assets:
+        for j in range(c, B + 1):
+            if dp[j - c] + v > dp[j]:
+                dp[j] = dp[j - c] + v
+
+    print(dp[B])
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const B = parseInt(input[ptr++]);
+    const N = parseInt(input[ptr++]);
+    const assets = [];
+    for (let i = 0; i < N; i++) {
+        const c = parseInt(input[ptr++]);
+        const v = parseInt(input[ptr++]);
+        assets.push({ c, v });
+    }
+
+    const dp = new Array(B + 1).fill(0);
+    for (const asset of assets) {
+        const c = asset.c;
+        const v = asset.v;
+        for (let j = c; j <= B; j++) {
+            if (dp[j - c] + v > dp[j]) {
+                dp[j] = dp[j - c] + v;
+            }
+        }
+    }
+    console.log(dp[B]);
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int B = sc.nextInt();
+        int N = sc.nextInt();
+        int[] costs = new int[N];
+        int[] values = new int[N];
+        for (int i = 0; i < N; i++) {
+            costs[i] = sc.nextInt();
+            values[i] = sc.nextInt();
+        }
+        int[] dp = new int[B + 1];
+        for (int i = 0; i < N; i++) {
+            int c = costs[i];
+            int v = values[i];
+            for (int j = c; j <= B; j++) {
+                dp[j] = Math.max(dp[j], dp[j - c] + v);
+            }
+        }
+        System.out.println(dp[B]);
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int B, N;
+    if (!(cin >> B >> N)) return 0;
+    vector<int> c(N), v(N);
+    for (int i = 0; i < N; ++i) {
+        cin >> c[i] >> v[i];
+    }
+    vector<int> dp(B + 1, 0);
+    for (int i = 0; i < N; ++i) {
+        for (int j = c[i]; j <= B; ++j) {
+            dp[j] = max(dp[j], dp[j - c[i]] + v[i]);
+        }
+    }
+    cout << dp[B] << endl;
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+
+int max(int a, int b) { return a > b ? a : b; }
+
+int main() {
+    int B, N;
+    if (scanf("%d %d", &B, &N) != 2) return 0;
+    int* costs = (int*)malloc(N * sizeof(int));
+    int* values = (int*)malloc(N * sizeof(int));
+    for (int i = 0; i < N; i++) {
+        scanf("%d %d", &costs[i], &values[i]);
+    }
+    int* dp = (int*)calloc(B + 1, sizeof(int));
+    for (int i = 0; i < N; i++) {
+        int c = costs[i];
+        int v = values[i];
+        for (int j = c; j <= B; j++) {
+            dp[j] = max(dp[j], dp[j - c] + v);
+        }
+    }
+    printf("%d\\n", dp[B]);
+    free(costs);
+    free(values);
+    free(dp);
     return 0;
 }`
   }

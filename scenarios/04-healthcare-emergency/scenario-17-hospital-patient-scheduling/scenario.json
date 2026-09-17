@@ -11,18 +11,22 @@
         "Apply the Activity Selection algorithm to maximize the number of conflict-free surgeries in a single operating room.",
         "Implement Job Sequencing with Deadlines to maximize diagnostic clinical value within discrete unit time slots.",
         "Sort multi-specialty appointment timelines to generate clear, ordered daily schedules.",
-        "Apply greedy interval scheduling to compute the minimum number of operating theatres required for overlapping surgical requests."
+        "Apply greedy interval scheduling to compute the minimum number of operating theatres required for overlapping surgical requests.",
+        "Implement the Weighted Interval Scheduling algorithm using dynamic programming and binary search to maximize the total clinical value of surgical throughput."
     ],
     "algorithms": [
         "Activity Selection",
         "Job Sequencing with Deadlines",
         "Sorting",
-        "Greedy"
+        "Greedy",
+        "Dynamic Programming",
+        "Binary Search"
     ],
     "learning_path": [
         "PROB-PATSCHED-001",
         "PROB-PATSCHED-002",
         "PROB-PATSCHED-003",
-        "PROB-PATSCHED-004"
+        "PROB-PATSCHED-004",
+        "PROB-PATSCHED-005"
     ]
 }

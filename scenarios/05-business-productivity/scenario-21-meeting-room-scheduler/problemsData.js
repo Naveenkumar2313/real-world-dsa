@@ -94,5 +94,29 @@ export const meeting_room_problems = [
       cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
       c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
     }
+  },
+  {
+    id: 'PROB-MEETSCHED-005',
+    title: 'Priority-Weighted Meeting Value Optimization',
+    difficulty: 'Hard',
+    description: 'To resolve conflicts for the executive boardroom, the company has introduced a priority-weighting system. Each meeting request now includes a \\'strategic value\\' score based on the importance of the project. Instead of simply maximizing the number of meetings, facilities management must now maximize the total strategic value of the meetings scheduled. This requires selecting a set of non-overlapping meetings such that the sum of their priority weights is maximized.\\n\\nTask: Given N meeting requests where each request i consists of a start time s_i, a finish time f_i, and a weight w_i, find the maximum total weight of a set of mutually compatible meetings.',
+    constraints: ['1 <= N <= 10^5', '0 <= s_i < f_i <= 10^9', '1 <= w_i <= 10^9'],
+    examples: [
+      { input: '3\\n1 2 50\\n3 5 20\\n6 19 100', output: '170', explanation: 'All three meetings are compatible. Total weight = 50 + 20 + 100 = 170.' },
+      { input: '4\\n1 3 5\\n2 5 6\\n4 6 5\\n6 7 4', output: '14', explanation: 'Possible sets: {[1,3], [4,6], [6,7]} weight 5+5+4=14; {[2,5], [6,7]} weight 6+4=10. Maximum weight is 14.' }
+    ],
+    testCases: [
+      { input: '3\\n1 2 50\\n3 5 20\\n6 19 100', expectedOutput: '170', hidden: false },
+      { input: '4\\n1 3 5\\n2 5 6\\n4 6 5\\n6 7 4', expectedOutput: '14', hidden: false },
+      { input: '1\\n1 10 100', expectedOutput: '100', hidden: true },
+      { input: '2\\n1 5 10\\n2 6 15', expectedOutput: '15', hidden: true }
+    ],
+    starterCode: {
+      python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,
+      javascript: `function solve() {}\nconst lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");`,
+      java: `import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n    }\n}`,
+      cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
+      c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
+    }
   }
 ];

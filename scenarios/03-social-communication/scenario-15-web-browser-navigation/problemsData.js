@@ -69,21 +69,19 @@ export const browser_navigation_problems = [
     }
   },
   {
-    id: 'PROB-BROWSER-004',
-    title: 'Session Tab Reversal',
-    difficulty: 'Medium',
-    description: 'Given a singly linked list of N open browser tab IDs from left to right, reverse the linked list in-place by updating node pointers. Output the tab IDs in reversed order. If the list is empty (N = 0), print \\'EMPTY\\'.\\n\\nInput format: An integer N, followed by N space-separated tab IDs.\\nOutput format: The space-separated tab IDs in reversed order, or EMPTY.',
-    constraints: ['0 <= N <= 10^5', '1 <= id <= 10^9'],
+    id: 'PROB-BROWSER-005',
+    title: 'Browser Redirect Cycle Detection',
+    difficulty: 'Hard',
+    description: 'Web browsers must handle HTTP redirects, where one URL points to another. In poorly configured websites, a chain of redirects can accidentally form a loop (e.g., Page A redirects to B, B to C, and C back to A). This creates an infinite redirect loop that can crash the browser tab or exhaust network resources. To prevent this, browser engines implement a cycle detector using a fast-and-slow pointer approach to identify the point where the redirect chain becomes circular.\\n\\nInput format: The first line contains an integer N (number of redirect nodes). The next N lines each contain two strings: the current URL and the next URL in the chain. The final line contains the starting URL of the chain.\\nOutput format: The URL where the cycle starts, or \\'NO_CYCLE\\'.',
+    constraints: ['1 <= N <= 10000', '1 <= URL_length <= 100'],
     examples: [
-      { input: '5\\n10 20 30 40 50', output: '50 40 30 20 10', explanation: 'The list 10 -> 20 -> 30 -> 40 -> 50 is reversed to 50 -> 40 -> 30 -> 20 -> 10.' },
-      { input: '1\\n100', output: '100', explanation: 'Single-element list remains unchanged.' },
-      { input: '0', output: 'EMPTY', explanation: 'Zero tabs result in EMPTY.' }
+      { input: '3\\nurl1 url2\\nurl2 url3\\nurl3 url1\\nurl1', output: 'url1', explanation: 'The chain url1 -> url2 -> url3 -> url1 forms a cycle starting at url1.' }
     ],
     testCases: [
-      { input: '5\\n10 20 30 40 50', expectedOutput: '50 40 30 20 10', hidden: false },
-      { input: '1\\n100', expectedOutput: '100', hidden: false },
-      { input: '0', expectedOutput: 'EMPTY', hidden: false },
-      { input: '2\\n1 2', expectedOutput: '2 1', hidden: true }
+      { input: '3\\nurl1 url2\\nurl2 url3\\nurl3 url1\\nurl1', expectedOutput: 'url1', hidden: false },
+      { input: '3\\nurl1 url2\\nurl2 url3\\nurl3 url4\\nurl1', expectedOutput: 'NO_CYCLE', hidden: false },
+      { input: '4\\nurl1 url2\\nurl2 url3\\nurl3 url4\\nurl4 url2\\nurl1', expectedOutput: 'url2', hidden: true },
+      { input: '1\\nurl1 url2\\nurl1', expectedOutput: 'NO_CYCLE', hidden: true }
     ],
     starterCode: {
       python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,

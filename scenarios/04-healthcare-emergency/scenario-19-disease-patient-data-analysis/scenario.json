@@ -11,18 +11,21 @@
         "Implement Knuth-Morris-Pratt (KMP) pattern matching to locate viral pathogen signatures within genomic DNA sequences in linear time.",
         "Apply the Sliding Window technique to analyze continuous ICU heart rate telemetry and flag sudden variability anomalies.",
         "Perform Binary Search over sorted pharmacological registries to verify safe therapeutic dosage thresholds.",
-        "Sort multi-parameter clinical biomarker records to prioritize urgent patient alerts for laboratory review."
+        "Sort multi-parameter clinical biomarker records to prioritize urgent patient alerts for laboratory review.",
+        "Implement a Trie (prefix tree) with node-level counting to perform rapid prefix-based queries on hierarchical clinical diagnostic codes."
     ],
     "algorithms": [
         "KMP Pattern Matching",
         "Sliding Window",
         "Binary Search",
-        "Sorting"
+        "Sorting",
+        "Trie (Prefix Tree)"
     ],
     "learning_path": [
         "PROB-PATDATA-001",
         "PROB-PATDATA-002",
         "PROB-PATDATA-003",
-        "PROB-PATDATA-004"
+        "PROB-PATDATA-004",
+        "PROB-PATDATA-005"
     ]
 }

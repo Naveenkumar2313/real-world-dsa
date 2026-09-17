@@ -41,6 +41,7 @@ After completing this scenario, you will be able to:
 2. Traverse Trie subtrees to extract all valid completions for a given prefix in alphabetical order.
 3. Determine the Longest Common Prefix across collections of routing paths and URL strings.
 4. Calculate the count of unique non-empty substrings in search terms using substring indexing.
+5. Retrieve the top-K most popular query suggestions for a given prefix based on popularity scores.
 
 ---
 
@@ -61,6 +62,10 @@ After completing this scenario, you will be able to:
 ### Problem 4 — Unique Search Token Count (`PROB-SEARCH-004`)
 - **Focus:** Count Unique Substrings
 - **Synopsis:** Count the total number of distinct non-empty substrings in a query string for intent classification.
+
+### Problem 5 — Top-K Popular Autocomplete Suggestions (`PROB-SEARCH-005`)
+- **Focus:** Trie Operations
+- **Synopsis:** Retrieve the top-K most popular queries that start with a given prefix, ranked by popularity and lexicographical order.
 
 ---
 

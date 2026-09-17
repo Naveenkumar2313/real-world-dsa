@@ -1,0 +1,36 @@
+{
+  "problem_id": "PROB-EVAC-005",
+  "scenario_id": "SCN-EVAC-001",
+  "sequence": 5,
+  "title": "Critical Evacuation Bridge Identification",
+  "difficulty": "Hard",
+  "concepts": ["Graph Theory", "Bridges", "DFS"],
+  "real_world_story": "In a hospital's complex corridor layout, some segments are 'critical bridges.' If a bridge is blocked by debris or fire, it completely disconnects a section of the hospital from the rest of the facility, potentially trapping patients and personnel. Safety engineers must identify these critical bridges—edges whose removal increases the number of connected components in the corridor graph—to prioritize them for structural reinforcement and fire-suppression systems.",
+  "problem_statement": "Given a graph representing hospital corridors (nodes are rooms/intersections, edges are corridors), identify all critical bridges. A bridge is an edge that, if removed, splits the graph into two or more disconnected components.",
+  "task": "Implement an algorithm to find all bridges in the provided unweighted, undirected corridor graph. Output the bridges as pairs of nodes, sorted by the smaller node ID first, and the pairs themselves sorted lexicographically.",
+  "input_format": "The first line contains two integers: N (number of rooms) and M (number of corridors). The next M lines each contain two integers u and v representing a corridor between room u and room v.\\n\\nOutput format: Each bridge on a new line as 'u v', where u < v.",
+  "constraints": {
+    "N": "1 <= N <= 10^4",
+    "M": "1 <= M <= 10^5",
+    "u, v": "0 <= u, v < N"
+  },
+  "examples": [
+    {
+      "input": "4 3\\n0 1\\n1 2\\n2 3",
+      "output": "0 1\\n1 2\\n2 3",
+      "explanation": "In a linear chain, every edge is a bridge."
+    },
+    {
+      "input": "4 4\\n0 1\\n1 2\\n2 0\\n2 3",
+      "output": "2 3",
+      "explanation": "Edges (0,1), (1,2), and (2,0) form a cycle; removing any of them keeps the graph connected. Edge (2,3) is the only bridge."
+    }
+  ],
+  "expected_algorithm": "Tarjan's Bridge-Finding Algorithm (using DFS discovery and low-link times)",
+  "complexity": {
+    "time": "O(N + M)",
+    "space": "O(N + M)"
+  },
+  "real_world_takeaway": "Bridge detection is critical for infrastructure resilience. By identifying single points of failure in an evacuation network, hospital administrators can create redundant paths, ensuring that no single corridor blockage can isolate an entire ward during an emergency.",
+  "tags": ["graph-theory", "bridges", "dfs", "infrastructure-resilience"]
+}

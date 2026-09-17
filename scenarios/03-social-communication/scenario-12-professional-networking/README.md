@@ -42,6 +42,7 @@ After completing this scenario, you will be able to:
 2. Validate ancestral relationships and measure chain-of-command distances using Tree DFS.
 3. Quantify professional connection reach using Depth-Limited Search.
 4. Trace and reconstruct optimal warm referral paths using Graph BFS.
+5. Determine the most immediate common superior for two employees using Lowest Common Ancestor (LCA) logic.
 
 ---
 
@@ -62,6 +63,10 @@ After completing this scenario, you will be able to:
 ### Problem 4 — Referral Introduction Chain (`PROB-PROF-004`)
 - **Focus:** Graph BFS
 - **Synopsis:** Reconstruct the exact shortest sequence of colleagues connecting a job applicant to a hiring manager for warm introductions.
+
+### Problem 5 — Lowest Common Manager (`PROB-PROF-005`)
+- **Focus:** Tree DFS
+- **Synopsis:** Find the most immediate common superior (Lowest Common Ancestor) of two employees in the organizational reporting tree.
 
 ---
 

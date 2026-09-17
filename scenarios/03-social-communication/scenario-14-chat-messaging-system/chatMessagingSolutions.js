@@ -678,5 +678,297 @@ int main() {
     free(t);
     return 0;
 }`
+  },
+  'PROB-CHAT-005': {
+    python: `import sys
+
+def compute_lps(pattern):
+    m = len(pattern)
+    lps = [0] * m
+    length = 0
+    i = 1
+    while i < m:
+        if pattern[i] == pattern[length]:
+            length += 1
+            lps[i] = length
+            i += 1
+        else:
+            if length != 0:
+                length = lps[length - 1]
+            else:
+                lps[i] = 0
+                i += 1
+    return lps
+
+def solve():
+    lines = sys.stdin.read().splitlines()
+    if len(lines) < 2: return
+    text = lines[0]
+    pattern = lines[1]
+
+    if not pattern: return
+
+    n, m = len(text), len(pattern)
+    lps = compute_lps(pattern)
+    i = 0
+    j = 0
+    results = []
+    while i < n:
+        if pattern[j] == text[i]:
+            i += 1
+            j += 1
+        if j == m:
+            results.append(i - j)
+            j = lps[j - 1]
+        elif i < n and pattern[j] != text[i]:
+            if j != 0:
+                j = lps[j - 1]
+            else:
+                i += 1
+
+    if not results:
+        print("-1")
+    else:
+        print(*(results))
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function computeLPS(pattern) {
+    const m = pattern.length;
+    const lps = new Array(m).fill(0);
+    let length = 0;
+    let i = 1;
+    while (i < m) {
+        if (pattern[i] === pattern[length]) {
+            length++;
+            lps[i] = length;
+            i++;
+        } else {
+            if (length !== 0) {
+                length = lps[length - 1];
+            } else {
+                lps[i] = 0;
+                i++;
+            }
+        }
+    }
+    return lps;
+}
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').split(/\\n/);
+    if (input.length < 2) return;
+    const text = input[0];
+    const pattern = input[1];
+    if (!pattern) return;
+
+    const n = text.length;
+    const m = pattern.length;
+    const lps = computeLPS(pattern);
+    let i = 0, j = 0;
+    const results = [];
+
+    while (i < n) {
+        if (pattern[j] === text[i]) {
+            i++;
+            j++;
+        }
+        if (j === m) {
+            results.push(i - j);
+            j = lps[j - 1];
+        } else if (i < n && pattern[j] !== text[i]) {
+            if (j !== 0) {
+                j = lps[j - 1];
+            } else {
+                i++;
+            }
+        }
+    }
+
+    if (results.length === 0) {
+        console.log("-1");
+    } else {
+        console.log(results.join(" "));
+    }
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    static int[] computeLPS(String pattern) {
+        int m = pattern.length();
+        int[] lps = new int[m];
+        int len = 0;
+        int i = 1;
+        while (i < m) {
+            if (pattern.charAt(i) == pattern.charAt(len)) {
+                len++;
+                lps[i] = len;
+                i++;
+            } else {
+                if (len != 0) len = lps[len - 1];
+                else {
+                    lps[i] = 0;
+                    i++;
+                }
+            }
+        }
+        return lps;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextLine()) return;
+        String text = sc.nextLine();
+        if (!sc.hasNextLine()) return;
+        String pattern = sc.nextLine();
+        if (pattern.isEmpty()) return;
+
+        int n = text.length();
+        int m = pattern.length();
+        int[] lps = computeLPS(pattern);
+        int i = 0, j = 0;
+        List<Integer> results = new ArrayList<>();
+        while (i < n) {
+            if (pattern.charAt(j) == text.charAt(i)) {
+                i++; j++;
+            }
+            if (j == m) {
+                results.add(i - j);
+                j = lps[j - 1];
+            } else if (i < n && pattern.charAt(j) != text.charAt(i)) {
+                if (j != 0) j = lps[j - 1];
+                else i++;
+            }
+        }
+        if (results.isEmpty()) {
+            System.out.println("-1");
+        } else {
+            for (int k = 0; k < results.size(); k++) {
+                System.out.print(results.get(k) + (k == results.size() - 1 ? "" : " "));
+            }
+            System.out.println();
+        }
+    }
+}`,
+    cpp: `#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> computeLPS(string pattern) {
+    int m = pattern.length();
+    vector<int> lps(m);
+    int len = 0;
+    int i = 1;
+    while (i < m) {
+        if (pattern[i] == pattern[len]) {
+            len++;
+            lps[i] = len;
+            i++;
+        } else {
+            if (len != 0) len = lps[len - 1];
+            else {
+                lps[i] = 0;
+                i++;
+            }
+        }
+    }
+    return lps;
+}
+
+int main() {
+    string text, pattern;
+    if (!getline(cin, text)) return 0;
+    if (!getline(cin, pattern)) return 0;
+    if (pattern.empty()) return 0;
+
+    int n = text.length();
+    int m = pattern.length();
+    vector<int> lps = computeLPS(pattern);
+    int i = 0, j = 0;
+    vector<int> results;
+    while (i < n) {
+        if (pattern[j] == text[i]) {
+            i++; j++;
+        }
+        if (j == m) {
+            results.push_back(i - j);
+            j = lps[j - 1];
+        } else if (i < n && pattern[j] != text[i]) {
+            if (j != 0) j = lps[j - 1];
+            else i++;
+        }
+    }
+    if (results.empty()) {
+        cout << -1 << endl;
+    } else {
+        for (int k = 0; k < results.size(); k++) {
+            cout << results[k] << (k == results.size() - 1 ? "" : " ");
+        }
+        cout << endl;
+    }
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+L
+void computeLPS(char* pattern, int* lps) {
+    int m = strlen(pattern);
+    int len = 0;
+    int i = 1;
+    lps[0] = 0;
+    while (i < m) {
+        if (pattern[i] == pattern[len]) {
+            len++;
+            lps[i] = len;
+            i++;
+        } else {
+            if (len != 0) len = lps[len - 1];
+            else {
+                lps[i] = 0;
+                i++;
+            }
+        }
+    }
+}
+
+int main() {
+    char text[100001], pattern[100001];
+    if (!fgets(text, 100001, stdin)) return 0;
+    if (!fgets(pattern, 100001, stdin)) return 0;
+    text[strcspn(text, "\\r\\n")] = 0;
+    pattern[strcspn(pattern, "\\r\\n")] = 0;
+    if (strlen(pattern) == 0) return 0;
+
+    int n = strlen(text);
+    int m = strlen(pattern);
+    int* lps = (int*)malloc(m * sizeof(int));
+    computeLPS(pattern, lps);
+    int i = 0, j = 0;
+    int found = 0;
+    while (i < n) {
+        if (pattern[j] == text[i]) {
+            i++; j++;
+        }
+        if (j == m) {
+            printf("%d%s", i - j, found++ ? " " : "");
+            j = lps[j - 1];
+        } else if (i < n && pattern[j] != text[i]) {
+            if (j != 0) j = lps[j - 1];
+            else i++;
+        }
+    }
+    if (found == 0) printf("-1");
+    printf("\\n");
+    free(lps);
+    return 0;
+}`
   }
 };

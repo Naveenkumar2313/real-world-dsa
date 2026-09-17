@@ -1,0 +1,25 @@
+{
+  "problem_id": "PROB-SEARCH-005",
+  "scenario_id": "SCN-SEARCH-001",
+  "sequence": 5,
+  "title": "Top-K Popular Autocomplete Suggestions",
+  "difficulty": "Hard",
+  "concepts": ["Trie Operations"],
+  "real_world_story": "Modern search bars don't just return all matches; they surface the most relevant and popular queries to the user. Each search term in the global index is associated with a popularity score based on historical search volume. When a user types a prefix, the autocomplete engine must rapidly identify all matching queries and retrieve the top-K suggestions with the highest scores to maximize the probability of a successful query.",
+  "problem_statement": "Given a set of search queries and their corresponding popularity scores, implement a system that can retrieve the top-K most popular queries that start with a given prefix. If two queries have the same popularity score, the lexicographically smaller query should be prioritized.",
+  "task": "For a given search prefix, return the K most popular autocomplete suggestions in descending order of popularity. If fewer than K matches exist, return all available matches.",
+  "input_format": "The first line contains two integers N (number of queries) and K (the top-K limit). The next N lines each contain a string (the query) and an integer (its popularity score). The final line contains the search prefix.",
+  "output_format": "A list of K (or fewer) queries, each on a new line, ordered by popularity (descending) and then lexicographically (ascending).",
+  "constraints": { "N": "1 <= N <= 10000", "K": "1 <= K <= 10", "query_length": "1 <= length <= 100" },
+  "examples": [
+    {
+      "input": "5 2\\napple 10\\napp 20\\napplication 15\\nbanana 5\\napplet 12\\napp",
+      "output": "app\\napplication",
+      "explanation": "Queries starting with 'app' are: 'app' (20), 'apple' (10), 'application' (15), 'applet' (12). The top 2 most popular are 'app' (20) and 'application' (15)."
+    }
+  ],
+  "expected_algorithm": "Trie + Max-Heap / Sorting of subtree results",
+  "complexity": { "time": "O(N*L + L + S*logK)", "space": "O(N*L)" },
+  "real_world_takeaway": "Combining prefix-based retrieval with weight-based ranking is the foundation of modern recommendation and autocomplete systems, ensuring users find the most relevant information with minimal keystrokes.",
+  "tags": ["trie", "top-k", "ranking", "autocomplete"]
+}

@@ -11,18 +11,22 @@
         "Apply greedy Activity Selection to maximize non-overlapping meeting bookings in a single shared conference room.",
         "Use interval partitioning and greedy sweep-line analysis to calculate the minimum conference rooms needed for overlapping meetings.",
         "Sort enterprise calendar reservations chronologically using multi-key ordering rules.",
-        "Implement FIFO Queue Operations to manage automated conference room waitlist requests and allocations."
+        "Implement FIFO Queue Operations to manage automated conference room waitlist requests and allocations.",
+        "Apply Dynamic Programming and Binary Search to solve the Weighted Interval Scheduling problem for high-priority meeting allocation."
     ],
     "algorithms": [
         "Activity Selection",
         "Greedy",
         "Sorting",
-        "Queue Operations"
+        "Queue Operations",
+        "Dynamic Programming",
+        "Binary Search"
     ],
     "learning_path": [
         "PROB-MEETSCHED-001",
         "PROB-MEETSCHED-002",
         "PROB-MEETSCHED-003",
-        "PROB-MEETSCHED-004"
+        "PROB-MEETSCHED-004",
+        "PROB-MEETSCHED-005"
     ]
 }

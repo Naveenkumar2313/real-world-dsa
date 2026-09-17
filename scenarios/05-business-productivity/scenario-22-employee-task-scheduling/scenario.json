@@ -11,18 +11,21 @@
         "Implement Job Sequencing with Deadlines to maximize billing profit and deliverable throughput.",
         "Sort enterprise customer service tickets by SLA tier, submission timestamp, and unique ticket ID.",
         "Apply greedy Activity Selection to schedule maximum non-overlapping technical review focus blocks.",
-        "Use greedy Shortest Processing Time dispatching to minimize cumulative waiting latency in continuous integration queues."
+        "Use greedy Shortest Processing Time dispatching to minimize cumulative waiting latency in continuous integration queues.",
+        "Apply Maximum Bipartite Matching to optimally pair specialized employees with client tasks based on qualifications."
     ],
     "algorithms": [
         "Job Sequencing with Deadlines",
         "Sorting",
         "Activity Selection",
-        "Greedy"
+        "Greedy",
+        "Bipartite Matching"
     ],
     "learning_path": [
         "PROB-TASKSCHED-001",
         "PROB-TASKSCHED-002",
         "PROB-TASKSCHED-003",
-        "PROB-TASKSCHED-004"
+        "PROB-TASKSCHED-004",
+        "PROB-TASKSCHED-005"
     ]
 }

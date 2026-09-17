@@ -94,5 +94,28 @@ export const medical_resource_problems = [
       cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
       c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
     }
+  },
+  {
+    id: 'PROB-MEDRES-005',
+    title: 'Medical Supply Stockpile Optimization',
+    difficulty: 'Medium',
+    description: 'Given N types of medical kits, each with a cost c_i and a utility value v_i, and a total budget B, determine the maximum total utility that can be achieved. You can purchase any number of kits of each type (unbounded).\\n\\nInput format: Two space-separated integers N and B, followed by N lines of cost and utility score.\\nOutput format: A single integer representing the maximum total utility.',
+    constraints: ['1 <= N <= 100', '1 <= B <= 10^4', '1 <= cost_i <= B', '1 <= utility_i <= 10^6'],
+    examples: [
+      { input: '3 10\\n2 5\\n3 8\\n4 11', output: '27', explanation: 'Optimal combination: Two kits of type 3 (cost 4 each, total 8) and one kit of type 1 (cost 2, total 2). Total cost = 10, Total utility = 11*2 + 5 = 27.' }
+    ],
+    testCases: [
+      { input: '3 10\\n2 5\\n3 8\\n4 11', expectedOutput: '27', hidden: false },
+      { input: '2 5\\n3 10\\n2 5', expectedOutput: '15', hidden: false },
+      { input: '1 10\\n3 10', expectedOutput: '30', hidden: true },
+      { input: '2 10\\n6 10\\n7 15', expectedOutput: '15', hidden: true }
+    ],
+    starterCode: {
+      python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,
+      javascript: `function solve() {}\nconst lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");`,
+      java: `import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n    }\n}`,
+      cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
+      c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
+    }
   }
 ];

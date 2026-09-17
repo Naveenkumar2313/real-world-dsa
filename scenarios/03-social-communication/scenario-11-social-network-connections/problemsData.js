@@ -74,20 +74,20 @@ export const social_network_problems = [
     }
   },
   {
-    id: 'PROB-SOCIAL-004',
-    title: 'Connection Audit Log Reversal',
-    difficulty: 'Easy',
-    description: 'A sequence of N connection audit event records is stored as a singly linked list. Invert the pointer chain of the linked list in-place so that the head node points to the most recent event and subsequent nodes follow in reverse chronological order. Output the event IDs in the reversed sequence. If the log is empty (N = 0), print EMPTY.\\n\\nInput format: An integer N, followed by N space-separated integers representing the event IDs in chronological order.\\nOutput format: The N space-separated event IDs in reverse chronological order, or EMPTY if N = 0.',
-    constraints: ['0 <= N <= 10^5', '1 <= e_i <= 10^9'],
+    id: 'PROB-SOCIAL-005',
+    title: 'Critical Network Connectors',
+    difficulty: 'Hard',
+    description: 'In a massive social network, some users act as "bridges" between different social circles. If these users leave the platform, entire communities might become disconnected from each other. The platform\\'s data science team needs to identify these "Critical Connectors" (Articulation Points) to analyze network robustness and the flow of information across the social graph.\\n\\nInput format: The first line contains two integers N (number of users) and M (number of friendships). The next M lines each contain two integers u and v, representing a friendship between user u and user v. User IDs are 0-indexed.\\nOutput format: A space-separated list of Critical Connector user IDs in ascending order. If no such users exist, output -1.',
+    constraints: ['1 <= N <= 1000', '0 <= M <= N*(N-1)/2'],
     examples: [
-      { input: '4\\n101 102 103 104', output: '104 103 102 101', explanation: 'The linked list 101 -> 102 -> 103 -> 104 is reversed to 104 -> 103 -> 102 -> 101.' },
-      { input: '0', output: 'EMPTY', explanation: 'The event log contains 0 records, so the output is EMPTY.' }
+      { input: '5 5\\n0 1\\n1 2\\n2 0\\n0 3\\n3 4', output: '0 3', explanation: 'User 0 is a bridge between the {0,1,2} cluster and user 3. User 3 is a bridge between user 0 and user 4. Removing either 0 or 3 splits the graph.' }
     ],
     testCases: [
-      { input: '4\\n101 102 103 104', expectedOutput: '104 103 102 101', hidden: false },
-      { input: '0', expectedOutput: 'EMPTY', hidden: false },
-      { input: '1\\n500', expectedOutput: '500', hidden: true },
-      { input: '3\\n1 2 3', expectedOutput: '3 2 1', hidden: true }
+      { input: '5 5\\n0 1\\n1 2\\n2 0\\n0 3\\n3 4', expectedOutput: '0 3', hidden: false },
+      { input: '3 2\\n0 1\\n1 2', expectedOutput: '1', hidden: false },
+      { input: '4 3\\n0 1\\n0 2\\n0 3', expectedOutput: '0', hidden: false },
+      { input: '4 4\\n0 1\\n1 2\\n2 3\\n3 0', expectedOutput: '-1', hidden: true },
+      { input: '1 0', expectedOutput: '-1', hidden: true }
     ],
     starterCode: {
       python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,

@@ -20,6 +20,8 @@ A clinical analytics and precision medicine engine must deliver fast, accurate i
 
 > How can a high-throughput clinical laboratory rank patient blood panels to highlight abnormal biomarker scores for immediate physician intervention?
 
+> How can hospital systems rapidly query hierarchical diagnostic codes to identify the total number of patients sharing a broad symptom category during a disease outbreak?
+
 ---
 
 ## Real-World to DSA Mapping
@@ -30,6 +32,7 @@ A clinical analytics and precision medicine engine must deliver fast, accurate i
 | Heart Rate Variability Monitor | Sliding Window | Moving range evaluation over continuous telemetry |
 | Drug Concentration Validation | Binary Search | Logarithmic lookup in sorted therapeutic registry |
 | Laboratory Biomarker Alert Triage | Multi-Key Sorting | Prioritize patient panels by anomaly severity |
+| Clinical Symptom Prefix Analysis | Trie (Prefix Tree) | Efficient prefix-based counting of diagnostic codes |
 
 ---
 
@@ -41,6 +44,7 @@ After completing this scenario, you will be able to:
 2. Use fixed-size Sliding Window techniques to track telemetry extremes and detect physiological instability.
 3. Apply Binary Search to query sorted medical reference datasets with $O(\log N)$ time complexity.
 4. Implement custom multi-key comparator sorting to rank diagnostic lab results.
+5. Use a Trie (prefix tree) with node-level counts to perform rapid prefix-based queries on hierarchical clinical diagnostic codes.
 
 ---
 
@@ -62,8 +66,12 @@ After completing this scenario, you will be able to:
 - **Focus:** Sorting
 - **Synopsis:** Sort $N$ patient blood test records primarily by critical biomarker score descending, and secondarily by patient ID ascending.
 
+### Problem 5 — Clinical Symptom Prefix Analysis (`PROB-PATDATA-005`)
+- **Focus:** Trie (Prefix Tree)
+- **Synopsis:** Efficiently count the number of clinical diagnostic codes in a database that share a common prefix, enabling rapid outbreak prevalence analysis.
+
 ---
 
 ## Key Takeaway
 
-Healthcare analytics blends exact string pattern matching, temporal windowing, logarithmic search, and robust sorting. KMP eliminates costly backtracking when scanning massive genomes, sliding windows detect rapid vital sign deterioration in ICU telemetry, binary search provides instant drug safety verification, and stable ranking alerts clinical teams to patients in acute danger.
+Healthcare analytics blends exact string pattern matching, temporal windowing, logarithmic search, and robust sorting. KMP eliminates costly backtracking when scanning massive genomes, sliding windows detect rapid vital sign deterioration in ICU telemetry, binary search provides instant drug safety verification, stable ranking alerts clinical teams to patients in acute danger, and Tries enable instantaneous prefix-based diagnostic queries across hierarchical coding systems.

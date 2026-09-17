@@ -11,18 +11,21 @@
         "Apply Breadth-First Search (BFS) on unweighted corridor graphs to find the minimum number of transitions to a safe hospital exit.",
         "Use Depth-First Search (DFS) to identify and inspect all reachable rooms within an isolated fire barrier compartment.",
         "Execute Tree BFS (level-order traversal) to coordinate tier-by-tier emergency alert broadcasts across incident response hierarchies.",
-        "Apply Tree DFS to calculate hierarchy depth and dependent sub-ward capacity across hospital emergency trees."
+        "Apply Tree DFS to calculate hierarchy depth and dependent sub-ward capacity across hospital emergency trees.",
+        "Identify critical structural bottlenecks (bridges) in a corridor network using Tarjan's bridge-finding algorithm to ensure evacuation redundancy."
     ],
     "algorithms": [
         "Graph BFS",
         "Graph DFS",
         "Tree BFS",
-        "Tree DFS"
+        "Tree DFS",
+        "Tarjan's Bridge-Finding Algorithm"
     ],
     "learning_path": [
         "PROB-EVAC-001",
         "PROB-EVAC-002",
         "PROB-EVAC-003",
-        "PROB-EVAC-004"
+        "PROB-EVAC-004",
+        "PROB-EVAC-005"
     ]
 }

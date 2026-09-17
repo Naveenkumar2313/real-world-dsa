@@ -1,0 +1,25 @@
+{
+  "problem_id": "PROB-BROWSER-005",
+  "scenario_id": "SCN-BROWSER-001",
+  "sequence": 5,
+  "title": "Browser Redirect Cycle Detection",
+  "difficulty": "Hard",
+  "concepts": ["Linked List"],
+  "real_world_story": "Web browsers must handle HTTP redirects, where one URL points to another. In poorly configured websites, a chain of redirects can accidentally form a loop (e.g., Page A redirects to B, B to C, and C back to A). This creates an infinite redirect loop that can crash the browser tab or exhaust network resources. To prevent this, browser engines implement a cycle detector using a fast-and-slow pointer approach to identify the point where the redirect chain becomes circular.",
+  "problem_statement": "Given a sequence of URL redirects represented as a linked list of nodes, determine if the chain contains a cycle. If a cycle is detected, identify the URL where the loop begins. If no cycle exists, return \"NO_CYCLE\".",
+  "task": "Implement a function that detects a cycle in the redirect chain and returns the starting URL of the cycle. Use Floyd's Cycle-Finding Algorithm to ensure optimal space complexity.",
+  "input_format": "The first line contains an integer N (number of redirect nodes). The next N lines each contain two strings: the current URL and the next URL in the chain. The final line contains the starting URL of the chain.",
+  "output_format": "The URL where the cycle starts, or \"NO_CYCLE\".",
+  "constraints": { "N": "1 <= N <= 10000", "URL_length": "1 <= length <= 100" },
+  "examples": [
+    {
+      "input": "3\\nurl1 url2\\nurl2 url3\\nurl3 url1\\nurl1",
+      "output": "url1",
+      "explanation": "The chain url1 -> url2 -> url3 -> url1 forms a cycle starting at url1."
+    }
+  ],
+  "expected_algorithm": "Floyd's Cycle-Finding Algorithm (Tortoise and Hare)",
+  "complexity": { "time": "O(N)", "space": "O(1)" },
+  "real_world_takeaway": "Cycle detection is a critical safety mechanism in any system that follows pointer-like references (like URLs or memory addresses), preventing infinite loops and ensuring system stability.",
+  "tags": ["linked-list", "cycle-detection", "floyd-algorithm", "browser-engine"]
+}

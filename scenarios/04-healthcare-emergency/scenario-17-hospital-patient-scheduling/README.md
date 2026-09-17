@@ -20,6 +20,8 @@ A clinical operations scheduling platform faces complex coordination challenges:
 
 > How many physical operating rooms must a hospital keep staffed and equipped to execute a complete set of scheduled surgeries without delays or room conflicts?
 
+> When procedures have varying clinical priority levels, how can a hospital maximize the total priority value of non-overlapping surgeries performed in a single theater?
+
 ---
 
 ## Real-World to DSA Mapping
@@ -30,6 +32,7 @@ A clinical operations scheduling platform faces complex coordination challenges:
 | Unit-Time Diagnostic Imaging | Job Sequencing with Deadlines | Maximize diagnostic score under hard deadlines |
 | Master Consultation Calendar | Multi-Key Sorting | Chronological ordering of doctor bookings |
 | Hospital Operating Theatre Capacity | Greedy Interval Partitioning | Minimum concurrent rooms needed for all intervals |
+| Weighted Surgical Throughput | Dynamic Programming | Maximize total clinical value of non-overlapping surgeries |
 
 ---
 
@@ -41,6 +44,7 @@ After completing this scenario, you will be able to:
 2. Solve Job Sequencing with Deadlines to optimize diagnostic yield under discrete time slot constraints.
 3. Sort clinical appointment timeframes to generate consistent daily consultation agendas.
 4. Calculate chromatic interval partitioning to determine minimum facility capacity for concurrent workloads.
+5. Apply weighted interval scheduling using dynamic programming and binary search to maximize the total clinical priority of surgical throughput.
 
 ---
 
@@ -62,8 +66,12 @@ After completing this scenario, you will be able to:
 - **Focus:** Greedy
 - **Synopsis:** Compute the minimum number of physical operating theatres required so that all $N$ scheduled surgeries proceed without any room clashes.
 
+### Problem 5 — Weighted Surgical Throughput Optimization (`PROB-PATSCHED-005`)
+- **Focus:** Dynamic Programming & Binary Search
+- **Synopsis:** Maximize the total clinical value of non-overlapping surgical procedures in a single theater using a weighted interval scheduling approach.
+
 ---
 
 ## Key Takeaway
 
-Optimal clinical scheduling bridges discrete greedy heuristics and interval mathematics. Selecting surgeries by earliest completion time maximizes room utilization, deadline-aware sequencing ensures time-critical patient diagnostics are never delayed past clinical utility, and interval concurrency tracking guarantees hospitals right-size their expensive sterile surgical suites.
+Optimal clinical scheduling bridges discrete greedy heuristics and interval mathematics. Selecting surgeries by earliest completion time maximizes room utilization, deadline-aware sequencing ensures time-critical patient diagnostics are never delayed past clinical utility, interval concurrency tracking guarantees hospitals right-size their expensive sterile surgical suites, and weighted scheduling allows for the maximization of clinical utility when priorities vary.

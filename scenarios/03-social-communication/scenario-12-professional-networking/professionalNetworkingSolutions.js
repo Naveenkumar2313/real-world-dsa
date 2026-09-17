@@ -373,7 +373,7 @@ int main() {
     for (int i = 0; i < Q; ++i) {
         int A, B;
         cin >> A >> B;
-        if (tin[A] <= tin[B] && tout[A] >= tout[B]) {
+        if (tin[A] <= tin[H] && tout[A] >= tout[B]) {
             cout << "YES " << depth[B] - depth[A] << "\\n";
         } else {
             cout << "NO\\n";
@@ -945,6 +945,272 @@ int main() {
         printf("\\n");
         free(path);
     }
+    return 0;
+}`
+  },
+  'PROB-PROF-005': {
+    python: `import sys
+
+sys.setrecursionlimit(200000)
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    if N == 0:
+        print("-1")
+        return
+
+    adj = [[] for _ in range(N + 1)]
+    for i in range(N - 1):
+        u = int(input_data[1 + 2*i])
+        v = int(input_data[2 + 2*i])
+        adj[u].append(v)
+
+    A = int(input_data[-2])
+    B = int(input_data[-1])
+
+    parent = [0] * (N + 1)
+    depth = [0] * (N + 1)
+
+    stack = [1]
+    visited = [False] * (N + 1)
+    visited[1] = True
+    while stack:
+        u = stack.pop()
+        for v in adj[u]:
+            parent[v] = u
+            depth[v] = depth[u] + 1
+            visited[v] = True
+            stack.append(v)
+
+    u, v = A, B
+    if depth[u] < depth[v]:
+        u, v = v, u
+
+    while depth[u] > depth[v]:
+        u = parent[u]
+
+    while u != v:
+        u = parent[u]
+        v = parent[v]
+
+    print(u if u != 0 else -1)
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    if (isNaN(N) || N === 0) {
+        console.log("-1");
+        return;
+    }
+    const adj = Array.from({ length: N + 1 }, () => []);
+    for (let i = 0; i < N - 1; i++) {
+        const u = parseInt(input[ptr++]);
+        const v = parseInt(input[ptr++]);
+        adj[u].push(v);
+    }
+
+    const A = parseInt(input[ptr++]);
+    const B = parseInt(input[ptr++]);
+
+    const parent = new Array(N + 1).fill(0);
+    const depth = new Array(N + 1).fill(0);
+    const visited = new Array(N + 1).fill(false);
+
+    const stack = [1];
+    visited[1] = true;
+    while (stack.length > 0) {
+        const u = stack.pop();
+        for (const v of adj[u]) {
+            parent[v] = u;
+            depth[v] = depth[u] + 1;
+            visited[v] = true;
+            stack.push(v);
+        }
+    }
+
+    let u = A, v = B;
+    if (depth[u] < depth[v]) [u, v] = [v, u];
+
+    while (depth[u] > depth[v]) {
+        u = parent[u];
+    }
+
+    while (u !== v) {
+        u = parent[u];
+        v = parent[v];
+    }
+
+    console.log(u !== 0 ? u : -1);
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        if (N == 0) {
+            System.out.println("-1");
+            return;
+        }
+        List<Integer>[] adj = new ArrayList[N + 1];
+        for (int i = 0; i <= N; i++) adj[i] = new ArrayList<>();
+        for (int i = 0; i < N - 1; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            adj[u].add(v);
+        }
+        int A = sc.nextInt();
+        int B = sc.nextInt();
+        int[] parent = new int[N + 1];
+        int[] depth = new int[N + 1];
+        boolean[] visited = new boolean[N + 1];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+        visited[1] = true;
+        while (!stack.isEmpty()) {
+            int u = stack.pop();
+            for (int v : adj[u]) {
+                parent[v] = u;
+                depth[v] = depth[u] + 1;
+                visited[v] = true;
+                stack.push(v);
+            }
+        }
+        int u = A, v = B;
+        if (depth[u] < depth[v]) {
+            int temp = u; u = v; v = temp;
+        }
+        while (depth[u] > depth[v]) {
+            u = parent[u];
+        }
+        while (u != v) {
+            u = parent[u];
+            v = parent[v];
+        }
+        System.out.println(u != 0 ? u : -1);
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <stack>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int N;
+    if (!(cin >> N) || N == 0) {
+        if (N == 0) cout << -1 << endl;
+        return 0;
+    }
+    vector<vector<int>> adj(N + 1);
+    for (int i = 0; i < N - 1; ++i) {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+    }
+    int A, B;
+    cin >> A >> B;
+    vector<int> parent(N + 1, 0);
+    vector<int> depth(N + 1, 0);
+    vector<bool> visited(N + 1, false);
+    stack<int> s;
+    s.push(1);
+    visited[1] = true;
+    while (!s.empty()) {
+        int u = s.top();
+        s.pop();
+        for (int v : adj[u]) {
+            parent[v] = u;
+            depth[v] = depth[u] + 1;
+            visited[v] = true;
+            s.push(v);
+        }
+    }
+    int u = A, v = B;
+    if (depth[u] < depth[v]) swap(u, v);
+    while (depth[u] > depth[v]) {
+        u = parent[u];
+    }
+    while (u != v) {
+        u = parent[u];
+        v = parent[v];
+    }
+    cout << (u != 0 ? u : -1) << endl;
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+typedef struct Node {
+    int v;
+    struct Node* next;
+} Node;
+
+void add_edge(Node** adj, int u, int v) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->v = v;
+    newNode->next = adj[u];
+    adj[u] = newNode;
+}
+
+int main() {
+    int N;
+    if (scanf("%d", &N) != 1 || N == 0) {
+        if (N == 0) printf("-1\\n");
+        return 0;
+    }
+    Node** adj = (Node**)calloc(N + 1, sizeof(Node*));
+    for (int i = 0; i < N - 1; i++) {
+        int u, v;
+        scanf("%d %d", &u, &v);
+        add_edge(adj, u, v);
+    }
+    int A, B;
+    scanf("%d %d", &A, &B);
+    int* parent = (int*)calloc(N + 1, sizeof(int));
+    int* depth = (int*)calloc(N + 1, sizeof(int));
+    bool* visited = (bool*)calloc(N + 1, sizeof(bool));
+    int* stack = (int*)malloc((N + 1) * sizeof(int));
+    int top = -1;
+    stack[++top] = 1;
+    visited[1] = true;
+    while (top >= 0) {
+        int u = stack[top--];
+        for (Node* curr = adj[u]; curr != NULL; curr = curr->next) {
+            int v = curr->v;
+            parent[v] = u;
+            depth[v] = depth[u] + 1;
+            visited[v] = true;
+            stack[++top] = v;
+        }
+    }
+    int u = A, v = B;
+    if (depth[u] < depth[v]) {
+        int temp = u; u = v; v = temp;
+    }
+    while (depth[u] > depth[v]) {
+        u = parent[u];
+    }
+    while (u != v) {
+        u = parent[u];
+        v = parent[v];
+    }
+    printf("%d\\n", u != 0 ? u : -1);
     return 0;
 }`
   }

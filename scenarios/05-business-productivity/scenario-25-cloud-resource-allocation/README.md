@@ -4,7 +4,7 @@
 
 Cloud infrastructure providers operate massive multi-tenant datacenters where physical server provisioning and workload scheduling directly determine operational profitability and energy efficiency. When customers deploy clusters of microservices, orchestrators must size virtual machines accurately to avoid out-of-memory crashes, pack customer virtual machines into bare-metal hosts to maximize rental billing revenue, consolidate batch compute jobs into the minimum number of powered-on physical servers, and prioritize resource-intensive workloads during scheduling waves.
 
-In this scenario, you will build the core algorithmic resource management engines for a cloud computing platform: cluster node capacity sizing via binary search on answer, bare-metal VM revenue maximization, First-Fit Decreasing bin packing, and container workload prioritization sorting.
+In this scenario, you will build the core algorithmic resource management engines for a cloud computing platform: cluster node capacity sizing via binary search on answer, bare-metal VM revenue maximization, First-Fit Decreasing bin packing, container workload prioritization sorting, and optimized container placement using max-flow.
 
 ---
 
@@ -20,6 +20,8 @@ A cloud platform orchestration engine must resolve critical infrastructure effic
 
 > How can a cluster scheduler sort pending container tasks so that high-demand computational jobs are scheduled ahead of lightweight services?
 
+> How can an orchestrator maximize the number of containers placed across heterogeneous servers with varying capacities and compatibility constraints?
+
 ---
 
 ## Real-World to DSA Mapping
@@ -30,6 +32,7 @@ A cloud platform orchestration engine must resolve critical infrastructure effic
 | Bare-Metal VM Placement | 0/1 Knapsack | Maximize billing revenue under physical host RAM budget |
 | Datacenter Workload Consolidation | Greedy (First-Fit Decreasing) | Heuristic bin-packing to minimize powered servers |
 | Task Scheduling Priority | Multi-Key Sorting | Sort container tasks by CPU cores, RAM, and task ID |
+| Optimized Container Placement | Max Flow | Maximize task assignment given server capacities and affinities |
 
 ---
 
@@ -41,6 +44,7 @@ After completing this scenario, you will be able to:
 2. Formulate VM placement as a 0/1 Knapsack problem to maximize host revenue density.
 3. Implement the First-Fit Decreasing (FFD) greedy approximation algorithm for classic bin packing.
 4. Sort multi-dimensional resource requirements to establish task scheduling priority queues.
+5. Model complex placement constraints as a flow network and apply Max Flow algorithms to maximize resource utilization.
 
 ---
 
@@ -62,8 +66,12 @@ After completing this scenario, you will be able to:
 - **Focus:** Sorting
 - **Synopsis:** Sort $N$ containerized tasks primarily by CPU cores descending, secondarily by memory descending, and tertiarily by task ID ascending.
 
+### Problem 5 — Optimized Container Placement Max-Flow (`PROB-CLOUDRES-005`)
+- **Focus:** Max Flow
+- **Synopsis:** Maximize the number of container workloads placed across multiple servers with specific capacities and compatibility requirements using a flow-based matching algorithm.
+
 ---
 
 ## Key Takeaway
 
-Cloud infrastructure optimization balances exact polynomial algorithms with greedy approximations and monotonic search. Binary search on answer sizes cluster node capacity efficiently, 0/1 knapsack dynamic programming extracts maximum server revenue, First-Fit Decreasing achieves tight bin-packing consolidation, and multi-key sorting organizes task scheduling backlogs.
+Cloud infrastructure optimization balances exact polynomial algorithms with greedy approximations and monotonic search. Binary search on answer sizes cluster node capacity efficiently, 0/1 knapsack dynamic programming extracts maximum server revenue, First-Fit Decreasing achieves tight bin-packing consolidation, multi-key sorting organizes task scheduling backlogs, and network flow algorithms solve complex placement constraints to ensure maximum cluster utilization.

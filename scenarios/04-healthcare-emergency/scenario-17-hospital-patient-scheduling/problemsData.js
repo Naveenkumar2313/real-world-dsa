@@ -93,5 +93,28 @@ export const patient_scheduling_problems = [
       cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
       c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
     }
+  },
+  {
+    id: 'PROB-PATSCHED-005',
+    title: 'Weighted Surgical Throughput Optimization',
+    difficulty: 'Hard',
+    description: 'Given N surgical procedures with start time s_i, end time e_i, and clinical value v_i, select a subset of non-overlapping procedures to maximize the total clinical value. A procedure ending at T and another starting at T are considered non-overlapping.\\n\\nInput format: An integer N, followed by N lines of start_time, end_time, and clinical_value.\\nOutput format: A single integer representing the maximum total clinical value.',
+    constraints: ['1 <= N <= 10^5', '0 <= s_i < e_i <= 10^9', '1 <= v_i <= 10^6'],
+    examples: [
+      { input: '3\\n1 3 50\\n2 4 10\\n3 5 40', output: '90', explanation: 'Optimal selection: Surgery 1 (1-3, val 50) and Surgery 3 (3-5, val 40). Total = 90.' }
+    ],
+    testCases: [
+      { input: '3\\n1 3 50\\n2 4 10\\n3 5 40', expectedOutput: '90', hidden: false },
+      { input: '3\\n1 2 10\\n2 3 10\\n3 4 10', expectedOutput: '30', hidden: false },
+      { input: '1\\n1 2 100', expectedOutput: '100', hidden: true },
+      { input: '2\\n1 5 100\\n2 4 150', expectedOutput: '150', hidden: true }
+    ],
+    starterCode: {
+      python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,
+      javascript: `function solve() {}\nconst lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");`,
+      java: `import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n    }\n}`,
+      cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
+      c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
+    }
   }
 ];

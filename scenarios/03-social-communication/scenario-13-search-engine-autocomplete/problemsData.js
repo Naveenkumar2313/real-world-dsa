@@ -70,20 +70,19 @@ export const search_autocomplete_problems = [
     }
   },
   {
-    id: 'PROB-SEARCH-004',
-    title: 'Unique Search Token Count',
+    id: 'PROB-SEARCH-005',
+    title: 'Top-K Popular Autocomplete Suggestions',
     difficulty: 'Hard',
-    description: 'Given a search query string S consisting of lowercase English letters, compute the total number of distinct non-empty substrings contained within S.\\n\\nInput format: A single line containing the string S.\\nOutput format: A single integer representing the number of distinct non-empty substrings in S.',
-    constraints: ['1 <= |S| <= 2000', 'Lowercase English letters'],
+    description: 'Modern search bars don\\'t just return all matches; they surface the most relevant and popular queries to the user. Each search term in the global index is associated with a popularity score based on historical search volume. When a user types a prefix, the autocomplete engine must rapidly identify all matching queries and retrieve the top-K suggestions with the highest scores to maximize the probability of a successful query.\\n\\nInput format: The first line contains two integers N (number of queries) and K (the top-K limit). The next N lines each contain a string (the query) and an integer (its popularity score). The final line contains the search prefix.\\nOutput format: A list of K (or fewer) queries, each on a new line, ordered by popularity (descending) and then lexicographically (ascending).',
+    constraints: ['1 <= N <= 10000', '1 <= K <= 10', '1 <= length of queries <= 100'],
     examples: [
-      { input: 'aba', output: '5', explanation: 'Distinct substrings: {\\'a\\', \\'b\\', \\'ab\\', \\'ba\\', \\'aba\\'}.' },
-      { input: 'aaaa', output: '4', explanation: 'Distinct substrings: {\\'a\\', \\'aa\\', \\'aaa\\', \\'aaaa\\'}.' }
+      { input: '5 2\\napple 10\\napp 20\\napplication 15\\nbanana 5\\napplet 12\\napp', output: 'app\\napplication', explanation: 'Queries starting with \\'app\\' are: \\'app\\' (20), \\'apple\\' (10), \\'application\\' (15), \\'applet\\' (12). The top 2 most popular are \\'app\\' (20) and \\'application\\' (15).' }
     ],
     testCases: [
-      { input: 'aba', expectedOutput: '5', hidden: false },
-      { input: 'aaaa', expectedOutput: '4', hidden: false },
-      { input: 'abcdef', expectedOutput: '21', hidden: true },
-      { input: 'a', expectedOutput: '1', hidden: true }
+      { input: '5 2\\napple 10\\napp 20\\napplication 15\\nbanana 5\\napplet 12\\napp', expectedOutput: 'app\\napplication', hidden: false },
+      { input: '3 3\\ncat 10\\ncategory 20\\ncatalyst 15\\ncat', expectedOutput: 'category\\ncatalyst\\ncat', hidden: false },
+      { input: '4 2\\nuser 5\\nuser_id 10\\nuser_name 10\\nuser_pref 5\\nuser', expectedOutput: 'user_id\\nuser_name', hidden: true },
+      { input: '1 1\\nhello 100\\nworld', expectedOutput: '', hidden: true }
     ],
     starterCode: {
       python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,

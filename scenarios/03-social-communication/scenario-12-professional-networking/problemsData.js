@@ -70,20 +70,19 @@ export const professional_networking_problems = [
     }
   },
   {
-    id: 'PROB-PROF-004',
-    title: 'Referral Introduction Chain',
+    id: 'PROB-PROF-005',
+    title: 'Lowest Common Manager',
     difficulty: 'Medium',
-    description: 'Given a professional network of N profiles and M bidirectional connections, find the shortest path of connections linking candidate S to hiring manager T. If multiple shortest paths exist, choose the lexicographically smallest path of profile IDs. If no path exists, print -1.\\n\\nInput format: N and M, followed by M lines of connections (u, v), and a final line with S and T.\\nOutput format: The space-separated profile IDs along the shortest chain, or -1.',
-    constraints: ['1 <= N <= 10^5', '0 <= M <= 2 * 10^5', '1 <= S, T <= N'],
+    description: 'In a large corporate organization, employees often need to identify the most immediate superior who manages both them and another colleague to coordinate cross-departmental tasks. This person is known as the Lowest Common Manager (LCM). Finding the LCM is essential for establishing the correct escalation path for approvals and collaborative project management.\\n\\nInput format: The first line contains an integer N (number of employees). The next N-1 lines contain pairs of integers (manager, employee), representing the reporting line. The final line contains two integers employeeA and employeeB.\\nOutput format: A single integer representing the ID of the Lowest Common Manager.',
+    constraints: ['1 <= N <= 100000', '1 <= IDs <= N'],
     examples: [
-      { input: '5 5\\n1 2\\n2 5\\n1 3\\n3 4\\n4 5\\n1 5', output: '1 2 5', explanation: 'Path 1 -> 2 -> 5 has length 2. Path 1 -> 3 -> 4 -> 5 has length 3. Shortest is 1 2 5.' },
-      { input: '4 2\\n1 2\\n3 4\\n1 4', output: '-1', explanation: 'Profiles 1 and 4 are disconnected.' }
+      { input: '7\\n1 2\\n1 3\\n2 4\\n2 5\\n3 6\\n3 7\\n4 5', output: '2', explanation: 'Employee 4 and 5 both report to manager 2. Manager 2 is their most immediate common superior.' }
     ],
     testCases: [
-      { input: '5 5\\n1 2\\n2 5\\n1 3\\n3 4\\n4 5\\n1 5', expectedOutput: '1 2 5', hidden: false },
-      { input: '4 2\\n1 2\\n3 4\\n1 4', expectedOutput: '-1', hidden: false },
-      { input: '2 1\\n1 2\\n1 2', expectedOutput: '1 2', hidden: true },
-      { input: '3 2\\n1 2\\n1 3\\n2 3', expectedOutput: '2 3', hidden: true }
+      { input: '7\\n1 2\\n1 3\\n2 4\\n2 5\\n3 6\\n3 7\\n4 5', expectedOutput: '2', hidden: false },
+      { input: '3\\n1 2\\n1 3\\n2 3', expectedOutput: '1', hidden: false },
+      { input: '5\\n1 2\\n2 3\\n3 4\\n4 5\\n2 5', expectedOutput: '2', hidden: true },
+      { input: '1', expectedOutput: '-1', hidden: true }
     ],
     starterCode: {
       python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,

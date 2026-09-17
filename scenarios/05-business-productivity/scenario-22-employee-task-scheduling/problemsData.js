@@ -94,5 +94,29 @@ export const employee_task_problems = [
       cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
       c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
     }
+  },
+  {
+    id: 'PROB-TASKSCHED-005',
+    title: 'Specialized Skill-Task Matching Optimization',
+    difficulty: 'Hard',
+    description: 'An agency manages a pool of N specialized employees and a set of M critical client tasks. Each task requires a specific skill set, and each employee possesses a different set of capabilities. To optimize delivery, the agency must assign one employee to each task such that the employee is qualified for the task. Since each employee can only be assigned to one task at a time, the goal is to maximize the total number of tasks that can be fulfilled.\\n\\nTask: Given N employees and M tasks, and a set of qualifications (which employees are qualified for which tasks), find the maximum number of tasks that can be assigned to qualified employees such that no employee is assigned more than one task.',
+    constraints: ['1 <= N <= 1000', '1 <= M <= 1000', '0 <= E <= N * M'],
+    examples: [
+      { input: '3 3\\n3\\n0 0\\n0 1\\n1 0\\n2 2', output: '3', explanation: 'Employee 0 can take task 1, Employee 1 can take task 0, and Employee 2 can take task 2. Total = 3.' },
+      { input: '2 2\\n2\\n0 0\\n1 0', output: '1', explanation: 'Both employees are only qualified for task 0. Only one can be assigned. Total = 1.' }
+    ],
+    testCases: [
+      { input: '3 3\\n3\\n0 0\\n0 1\\n1 0\\n2 2', expectedOutput: '3', hidden: false },
+      { input: '2 2\\n2\\n0 0\\n1 0', expectedOutput: '1', hidden: false },
+      { input: '1 1\\n1\\n0 0', expectedOutput: '1', hidden: true },
+      { input: '1 1\\n0', expectedOutput: '0', hidden: true }
+    ],
+    starterCode: {
+      python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,
+      javascript: `function solve() {}\nconst lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");`,
+      java: `import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n    }\n}`,
+      cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
+      c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
+    }
   }
 ];

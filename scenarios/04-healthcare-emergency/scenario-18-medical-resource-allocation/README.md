@@ -20,6 +20,8 @@ A disaster relief and hospital emergency operations center must solve crucial re
 
 > What is the minimum vehicle cargo payload capacity required to transport an ordered sequence of heavy pharmaceutical crates across a fixed number of convoy days?
 
+> How can a clinic maximize the overall clinical utility of its medical supply stockpile when kits can be purchased in any quantity but are constrained by a fixed budget?
+
 ---
 
 ## Real-World to DSA Mapping
@@ -30,6 +32,7 @@ A disaster relief and hospital emergency operations center must solve crucial re
 | Liquid Oxygen Rationing | Fractional Knapsack | Continuous fluid allocation by utility density |
 | ICU Ventilator Assignment | Greedy Prioritization | Allocate top $M$ deficit scores to maximize recovery |
 | Relief Convoy Sizing | Binary Search on Answer | Find minimum vehicle capacity to satisfy trip constraints |
+| Medical Supply Stockpiling | Unbounded Knapsack | Maximize utility from bulk kit procurement |
 
 ---
 
@@ -41,6 +44,7 @@ After completing this scenario, you will be able to:
 2. Apply greedy sorting by value-to-weight density to solve fractional allocation for continuous fluids.
 3. Apply greedy heap or array sorting to prioritize scarce intensive care equipment.
 4. Apply Binary Search on Answer over monotonic decision spaces to determine optimal logistics capacities.
+5. Implement the Unbounded Knapsack algorithm to optimize bulk medical supply procurement within a fixed budget.
 
 ---
 
@@ -62,8 +66,12 @@ After completing this scenario, you will be able to:
 - **Focus:** Binary Search on Answer
 - **Synopsis:** Find the minimum daily vehicle payload capacity required to transport $N$ sequenced medical crates to a disaster zone within at most $D$ days.
 
+### Problem 5 — Medical Supply Stockpile Optimization (`PROB-MEDRES-005`)
+- **Focus:** Unbounded Knapsack
+- **Synopsis:** Maximize the total clinical utility of a medical supply stockpile using a fixed budget, where multiple kits of the same type can be purchased.
+
 ---
 
 ## Key Takeaway
 
-Resource allocation in humanitarian emergencies requires choosing the exact algorithmic formulation matching physical realities. Indivisible crates necessitate dynamic programming knapsack solutions, continuous liquids demand greedy fractional allocation, emergency triage requires greedy priority sorting, and logistical capacity sizing is solved efficiently with binary search over monotonic answer spaces.
+Resource allocation in humanitarian emergencies requires choosing the exact algorithmic formulation matching physical realities. Indivisible crates necessitate dynamic programming knapsack solutions, continuous liquids demand greedy fractional allocation, emergency triage requires greedy priority sorting, logistical capacity sizing is solved efficiently with binary search over monotonic answer spaces, and bulk procurement is optimized via unbounded knapsack DP.

@@ -1,0 +1,33 @@
+{
+  "problem_id": "PROB-PATSCHED-005",
+  "scenario_id": "SCN-PATSCHED-001",
+  "sequence": 5,
+  "title": "Weighted Surgical Throughput Optimization",
+  "difficulty": "Hard",
+  "concepts": ["Dynamic Programming", "Binary Search"],
+  "real_world_story": "In an advanced surgical center, not all procedures are created equal. Some life-saving surgeries have a higher clinical 'value' or priority than routine ones, even if they take longer. The surgical director needs to schedule a sequence of non-overlapping procedures in a single operating theater to maximize the total clinical value delivered in a day. Unlike simple activity selection, where the goal is to maximize the count of procedures, this requires balancing the duration of each surgery against its clinical priority, necessitating a dynamic programming approach to evaluate all possible optimal combinations.",
+  "problem_statement": "Given N potential surgical procedures, each defined by a start time, an end time, and a clinical value, select a subset of non-overlapping procedures such that the sum of their clinical values is maximized. Two procedures are non-overlapping if the end time of one is less than or equal to the start time of the next.",
+  "task": "Implement a function that calculates the maximum possible total clinical value that can be achieved within a single operating theater. Use dynamic programming combined with binary search to achieve optimal time complexity.",
+  "input_format": "An integer N, followed by N lines each containing three integers: start_time, end_time, and clinical_value.",
+  "output_format": "A single integer representing the maximum total clinical value.",
+  "constraints": {
+    "N": "1 <= N <= 10^5",
+    "start_time": "0 <= start_time <= 10^9",
+    "end_time": "start_time < end_time <= 10^9",
+    "clinical_value": "1 <= clinical_value <= 10^6"
+  },
+  "examples": [
+    {
+      "input": "3\\n1 3 50\\n2 4 10\\n3 5 40",
+      "output": "90",
+      "explanation": "Procedure 1 (1-3, value 50) and Procedure 3 (3-5, value 40) are non-overlapping. Total value = 50 + 40 = 90. Procedure 2 overlaps with both."
+    }
+  ],
+  "expected_algorithm": "Weighted Interval Scheduling (Dynamic Programming + Binary Search)",
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(N)"
+  },
+  "real_world_takeaway": "Weighted interval scheduling is a classic problem where greedy strategies fail, but dynamic programming provides the optimal solution. In healthcare, this allows for the maximization of clinical utility when resources are constrained and outcomes have varying degrees of importance.",
+  "tags": ["dynamic-programming", "binary-search", "weighted-interval-scheduling", "resource-optimization"]
+}

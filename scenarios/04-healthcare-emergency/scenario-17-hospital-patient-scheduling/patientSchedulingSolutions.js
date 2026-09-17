@@ -648,5 +648,227 @@ int main() {
     free(events);
     return 0;
 }`
+  },
+  'PROB-PATSCHED-005': {
+    python: `import sys
+from bisect import bisect_right
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    jobs = []
+    ptr = 1
+    for _ in range(N):
+        s = int(input_data[ptr])
+        e = int(input_data[ptr+1])
+        v = int(input_data[ptr+2])
+        jobs.append({'s': s, 'e': e, 'v': v})
+        ptr += 3
+
+    # Sort by end time
+    jobs.sort(key=lambda x: x['e'])
+
+    end_times = [j['e'] for j in jobs]
+    dp = [0] * (N + 1)
+
+    for i in range(1, N + 1):
+        # Option 1: Don't include job i-1
+        res_exclude = dp[i-1]
+
+        # Option 2: Include job i-1
+        val = jobs[i-1]['v']
+        # Find the last job that doesn't overlap with job i-1
+        # job[j].e <= jobs[i-1].s
+        idx = bisect_right(end_times, jobs[i-1]['s'])
+
+        # Since end_times is sorted, we need the index before the first element > s
+        # bisect_right returns the index where s could be inserted while maintaining order
+        # If end_times[idx-1] <= s, then idx-1 is the last compatible job.
+
+        res_include = val + dp[idx]
+
+        dp[i] = max(res_exclude, res_include)
+
+    print(dp[N])
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    const N = parseInt(input[0]);
+    const jobs = [];
+    let ptr = 1;
+    for (let i = 0; i < N; i++) {
+        const s = parseInt(input[ptr++]);
+        const e = parseInt(input[ptr++]);
+        const v = parseInt(input[ptr++]);
+        jobs.push({ s, e, v });
+    }
+
+    jobs.sort((a, b) => a.e - b.e);
+
+    const endTimes = jobs.map(j => j.e);
+    const dp = new Array(N + 1).fill(0);
+
+    for (let i = 1; i <= N; i++) {
+        const job = jobs[i - 1];
+
+        // Binary search for last non-overlapping job
+        let low = 0, high = i - 1, idx = 0;
+        while (low < high) {
+            let mid = Math.floor((low + high) / 2);
+            if (endTimes[mid] <= job.s) {
+                idx = mid + 1;
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+
+        dp[i] = Math.max(dp[i - 1], job.v + dp[idx]);
+    }
+    console.log(dp[N]);
+}
+
+solve();`,
+    java: `import java.util.*;
+
+class Job implements Comparable<Job> {
+    int s, e, v;
+    Job(int s, int e, int v) { this.s = s; this.e = e; this.v = v; }
+    public int compareTo(Job other) {
+        return Integer.compare(this.e, other.e);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        Job[] jobs = new Job[N];
+        for (int i = 0; i < N; i++) {
+            jobs[i] = new Job(sc.nextInt(), sc.nextInt(), sc.nextInt());
+        }
+        Arrays.sort(jobs);
+
+        int[] endTimes = new int[N];
+        for (int i = 0; i < N; i++) endTimes[i] = jobs[i].e;
+
+        long[] dp = new long[N + 1];
+        for (int i = 1; i <= N; i++) {
+            int val = jobs[i - 1].v;
+            int s = jobs[i - 1].s;
+
+            // Binary search for last index j where jobs[j].e <= s
+            int low = 0, high = i - 1, idx = 0;
+            while (low < high) {
+                int mid = (low + high) / 2;
+                if (endTimes[mid] <= s) {
+                    idx = mid + 1;
+                    low = mid + 1;
+                } else {
+                    high = mid;
+                }
+            }
+            dp[i] = Math.max(dp[i - 1], (long)val + dp[idx]);
+        }
+        System.out.println(dp[N]);
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+struct Job {
+    int s, e, v;
+    bool operator<(const Job& other) const {
+        return e < other.e;
+    }
+};
+
+int main() {
+    int N;
+    if (!(cin >> N)) return 0;
+    vector<Job> jobs(N);
+    for (int i = 0; i < N; ++i) {
+        cin >> jobs[i].s >> jobs[i].e >> jobs[i].v;
+    }
+    sort(jobs.begin(), jobs.end());
+
+    vector<int> endTimes(N);
+    for (int i = 0; i < N; ++i) endTimes[i] = jobs[i].e;
+
+    vector<long long> dp(N + 1, 0);
+    for (int i = 1; i <= N; ++i) {
+        int val = jobs[i - 1].v;
+        int s = jobs[i - 1].s;
+
+        auto it = upper_bound(endTimes.begin(), endTimes.begin() + i - 1, s);
+        int idx = distance(endTimes.begin(), it);
+
+        dp[i] = max(dp[i - 1], (long long)val + dp[idx]);
+    }
+    cout << dp[N] << endl;
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int s, e, v;
+} Job;
+
+int compareJobs(const void* a, const void* b) {
+    return ((Job*)a)->e - ((Job*)b)->e;
+}
+
+int binarySearch(int* endTimes, int n, int s) {
+    int low = 0, high = n - 1, ans = 0;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (endTimes[mid] <= s) {
+            ans = mid + 1;
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return ans;
+}
+
+int main() {
+    int N;
+    if (scanf("%d", &N) != 1) return 0;
+    Job* jobs = (Job*)malloc(N * sizeof(Job));
+    for (int i = 0; i < N; i++) {
+        scanf("%d %d %d", &jobs[i].s, &jobs[i].e, &jobs[i].v);
+    }
+    qsort(jobs, N, sizeof(Job), compareJobs);
+
+    int* endTimes = (int*)malloc(N * sizeof(int));
+    for (int i = 0; i < N; i++) endTimes[i] = jobs[i].e;
+
+    long long* dp = (long long*)calloc(N + 1, sizeof(long long));
+    for (int i = 1; i <= N; i++) {
+        int val = jobs[i - 1].v;
+        int s = jobs[i - 1].s;
+        int idx = binarySearch(endTimes, i - 1, s);
+        dp[i] = (dp[i - 1] > (long long)val + dp[idx]) ? dp[i - 1] : (long long)val + dp[idx];
+    }
+    printf("%lld\\n", dp[N]);
+    free(jobs);
+    free(endTimes);
+    free(dp);
+    return 0;
+}`
   }
 };

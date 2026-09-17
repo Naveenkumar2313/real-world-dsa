@@ -1,0 +1,36 @@
+{
+  "problem_id": "PROB-MEETSCHED-005",
+  "scenario_id": "SCN-MEET-001",
+  "sequence": 5,
+  "title": "Priority-Weighted Meeting Value Optimization",
+  "difficulty": "Hard",
+  "concepts": ["Dynamic Programming", "Binary Search", "Weighted Interval Scheduling"],
+  "real_world_story": "To resolve conflicts for the executive boardroom, the company has introduced a priority-weighting system. Each meeting request now includes a 'strategic value' score based on the importance of the project. Instead of simply maximizing the number of meetings, facilities management must now maximize the total strategic value of the meetings scheduled. This requires selecting a set of non-overlapping meetings such that the sum of their priority weights is maximized.",
+  "problem_statement": "Given N meeting requests, where each request i consists of a start time s_i, a finish time f_i, and a weight w_i, find the maximum total weight of a set of mutually compatible meetings. Two meetings are compatible if they do not overlap in their interior time (i.e., one can start exactly when another finishes).",
+  "task": "Implement a solution to find the maximum total weight of non-overlapping meetings. Use Dynamic Programming combined with Binary Search to achieve efficient computation.",
+  "input_format": "The first line contains an integer N. The following N lines each contain three integers: start_time, finish_time, and weight.",
+  "constraints": {
+    "N": "1 <= N <= 10^5",
+    "start_time, finish_time": "0 <= s_i < f_i <= 10^9",
+    "weight": "1 <= w_i <= 10^9"
+  },
+  "examples": [
+    {
+      "input": "3\\n1 2 50\\n3 5 20\\n6 19 100",
+      "output": "170",
+      "explanation": "All three meetings are compatible. Total weight = 50 + 20 + 100 = 170."
+    },
+    {
+      "input": "4\\n1 3 5\\n2 5 6\\n4 6 5\\n6 7 4",
+      "output": "14",
+      "explanation": "Possible sets: {[1,3], [4,6], [6,7]} weight 5+5+4=14; {[2,5], [6,7]} weight 6+4=10. Maximum weight is 14."
+    }
+  ],
+  "expected_algorithm": "Weighted Interval Scheduling using Dynamic Programming and Binary Search for finding the last non-overlapping interval.",
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(N)"
+  },
+  "real_world_takeaway": "Weighted Interval Scheduling is a fundamental technique for resource allocation when items have varying values. By using DP and binary search, we can efficiently optimize high-value resource utilization even when the number of requests is very large.",
+  "tags": ["dynamic-programming", "binary-search", "resource-optimization"]
+}

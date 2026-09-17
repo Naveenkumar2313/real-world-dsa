@@ -87,5 +87,27 @@ export const hospital_emergency_problems = [
       cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
       c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
     }
+  },
+  {
+    id: 'PROB-HOSPEMERG-005',
+    title: 'Urgent Triage Priority Buffer',
+    difficulty: 'Medium',
+    description: 'Implement an Emergency Triage Buffer that supports five operations: 1) \\'ARRIVE_STABLE <id>\\' adds a patient to the back, 2) \\'ARRIVE_CRITICAL <id>\\' adds a patient to the front, 3) \\'ADMIT\\' removes and prints the patient at the front (or \\'EMPTY\\'), 4) \\'LEAVE\\' removes and prints the patient at the back (or \\'EMPTY\\'), and 5) \\'STATUS\\' prints the current queue from front to back.\\n\\nInput format: An integer Q, followed by Q lines of commands.\\nOutput format: The result of ADMIT, LEAVE, and STATUS operations on new lines.',
+    constraints: ['1 <= Q <= 10^5', '1 <= patient_id <= 10^9'],
+    examples: [
+      { input: '8\\nARRIVE_STABLE 101\\nARRIVE_STABLE 102\\nARRIVE_CRITICAL 103\\nSTATUS\\nADMIT\\nSTATUS\\nLEAVE\\nSTATUS', output: '103 101 102\\n103\\n101 102\\n102\\n101', explanation: 'Standard Deque operations: stable pushes back, critical pushes front, admit pops front, leave pops back.' }
+    ],
+    testCases: [
+      { input: '8\\nARRIVE_STABLE 101\\nARRIVE_STABLE 102\\nARRIVE_CRITICAL 103\\nSTATUS\\nADMIT\\nSTATUS\\nLEAVE\\nSTATUS', expectedOutput: '103 101 102\\n103\\n101 102\\n102\\n101', hidden: false },
+      { input: '4\\nADMIT\\nLEAVE\\nSTATUS\\nARRIVE_CRITICAL 1', expectedOutput: 'EMPTY\\nEMPTY\\nEMPTY', hidden: false },
+      { input: '2\\nARRIVE_STABLE 1\\nADMIT', expectedOutput: '1', hidden: true }
+    ],
+    starterCode: {
+      python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,
+      javascript: `function solve() {}\nconst lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");`,
+      java: `import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n    }\n}`,
+      cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
+      c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
+    }
   }
 ];

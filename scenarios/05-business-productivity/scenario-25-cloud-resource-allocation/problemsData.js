@@ -94,5 +94,29 @@ export const cloud_resource_problems = [
       cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
       c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
     }
+  },
+  {
+    id: 'PROB-CLOUDRES-005',
+    title: 'Optimized Container Placement Max-Flow',
+    difficulty: 'Hard',
+    description: 'A cloud orchestrator must place N containerized workloads across M heterogeneous servers. Each server $j$ has a maximum capacity $C_j$ (the total number of containers it can host). Due to specific hardware requirements, each container $i$ can only be placed on a specific subset of compatible servers. To maximize cluster utilization and prevent request drops, the orchestrator must find the maximum number of containers that can be successfully placed on the servers without exceeding any server\'s capacity.\\n\\nTask: Given N containers and M servers, where each server $j$ has a capacity $C_j$, and a set of compatibility edges (container $i$, server $j$), find the maximum number of containers that can be assigned to servers such that each container is assigned to at most one compatible server and each server $j$ hosts at most $C_j$ containers.',
+    constraints: ['1 <= N <= 500', '1 <= M <= 500', '0 <= E <= N * M', '1 <= C_j <= N'],
+    examples: [
+      { input: '3 2 4\\n2 1\\n0 0\\n0 1\\n1 0\\n2 1', output: '3', explanation: 'Server 0 has capacity 2, Server 1 has capacity 1. Container 0 can go to Server 0. Container 1 can go to Server 0. Container 2 can go to Server 1. All 3 can be placed.' },
+      { input: '3 2 3\\n1 1\\n0 0\\n1 0\\n2 0', output: '2', explanation: 'Server 0 and Server 1 both have capacity 1. Only 2 containers can be placed in total.' }
+    ],
+    testCases: [
+      { input: '3 2 4\\n2 1\\n0 0\\n0 1\\n1 0\\n2 1', expectedOutput: '3', hidden: false },
+      { input: '3 2 3\\n1 1\\n0 0\\n1 0\\n2 0', expectedOutput: '2', hidden: false },
+      { input: '2 2 1\\n1 1\\n0 0', expectedOutput: '1', hidden: true },
+      { input: '2 2 2\\n1 1\\n0 0\\n0 1', expectedOutput: '2', hidden: true }
+    ],
+    starterCode: {
+      python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,
+      javascript: `function solve() {}\nconst lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");`,
+      java: `import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n    }\n}`,
+      cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
+      c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
+    }
   }
 ];

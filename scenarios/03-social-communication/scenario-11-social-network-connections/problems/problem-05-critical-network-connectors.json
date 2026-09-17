@@ -1,0 +1,25 @@
+{
+  "problem_id": "PROB-SOCIAL-005",
+  "scenario_id": "SCN-SOCIAL-001",
+  "sequence": 5,
+  "title": "Critical Network Connectors",
+  "difficulty": "Hard",
+  "concepts": ["Graph DFS"],
+  "real_world_story": "In a massive social network, some users act as \"bridges\" between different social circles. If these users leave the platform, entire communities might become disconnected from each other. The platform's data science team needs to identify these \"Critical Connectors\" (Articulation Points) to analyze network robustness and the flow of information across the social graph.",
+  "problem_statement": "Given a social network represented as an undirected graph where nodes are users and edges are friendships, identify all \"Critical Connectors.\" A user is a Critical Connector if removing them (and all their friendships) increases the number of connected components in the graph.",
+  "task": "Find and return all user IDs that are articulation points in the social graph. Return the list of IDs in ascending order.",
+  "input_format": "The first line contains two integers N (number of users) and M (number of friendships). The next M lines each contain two integers u and v, representing a friendship between user u and user v. User IDs are 0-indexed.",
+  "output_format": "A space-separated list of Critical Connector user IDs in ascending order. If no such users exist, output -1.",
+  "constraints": { "N": "1 <= N <= 1000", "M": "0 <= M <= N*(N-1)/2" },
+  "examples": [
+    {
+      "input": "5 5\n0 1\n1 2\n2 0\n0 3\n3 4",
+      "output": "0 3",
+      "explanation": "User 0 is a bridge between the {0,1,2} cluster and user 3. User 3 is a bridge between user 0 and user 4. Removing either 0 or 3 splits the graph."
+    }
+  ],
+  "expected_algorithm": "Graph DFS (Tarjan's or Hopcroft-Tarjan for Articulation Points)",
+  "complexity": { "time": "O(N + M)", "space": "O(N)" },
+  "real_world_takeaway": "Articulation points in a social graph represent users who control the flow of information between disparate groups. Identifying them is key to understanding network fragility and influence.",
+  "tags": ["graph", "dfs", "articulation-points", "network-analysis"]
+}

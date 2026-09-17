@@ -642,5 +642,248 @@ int main() {
     free(t);
     return 0;
 }`
+  },
+  'PROB-HOSPEMERG-005': {
+    python: `import sys
+from collections import deque
+
+def solve():
+    input_data = sys.stdin.read().splitlines()
+    if not input_data: return
+
+    Q_count = int(input_data[0])
+    dq = deque()
+    results = []
+
+    for i in range(1, Q_count + 1):
+        line = input_data[i].split()
+        if not line: continue
+        op = line[0]
+        if op == 'ARRIVE_STABLE':
+            dq.append(line[1])
+        elif op == 'ARRIVE_CRITICAL':
+            dq.appendleft(line[1])
+        elif op == 'ADMIT':
+            if dq:
+                results.append(dq.popleft())
+            else:
+                results.append('EMPTY')
+        elif op == 'LEAVE':
+            if dq:
+                results.append(dq.pop())
+            else:
+                results.append('EMPTY')
+        elif op == 'STATUS':
+            if dq:
+                results.append(" ".join(dq))
+            else:
+                results.append('EMPTY')
+
+    print("\\n".join(results))
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\n/);
+    if (input.length === 0 || input[0] === '') return;
+
+    const Q = parseInt(input[0]);
+    const deque = [];
+    const results = [];
+
+    for (let i = 1; i <= Q; i++) {
+        const line = input[i].split(' ');
+        const op = line[0];
+        if (op === 'ARRIVE_STABLE') {
+            deque.push(line[1]);
+        } else if (op === 'ARRIVE_CRITICAL') {
+            deque.unshift(line[1]);
+        } else if (op === 'ADMIT') {
+            results.push(deque.shift() || 'EMPTY');
+        } else if (op === 'LEAVE') {
+            results.push(deque.pop() || 'EMPTY');
+        } else if (op === 'STATUS') {
+            results.push(deque.length > 0 ? deque.join(" ") : 'EMPTY');
+        }
+    }
+    process.stdout.write(results.join("\\n") + "\\n");
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int Q = sc.nextInt();
+        Deque<String> dq = new ArrayDeque<>();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < Q; i++) {
+            String op = sc.next();
+            if (op.equals("ARRIVE_STABLE")) {
+                dq.addLast(sc.next());
+            } else if (op.equals("ARRIVE_CRITICAL")) {
+                dq.addFirst(sc.next());
+            } else if (op.equals("ADMIT")) {
+                sb.append(dq.isEmpty() ? "EMPTY" : dq.pollFirst()).append("\\n");
+            } else if (op.equals("LEAVE")) {
+                sb.append(dq.isEmpty() ? "EMPTY" : dq.pollLast()).append("\\n");
+            } else if (op.equals("STATUS")) {
+                if (dq.isEmpty()) {
+                    sb.append("EMPTY\\n");
+                } else {
+                    Iterator<String> it = dq.iterator();
+                    while (it.hasNext()) {
+                        sb.append(it.next()).append(it.hasNext() ? " " : "");
+                    }
+                    sb.append("\\n");
+                }
+            }
+        }
+        System.out.print(sb.toString());
+    }
+}`,
+    cpp: `#include <iostream>
+#include <string>
+#include <deque>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int Q;
+    if (!(cin >> Q)) return 0;
+    deque<string> dq;
+    while (Q--) {
+        string op;
+        cin >> op;
+        if (op == "ARRIVE_STABLE") {
+            string id; cin >> id;
+            dq.push_back(id);
+        } else if (op == "ARRIVE_CRITICAL") {
+            string id; cin >> id;
+            dq.push_front(id);
+        } else if (op == "ADMIT") {
+            if (dq.empty()) cout << "EMPTY" << endl;
+            else {
+                cout << dq.front() << endl;
+                dq.pop_front();
+            }
+        } else if (op == "LEAVE") {
+            if (dq.empty()) cout << "EMPTY" << endl;
+            else {
+                cout << dq.back() << endl;
+                dq.pop_back();
+            }
+        } else if (op == "STATUS") {
+            if (dq.empty()) cout << "EMPTY" << endl;
+            else {
+                for (int i = 0; i < dq.size(); ++i) {
+                    cout << dq[i] << (i == dq.size() - 1 ? "" : " ");
+                }
+                cout << endl;
+            }
+        }
+    }
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct Node {
+    char id[20];
+    struct Node *prev, *next;
+} Node;
+
+typedef struct Deque {
+    Node *head, *tail;
+    int size;
+} Deque;
+
+void push_front(Deque* dq, char* id) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    strcpy(newNode->id, id);
+    newNode->prev = NULL;
+    newNode->next = dq->head;
+    if (dq->head) dq->head->prev = newNode;
+    else dq->tail = newNode;
+    dq->head = newNode;
+    dq->size++;
+}
+
+void push_back(Deque* dq, char* id) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    strcpy(newNode->id, id);
+    newNode->next = NULL;
+    newNode->prev = dq->tail;
+    if (dq->tail) dq->tail->next = newNode;
+    else dq->head = newNode;
+    dq->tail = newNode;
+    dq->size++;
+}
+
+char* pop_front(Deque* dq) {
+    if (!dq->head) return NULL;
+    Node* temp = dq->head;
+    char* id = strdup(temp->id);
+    dq->head = dq->head->next;
+    if (dq->head) dq->head->prev = NULL;
+    else dq->tail = NULL;
+    free(temp);
+    dq->size--;
+    return id;
+}
+
+char* pop_back(Deque* dq) {
+    if (!dq->tail) return NULL;
+    Node* temp = dq->tail;
+    char* id = strdup(temp->id);
+    dq->tail = dq->tail->prev;
+    if (dq->tail) dq->tail->next = NULL;
+    else dq->head = NULL;
+    free(temp);
+    dq->size--;
+    return id;
+}
+
+int main() {
+    int Q;
+    if (scanf("%d", &Q) != 1) return 0;
+    Deque dq = {NULL, NULL, 0};
+    char op[20], id[20];
+    for (int i = 0; i < Q; i++) {
+        scanf("%s", op);
+        if (strcmp(op, "ARRIVE_STABLE") == 0) {
+            scanf("%s", id);
+            push_back(&dq, id);
+        } else if (strcmp(op, "ARRIVE_CRITICAL") == 0) {
+            scanf("%s", id);
+            push_front(&dq, id);
+        } else if (strcmp(op, "ADMIT") == 0) {
+            char* res = pop_front(&dq);
+            if (res) { printf("%s\\n", res); free(res); }
+            else printf("EMPTY\\n");
+        } else if (strcmp(op, "LEAVE") == 0) {
+            char* res = pop_back(&dq);
+            if (res) { printf("%s\\n", res); free(res); }
+            else printf("EMPTY\\n");
+        } else if (strcmp(op, "STATUS") == 0) {
+            if (dq.size == 0) printf("EMPTY\\n");
+            else {
+                Node* curr = dq.head;
+                while (curr) {
+                    printf("%s%s", curr->id, curr->next ? " " : "");
+                    curr = curr->next;
+                }
+                printf("\\n");
+            }
+        }
+    }
+    return 0;
+}`
   }
 };

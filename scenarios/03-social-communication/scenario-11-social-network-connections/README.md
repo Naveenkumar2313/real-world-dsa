@@ -44,6 +44,7 @@ After completing this scenario, you will be able to:
 3. Apply Depth-First Search (DFS) to identify connected components and evaluate community cluster sizes.
 4. Restrict graph search using Depth-Limited Search to discover bounded candidates within latency budgets.
 5. Invert singly linked lists in-place to reverse chronological audit streams.
+6. Identify critical network connectors using articulation point detection to analyze network robustness.
 
 ---
 
@@ -64,6 +65,10 @@ After completing this scenario, you will be able to:
 ### Problem 4 — Connection Audit Log Reversal (`PROB-SOCIAL-004`)
 - **Focus:** Reverse Linked List
 - **Synopsis:** Reverse a singly linked chronological log of connection events in-place to render the security timeline in reverse chronological order.
+
+### Problem 5 — Critical Network Connectors (`PROB-SOCIAL-005`)
+- **Focus:** Graph DFS
+- **Synopsis:** Identify all "Critical Connectors" (articulation points) whose removal would split the social network into disconnected components.
 
 ---
 

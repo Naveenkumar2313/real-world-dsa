@@ -357,7 +357,6 @@ def solve():
     demands = [int(x) for x in input_data[2:]]
 
     # Stable sort descending
-    # Python's sort is stable.
     demands.sort(reverse=True)
 
     servers = []
@@ -669,6 +668,427 @@ int main() {
     }
     printf("\\n");
     free(tasks);
+    return 0;
+}`
+  },
+  'PROB-CLOUDRES-005': {
+    python: \`import sys
+from collections import deque
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    M = int(input_data[1])
+    E = int(input_data[2])
+
+    ptr = 3
+    server_caps = []
+    for _ in range(M):
+        server_caps.append(int(input_data[ptr]))
+        ptr += 1
+
+    source = 0
+    sink = N + M + 1
+    graph = [[] for _ in range(N + M + 2)]
+
+    def add_edge(u, v, cap):
+        graph[u].append([v, cap, len(graph[v])])
+        graph[v].append([u, 0, len(graph[u]) - 1])
+
+    for i in range(N):
+        add_edge(source, i + 1, 1)
+
+    for _ in range(E):
+        u = int(input_data[ptr])
+        v = int(input_data[ptr+1])
+        ptr += 2
+        add_edge(u + 1, N + v + 1, 1)
+
+    for j in range(M):
+        add_edge(N + j + 1, sink, server_caps[j])
+
+    level = [-1] * (N + M + 2)
+
+    def bfs():
+        for i in range(N + M + 2): level[i] = -1
+        level[source] = 0
+        queue = deque([source])
+        while queue:
+            u = queue.popleft()
+            for v, cap, rev in graph[u]:
+                if cap > 0 and level[v] == -1:
+                    level[v] = level[u] + 1
+                    queue.append(v)
+        return level[sink] != -1
+
+    def dfs(u, flow, ptrs):
+        if u == sink or flow == 0:
+            return flow
+        for i in range(ptrs[u], len(graph[u])):
+            ptrs[u] = i
+            v, cap, rev = graph[u][i]
+            if level[v] == level[u] + 1 and cap > 0:
+                pushed = dfs(v, min(flow, cap), ptrs)
+                if pushed > 0:
+                    graph[u][i][1] -= pushed
+                    graph[v][rev][1] += pushed
+                    return pushed
+        return 0
+
+    max_flow = 0
+    while bfs():
+        ptrs = [0] * (N + M + 2)
+        while True:
+            pushed = dfs(source, float('inf'), ptrs)
+            if pushed == 0:
+                break
+            max_flow += pushed
+
+    print(max_flow)
+
+if __name__ == '__main__':
+    solve()\`,
+    javascript: \`const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    const M = parseInt(input[ptr++]);
+    const E = parseInt(input[ptr++]);
+
+    const serverCaps = [];
+    for (let i = 0; i < M; i++) {
+        serverCaps.push(parseInt(input[ptr++]));
+    }
+
+    const source = 0;
+    const sink = N + M + 1;
+    const graph = Array.from({ length: N + M + 2 }, () => []);
+
+    function addEdge(u, v, cap) {
+        graph[u].push({ to: v, cap: cap, rev: graph[v].length });
+        graph[v].push({ to: u, cap: 0, rev: graph[u].length - 1 });
+    }
+
+    for (let i = 0; i < N; i++) {
+        addEdge(source, i + 1, 1);
+    }
+
+    for (let i = 0; i < E; i++) {
+        const u = parseInt(input[ptr++]);
+        const v = parseInt(input[ptr++]);
+        addEdge(u + 1, N + v + 1, 1);
+    }
+
+    for (let j = 0; j < M; j++) {
+        addEdge(N + j + 1, sink, serverCaps[j]);
+    }
+
+    const level = new Int32Array(N + M + 2);
+    const ptrs = new Int32Array(N + M + 2);
+
+    function bfs() {
+        level.fill(-1);
+        level[source] = 0;
+        const queue = [source];
+        let head = 0;
+        while (head < queue.length) {
+            const u = queue[head++];
+            for (const edge of graph[u]) {
+                if (edge.cap > 0 && level[edge.to] === -1) {
+                    level[edge.to] = level[u] + 1;
+                    queue.push(edge.to);
+                }
+            }
+        }
+        return level[sink] !== -1;
+    }
+
+    function dfs(u, flow) {
+        if (u === sink || flow === 0) return flow;
+        for (; ptrs[u] < graph[u].length; ptrs[u]++) {
+            const edge = graph[u][ptrs[u]];
+            if (level[edge.to] === level[u] + 1 && edge.cap > 0) {
+                const pushed = dfs(edge.to, Math.min(flow, edge.cap));
+                if (pushed > 0) {
+                    edge.cap -= pushed;
+                    graph[edge.to][edge.rev].cap += pushed;
+                    return pushed;
+                }
+            }
+        }
+        return 0;
+    }
+
+    let maxFlow = 0;
+    while (bfs()) {
+        ptrs.fill(0);
+        while (true) {
+            const pushed = dfs(source, Infinity);
+            if (pushed === 0) break;
+            maxFlow += pushed;
+        }
+    }
+    process.stdout.write(maxFlow + '\\n');
+}
+
+solve();\`,
+    java: \`import java.util.*;
+
+public class Main {
+    static class Edge {
+        int to, cap, rev;
+        Edge(int to, int cap, int rev) {
+            this.to = to; this.cap = cap; this.rev = rev;
+        }
+    }
+
+    static List<Edge>[] adj;
+    static int[] level;
+    static int[] ptr;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        int E = sc.nextInt();
+
+        int[] serverCaps = new int[M];
+        for (int i = 0; i < M; i++) serverCaps[i] = sc.nextInt();
+
+        int source = 0;
+        int sink = N + M + 1;
+        adj = new ArrayList[N + M + 2];
+        for (int i = 0; i < adj.length; i++) adj[i] = new ArrayList<>();
+
+        for (int i = 1; i <= N; i++) addEdge(source, i, 1);
+        for (int i = 0; i < E; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            addEdge(u + 1, N + v + 1, 1);
+        }
+        for (int j = 0; j < M; j++) addEdge(N + j + 1, sink, serverCaps[j]);
+
+        int maxFlow = 0;
+        level = new int[N + M + 2];
+        ptr = new int[N + M + 2];
+        while (bfs(source, sink)) {
+            Arrays.fill(ptr, 0);
+            while (true) {
+                int pushed = dfs(source, sink, Integer.MAX_VALUE);
+                if (pushed == 0) break;
+                maxFlow += pushed;
+            }
+        }
+        System.out.println(maxFlow);
+    }
+
+    static void addEdge(int from, int to, int cap) {
+        adj[from].add(new Edge(to, cap, adj[to].size()));
+        adj[to].add(new Edge(from, 0, adj[from].size() - 1));
+    }
+
+    static boolean bfs(int s, int t) {
+        Arrays.fill(level, -1);
+        level[s] = 0;
+        Queue<Integer> q = new LinkedList<>();
+        q.add(s);
+        while (!q.isEmpty()) {
+            int v = q.poll();
+            for (Edge e : adj[v]) {
+                if (e.cap > 0 && level[e.to] == -1) {
+                    level[e.to] = level[v] + 1;
+                    q.add(e.to);
+                }
+            }
+        }
+        return level[t] != -1;
+    }
+
+    static int dfs(int v, int t, int pushed) {
+        if (pushed == 0) return 0;
+        if (v == t) return pushed;
+        for (int i = ptr[v]; i < adj[v].size(); i++) {
+            ptr[v] = i;
+            Edge e = adj[v].get(i);
+            if (level[v] + 1 != level[e.to] || e.cap == 0) continue;
+            int tr = dfs(e.to, t, Math.min(pushed, e.cap));
+            if (tr == 0) continue;
+            e.cap -= tr;
+            adj[e.to].get(e.rev).cap += tr;
+            return tr;
+        }
+        return 0;
+    }
+}\`,
+    cpp: \`#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
+
+using namespace std;
+
+struct Edge {
+    int to, cap, rev;
+};
+
+vector<Edge> adj[1010];
+int level[1010], ptr[1010];
+
+void add_edge(int from, int to, int cap) {
+    adj[from].push_back({to, cap, (int)adj[to].size()});
+    adj[to].push_back({from, 0, (int)adj[from].size() - 1});
+}
+
+bool bfs(int s, int t) {
+    fill(level, level + 1010, -1);
+    level[s] = 0;
+    queue<int> q;
+    q.push(s);
+    while (!q.empty()) {
+        int v = q.front(); q.pop();
+        for (auto& edge : adj[v]) {
+            if (edge.cap > 0 && level[edge.to] == -1) {
+                level[edge.to] = level[v] + 1;
+                q.push(edge.to);
+            }
+        }
+    }
+    return level[t] != -1;
+}
+
+int dfs(int v, int t, int pushed) {
+    if (pushed == 0) return 0;
+    if (v == t) return pushed;
+    for (int& cid = ptr[v]; cid < adj[v].size(); ++cid) {
+        auto& edge = adj[v][cid];
+        int tr = 0;
+        if (level[v] + 1 == level[edge.to] && edge.cap > 0) {
+            tr = dfs(edge.to, t, min(pushed, edge.cap));
+        }
+        if (tr == 0) continue;
+        edge.cap -= tr;
+        adj[edge.to][edge.rev].cap += tr;
+        return tr;
+    }
+    return 0;
+}
+
+int main() {
+    int N, M, E;
+    if (!(cin >> N >> M >> E)) return 0;
+    vector<int> caps(M);
+    for (int i = 0; i < M; ++i) cin >> caps[i];
+    int s = 0, t = N + M + 1;
+    for (int i = 1; i <= N; ++i) add_edge(s, i, 1);
+    for (int i = 0; i < E; ++i) {
+        int u, v;
+        cin >> u >> v;
+        add_edge(u + 1, N + v + 1, 1);
+    }
+    for (int i = 0; i < M; ++i) add_edge(N + i + 1, t, caps[i]);
+    int flow = 0;
+    while (bfs(s, t)) {
+        fill(ptr, ptr + 1010, 0);
+        while (int pushed = dfs(s, t, 1e9)) flow += pushed;
+    }
+    cout << flow << endl;
+    return 0;
+}\`,
+    c: \`#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define INF 1000000000
+
+typedef struct {
+    int to, cap, rev;
+} Edge;
+
+Edge* adj[1010];
+int adj_size[1010], adj_cap[1010];
+int level[1010], ptr[1010];
+
+void add_edge(int from, int to, int cap) {
+    if (adj_size[from] == adj_cap[from]) {
+        adj_cap[from] = adj_cap[from] == 0 ? 4 : adj_cap[from] * 2;
+        adj[from] = realloc(adj[from], adj_cap[from] * sizeof(Edge));
+    }
+    if (adj_size[to] == adj_cap[to]) {
+        adj_cap[to] = adj_cap[to] == 0 ? 4 : adj_cap[to] * 2;
+        adj[to] = realloc(adj[to], adj_cap[to] * sizeof(Edge));
+    }
+    adj[from][adj_size[from]++] = (Edge){to, cap, adj_size[to]};
+    adj[to][adj_size[to]++] = (Edge){from, 0, adj_size[from] - 1};
+}
+
+int bfs(int s, int t, int n) {
+    memset(level, -1, sizeof(int) * n);
+    level[s] = 0;
+    int* queue = malloc(sizeof(int) * n);
+    int head = 0, tail = 0;
+    queue[tail++] = s;
+    while (head < tail) {
+        int v = queue[head++];
+        for (int i = 0; i < adj_size[v]; i++) {
+            Edge e = adj[v][i];
+            if (e.cap > 0 && level[e.to] == -1) {
+                level[e.to] = level[v] + 1;
+                queue[tail++] = e.to;
+            }
+        }
+    }
+    free(queue);
+    return level[t] != -1;
+}
+
+int dfs(int v, int t, int pushed) {
+    if (pushed == 0) return 0;
+    if (v == t) return pushed;
+    for (int* p = &ptr[v]; *p < adj_size[v]; (*p)++) {
+        Edge* e = &adj[v][*p];
+        if (level[v] + 1 != level[e->to] || e->cap == 0) continue;
+        int tr = dfs(e->to, t, pushed < e->cap ? pushed : e->cap);
+        if (tr == 0) continue;
+        e->cap -= tr;
+        adj[e->to][e->rev].cap += tr;
+        return tr;
+    }
+    return 0;
+}
+
+int main() {
+    int N, M, E;
+    if (scanf("%d %d %d", &N, &M, &E) != 3) return 0;
+    int* caps = malloc(M * sizeof(int));
+    for (int i = 0; i < M; i++) scanf("%d", &caps[i]);
+    int s = 0, t = N + M + 1;
+    for (int i = 1; i <= N; i++) add_edge(s, i, 1);
+    for (int i = 0; i < E; i++) {
+        int u, v;
+        scanf("%d %d", &u, &v);
+        add_edge(u + 1, N + v + 1, 1);
+    }
+    for (int i = 0; i < M; i++) add_edge(N + i + 1, t, caps[i]);
+    int flow = 0;
+    int n_nodes = N + M + 2;
+    while (bfs(s, t, n_nodes)) {
+        memset(ptr, 0, sizeof(int) * n_nodes);
+        while (1) {
+            int pushed = dfs(s, t, INF);
+            if (pushed == 0) break;
+            flow += pushed;
+        }
+    }
+    printf("%d\\n", flow);
+    for (int i = 0; i < n_nodes; i++) free(adj[i]);
+    free(caps);
     return 0;
 }`
   }

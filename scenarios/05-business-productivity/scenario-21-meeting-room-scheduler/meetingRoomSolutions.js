@@ -308,17 +308,6 @@ int compare_intervals(const void* a, const void* b) {
     return ((Interval*)a)->s - ((Interval*)b)->s;
 }
 
-void heap_push(int* heap, int* size, int val) {
-    int i = (*size)++;
-    while (i > 0) {
-        int p = (i - 1) / 2;
-        if (heap[p] <= heap[i]) break;
-        int tmp = heap[p]; heap[p] = heap[i]; heap[i] = tmp;
-        i = p;
-    }
-    heap[i] = val; // Wait, the loop above doesn't actually set the value correctly
-}
-// Fixed heap_push
 void heap_push_fixed(int* heap, int* size, int val) {
     int i = (*size)++;
     heap[i] = val;
@@ -695,6 +684,261 @@ int main() {
             printf("%d\\n", q.size);
         }
     }
+    return 0;
+}`
+  },
+  'PROB-MEETSCHED-005': {
+    python: `import sys
+import bisect
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    meetings = []
+    ptr = 1
+    for _ in range(N):
+        s = int(input_data[ptr])
+        f = int(input_data[ptr+1])
+        w = int(input_data[ptr+2])
+        meetings.append((s, f, w))
+        ptr += 3
+
+    # Sort by finish time
+    meetings.sort(key=lambda x: x[1])
+
+    # dp[i] = max weight using first i meetings
+    dp = [0] * (N + 1)
+    finish_times = [m[1] for m in meetings]
+
+    for i in range(1, N + 1):
+        s, f, w = meetings[i-1]
+
+        # Find the last meeting that finishes before or at start time s
+        # bisect_right gives index of first element > s.
+        # The element at (index - 1) is the last element <= s.
+        idx = bisect.bisect_right(finish_times, s)
+
+        # The meeting at index (idx-1) in the sorted list is the last compatible.
+        # Since dp is 1-indexed, dp[idx] corresponds to the first idx meetings.
+        # However, we need to ensure the finish time is <= s.
+        # bisect_right returns the insertion point.
+        # If finish_times[idx-1] > s, we need to move left.
+        # Actually, bisect_right finds the first index where finish_times[i] > s.
+        # So index idx-1 is the last one where finish_times[idx-1] <= s.
+
+        # Check if the found index is valid and satisfies the non-overlapping condition
+        # (though bisect_right on sorted finish_times already ensures this)
+        compatible_idx = idx
+        # But we must check if the meeting at idx-1 actually finishes <= s.
+        # If idx is 0, no meeting is compatible.
+        # If idx > 0, the meeting at finish_times[idx-1] finishes <= s.
+
+        # Correct logic:
+        # We want the largest j < i such that meetings[j].f <= meetings[i-1].s.
+        # In 1-indexed DP, that's dp[j+1].
+        # bisect_right on finish_times gives the number of meetings that finish <= s.
+        # Let that be 'count'. These are meetings 0 to count-1.
+        # The max weight for them is dp[count].
+
+        count = bisect.bisect_right(finish_times, s)
+        # We must ensure we don't include the current meeting if it was already in the list
+        # (but it's sorted by finish time, and it's the i-th one, so we only look at j < i)
+        # Since we are using a separate finish_times list, we should only search up to i-2.
+
+        # Proper binary search on the range [0, i-2]
+        # Or just search in the whole list and take min(idx, i-1)
+        idx_compat = min(count, i - 1)
+
+        dp[i] = max(dp[i-1], w + dp[idx_compat])
+
+    print(dp[N])
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    const meetings = [];
+    for (let i = 0; i < N; i++) {
+        const s = parseInt(input[ptr++]);
+        const f = parseInt(input[ptr++]);
+        const w = parseInt(input[ptr++]);
+        meetings.push({ s, f, w });
+    }
+
+    meetings.sort((a, b) => a.f - b.f);
+
+    const dp = new Array(N + 1).fill(0n);
+    const finishTimes = meetings.map(m => m.f);
+
+    for (let i = 1; i <= N; i++) {
+        const { s, w } = meetings[i - 1];
+
+        // Binary search for last meeting finishing <= s
+        let low = 0, high = i - 1;
+        let idx = 0;
+        while (low < high) {
+            let mid = Math.floor((low + high) / 2);
+            if (finishTimes[mid] <= s) {
+                idx = mid + 1;
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+
+        const weight = BigInt(w);
+        const currentWeight = weight + dp[idx];
+        if (currentWeight > dp[i - 1]) {
+            dp[i] = currentWeight;
+        } else {
+            dp[i] = dp[i - 1];
+        }
+    }
+    console.log(dp[N].toString());
+}
+
+solve();`,
+    java: `import java.util.*;
+
+class Meeting implements Comparable<Meeting> {
+    int s, f, w;
+    Meeting(int s, int f, int w) { this.s = s; this.f = f; this.w = w; }
+    public int compareTo(Meeting other) {
+        return Integer.compare(this.f, other.f);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        Meeting[] meetings = new Meeting[N];
+        for (int i = 0; i < N; i++) {
+            meetings[i] = new Meeting(sc.nextInt(), sc.nextInt(), sc.nextInt());
+        }
+        Arrays.sort(meetings);
+
+        long[] dp = new long[N + 1];
+        int[] finishTimes = new int[N];
+        for (int i = 0; i < N; i++) finishTimes[i] = meetings[i].f;
+
+        for (int i = 1; i <= N; i++) {
+            int s = meetings[i - 1].s;
+            int w = meetings[i - 1].w;
+
+            int low = 0, high = i - 1;
+            int idx = 0;
+            while (low < high) {
+                int mid = (low + high) / 2;
+                if (finishTimes[mid] <= s) {
+                    idx = mid + 1;
+                    low = mid + 1;
+                } else {
+                    high = mid;
+                }
+            }
+            dp[i] = Math.max(dp[i - 1], (long) w + dp[idx]);
+        }
+        System.out.println(dp[N]);
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+struct Meeting {
+    int s, f, w;
+    bool operator<(const Meeting& other) const {
+        return f < other.f;
+    }
+};
+
+int main() {
+    int N;
+    if (!(cin >> N)) return 0;
+    vector<Meeting> meetings(N);
+    for (int i = 0; i < N; ++i) {
+        cin >> meetings[i].s >> meetings[i].f >> meetings[i].w;
+    }
+    sort(meetings.begin(), meetings.end());
+
+    vector<long long> dp(N + 1, 0);
+    vector<int> finishTimes(N);
+    for (int i = 0; i < N; ++i) finishTimes[i] = meetings[i].f;
+
+    for (int i = 1; i <= N; ++i) {
+        int s = meetings[i - 1].s;
+        int w = meetings[i - 1].w;
+
+        auto it = upper_bound(finishTimes.begin(), finishTimes.begin() + i - 1, s);
+        int idx = distance(finishTimes.begin(), it);
+
+        dp[i] = max(dp[i - 1], (long long)w + dp[idx]);
+    }
+    cout << dp[N] << endl;
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int s, f, w;
+} Meeting;
+
+int compare_meetings(const void* a, const void* b) {
+    return ((Meeting*)a)->f - ((Meeting*)b)->f;
+}
+
+int binary_search(int* finishTimes, int n, int target) {
+    int low = 0, high = n - 1;
+    int ans = 0;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (finishTimes[mid] <= target) {
+            ans = mid + 1;
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return ans;
+}
+
+int main() {
+    int N;
+    if (scanf("%d", &N) != 1) return 0;
+    Meeting* meetings = (Meeting*)malloc(N * sizeof(Meeting));
+    for (int i = 0; i < N; i++) {
+        scanf("%d %d %d", &meetings[i].s, &meetings[i].f, &meetings[i].w);
+    }
+    qsort(meetings, N, sizeof(Meeting), compare_meetings);
+
+    long long* dp = (long long*)calloc(N + 1, sizeof(long long));
+    int* finishTimes = (int*)malloc(N * sizeof(int));
+    for (int i = 0; i < N; i++) finishTimes[i] = meetings[i].f;
+
+    for (int i = 1; i <= N; i++) {
+        int s = meetings[i - 1].s;
+        int w = meetings[i - 1].w;
+        int idx = binary_search(finishTimes, i - 1, s);
+        long long take = (long long)w + dp[idx];
+        dp[i] = (dp[i - 1] > take) ? dp[i - 1] : take;
+    }
+    printf("%lld\\n", dp[N]);
+    free(meetings);
+    free(dp);
+    free(finishTimes);
     return 0;
 }`
   }

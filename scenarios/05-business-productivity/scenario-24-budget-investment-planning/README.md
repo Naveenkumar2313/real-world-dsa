@@ -4,7 +4,7 @@
 
 Corporate treasury, capital budgeting, and financial planning departments must deploy financial capital to generate maximum long-term economic value. Capital expenditure (CapEx) requests from business units invariably exceed available annual budgets. Finance leadership must decide which indivisible multi-million-dollar technology investments to fund within budget caps, how to fractionally divide treasury liquidity among yield-bearing instruments, how to rank business unit initiatives by capital efficiency, and how to distribute discretionary innovation funds to maximize organizational impact.
 
-In this scenario, you will develop the algorithmic financial planning models powering an enterprise capital allocation engine: discrete CapEx knapsack optimization, divisible treasury yield allocation, Return on Investment (ROI) ranking, and greedy grant maximization.
+In this scenario, you will develop the algorithmic financial planning models powering an enterprise capital allocation engine: discrete CapEx knapsack optimization, divisible treasury yield allocation, Return on Investment (ROI) ranking, greedy grant maximization, and scalable portfolio return optimization.
 
 ---
 
@@ -20,6 +20,8 @@ An enterprise capital allocation and financial management platform must solve co
 
 > How can an enterprise incubator fund the maximum possible number of employee innovation proposals using a fixed seed budget?
 
+> How can a fund maximize returns when utilizing scalable investment vehicles that can be purchased in multiple units?
+
 ---
 
 ## Real-World to DSA Mapping
@@ -30,6 +32,7 @@ An enterprise capital allocation and financial management platform must solve co
 | Divisible Treasury Liquidity | Fractional Knapsack | Continuous asset allocation by yield density |
 | Capital Efficiency Ranking | Multi-Key Sorting | Sort projects by ROI ratio and cost |
 | Grassroots Seed Grant Maximization | Greedy (Smallest Cost First) | Maximize funded proposal count within budget |
+| Scalable Asset Portfolio | Unbounded Knapsack | Maximize returns with repeatable asset units |
 
 ---
 
@@ -41,6 +44,7 @@ After completing this scenario, you will be able to:
 2. Apportion continuously divisible funds using greedy Fractional Knapsack sorted by yield density.
 3. Implement precise multi-key sorting for financial ratios without floating-point inaccuracies.
 4. Prove that greedy selection of lowest-cost proposals maximizes the total count of funded initiatives.
+5. Implement Unbounded Knapsack using Dynamic Programming to optimize scalable investment portfolios.
 
 ---
 
@@ -62,8 +66,12 @@ After completing this scenario, you will be able to:
 - **Focus:** Greedy
 - **Synopsis:** Maximize the number of distinct employee innovation proposals funded from a discretionary incubator budget $B$.
 
+### Problem 5 — Scalable Portfolio Return Maximization (`PROB-BUDGET-005`)
+- **Focus:** Unbounded Knapsack (DP)
+- **Synopsis:** Maximize total return from scalable investment vehicles where multiple units of the same asset can be purchased within budget $B$.
+
 ---
 
 ## Key Takeaway
 
-Corporate financial planning relies on choosing the appropriate algorithm for capital divisibility. Indivisible projects require dynamic programming knapsack solutions, continuous treasury liquidity requires greedy fractional density ranking, ratio sorting prioritizes capital productivity, and lowest-cost greedy selection maximizes initiative breadth.
+Corporate financial planning relies on choosing the appropriate algorithm for capital divisibility. Indivisible projects require dynamic programming knapsack solutions, continuous treasury liquidity requires greedy fractional density ranking, ratio sorting prioritizes capital productivity, lowest-cost greedy selection maximizes initiative breadth, and unbounded knapsack optimization handles scalable assets.

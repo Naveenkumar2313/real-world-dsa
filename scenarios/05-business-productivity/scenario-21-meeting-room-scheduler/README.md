@@ -4,7 +4,7 @@
 
 Enterprise workplace scheduling systems manage high-demand physical collaboration spaces across corporate campuses. When dozens of cross-functional project teams compete for prime conference rooms, scheduling software must maximize boardroom utilization without double-booking, calculate overall real estate requirements by determining peak concurrent room demand, present clean chronological schedules on digital display tablets, and manage overflow waitlists equitably.
 
-In this scenario, you will develop the algorithmic core of an enterprise room scheduling and workplace management platform: single-room activity selection, multi-room capacity sizing, reservation timeline sorting, and automated waitlist queue processing.
+In this scenario, you will develop the algorithmic core of an enterprise room scheduling and workplace management platform: single-room activity selection, multi-room capacity sizing, reservation timeline sorting, automated waitlist queue processing, and priority-weighted allocation optimization.
 
 ---
 
@@ -20,6 +20,8 @@ An enterprise workplace management platform must address key resource scheduling
 
 > How should an automated reservation kiosk maintain a fair First-In-First-Out (FIFO) queue for teams waiting for an on-demand huddle space?
 
+> When meetings have varying strategic importance, how can the software maximize the total value of meetings scheduled in a single boardroom?
+
 ---
 
 ## Real-World to DSA Mapping
@@ -30,6 +32,7 @@ An enterprise workplace management platform must address key resource scheduling
 | Office Conference Room Sizing | Greedy (Interval Partitioning) | Minimum rooms required to satisfy concurrent intervals |
 | Digital Calendar Display | Multi-Key Sorting | Chronological ordering of reservation events |
 | On-Demand Room Waitlist | FIFO Queue | Fair arrival-order reservation queuing and allocation |
+| Priority-Weighted Allocation | DP + Binary Search | Maximize total weight of compatible intervals |
 
 ---
 
@@ -41,6 +44,7 @@ After completing this scenario, you will be able to:
 2. Determine peak interval concurrency to compute minimum required facilities.
 3. Sort interval timelines deterministically using primary, secondary, and tie-breaking criteria.
 4. Build FIFO queue interfaces (`REQUEST`, `ALLOCATE`, `PEEK`, `PENDING`) for real-time resource contention.
+5. Implement Weighted Interval Scheduling using Dynamic Programming and Binary Search to optimize resource value.
 
 ---
 
@@ -62,8 +66,12 @@ After completing this scenario, you will be able to:
 - **Focus:** Queue Operations
 - **Synopsis:** Manage an automated FIFO waitlist queue for teams requesting on-demand rooms, supporting enqueuing, allocation, head inspection, and pending count queries.
 
+### Problem 5 — Priority-Weighted Meeting Value Optimization (`PROB-MEETSCHED-005`)
+- **Focus:** Dynamic Programming & Binary Search
+- **Synopsis:** Maximize the total strategic value of meetings scheduled in a single boardroom by selecting non-overlapping requests with the highest sum of weights.
+
 ---
 
 ## Key Takeaway
 
-Enterprise resource scheduling requires balancing greedy optimization with deterministic ordering and queuing. Activity selection maximizes single-room density, interval sweep analysis right-sizes campus real estate investments, chronological sorting delivers clear user interfaces, and FIFO queues provide transparent fairness during peak room demand.
+Enterprise resource scheduling requires balancing greedy optimization with deterministic ordering and queuing. Activity selection maximizes single-room density, interval sweep analysis right-sizes campus real estate investments, chronological sorting delivers clear user interfaces, FIFO queues provide transparent fairness, and weighted interval scheduling optimizes high-value resource allocation.

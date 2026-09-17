@@ -41,6 +41,7 @@ After completing this scenario, you will be able to:
 2. Build stack-based HTML tag validators that detect unmatched and improperly nested elements.
 3. Manipulate linked lists to model browser tab strips with dynamic insertion, deletion, and focus shifts.
 4. Execute in-place singly linked list reversal to change tab session layouts.
+5. Detect infinite redirect loops in URL chains using Floyd's Cycle-Finding Algorithm.
 
 ---
 
@@ -61,6 +62,10 @@ After completing this scenario, you will be able to:
 ### Problem 4 — Session Tab Reversal (`PROB-BROWSER-004`)
 - **Focus:** Reverse Linked List
 - **Synopsis:** Invert the linked list of open browser tabs in-place for RTL display mode conversion.
+
+### Problem 5 — Browser Redirect Cycle Detection (`PROB-BROWSER-005`)
+- **Focus:** Linked List
+- **Synopsis:** Detect circular redirect chains in URL sequences and identify the starting point of the loop to prevent browser hangs.
 
 ---
 

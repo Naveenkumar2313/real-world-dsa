@@ -11,18 +11,21 @@
         "Solve 0/1 Knapsack optimization to maximize capital project Net Present Value (NPV) under fixed corporate budgets.",
         "Implement Fractional Knapsack allocation to maximize investment yield across continuously divisible treasury assets.",
         "Sort project initiatives by Return on Investment (ROI) efficiency ratios using cross-multiplication tie-breaking.",
-        "Apply greedy heuristics to maximize the number of funded strategic innovation grant proposals."
+        "Apply greedy heuristics to maximize the number of funded strategic innovation grant proposals.",
+        "Apply Unbounded Knapsack Dynamic Programming to maximize returns from scalable investment vehicles."
     ],
     "algorithms": [
         "0/1 Knapsack",
         "Fractional Knapsack",
         "Sorting",
-        "Greedy"
+        "Greedy",
+        "Unbounded Knapsack (DP)"
     ],
     "learning_path": [
         "PROB-BUDGET-001",
         "PROB-BUDGET-002",
         "PROB-BUDGET-003",
-        "PROB-BUDGET-004"
+        "PROB-BUDGET-004",
+        "PROB-BUDGET-005"
     ]
 }

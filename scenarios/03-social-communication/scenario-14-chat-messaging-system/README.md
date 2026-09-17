@@ -41,6 +41,7 @@ After completing this scenario, you will be able to:
 2. Construct fixed-capacity circular ring buffers to maintain recent chat logs without reallocation.
 3. Use stacks to validate nested formatting brackets and syntax structures in chat streams.
 4. Apply two-pointer sliding window algorithms to identify rate-limit violations across message timestamps.
+5. Implement KMP pattern matching to scan chat messages for forbidden keywords in linear time.
 
 ---
 
@@ -61,6 +62,10 @@ After completing this scenario, you will be able to:
 ### Problem 4 — Spam Burst Detection Window (`PROB-CHAT-004`)
 - **Focus:** Sliding Window
 - **Synopsis:** Find the maximum number of messages sent in any sliding window of duration $W$ seconds and flag rate-limit violations.
+
+### Problem 5 — Forbidden Keyword Content Filter (`PROB-CHAT-005`)
+- **Focus:** KMP Pattern Matching
+- **Synopsis:** Scan chat messages for forbidden keywords using the Knuth-Morris-Pratt algorithm to ensure high-performance content moderation.
 
 ---
 

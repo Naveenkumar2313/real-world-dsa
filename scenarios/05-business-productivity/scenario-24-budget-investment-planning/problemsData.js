@@ -94,5 +94,29 @@ export const budget_investment_problems = [
       cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
       c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
     }
+  },
+  {
+    id: 'PROB-BUDGET-005',
+    title: 'Scalable Portfolio Return Maximization',
+    difficulty: 'Hard',
+    description: 'A corporate treasury fund is diversifying its reserves across several scalable investment vehicles (e.g., index funds, REITs, and government bonds). Each vehicle i has a fixed entry cost c_i (the cost of one unit of that asset) and provides a proportional return v_i per unit. Unlike discrete capital projects, the treasury can purchase any integer number of units of each vehicle, provided the total expenditure does not exceed the available liquidity budget B. The fund manager must determine the maximum possible total return.\\n\\nTask: Given a total budget B and N types of investment vehicles, each with a unit cost c_i and a unit return v_i, find the maximum total return achievable by purchasing any number of units (0, 1, 2, ...) of each vehicle such that the total cost does not exceed B.',
+    constraints: ['1 <= B <= 10^4', '1 <= N <= 1000', '1 <= c_i <= 10^4', '1 <= v_i <= 10^5'],
+    examples: [
+      { input: '10 3\\n2 10\\n3 15\\n5 30', output: '60', explanation: 'Asset 3 has cost 5 and return 30. Buying 2 units of Asset 3 costs 10 and yields 60. Other combinations: 5 units of Asset 1 (5*10=50), 3 units of Asset 2 (3*15=45, cost 9). Max is 60.' },
+      { input: '8 3\\n3 10\\n4 15\\n2 7', output: '30', explanation: 'Asset 2: 4 cost, 15 return. Buying 2 units of Asset 2 costs 8 and yields 30. Other combinations: 2 units of Asset 1 (cost 6, return 20) + 1 unit of Asset 3 (cost 2, return 7) = 27. Max is 30.' }
+    ],
+    testCases: [
+      { input: '10 3\\n2 10\\n3 15\\n5 30', expectedOutput: '60', hidden: false },
+      { input: '8 3\\n3 10\\n4 15\\n2 7', expectedOutput: '30', hidden: false },
+      { input: '10 1\\n3 10', expectedOutput: '30', hidden: true },
+      { input: '5 2\\n6 100\\n7 200', expectedOutput: '0', hidden: true }
+    ],
+    starterCode: {
+      python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,
+      javascript: `function solve() {}\nconst lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");`,
+      java: `import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n    }\n}`,
+      cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
+      c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
+    }
   }
 ];

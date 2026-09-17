@@ -11,18 +11,22 @@
         "Solve the 0/1 Knapsack problem to maximize clinical utility within strict medical aircraft weight constraints.",
         "Implement the Fractional Knapsack algorithm using greedy value-to-weight ratios for continuous resource rationing.",
         "Apply greedy prioritization to allocate scarce ICU mechanical ventilators to maximize total oxygenation improvement.",
-        "Use Binary Search on Answer to determine the minimum transport payload capacity needed to distribute disaster supplies within deadline days."
+        "Use Binary Search on Answer to determine the minimum transport payload capacity needed to distribute disaster supplies within deadline days.",
+        "Solve the Unbounded Knapsack problem to maximize total clinical utility for medical supply stockpiling within a fixed procurement budget."
     ],
     "algorithms": [
         "0/1 Knapsack",
         "Fractional Knapsack",
         "Greedy",
-        "Binary Search on Answer"
+        "Binary Search on Answer",
+        "Unbounded Knapsack",
+        "Dynamic Programming"
     ],
     "learning_path": [
         "PROB-MEDRES-001",
         "PROB-MEDRES-002",
         "PROB-MEDRES-003",
-        "PROB-MEDRES-004"
+        "PROB-MEDRES-004",
+        "PROB-MEDRES-005"
     ]
 }

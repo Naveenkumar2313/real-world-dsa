@@ -1,0 +1,31 @@
+{
+  "problem_id": "PROB-HOSPEMERG-005",
+  "scenario_id": "SCN-HOSPEMERG-001",
+  "sequence": 5,
+  "title": "Urgent Triage Priority Buffer",
+  "difficulty": "Medium",
+  "concepts": ["Double-Ended Queue (Deque)"],
+  "real_world_story": "In a high-volume Hospital Emergency Department, the triage process is rarely a simple First-In-First-Out (FIFO) sequence. While most patients are added to the end of the waiting list, critical trauma arrivals must be placed immediately at the front of the queue for instant care. Additionally, patients at the end of the queue may occasionally leave the facility due to excessive wait times (leaving from the back) or be admitted from the front as soon as a bed becomes available. Efficiently managing this bidirectional flow requires a Double-Ended Queue (Deque) to ensure that both critical insertions and attrition are handled in constant time.",
+  "problem_statement": "Implement an Emergency Triage Buffer that supports the following operations:\n1. `ARRIVE_STABLE <id>`: Patient arrives and is added to the back of the queue.\n2. `ARRIVE_CRITICAL <id>`: Patient arrives and is added to the front of the queue.\n3. `ADMIT`: The patient at the front of the queue is admitted for treatment (removed from front).\n4. `LEAVE`: The patient at the back of the queue leaves the hospital (removed from back).\n5. `STATUS`: Print the current list of patient IDs in the queue from front to back.",
+  "task": "Develop a system that processes these five commands and maintains the patient sequence. If an `ADMIT` or `LEAVE` operation is performed on an empty queue, it should be ignored. Output the result of each `STATUS` command on a new line.",
+  "input_format": "An integer Q, followed by Q lines of commands. Commands are in the form: `ARRIVE_STABLE <id>`, `ARRIVE_CRITICAL <id>`, `ADMIT`, `LEAVE`, or `STATUS`.",
+  "output_format": "For each `STATUS` command, print the space-separated list of patient IDs from front to back. If the queue is empty, print 'EMPTY'.",
+  "constraints": {
+    "Q": "1 <= Q <= 10^5",
+    "patient_id": "1 <= id <= 10^9"
+  },
+  "examples": [
+    {
+      "input": "8\\nARRIVE_STABLE 101\\nARRIVE_STABLE 102\\nARRIVE_CRITICAL 103\\nSTATUS\\nADMIT\\nSTATUS\\nLEAVE\\nSTATUS",
+      "output": "103 101 102\\n101 102\\n101",
+      "explanation": "1. Stable 101: [101]. 2. Stable 102: [101, 102]. 3. Critical 103: [103, 101, 102]. 4. STATUS -> 103 101 102. 5. ADMIT -> [101, 102]. 6. STATUS -> 101 102. 7. LEAVE -> [101]. 8. STATUS -> 101."
+    }
+  ],
+  "expected_algorithm": "Double-Ended Queue (Deque)",
+  "complexity": {
+    "time": "O(1) per operation, O(Q) total",
+    "space": "O(N) where N is the maximum number of patients in the queue"
+  },
+  "real_world_takeaway": "Deques are essential for systems requiring bidirectional access, allowing them to act as both stacks and queues. This flexibility is critical for priority-based systems where both ends of the data stream must be manipulated efficiently.",
+  "tags": ["deque", "hospital-triage", "bidirectional-queue"]
+}

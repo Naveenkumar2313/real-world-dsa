@@ -850,5 +850,380 @@ int main() {
     printf("%d\\n", count);
     return 0;
 }`
+  },
+  'PROB-SEARCH-005': {
+    python: `import sys
+import heapq
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.score = -1
+        self.word = None
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word, score):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.score = score
+        node.word = word
+
+    def get_prefix_node(self, prefix):
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return None
+            node = node.children[char]
+        return node
+
+    def collect_all(self, node, results):
+        if node.word:
+            results.append((-node.score, node.word))
+        for char in node.children:
+            self.collect_all(node.children[char], results)
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    K = int(input_data[1])
+    trie = Trie()
+    ptr = 2
+    for _ in range(N):
+        word = input_data[ptr]
+        score = int(input_data[ptr+1])
+        trie.insert(word, score)
+        ptr += 2
+
+    prefix = input_data[ptr]
+    node = trie.get_prefix_node(prefix)
+    if not node:
+        return
+
+    results = []
+    trie.collect_all(node, results)
+    # Sort by -score (asc) then word (asc)
+    results.sort()
+
+    for i in range(min(K, len(results))):
+        print(results[i][1])
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+class TrieNode {
+    constructor() {
+        this.children = {};
+        this.score = -1;
+        this.word = null;
+    }
+}
+
+class Trie {
+    constructor() {
+        this.root = new TrieNode();
+    }
+
+    insert(word, score) {
+        let node = this.root;
+        for (const char of word) {
+            if (!node.children[char]) {
+                node.children[char] = new TrieNode();
+            }
+            node = node.children[char];
+        }
+        node.score = score;
+        node.word = word;
+    }
+
+    getPrefixNode(prefix) {
+        let node = this.root;
+        for (const char of prefix) {
+            if (!node.children[char]) return null;
+            node = node.children[char];
+        }
+        return node;
+    }
+
+    collectAll(node, results) {
+        if (node.word) {
+            results.push({ score: node.score, word: node.word });
+        }
+        for (const char in node.children) {
+            this.collectAll(node.children[char], results);
+        }
+    }
+}
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    const K = parseInt(input[ptr++]);
+    const trie = new Trie();
+
+    for (let i = 0; i < N; i++) {
+        const word = input[ptr++];
+        const score = parseInt(input[ptr++]);
+        trie.insert(word, score);
+    }
+
+    const prefix = input[ptr++];
+    const node = trie.getPrefixNode(prefix);
+    if (!node) return;
+
+    const results = [];
+    trie.collectAll(node, results);
+    results.sort((a, b) => b.score - a.score || a.word.localeCompare(b.word));
+
+    for (let i = 0; i < Math.min(K, results.length); i++) {
+        console.log(results[i].word);
+    }
+}
+
+solve();`,
+    java: `import java.util.*;
+
+class TrieNode {
+    Map<Character, TrieNode> children = new HashMap<>();
+    int score = -1;
+    String word = null;
+}
+
+class Trie {
+    TrieNode root = new TrieNode();
+
+    void insert(String word, int score) {
+        TrieNode node = root;
+        for (char c : word.toCharArray()) {
+            node.children.putIfAbsent(c, new TrieNode());
+            node = node.children.get(c);
+        }
+        node.score = score;
+        node.word = word;
+    }
+
+    TrieNode getPrefixNode(String prefix) {
+        TrieNode node = root;
+        for (char c : prefix.toCharArray()) {
+            if (!node.children.containsKey(c)) return null;
+            node = node.children.get(c);
+        }
+        return node;
+    }
+
+    void collectAll(TrieNode node, List<Query> results) {
+        if (node.word != null) {
+            results.add(new Query(node.word, node.score));
+        }
+        for (TrieNode child : node.children.values()) {
+            collectAll(child, results);
+        }
+    }
+
+    static class Query implements Comparable<Query> {
+        String word;
+        int score;
+        Query(String w, int s) { this.word = w; this.score = s; }
+        @Override
+        public int compareTo(Query other) {
+            if (this.score != other.score) return Integer.compare(other.score, this.score);
+            return this.word.compareTo(other.word);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        int K = sc.nextInt();
+        Trie trie = new Trie();
+        for (int i = 0; i < N; i++) {
+            String word = sc.next();
+            int score = sc.nextInt();
+            trie.insert(word, score);
+        }
+        String prefix = sc.next();
+        TrieNode node = trie.getPrefixNode(prefix);
+        if (node == null) return;
+        List<Trie.Query> results = new ArrayList<>();
+        trie.collectAll(node, results);
+        Collections.sort(results);
+        for (int i = 0; i < Math.min(K, results.size()); i++) {
+            System.out.println(results.get(i).word);
+        }
+    }
+}`,
+    cpp: `#include <iostream>
+#include <string>
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+
+using namespace std;
+
+struct TrieNode {
+    unordered_map<char, TrieNode*> children;
+    int score = -1;
+    string word = "";
+};
+
+class Trie {
+    TrieNode* root;
+public:
+    Trie() { root = new TrieNode(); }
+    void insert(string word, int score) {
+        TrieNode* node = root;
+        for (char c : word) {
+            if (node->children.find(c) == node->children.end()) {
+                node->children[c] = new TrieNode();
+            }
+            node = node->children[c];
+        }
+        node->score = score;
+        node->word = word;
+    }
+    TrieNode* getPrefixNode(string prefix) {
+        TrieNode* node = root;
+        for (char c : prefix) {
+            if (node->children.find(c) == node->children.end()) return nullptr;
+            node = node->children[c];
+        }
+        return node;
+    }
+    void collectAll(TrieNode* node, vector<pair<int, string>>& results) {
+        if (node->word != "") {
+            results.push_back({-node->score, node->word});
+        }
+        for (auto const& [c, child] : node->children) {
+            collectAll(child, results);
+        }
+    }
+};
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int N, K;
+    if (!(cin >> N >> K)) return 0;
+    Trie trie;
+    for (int i = 0; i < N; ++i) {
+        string word;
+        int score;
+        cin >> word >> score;
+        trie.insert(word, score);
+    }
+    string prefix;
+    cin >> prefix;
+    TrieNode* node = trie.getPrefixNode(prefix);
+    if (!node) return 0;
+    vector<pair<int, string>> results;
+    trie.collectAll(node, results);
+    sort(results.begin(), results.end());
+    for (int i = 0; i < min(K, (int)results.size()); ++i) {
+        cout << results[i].second << "\\n";
+    }
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
+typedef struct TrieNode {
+    struct TrieNode* children[26];
+    int score;
+    char* word;
+} TrieNode;
+
+TrieNode* createNode() {
+    TrieNode* node = (TrieNode*)malloc(sizeof(TrieNode));
+    for (int i = 0; i < 26; i++) node->children[i] = NULL;
+    node->score = -1;
+    node->word = NULL;
+    return node;
+}
+
+void insert(TrieNode* root, char* word, int score) {
+    TrieNode* node = root;
+    for (int i = 0; word[i] != '\\0'; i++) {
+        int idx = word[i] - 'a';
+        if (!node->children[idx]) node->children[idx] = createNode();
+        node = node->children[idx];
+    }
+    node->score = score;
+    node->word = strdup(word);
+}
+
+TrieNode* getPrefixNode(TrieNode* root, char* prefix) {
+    TrieNode* node = root;
+    for (int i = 0; prefix[i] != '\\0'; i++) {
+        int idx = prefix[i] - 'a';
+        if (!node->children[idx]) return NULL;
+        node = node->children[idx];
+    }
+    return node;
+}
+
+typedef struct {
+    char* word;
+    int score;
+} Suggestion;
+
+int compare(const void* a, const void* b) {
+    Suggestion* s1 = (Suggestion*)a;
+    Suggestion* s2 = (Suggestion*)b;
+    if (s1->score != s2->score) return s2->score - s1->score;
+    return strcmp(s1->word, s2->word);
+}
+
+void collectAll(TrieNode* node, Suggestion** results, int* count) {
+    if (node->word) {
+        results[*count].word = node->word;
+        results[*count].score = node->score;
+        (*count)++;
+    }
+    for (int i = 0; i < 26; i++) {
+        if (node->children[i]) collectAll(node->children[i], results, count);
+    }
+}
+
+int main() {
+    int N, K;
+    if (scanf("%d %d", &N, &K) != 2) return 0;
+    TrieNode* root = createNode();
+    char word[101];
+    int score;
+    for (int i = 0; i < N; i++) {
+        scanf("%s %d", word, &score);
+        insert(root, word, score);
+    }
+    char prefix[101];
+    scanf("%s", prefix);
+    TrieNode* node = getPrefixNode(root, prefix);
+    if (!node) return 0;
+    Suggestion* results = (Suggestion*)malloc(10000 * sizeof(Suggestion));
+    int count = 0;
+    collectAll(node, results, &count);
+    qsort(results, count, sizeof(Suggestion), compare);
+    for (int i = 0; i < (count < K ? count : K); i++) {
+        printf("%s\\n", results[i].word);
+    }
+    free(results);
+    return 0;
+}`
   }
 };
+

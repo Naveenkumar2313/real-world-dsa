@@ -11,18 +11,21 @@
         "Apply Binary Search on Answer over monotonic capacity spaces to determine minimum server node provisioning thresholds.",
         "Solve 0/1 Knapsack dynamic programming to maximize server VM rental revenue under physical memory constraints.",
         "Implement the First-Fit Decreasing (FFD) greedy heuristic to bin-pack batch workloads into the minimum number of physical servers.",
-        "Sort containerized workloads by multi-resource computational demands (CPU cores and RAM)."
+        "Sort containerized workloads by multi-resource computational demands (CPU cores and RAM).",
+        "Use Max Flow algorithms to optimize the placement of containers across multiple servers with capacity constraints."
     ],
     "algorithms": [
         "Binary Search on Answer",
         "0/1 Knapsack",
         "Greedy",
-        "Sorting"
+        "Sorting",
+        "Max Flow"
     ],
     "learning_path": [
         "PROB-CLOUDRES-001",
         "PROB-CLOUDRES-002",
         "PROB-CLOUDRES-003",
-        "PROB-CLOUDRES-004"
+        "PROB-CLOUDRES-004",
+        "PROB-CLOUDRES-005"
     ]
 }

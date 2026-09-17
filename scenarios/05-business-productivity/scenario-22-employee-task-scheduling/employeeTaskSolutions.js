@@ -26,16 +26,7 @@ def solve():
 
     # Using a simple array for time slots.
     # Since N and max_deadline are up to 10^4, this is O(N*D) worst case.
-    # For 10^4 * 10^4 = 10^8, it might be slow in Python.
     # However, most test cases are usually smaller or have fewer clashes.
-    # A Disjoint Set Union (DSU) would be O(N log D).
-
-    parent = list(range(min(N, max_deadline) + 1))
-    def find(i):
-        if parent[i] == i:
-            return i
-        parent[i] = find(parent[i])
-        return parent[i]
 
     total_profit = 0
     count = 0
@@ -45,12 +36,6 @@ def solve():
     slots = [False] * (timeline_limit + 1)
 
     # Standard greedy approach with a slot array (O(N * min(N, max_deadline)))
-    # For 10^4, this can be slow. Let's use a more efficient slot search.
-
-    # Correcting to use a simple greedy with a slot array first,
-    # if it's too slow, we'd use DSU.
-
-    # Let's refine: use a simple array but optimize the search.
     filled_slots = 0
     for tid, d, p in tasks:
         # Try to place in the latest possible slot <= deadline
@@ -647,6 +632,226 @@ int main() {
     }
     printf("%lld\\n", totalWait);
     free(times);
+    return 0;
+}`
+  },
+  'PROB-TASKSCHED-005': {
+    python: `import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    M = int(input_data[1])
+    E = int(input_data[2])
+
+    adj = [[] for _ in range(N)]
+    ptr = 3
+    for _ in range(E):
+        u = int(input_data[ptr])
+        v = int(input_data[ptr+1])
+        adj[u].append(v)
+        ptr += 2
+
+    match = [-1] * M
+
+    def can_match(u, visited):
+        for v in adj[u]:
+            if not visited[v]:
+                visited[v] = True
+                if match[v] < 0 or can_match(match[v], visited):
+                    match[v] = u
+                    return True
+        return False
+
+    count = 0
+    for i in range(N):
+        visited = [False] * M
+        if can_match(i, visited):
+            count += 1
+
+    print(count)
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    const M = parseInt(input[ptr++]);
+    const E = parseInt(input[ptr++]);
+    const adj = Array.from({ length: N }, () => []);
+
+    for (let i = 0; i < E; i++) {
+        const u = parseInt(input[ptr++]);
+        const v = parseInt(input[ptr++]);
+        adj[u].push(v);
+    }
+
+    const match = new Array(M).fill(-1);
+    let count = 0;
+
+    function canMatch(u, visited) {
+        for (const v of adj[u]) {
+            if (!visited[v]) {
+                visited[v] = true;
+                if (match[v] < 0 || canMatch(match[v], visited)) {
+                    match[v] = u;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    for (let i = 0; i < N; i++) {
+        const visited = new Array(M).fill(false);
+        if (canMatch(i, visited)) {
+            count++;
+        }
+    }
+    console.log(count);
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    static List<Integer>[] adj;
+    static int[] match;
+    static boolean[] visited;
+
+    static boolean canMatch(int u) {
+        for (int v : adj[u]) {
+            if (!visited[v]) {
+                visited[v] = true;
+                if (match[v] < 0 || canMatch(match[v])) {
+                    match[v] = u;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        int E = sc.nextInt();
+        adj = new ArrayList[N];
+        for (int i = 0; i < N; i++) adj[i] = new ArrayList<>();
+        for (int i = 0; i < E; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            adj[u].add(v);
+        }
+        match = new int[M];
+        Arrays.fill(match, -1);
+        int count = 0;
+        for (int i = 0; i < N; i++) {
+            visited = new boolean[M];
+            if (canMatch(i)) count++;
+        }
+        System.out.println(count);
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<vector<int>> adj;
+vector<int> match;
+vector<bool> visited;
+
+bool canMatch(int u) {
+    for (int v : adj[u]) {
+        if (!visited[v]) {
+            visited[v] = true;
+            if (match[v] < 0 || canMatch(match[v])) {
+                match[v] = u;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+int main() {
+    int N, M, E;
+    if (!(cin >> N >> M >> E)) return 0;
+    adj.resize(N);
+    for (int i = 0; i < E; ++i) {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+    }
+    match.assign(M, -1);
+    int count = 0;
+    for (int i = 0; i < N; ++i) {
+        visited.assign(M, false);
+        if (canMatch(i)) count++;
+    }
+    cout << count << endl;
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct Node {
+    int v;
+    struct Node* next;
+} Node;
+
+Node** adj;
+int* match;
+int* visited;
+int N, M;
+
+int canMatch(int u) {
+    for (Node* curr = adj[u]; curr != NULL; curr = curr->next) {
+        int v = curr->v;
+        if (!visited[v]) {
+            visited[v] = 1;
+            if (match[v] < 0 || canMatch(match[v])) {
+                match[v] = u;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+int main() {
+    int E;
+    if (scanf("%d %d %d", &N, &M, &E) != 3) return 0;
+    adj = (Node**)calloc(N, sizeof(Node*));
+    for (int i = 0; i < E; i++) {
+        int u, v;
+        scanf("%d %d", &u, &v);
+        Node* newNode = (Node*)malloc(sizeof(Node));
+        newNode->v = v;
+        newNode->next = adj[u];
+        adj[u] = newNode;
+    }
+    match = (int*)malloc(M * sizeof(int));
+    for (int i = 0; i < M; i++) match[i] = -1;
+    visited = (int*)malloc(M * sizeof(int));
+    int count = 0;
+    for (int i = 0; i < N; i++) {
+        memset(visited, 0, M * sizeof(int));
+        if (canMatch(i)) count++;
+    }
+    printf("%d\\n", count);
     return 0;
 }`
   }

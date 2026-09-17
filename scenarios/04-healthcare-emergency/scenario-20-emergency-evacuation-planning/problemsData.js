@@ -92,5 +92,29 @@ export const evacuation_planning_problems = [
       cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
       c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
     }
+  },
+  {
+    id: 'PROB-EVAC-005',
+    title: 'Critical Evacuation Bridge Identification',
+    difficulty: 'Hard',
+    description: 'Given a graph representing hospital corridors (nodes are rooms/intersections, edges are corridors), identify all critical bridges. A bridge is an edge that, if removed, splits the graph into two or more disconnected components.\\n\\nInput format: The first line contains two integers: N (number of rooms) and M (number of corridors). The next M lines each contain two integers u and v representing a corridor between room u and room v.\\n\\nOutput format: Each bridge on a new line as \'u v\', where u < v, and the bridges are sorted lexicographically.',
+    constraints: ['1 <= N <= 10^4', '0 <= M <= 10^5', '0 <= u, v < N'],
+    examples: [
+      { input: '4 3\\n0 1\\n1 2\\n2 3', output: '0 1\\n1 2\\n2 3', explanation: 'In a linear chain, every edge is a bridge.' },
+      { input: '4 4\\n0 1\\n1 2\\n2 0\\n2 3', output: '2 3', explanation: 'Edges (0,1), (1,2), and (2,0) form a cycle; removing any of them keeps the graph connected. Edge (2,3) is the only bridge.' }
+    ],
+    testCases: [
+      { input: '4 3\\n0 1\\n1 2\\n2 3', expectedOutput: '0 1\\n1 2\\n2 3', hidden: false },
+      { input: '4 4\\n0 1\\n1 2\\n2 0\\n2 3', expectedOutput: '2 3', hidden: false },
+      { input: '2 1\\n0 1', expectedOutput: '0 1', hidden: true },
+      { input: '3 3\\n0 1\\n1 2\\n2 0', expectedOutput: '', hidden: true }
+    ],
+    starterCode: {
+      python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,
+      javascript: `function solve() {}\nconst lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");`,
+      java: `import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n    }\n}`,
+      cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
+      c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
+    }
   }
 ];

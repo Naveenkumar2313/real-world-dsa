@@ -95,5 +95,29 @@ export const project_planning_problems = [
       cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
       c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
     }
+  },
+  {
+    id: 'PROB-PROJPLAN-005',
+    title: 'Project Critical Path Duration Analysis',
+    difficulty: 'Hard',
+    description: 'A project manager is coordinating a complex product launch with multiple interdependent tasks. Some tasks cannot start until others are complete. Each task has a specific duration. The total time required to complete the project is determined by the \\'Critical Path\\'—the longest sequence of dependent tasks. Any delay in a critical path task directly delays the entire project launch. To optimize the schedule, the manager needs to calculate the total duration of this critical path.\\n\\nTask: Given a set of N tasks with their respective durations and a set of M directed edges representing dependencies (edge u -> v means task u must be completed before task v can start), compute the maximum total duration of any path from any start node (node with no incoming edges) to any end node (node with no outgoing edges).',
+    constraints: ['1 <= N <= 10^5', '0 <= M <= 2 * 10^5', '1 <= duration <= 10^6'],
+    examples: [
+      { input: '3 2\\n10\\n20\\n30\\n0 1\\n1 2', output: '60', explanation: 'Path 0 -> 1 -> 2 has total duration 10 + 20 + 30 = 60.' },
+      { input: '4 3\\n5\\n10\\n15\\n20\\n0 1\\n0 2\\n1 3', output: '35', explanation: 'Paths: 0 -> 1 -> 3 (5+10+20=35) and 0 -> 2 (5+15=20). Max is 35.' }
+    ],
+    testCases: [
+      { input: '3 2\\n10\\n20\\n30\\n0 1\\n1 2', expectedOutput: '60', hidden: false },
+      { input: '4 3\\n5\\n10\\n15\\n20\\n0 1\\n0 2\\n1 3', expectedOutput: '35', hidden: false },
+      { input: '1 0\\n100', expectedOutput: '100', hidden: true },
+      { input: '2 0\\n10\\n20', expectedOutput: '20', hidden: true }
+    ],
+    starterCode: {
+      python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,
+      javascript: `function solve() {}\nconst lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");`,
+      java: `import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n    }\n}`,
+      cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
+      c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
+    }
   }
 ];

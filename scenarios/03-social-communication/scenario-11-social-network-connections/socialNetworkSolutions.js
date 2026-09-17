@@ -811,5 +811,324 @@ int main() {
     free(events);
     return 0;
 }`
+  },
+  'PROB-SOCIAL-005': {
+    python: `import sys
+
+sys.setrecursionlimit(2000)
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    M = int(input_data[1])
+    adj = [[] for _ in range(N)]
+
+    ptr = 2
+    for _ in range(M):
+        u = int(input_data[ptr])
+        v = int(input_data[ptr+1])
+        adj[u].append(v)
+        adj[v].append(u)
+        ptr += 2
+
+    discovery = [-1] * N
+    low = [-1] * N
+    is_articulation = [False] * N
+    timer = 0
+
+    def dfs(u, p=-1):
+        nonlocal timer
+        discovery[u] = low[u] = timer
+        timer += 1
+        children = 0
+        for v in adj[u]:
+            if v == p: continue
+            if discovery[v] != -1:
+                low[u] = min(low[u], discovery[v])
+            else:
+                children += 1
+                dfs(v, u)
+                low[u] = min(low[u], low[v])
+                if p != -1 and low[v] >= discovery[u]:
+                    is_articulation[u] = True
+        return children
+
+    for i in range(N):
+        if discovery[i] == -1:
+            root_children = dfs(i)
+            if root_children > 1:
+                is_articulation[i] = True
+
+    result = [i for i, val in enumerate(is_articulation) if val]
+    if not result:
+        print("-1")
+    else:
+        print(*(result))
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    const M = parseInt(input[ptr++]);
+    const adj = Array.from({ length: N }, () => []);
+
+    for (let i = 0; i < M; i++) {
+        const u = parseInt(input[ptr++]);
+        const v = parseInt(input[ptr++]);
+        adj[u].push(v);
+        adj[v].push(u);
+    }
+
+    const discovery = new Array(N).fill(-1);
+    const low = new Array(N).fill(-1);
+    const isArticulation = new Array(N).fill(false);
+    let timer = 0;
+
+    function dfs(u, p = -1) {
+        discovery[u] = low[u] = timer++;
+        let children = 0;
+        for (const v of adj[u]) {
+            if (v === p) continue;
+            if (discovery[v] !== -1) {
+                low[u] = Math.min(low[u], discovery[v]);
+            } else {
+                children++;
+                dfs(v, u);
+                low[u] = Math.min(low[u], low[v]);
+                if (p !== -1 && low[v] >= discovery[u]) {
+                    isArticulation[u] = true;
+                }
+            }
+        }
+        return children;
+    }
+
+    for (let i = 0; i < N; i++) {
+        if (discovery[i] === -1) {
+            if (dfs(i) > 1) isArticulation[i] = true;
+        }
+    }
+
+    const result = [];
+    for (let i = 0; i < N; i++) {
+        if (isArticulation[i]) result.push(i);
+    }
+
+    if (result.length === 0) {
+        console.log("-1");
+    } else {
+        console.log(result.join(" "));
+    }
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    static List<Integer>[] adj;
+    static int[] discovery, low;
+    static boolean[] isArticulation;
+    static int timer;
+
+    static int dfs(int u, int p) {
+        discovery[u] = low[u] = timer++;
+        int children = 0;
+        for (int v : adj[u]) {
+            if (v == p) continue;
+            if (discovery[v] != -1) {
+                low[u] = Math.min(low[u], discovery[v]);
+            } else {
+                children++;
+                dfs(v, u);
+                low[u] = Math.min(low[u], low[v]);
+                if (p != -1 && low[v] >= discovery[u]) {
+                    isArticulation[u] = true;
+                }
+            }
+        }
+        return children;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        adj = new ArrayList[N];
+        for (int i = 0; i < N; i++) adj[i] = new ArrayList<>();
+        for (int i = 0; i < M; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            adj[u].add(v);
+            adj[v].add(u);
+        }
+        discovery = new int[N];
+        Arrays.fill(discovery, -1);
+        low = new int[N];
+        isArticulation = new boolean[N];
+        timer = 0;
+        for (int i = 0; i < N; i++) {
+            if (discovery[i] == -1) {
+                if (dfs(i, -1) > 1) isArticulation[i] = true;
+            }
+        }
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            if (isArticulation[i]) result.add(i);
+        }
+        if (result.isEmpty()) {
+            System.out.println("-1");
+        } else {
+            for (int i = 0; i < result.size(); i++) {
+                System.out.print(result.get(i) + (i == result.size() - 1 ? "" : " "));
+            }
+            System.out.println();
+        }
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<vector<int>> adj;
+vector<int> discovery, low;
+vector<bool> isArticulation;
+int timer;
+
+int dfs(int u, int p = -1) {
+    discovery[u] = low[u] = timer++;
+    int children = 0;
+    for (int v : adj[u]) {
+        if (v == p) continue;
+        if (discovery[v] != -1) {
+            low[u] = min(low[u], discovery[v]);
+        } else {
+            children++;
+            dfs(v, u);
+            low[u] = min(low[u], low[v]);
+            if (p != -1 && low[v] >= discovery[u]) {
+                isArticulation[u] = true;
+            }
+        }
+    }
+    return children;
+}
+
+int main() {
+    int N, M;
+    if (!(cin >> N >> M)) return 0;
+    adj.resize(N);
+    discovery.assign(N, -1);
+    low.assign(N, -1);
+    isArticulation.assign(N, false);
+    timer = 0;
+    for (int i = 0; i < M; ++i) {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    for (int i = 0; i < N; ++i) {
+        if (discovery[i] == -1) {
+            if (dfs(i) > 1) isArticulation[i] = true;
+        }
+    }
+    vector<int> result;
+    for (int i = 0; i < N; ++i) {
+        if (isArticulation[i]) result.push_back(i);
+    }
+    if (result.empty()) {
+        cout << -1 << endl;
+    } else {
+        for (int i = 0; i < result.size(); ++i) {
+            cout << result[i] << (i == result.size() - 1 ? "" : " ");
+        }
+        cout << endl;
+    }
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MIN(a,b) (((a)<(b))?(a):(b))
+
+typedef struct Node {
+    int v;
+    struct Node* next;
+} Node;
+
+void add_edge(Node** adj, int u, int v) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->v = v;
+    newNode->next = adj[u];
+    adj[u] = newNode;
+}
+
+int* discovery;
+int* low;
+int* isArticulation;
+int timer;
+
+int dfs(Node** adj, int u, int p) {
+    discovery[u] = low[u] = timer++;
+    int children = 0;
+    for (Node* curr = adj[u]; curr != NULL; curr = curr->next) {
+        int v = curr->v;
+        if (v == p) continue;
+        if (discovery[v] != -1) {
+            low[u] = MIN(low[u], discovery[v]);
+        } else {
+            children++;
+            dfs(adj, v, u);
+            low[u] = MIN(low[u], low[v]);
+            if (p != -1 && low[v] >= discovery[u]) {
+                isArticulation[u] = 1;
+            }
+        }
+    }
+    return children;
+}
+
+int main() {
+    int N, M;
+    if (scanf("%d %d", &N, &M) != 2) return 0;
+    Node** adj = (Node**)calloc(N, sizeof(Node*));
+    for (int i = 0; i < M; i++) {
+        int u, v;
+        scanf("%d %d", &u, &v);
+        add_edge(adj, u, v);
+        add_edge(adj, v, u);
+    }
+    discovery = (int*)malloc(N * sizeof(int));
+    low = (int*)malloc(N * sizeof(int));
+    isArticulation = (int*)calloc(N, sizeof(int));
+    for (int i = 0; i < N; i++) discovery[i] = -1;
+    timer = 0;
+    for (int i = 0; i < N; i++) {
+        if (discovery[i] == -1) {
+            if (dfs(adj, i, -1) > 1) isArticulation[i] = 1;
+        }
+    }
+    int found = 0;
+    for (int i = 0; i < N; i++) {
+        if (isArticulation[i]) {
+            printf("%d%s", i, found++ ? " " : "");
+        }
+    }
+    if (found == 0) printf("-1");
+    printf("\\n");
+    return 0;
+}`
   }
 };

@@ -1,0 +1,36 @@
+{
+  "problem_id": "PROB-TASKSCHED-005",
+  "scenario_id": "SCN-TASKSCHED-001",
+  "sequence": 5,
+  "title": "Specialized Skill-Task Matching Optimization",
+  "difficulty": "Hard",
+  "concepts": ["Bipartite Matching", "Maximum Flow", "DFS/BFS"],
+  "real_world_story": "An agency manages a pool of N specialized employees and a set of M critical client tasks. Each task requires a specific skill set, and each employee possesses a different set of capabilities. To optimize delivery, the agency must assign one employee to each task such that the employee is qualified for the task. Since each employee can only be assigned to one task at a time, the goal is to maximize the total number of tasks that can be fulfilled.",
+  "problem_statement": "Given N employees and M tasks, and a set of qualifications (which employees are qualified for which tasks), find the maximum number of tasks that can be assigned to qualified employees such that no employee is assigned more than one task.",
+  "task": "Implement a maximum bipartite matching algorithm (such as the augmenting path algorithm using DFS) to find the maximum number of matching pairs between qualified employees and tasks.",
+  "input_format": "The first line contains two integers: N (number of employees) and M (number of tasks). The second line contains an integer E (number of qualification edges). The next E lines each contain two integers u and v, indicating that employee u is qualified for task v (0 <= u < N, 0 <= v < M).",
+  "constraints": {
+    "N": "1 <= N <= 1000",
+    "M": "1 <= M <= 1000",
+    "E": "0 <= E <= N * M"
+  },
+  "examples": [
+    {
+      "input": "3 3\\n3\\n0 0\\n0 1\\n1 0\\n2 2",
+      "output": "3",
+      "explanation": "Employee 0 can take task 1, Employee 1 can take task 0, and Employee 2 can take task 2. Total = 3."
+    },
+    {
+      "input": "2 2\\n2\\n0 0\\n1 0",
+      "output": "1",
+      "explanation": "Both employees are only qualified for task 0. Only one can be assigned. Total = 1."
+    }
+  ],
+  "expected_algorithm": "Maximum Bipartite Matching using DFS (Kuhn's Algorithm)",
+  "complexity": {
+    "time": "O(E * N)",
+    "space": "O(N + M)"
+  },
+  "real_world_takeaway": "Bipartite matching is essential for resource allocation problems where two distinct sets must be paired based on compatibility. This ensures optimal utilization of specialized human capital in workforce management systems.",
+  "tags": ["bipartite-matching", "max-flow", "resource-allocation"]
+}

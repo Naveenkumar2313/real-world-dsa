@@ -1,0 +1,25 @@
+{
+  "problem_id": "PROB-PROF-005",
+  "scenario_id": "SCN-PROF-001",
+  "sequence": 5,
+  "title": "Lowest Common Manager",
+  "difficulty": "Medium",
+  "concepts": ["Tree DFS"],
+  "real_world_story": "In a large corporate organization, employees often need to identify the most immediate superior who manages both them and another colleague to coordinate cross-departmental tasks. This person is known as the Lowest Common Manager (LCM). Finding the LCM is essential for establishing the correct escalation path for approvals and collaborative project management.",
+  "problem_statement": "Given an enterprise organizational structure modeled as a rooted tree (where the CEO is the root), find the Lowest Common Manager (LCA) of two given employees. The LCM is the deepest node in the tree that is an ancestor to both employees.",
+  "task": "Identify the employee ID of the Lowest Common Manager for two specified employees. If no common manager exists (though in a single rooted tree, the CEO always is), output -1.",
+  "input_format": "The first line contains an integer N (number of employees). The next N-1 lines contain pairs of integers (manager, employee), representing the reporting line. The final line contains two integers employeeA and employeeB.",
+  "output_format": "A single integer representing the ID of the Lowest Common Manager.",
+  "constraints": { "N": "1 <= N <= 100000", "IDs": "1 <= IDs <= N" },
+  "examples": [
+    {
+      "input": "7\n1 2\n1 3\n2 4\n2 5\n3 6\n3 7\n4 5",
+      "output": "2",
+      "explanation": "Employee 4 and 5 both report to manager 2. Manager 2 is their most immediate common superior."
+    }
+  ],
+  "expected_algorithm": "Tree DFS / Lowest Common Ancestor (LCA)",
+  "complexity": { "time": "O(N)", "space": "O(N)" },
+  "real_world_takeaway": "The Lowest Common Ancestor algorithm is fundamental for analyzing hierarchical relationships and determining the optimal point of convergence in tree-structured data, such as corporate org charts or file systems.",
+  "tags": ["tree", "dfs", "lca", "corporate-hierarchy"]
+}

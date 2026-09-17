@@ -20,6 +20,8 @@ An emergency department management platform must address critical operational re
 
 > How can a dedicated emergency trauma physician schedule $N$ urgent minor surgeries to minimize the total cumulative waiting time experienced by all patients?
 
+> How can a triage buffer accommodate both stable patients entering at the end and critical trauma arrivals that must bypass the queue to be placed at the front, while also handling patients who leave from the back?
+
 ---
 
 ## Real-World to DSA Mapping
@@ -30,6 +32,7 @@ An emergency department management platform must address critical operational re
 | Telemetry Monitor Buffer | Circular Queue (Ring Buffer) | Bounded $K$-capacity sliding vitals display |
 | Clinical Severity Triage | Multi-Key Stable Sorting | Prioritize by ESI tier, arrival minute, and ID |
 | Emergency Surgical Dispatch | Greedy (Shortest Processing Time) | Minimize cumulative patient waiting duration |
+| Urgent Triage Priority Buffer | Double-Ended Queue (Deque) | Constant-time bidirectional insertion and removal |
 
 ---
 
@@ -41,6 +44,7 @@ After completing this scenario, you will be able to:
 2. Build a circular ring buffer with overwrite semantics to maintain streaming vitals telemetry within fixed memory limits.
 3. Apply multi-attribute sorting criteria to triage patients using clinical severity levels and arrival timestamps.
 4. Prove and implement greedy job scheduling to achieve optimal cumulative waiting time reduction in emergency care.
+5. Implement a Double-Ended Queue (Deque) to manage bidirectional patient flow, allowing for both critical front-of-queue arrivals and back-of-queue attrition.
 
 ---
 
@@ -62,8 +66,12 @@ After completing this scenario, you will be able to:
 - **Focus:** Greedy
 - **Synopsis:** Order $N$ pending surgical interventions on a single trauma bay to minimize total cumulative waiting time across all patients using the greedy shortest processing time strategy.
 
+### Problem 5 — Urgent Triage Priority Buffer (`PROB-HOSPEMERG-005`)
+- **Focus:** Double-Ended Queue (Deque)
+- **Synopsis:** Maintain a bidirectional patient buffer that allows critical arrivals to bypass the queue and handles patients leaving from the end of the list.
+
 ---
 
 ## Key Takeaway
 
-Efficient emergency healthcare delivery depends on matching clinical priorities with appropriate data structures. FIFO queues guarantee equitable intake, circular buffers provide predictable memory utilization for high-frequency telemetry, multi-key sorting ensures clinical urgency supersedes arrival order, and greedy scheduling mathematically minimizes patient suffering during peak emergency room surges.
+Efficient emergency healthcare delivery depends on matching clinical priorities with appropriate data structures. FIFO queues guarantee equitable intake, circular buffers provide predictable memory utilization for high-frequency telemetry, multi-key sorting ensures clinical urgency supersedes arrival order, greedy scheduling mathematically minimizes patient suffering during peak emergency room surges, and deques enable bidirectional priority adjustments for critical arrivals.

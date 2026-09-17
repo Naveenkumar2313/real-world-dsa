@@ -11,18 +11,22 @@
         "Use Graph DFS with three-color state marking to detect circular dependency deadlocks in task prerequisite graphs.",
         "Apply Graph BFS (Kahn's level-by-level algorithm) to compute the minimum parallel execution stages for DAG workflows.",
         "Perform Tree BFS (level-order traversal) on Work Breakdown Structure trees to produce tier-by-tier status reporting.",
-        "Apply Tree DFS to calculate maximum hierarchy depth and subordinate deliverable rollups across WBS trees."
+        "Apply Tree DFS to calculate maximum hierarchy depth and subordinate deliverable rollups across WBS trees.",
+        "Implement Critical Path Method (CPM) using Topological Sort and Dynamic Programming to find the minimum total project duration."
     ],
     "algorithms": [
         "Graph DFS",
         "Graph BFS",
         "Tree BFS",
-        "Tree DFS"
+        "Tree DFS",
+        "Topological Sort",
+        "Dynamic Programming"
     ],
     "learning_path": [
         "PROB-PROJPLAN-001",
         "PROB-PROJPLAN-002",
         "PROB-PROJPLAN-003",
-        "PROB-PROJPLAN-004"
+        "PROB-PROJPLAN-004",
+        "PROB-PROJPLAN-005"
     ]
 }

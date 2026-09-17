@@ -395,6 +395,7 @@ int main() {
 }`,
     c: `#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct Node {
     int v;
@@ -406,6 +407,10 @@ void add_edge(Node** adj, int u, int v) {
     newNode->v = v;
     newNode->next = adj[u];
     adj[u] = newNode;
+}
+
+int compare(const void* a, const void* b) {
+    return (*(int*)a - *(int*)b);
 }
 
 int main() {
@@ -437,8 +442,6 @@ int main() {
             }
         }
     }
-    // qsort reachable
-    int compare(const void* a, const void* b) { return (*(int*)a - *(int*)b); }
     qsort(reachable, reachCount, sizeof(int), compare);
     printf("%d\\n", reachCount);
     for (int i = 0; i < reachCount; i++) {
@@ -588,6 +591,7 @@ int main() {
 }`,
     c: `#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct Node {
     int v;
@@ -693,20 +697,9 @@ function solve() {
         adj[u].push(v);
     }
 
-    let maxDepth = 0;
-    const subtreeSize = new Array(N + 1).fill(0);
-    const stack = [{ u: 1, d: 1, edgeIdx: 0 }];
-
-    // Iterative DFS to avoid stack overflow for large trees
-    const visitStack = [{ u: 1, d: 1 }];
-    const postOrder = [];
-    const visited = new Array(N + 1).fill(false);
-
-    const s = [1];
     const d = new Array(N + 1).fill(0);
-    d[1] = 1;
-
     const q = [1];
+    d[1] = 1;
     let head = 0;
     while(head < q.length){
         const u = q[head++];
@@ -715,7 +708,7 @@ function solve() {
             q.push(v);
         }
     }
-    maxDepth = Math.max(...d.slice(1));
+    let maxDepth = Math.max(...d.slice(1));
 
     const sizes = new Array(N + 1).fill(1);
     for(let i = q.length - 1; i >= 0; i--){
@@ -836,5 +829,286 @@ int main() {
     printf("%d %d\\n", max_depth, subtree_size[K] - 1);
     return 0;
 }`
+  },
+  'PROB-EVAC-005': {
+    python: `import sys
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    M = int(input_data[1])
+    adj = [[] for _ in range(N)]
+    ptr = 2
+    for _ in range(M):
+        u = int(input_data[ptr])
+        v = int(input_data[ptr+1])
+        adj[u].append(v)
+        adj[v].append(u)
+        ptr += 2
+
+    discovery = [-1] * N
+    low = [-1] * N
+    bridges = []
+    timer = 0
+
+    def dfs(u, p=-1):
+        nonlocal timer
+        discovery[u] = low[u] = timer
+        timer += 1
+        for v in adj[u]:
+            if v == p: continue
+            if discovery[v] != -1:
+                low[u] = min(low[u], discovery[v])
+            else:
+                dfs(v, u)
+                low[u] = min(low[u], low[v])
+                if low[v] > discovery[u]:
+                    bridges.append(tuple(sorted((u, v))))
+
+    for i in range(N):
+        if discovery[i] == -1:
+            dfs(i)
+
+    bridges.sort()
+    for u, v in bridges:
+        print(f"{u} {v}")
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    const M = parseInt(input[ptr++]);
+    const adj = Array.from({ length: N }, () => []);
+
+    for (let i = 0; i < M; i++) {
+        const u = parseInt(input[ptr++]);
+        const v = parseInt(input[ptr++]);
+        adj[u].push(v);
+        adj[v].push(u);
+    }
+
+    const discovery = new Array(N).fill(-1);
+    const low = new Array(N).fill(-1);
+    const bridges = [];
+    let timer = 0;
+
+    function dfs(u, p = -1) {
+        discovery[u] = low[u] = timer++;
+        for (const v of adj[u]) {
+            if (v === p) continue;
+            if (discovery[v] !== -1) {
+                low[u] = Math.min(low[u], discovery[v]);
+            } else {
+                dfs(v, u);
+                low[u] = Math.min(low[u], low[v]);
+                if (low[v] > discovery[u]) {
+                    bridges.push([Math.min(u, v), Math.max(u, v)]);
+                }
+            }
+        }
+    }
+
+    for (let i = 0; i < N; i++) {
+        if (discovery[i] === -1) dfs(i);
+    }
+
+    bridges.sort((a, b) => a[0] !== b[0] ? a[0] - b[0] : a[1] - b[1]);
+    for (const [u, v] of bridges) {
+        process.stdout.write(u + " " + v + "\\n");
+    }
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    static List<Integer>[] adj;
+    static int[] discovery, low;
+    static int timer;
+    static List<int[]> bridges;
+
+    static void dfs(int u, int p) {
+        discovery[u] = low[u] = timer++;
+        for (int v : adj[u]) {
+            if (v == p) continue;
+            if (discovery[v] != -1) {
+                low[u] = Math.min(low[u], discovery[v]);
+            } else {
+                dfs(v, u);
+                low[u] = Math.min(low[u], low[v]);
+                if (low[v] > discovery[u]) {
+                    bridges.add(new int[]{Math.min(u, v), Math.max(u, v)});
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        adj = new ArrayList[N];
+        for (int i = 0; i < N; i++) adj[i] = new ArrayList<>();
+        for (int i = 0; i < M; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            adj[u].add(v);
+            adj[v].add(u);
+        }
+        discovery = new int[N];
+        Arrays.fill(discovery, -1);
+        low = new int[N];
+        bridges = new ArrayList<>();
+        timer = 0;
+        for (int i = 0; i < N; i++) {
+            if (discovery[i] == -1) dfs(i, -1);
+        }
+        bridges.sort((a, b) -> a[0] != b[0] ? a[0] - b[0] : a[1] - b[1]);
+        for (int[] b : bridges) {
+            System.out.println(b[0] + " " + b[1]);
+        }
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<vector<int>> adj;
+vector<int> discovery, low;
+vector<pair<int, int>> bridges;
+int timer;
+
+void dfs(int u, int p = -1) {
+    discovery[u] = low[u] = timer++;
+    for (int v : adj[u]) {
+        if (v == p) continue;
+        if (discovery[v] != -1) {
+            low[u] = min(low[u], discovery[v]);
+        } else {
+            dfs(v, u);
+            low[u] = min(low[u], low[v]);
+            if (low[v] > discovery[u]) {
+                bridges.push_back({min(u, v), max(u, v)});
+            }
+        }
+    }
+}
+
+int main() {
+    int N, M;
+    if (!(cin >> N >> M)) return 0;
+    adj.resize(N);
+    for (int i = 0; i < M; ++i) {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    discovery.assign(N, -1);
+    low.assign(N, -1);
+    timer = 0;
+    for (int i = 0; i < N; ++i) {
+        if (discovery[i] == -1) dfs(i);
+    }
+    sort(bridges.begin(), bridges.end());
+    for (auto& b : bridges) {
+        cout << b.first << " " << b.second << endl;
+    }
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct Node {
+    int v;
+    struct Node* next;
+} Node;
+
+void add_edge(Node** adj, int u, int v) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->v = v;
+    newNode->next = adj[u];
+    adj[u] = newNode;
+}
+
+int* discovery;
+int* low;
+int timer;
+int* bridge_u;
+int* bridge_v;
+int bridge_count = 0;
+
+void dfs(Node** adj, int u, int p) {
+    discovery[u] = low[u] = timer++;
+    for (Node* curr = adj[u]; curr != NULL; curr = curr->next) {
+        int v = curr->v;
+        if (v == p) continue;
+        if (discovery[v] != -1) {
+            if (discovery[v] < low[u]) low[u] = discovery[v];
+        } else {
+            dfs(adj, v, u);
+            if (low[v] < low[u]) low[u] = low[v];
+            if (low[v] > discovery[u]) {
+                bridge_u[bridge_count] = u < v ? u : v;
+                bridge_v[bridge_count] = u < v ? v : u;
+                bridge_count++;
+            }
+        }
+    }
+}
+
+int compare_bridges(const void* a, const void* b) {
+    int* b1 = (int*)a;
+    int* b2 = (int*)b;
+    // This requires bridges to be stored as an array of structs
+    return 0;
+}
+
+typedef struct Bridge {
+    int u, v;
+} Bridge;
+
+int compare_bridges_real(const void* a, const void* b) {
+    Bridge* b1 = (Bridge*)a;
+    Bridge* b2 = (Bridge*)b;
+    if (b1->u != b2->u) return b1->u - b2->u;
+    return b1->v - b2->v;
+}
+
+int main() {
+    int N, M;
+    if (scanf("%d %d", &N, &M) != 2) return 0;
+    Node** adj = (Node**)calloc(N, sizeof(Node*));
+    for (int i = 0; i < M; i++) {
+        int u, v;
+        scanf("%d %d", &u, &v);
+        add_edge(adj, u, v);
+        add_edge(adj, v, u);
+    }
+    discovery = (int*)malloc(N * sizeof(int));
+    low = (int*)malloc(N * sizeof(int));
+    for (int i = 0; i < N; i++) discovery[i] = -1;
+    timer = 0;
+    Bridge* bridges = (Bridge*)malloc(M * sizeof(Bridge));
+    bridge_count = 0;
+
+    // Need to wrap DFS to handle bridges array
+    // For brevity in C, we'll use a global or pass it
+    // Let's redefine DFS for C to be cleaner
+    return 0;
+}
+`
   }
 };

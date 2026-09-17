@@ -60,7 +60,6 @@ function solve() {
     }
 
     const visited = new Array(N + 1).fill(0); // 0: unvisited, 1: visiting, 2: visited
-    const stack = [];
 
     function hasCycle(u) {
         visited[u] = 1;
@@ -815,6 +814,241 @@ int main() {
     subtree_size = (int*)malloc((N + 1) * sizeof(int));
     dfs(adj, 1, 1);
     printf("%d %d\\n", max_depth, subtree_size[K] - 1);
+    return 0;
+}`
+  },
+  'PROB-PROJPLAN-005': {
+    python: `import sys
+from collections import deque
+
+def solve():
+    input_data = sys.stdin.read().split()
+    if not input_data: return
+
+    N = int(input_data[0])
+    M = int(input_data[1])
+    durations = []
+    for i in range(N):
+        durations.append(int(input_data[2 + i]))
+
+    adj = [[] for _ in range(N)]
+    in_degree = [0] * N
+    ptr = 2 + N
+    for _ in range(M):
+        u = int(input_data[ptr])
+        v = int(input_data[ptr+1])
+        adj[u].append(v)
+        in_degree[v] += 1
+        ptr += 2
+
+    dist = [0] * N
+    queue = deque([i for i in range(N) if in_degree[i] == 0])
+
+    for i in range(N):
+        if in_degree[i] == 0:
+            dist[i] = durations[i]
+
+    processed = 0
+    while queue:
+        u = queue.popleft()
+        processed += 1
+        for v in adj[u]:
+            dist[v] = max(dist[v], dist[u] + durations[v])
+            in_degree[v] -= 1
+            if in_degree[v] == 0:
+                queue.append(v)
+
+    print(max(dist) if dist else 0)
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);
+    if (input.length === 0 || input[0] === '') return;
+
+    let ptr = 0;
+    const N = parseInt(input[ptr++]);
+    const M = parseInt(input[ptr++]);
+    const durations = [];
+    for (let i = 0; i < N; i++) {
+        durations.push(parseInt(input[ptr++]));
+    }
+
+    const adj = Array.from({ length: N }, () => []);
+    const inDegree = new Array(N).fill(0);
+    for (let i = 0; i < M; i++) {
+        const u = parseInt(input[ptr++]);
+        const v = parseInt(input[ptr++]);
+        adj[u].push(v);
+        inDegree[v]++;
+    }
+
+    const dist = new Array(N).fill(0);
+    const queue = [];
+    for (let i = 0; i < N; i++) {
+        if (inDegree[i] === 0) {
+            queue.push(i);
+            dist[i] = durations[i];
+        }
+    }
+
+    let head = 0;
+    while (head < queue.length) {
+        const u = queue[head++];
+        for (const v of adj[u]) {
+            dist[v] = Math.max(dist[v], dist[u] + durations[v]);
+            inDegree[v]--;
+            if (inDegree[v] === 0) {
+                queue.push(v);
+            }
+        }
+    }
+    console.log(Math.max(...dist, 0));
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        int[] durations = new int[N];
+        for (int i = 0; i < N; i++) durations[i] = sc.nextInt();
+        List<Integer>[] adj = new ArrayList[N];
+        for (int i = 0; i < N; i++) adj[i] = new ArrayList<>();
+        int[] inDegree = new int[N];
+        for (int i = 0; i < M; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            adj[u].add(v);
+            inDegree[v]++;
+        }
+        long[] dist = new long[N];
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < N; i++) {
+            if (inDegree[i] == 0) {
+                q.add(i);
+                dist[i] = durations[i];
+            }
+        }
+        while (!q.isEmpty()) {
+            int u = q.poll();
+            for (int v : adj[u]) {
+                dist[v] = Math.max(dist[v], dist[u] + durations[v]);
+                inDegree[v]--;
+                if (inDegree[v] == 0) q.add(v);
+            }
+        }
+        long maxDist = 0;
+        for (long d : dist) maxDist = Math.max(maxDist, d);
+        System.out.println(maxDist);
+    }
+}`,
+    cpp: `#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int N, M;
+    if (!(cin >> N >> M)) return 0;
+    vector<int> durations(N);
+    for (int i = 0; i < N; ++i) cin >> durations[i];
+    vector<vector<int>> adj(N);
+    vector<int> inDegree(N, 0);
+    for (int i = 0; i < M; ++i) {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        inDegree[v]++;
+    }
+    vector<long long> dist(N, 0);
+    queue<int> q;
+    for (int i = 0; i < N; ++i) {
+        if (inDegree[i] == 0) {
+            q.push(i);
+            dist[i] = durations[i];
+        }
+    }
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        for (int v : adj[u]) {
+            dist[v] = max(dist[v], dist[u] + durations[v]);
+            inDegree[v]--;
+            if (inDegree[v] == 0) q.push(v);
+        }
+    }
+    long long maxDist = 0;
+    for (long long d : dist) maxDist = max(maxDist, d);
+    cout << maxDist << endl;
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node {
+    int v;
+    struct Node* next;
+} Node;
+
+void add_edge(Node** adj, int u, int v) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->v = v;
+    newNode->next = adj[u];
+    adj[u] = newNode;
+}
+
+int main() {
+    int N, M;
+    if (scanf("%d %d", &N, &M) != 2) return 0;
+    int* durations = (int*)malloc(N * sizeof(int));
+    for (int i = 0; i < N; i++) scanf("%d", &durations[i]);
+    Node** adj = (Node**)calloc(N, sizeof(Node*));
+    int* inDegree = (int*)calloc(N, sizeof(int));
+    for (int i = 0; i < M; i++) {
+        int u, v;
+        scanf("%d %d", &u, &v);
+        add_edge(adj, u, v);
+        inDegree[v]++;
+    }
+    long long* dist = (long long*)calloc(N, sizeof(long long));
+    int* queue = (int*)malloc(N * sizeof(int));
+    int head = 0, tail = 0;
+    for (int i = 0; i < N; i++) {
+        if (inDegree[i] == 0) {
+            queue[tail++] = i;
+            dist[i] = durations[i];
+        }
+    }
+    while (head < tail) {
+        int u = queue[head++];
+        for (Node* curr = adj[u]; curr != NULL; curr = curr->next) {
+            int v = curr->v;
+            if (dist[u] + durations[v] > dist[v]) {
+                dist[v] = dist[u] + durations[v];
+            }
+            inDegree[v]--;
+            if (inDegree[v] == 0) queue[tail++] = v;
+        }
+    }
+    long long maxDist = 0;
+    for (int i = 0; i < N; i++) {
+        if (dist[i] > maxDist) maxDist = dist[i];
+    }
+    printf("%lld\\n", maxDist);
+    free(durations);
+    free(adj);
+    free(inDegree);
+    free(dist);
+    free(queue);
     return 0;
 }`
   }

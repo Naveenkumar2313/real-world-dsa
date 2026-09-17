@@ -1,0 +1,37 @@
+{
+  "problem_id": "PROB-CLOUDRES-005",
+  "scenario_id": "SCN-CLOUDRES-001",
+  "sequence": 5,
+  "title": "Optimized Container Placement Max-Flow",
+  "difficulty": "Hard",
+  "concepts": ["Max Flow", "Bipartite Matching", "Dinic's Algorithm", "Network Flow"],
+  "real_world_story": "A cloud orchestrator must place N containerized workloads across M heterogeneous servers. Each server $j$ has a maximum capacity $C_j$ (the total number of containers it can host). Due to specific hardware requirements (e.g., GPU availability, CPU architecture, or regional affinity), each container $i$ can only be placed on a specific subset of compatible servers. To maximize cluster utilization and prevent request drops, the orchestrator must find the maximum number of containers that can be successfully placed on the servers without exceeding any server's capacity.",
+  "problem_statement": "Given N containers and M servers, where each server $j$ has a capacity $C_j$, and a set of compatibility edges (container $i$, server $j$), find the maximum number of containers that can be assigned to servers such that each container is assigned to at most one compatible server and each server $j$ hosts at most $C_j$ containers.",
+  "task": "Implement a maximum flow algorithm (such as Edmonds-Karp or Dinic's) to find the maximum matching in this bipartite-like network. Construct a flow network with a source connected to all containers, containers connected to compatible servers, and servers connected to a sink with capacities $C_j$.",
+  "input_format": "The first line contains three integers: N (containers), M (servers), and E (compatibility edges). The second line contains M integers representing the capacity $C_j$ for each server $j=0...M-1$. The next E lines each contain two integers u and v, indicating container u is compatible with server v (0 <= u < N, 0 <= v < M).",
+  "constraints": {
+    "N": "1 <= N <= 500",
+    "M": "1 <= M <= 500",
+    "E": "0 <= E <= N * M",
+    "C_j": "1 <= C_j <= N"
+  },
+  "examples": [
+    {
+      "input": "3 2 4\\n2 1\\n0 0\\n0 1\\n1 0\\n2 1",
+      "output": "3",
+      "explanation": "Server 0 has capacity 2, Server 1 has capacity 1. Container 0 can go to Server 0. Container 1 can go to Server 0. Container 2 can go to Server 1. All 3 can be placed."
+    },
+    {
+      "input": "3 2 3\\n1 1\\n0 0\\n1 0\\n2 0",
+      "output": "2",
+      "explanation": "Server 0 and Server 1 both have capacity 1. Only 2 containers can be placed in total."
+    }
+  ],
+  "expected_algorithm": "Max Flow using Dinic's algorithm or Edmonds-Karp on a constructed flow network.",
+  "complexity": {
+    "time": "O(V^2 E) or O(VE^2) depending on algorithm",
+    "space": "O(V + E)"
+  },
+  "real_world_takeaway": "Network flow algorithms are powerful tools for resource allocation. By modeling constraints as capacities in a graph, we can solve complex placement problems that would be intractable with simple greedy heuristics, ensuring maximum utilization of expensive cloud infrastructure.",
+  "tags": ["max-flow", "dinics-algorithm", "resource-allocation", "cloud-orchestration"]
+}

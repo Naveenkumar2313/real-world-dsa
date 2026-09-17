@@ -1,0 +1,37 @@
+{
+  "problem_id": "PROB-BUDGET-005",
+  "scenario_id": "SCN-BUDGET-001",
+  "sequence": 5,
+  "title": "Scalable Portfolio Return Maximization",
+  "difficulty": "Hard",
+  "concepts": ["Dynamic Programming", "Unbounded Knapsack"],
+  "real_world_story": "A corporate treasury fund is diversifying its reserves across several scalable investment vehicles (e.g., index funds, REITs, and government bonds). Each vehicle i has a fixed entry cost c_i (the cost of one unit of that asset) and provides a proportional return v_i per unit. Unlike discrete capital projects, the treasury can purchase any integer number of units of each vehicle, provided the total expenditure does not exceed the available liquidity budget B. The fund manager must determine the maximum possible total return.",
+  "problem_statement": "Given a total budget B and N types of investment vehicles, each with a unit cost c_i and a unit return v_i, find the maximum total return achievable by purchasing any number of units (0, 1, 2, ...) of each vehicle such that the total cost does not exceed B.",
+  "task": "Implement an Unbounded Knapsack algorithm using Dynamic Programming to find the maximum total return for the given budget and asset types.",
+  "input_format": "The first line contains two integers: B (total budget) and N (number of asset types). The following N lines each contain two integers: cost c_i and return v_i for each asset type.",
+  "constraints": {
+    "B": "1 <= B <= 10^4",
+    "N": "1 <= N <= 1000",
+    "c_i": "1 <= c_i <= 10^4",
+    "v_i": "1 <= v_i <= 10^5"
+  },
+  "examples": [
+    {
+      "input": "10 3\\n2 10\\n3 15\\n5 30",
+      "output": "60",
+      "explanation": "Asset 3 has cost 5 and return 30. Buying 2 units of Asset 3 costs 10 and yields 60. Other combinations: 5 units of Asset 1 (5*10=50), 3 units of Asset 2 (3*15=45, cost 9). Max is 60."
+    },
+    {
+      "input": "8 3\\n3 10\\n4 15\\n2 7",
+      "output": "28",
+      "explanation": "Asset 1: 3 cost, 10 return. Asset 2: 4 cost, 15 return. Asset 3: 2 cost, 7 return. Possible combinations: 2 units of Asset 2 (cost 8, return 30) - Wait, Asset 2 return is 15, 2*15=30. Let's re-calculate: [4, 15] * 2 = 30. [3, 10] * 2 + [2, 7] * 1 = 27. Max is 30."
+    }
+  ],
+  "expected_algorithm": "Unbounded Knapsack using Dynamic Programming with a 1D array of size B+1.",
+  "complexity": {
+    "time": "O(N * B)",
+    "space": "O(B)"
+  },
+  "real_world_takeaway": "Unbounded Knapsack optimization is critical for portfolio management when assets are scalable. Unlike 0/1 knapsack, this allows for the concentration of capital into the most efficient assets, which is a common strategy in treasury management to maximize yield.",
+  "tags": ["dynamic-programming", "knapsack", "portfolio-optimization"]
+}

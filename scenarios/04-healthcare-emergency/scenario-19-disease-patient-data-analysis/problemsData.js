@@ -94,5 +94,28 @@ export const disease_data_problems = [
       cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
       c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
     }
+  },
+  {
+    id: 'PROB-PATDATA-005',
+    title: 'Clinical Symptom Prefix Analysis',
+    difficulty: 'Medium',
+    description: 'Implement a Clinical Symptom Trie that supports two operations: 1) \\'INSERT <code >\\' adds a clinical diagnostic code to the database, and 2) \\'QUERY_PREFIX <prefix>\\' returns the number of codes in the database that start with the given prefix.\\n\\nInput format: An integer Q, followed by Q lines of commands. Commands are either `INSERT <string>` or `QUERY_PREFIX <string>`.\\nOutput format: For each `QUERY_PREFIX` operation, print the count of matching codes on a new line.',
+    constraints: ['1 <= Q <= 10^5', '1 <= L <= 50', 'Alphabet: Alphanumeric and dots (.)'],
+    examples: [
+      { input: '6\\nINSERT C01.1\\nINSERT C01.2\\nINSERT C02.1\\nQUERY_PREFIX C01\\nQUERY_PREFIX C02\\nQUERY_PREFIX C03', output: '2\\n1\\n0', explanation: 'C01.1 and C01.2 start with C01 (2); C02.1 starts with C02 (1); nothing starts with C03 (0).' }
+    ],
+    testCases: [
+      { input: '6\\nINSERT C01.1\\nINSERT C01.2\\nINSERT C02.1\\nQUERY_PREFIX C01\\nQUERY_PREFIX C02\\nQUERY_PREFIX C03', expectedOutput: '2\\n1\\n0', hidden: false },
+      { input: '3\\nINSERT A\\nINSERT AB\\nQUERY_PREFIX A', expectedOutput: '2', hidden: false },
+      { input: '2\\nINSERT ABC\\nQUERY_PREFIX ABD', expectedOutput: '0', hidden: true },
+      { input: '2\\nINSERT A\\nQUERY_PREFIX A', expectedOutput: '1', hidden: true }
+    ],
+    starterCode: {
+      python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,
+      javascript: `function solve() {}\nconst lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");`,
+      java: `import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n    }\n}`,
+      cpp: `#include <iostream>\nusing namespace std;\nint main() { return 0; }`,
+      c: `#include <stdio.h>\n#include <stdlib.h>\nint main() { return 0; }`
+    }
   }
 ];

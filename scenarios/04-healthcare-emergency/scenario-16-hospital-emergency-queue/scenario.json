@@ -11,18 +11,21 @@
         "Implement First-In-First-Out (FIFO) queue operations for walk-in patient triage registration and physician room admission.",
         "Design a fixed-capacity circular ring buffer to display real-time vital telemetry streams without buffer overflow.",
         "Apply multi-key sorting algorithms to prioritize emergency patients by Emergency Severity Index (ESI) and arrival timestamps.",
-        "Apply greedy scheduling strategies (Shortest Processing Time) to minimize cumulative patient waiting times in emergency surgical suites."
+        "Apply greedy scheduling strategies (Shortest Processing Time) to minimize cumulative patient waiting times in emergency surgical suites.",
+        "Implement a Double-Ended Queue (Deque) to manage bidirectional patient flow, allowing for both critical front-of-queue arrivals and back-of-queue attrition."
     ],
     "algorithms": [
         "Queue Operations",
         "Circular Queue Operations",
         "Sorting",
-        "Greedy"
+        "Greedy",
+        "Double-Ended Queue (Deque)"
     ],
     "learning_path": [
         "PROB-HOSPEMERG-001",
         "PROB-HOSPEMERG-002",
         "PROB-HOSPEMERG-003",
-        "PROB-HOSPEMERG-004"
+        "PROB-HOSPEMERG-004",
+        "PROB-HOSPEMERG-005"
     ]
 }

@@ -1,0 +1,25 @@
+{
+  "problem_id": "PROB-CHAT-005",
+  "scenario_id": "SCN-CHAT-001",
+  "sequence": 5,
+  "title": "Forbidden Keyword Content Filter",
+  "difficulty": "Hard",
+  "concepts": ["KMP Pattern Matching"],
+  "real_world_story": "Community moderation is critical for maintaining a safe environment in real-time chat platforms. To automatically flag toxic content, the system employs a high-performance string-matching engine that scans incoming messages for forbidden keywords. To avoid the quadratic complexity of naive searching, the platform implements the Knuth-Morris-Pratt (KMP) algorithm, which uses a precomputed failure function to skip unnecessary comparisons and ensure linear-time scanning.",
+  "problem_statement": "Given a chat message and a forbidden keyword, find all occurrences of the keyword within the message. Your implementation must use the KMP algorithm to ensure optimal time complexity.",
+  "task": "Find and return all starting indices (0-indexed) where the forbidden keyword appears in the chat message. Return the indices in ascending order, or -1 if the keyword is not found.",
+  "input_format": "The first line contains the chat message string. The second line contains the forbidden keyword string.",
+  "output_format": "A space-separated list of starting indices in ascending order, or -1.",
+  "constraints": { "message_length": "1 <= |message| <= 100000", "keyword_length": "1 <= |keyword| <= 100000" },
+  "examples": [
+    {
+      "input": "the quick brown fox jumps over the lazy dog\\nthe",
+      "output": "0 31",
+      "explanation": "The keyword 'the' appears at index 0 and index 31."
+    }
+  ],
+  "expected_algorithm": "KMP Pattern Matching",
+  "complexity": { "time": "O(N + M)", "space": "O(M)" },
+  "real_world_takeaway": "The KMP algorithm is a cornerstone of efficient text processing, allowing systems to search for patterns in massive streams of data without redundant backtracking, making it ideal for real-time content moderation.",
+  "tags": ["string", "kmp", "pattern-matching", "content-moderation"]
+}

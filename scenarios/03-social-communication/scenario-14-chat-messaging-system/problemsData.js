@@ -68,20 +68,19 @@ export const chat_messaging_problems = [
     }
   },
   {
-    id: 'PROB-CHAT-004',
-    title: 'Spam Burst Detection Window',
-    difficulty: 'Medium',
-    description: 'Given a sequence of N strictly increasing timestamps, a window duration W, and a spam threshold L, find the maximum number of messages sent within any sliding interval of at most W seconds (t_j - t_i <= W). Output the max count and \\'ALERT\\' if it exceeds L, or \\'OK\\' otherwise.\\n\\nInput format: N, W, and L, followed by N space-separated timestamps.\\nOutput format: Max count followed by \\'ALERT\\' or \\'OK\\'.',
-    constraints: ['1 <= N <= 2 * 10^5', '1 <= W <= 10^9', '1 <= L <= N', '0 <= t_1 < t_2 < ... < t_N <= 10^9'],
+    id: 'PROB-CHAT-005',
+    title: 'Forbidden Keyword Content Filter',
+    difficulty: 'Hard',
+    description: 'Community moderation is critical for maintaining a safe environment in real-time chat platforms. To automatically flag toxic content, the system employs a high-performance string-matching engine that scans incoming messages for forbidden keywords. To avoid the quadratic complexity of naive searching, the platform implements the Knuth-Morris-Pratt (KMP) algorithm, which uses a precomputed failure function to skip unnecessary comparisons and ensure linear-time scanning.\\n\\nInput format: The first line contains the chat message string. The second line contains the forbidden keyword string.\\nOutput format: A space-separated list of starting indices in ascending order, or -1.',
+    constraints: ['1 <= |message|, |keyword| <= 100000', 'lowercase English letters and spaces'],
     examples: [
-      { input: '6 5 3\\n1 3 5 6 9 10', output: '4 ALERT', explanation: 'Window {1, 3, 5, 6} span is 5 <= 5, count 4. 4 > 3, so ALERT.' },
-      { input: '4 10 5\\n10 25 40 55', output: '1 OK', explanation: 'Max messages in any 10s window is 1. 1 <= 5, so OK.' }
+      { input: 'the quick brown fox jumps over the lazy dog\\nthe', output: '0 31', explanation: 'The keyword \\'the\\' appears at index 0 and index 31.' }
     ],
     testCases: [
-      { input: '6 5 3\\n1 3 5 6 9 10', expectedOutput: '4 ALERT', hidden: false },
-      { input: '4 10 5\\n10 25 40 55', expectedOutput: '1 OK', hidden: false },
-      { input: '1 5 1\\n100', expectedOutput: '1 OK', hidden: true },
-      { input: '5 2 2\\n1 2 3 4 5', expectedOutput: '3 ALERT', hidden: true }
+      { input: 'the quick brown fox jumps over the lazy dog\\nthe', expectedOutput: '0 31', hidden: false },
+      { input: 'ababcabacaba\\nabacaba', expectedOutput: '5', hidden: false },
+      { input: 'aaaaa\\naa', expectedOutput: '0 1 2 3', hidden: true },
+      { input: 'hello world\\nforbidden', expectedOutput: '-1', hidden: true }
     ],
     starterCode: {
       python: `def solve():\n    pass\n\nif __name__ == '__main__':\n    solve()`,

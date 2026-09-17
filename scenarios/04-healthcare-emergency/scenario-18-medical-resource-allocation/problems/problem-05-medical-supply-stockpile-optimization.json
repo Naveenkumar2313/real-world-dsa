@@ -1,0 +1,33 @@
+{
+  "problem_id": "PROB-MEDRES-005",
+  "scenario_id": "SCN-MEDRES-001",
+  "sequence": 5,
+  "title": "Medical Supply Stockpile Optimization",
+  "difficulty": "Medium",
+  "concepts": ["Unbounded Knapsack", "Dynamic Programming"],
+  "real_world_story": "Medical clinics operating in remote disaster zones often have a fixed procurement budget to stockpile essential medical kits. Unlike specialized trauma kits which are unique, basic supply kits—such as First-Aid, Wound Care, and Respiratory Support kits—are available in unlimited quantities from central warehouses. Each kit type has a fixed cost and a calculated clinical utility score based on the number of lives it can potentially save. To maximize the resilience of the clinic, the procurement officer must determine the optimal combination of kits to purchase, allowing for multiple units of the same kit type, to maximize the aggregate clinical utility within the budget constraint.",
+  "problem_statement": "Given N types of medical kits, each with a cost c_i and a utility value v_i, and a total budget B, determine the maximum total utility that can be achieved. You can purchase any number of kits of each type (unbounded).",
+  "task": "Implement an Unbounded Knapsack algorithm to calculate the maximum total clinical utility. Use dynamic programming to efficiently compute the optimal value for all budget levels up to B.",
+  "input_format": "The first line contains two integers: N (number of kit types) and B (total budget). The next N lines each contain two integers: cost_i and utility_i.",
+  "output_format": "A single integer representing the maximum total clinical utility.",
+  "constraints": {
+    "N": "1 <= N <= 100",
+    "B": "1 <= B <= 10^4",
+    "cost_i": "1 <= cost_i <= B",
+    "utility_i": "1 <= utility_i <= 10^6"
+  },
+  "examples": [
+    {
+      "input": "3 10\\n2 5\\n3 8\\n4 11",
+      "output": "27",
+      "explanation": "Optimal combination: Two kits of type 3 (cost 4 each, total 8) and one kit of type 1 (cost 2, total 2). Total cost = 10, Total utility = 11*2 + 5 = 27."
+    }
+  ],
+  "expected_algorithm": "Unbounded Knapsack (Dynamic Programming)",
+  "complexity": {
+    "time": "O(N * B)",
+    "space": "O(B)"
+  },
+  "real_world_takeaway": "The Unbounded Knapsack problem is a fundamental model for resource procurement where items are available in bulk. In medical logistics, this ensures that budget is spent on the most utility-dense supplies, maximizing the overall clinical impact in resource-constrained environments.",
+  "tags": ["unbounded-knapsack", "dynamic-programming", "resource-optimization", "medical-logistics"]
+}

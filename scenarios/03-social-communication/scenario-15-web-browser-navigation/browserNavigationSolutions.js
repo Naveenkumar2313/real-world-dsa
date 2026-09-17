@@ -767,5 +767,222 @@ int main() {
     free(ids);
     return 0;
 }`
+  },
+  'PROB-BROWSER-005': {
+    python: `import sys
+
+def solve():
+    input_data = sys.stdin.read().splitlines()
+    if not input_data: return
+
+    N = int(input_data[0])
+    adj = {}
+    for i in range(1, N + 1):
+        u, v = input_data[i].split()
+        adj[u] = v
+
+    start_url = input_data[N + 1]
+
+    slow = start_url
+    fast = start_url
+
+    while True:
+        if fast not in adj or adj[fast] not in adj:
+            print("NO_CYCLE")
+            return
+        slow = adj[slow]
+        fast = adj[adj[fast]]
+        if slow == fast:
+            break
+
+    slow = start_url
+    while slow != fast:
+        slow = adj[slow]
+        fast = adj[fast]
+
+    print(slow)
+
+if __name__ == '__main__':
+    solve()`,
+    javascript: `const fs = require('fs');
+
+function solve() {
+    const input = fs.readFileSync(0, 'utf8').trim().split(/\\n/);
+    if (input.length === 0 || input[0] === '') return;
+
+    const N = parseInt(input[0]);
+    const adj = {};
+    for (let i = 1; i <= N; i++) {
+        const [u, v] = input[i].split(' ');
+        adj[u] = v;
+    }
+
+    const startUrl = input[N + 1];
+    let slow = startUrl;
+    let fast = startUrl;
+
+    while (true) {
+        if (!adj[fast] || !adj[adj[fast]]) {
+            console.log("NO_CYCLE");
+            return;
+        }
+        slow = adj[slow];
+        fast = adj[adj[fast]];
+        if (slow === fast) break;
+    }
+
+    slow = startUrl;
+    while (slow !== fast) {
+        slow = adj[slow];
+        fast = adj[fast];
+    }
+    console.log(slow);
+}
+
+solve();`,
+    java: `import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int N = sc.nextInt();
+        sc.nextLine();
+        Map<String, String> adj = new HashMap<>();
+        for (int i = 0; i < N; i++) {
+            String line = sc.nextLine();
+            String[] parts = line.split(" ");
+            adj.put(parts[0], parts[1]);
+        }
+        String startUrl = sc.nextLine();
+        String slow = startUrl;
+        String fast = startUrl;
+        while (true) {
+            if (!adj.containsKey(fast) || !adj.containsKey(adj.get(fast))) {
+                System.out.println("NO_CYCLE");
+                return;
+            }
+            slow = adj.get(slow);
+            fast = adj.get(adj.get(fast));
+            if (slow.equals(fast)) break;
+        }
+        slow = startUrl;
+        while (!slow.equals(fast)) {
+            slow = adj.get(slow);
+            fast = adj.get(fast);
+        }
+        System.out.println(slow);
+    }
+}`,
+    cpp: `#include <iostream>
+#include <string>
+#include <unordered_map>
+
+using namespace std;
+
+int main() {
+    int N;
+    if (!(cin >> N)) return 0;
+    unordered_map<string, string> adj;
+    for (int i = 0; i < N; ++i) {
+        string u, v;
+        cin >> u >> v;
+        adj[u] = v;
+    }
+    string startUrl;
+    cin >> startUrl;
+    string slow = startUrl;
+    string fast = startUrl;
+    while (true) {
+        if (adj.find(fast) == adj.end() || adj.find(adj[fast]) == adj.end()) {
+            cout << "NO_CYCLE" << endl;
+            return 0;
+        }
+        slow = adj[slow];
+        fast = adj[adj[fast]];
+        if (slow == fast) break;
+    }
+    slow = startUrl;
+    while (slow != fast) {
+        slow = adj[slow];
+        fast = adj[fast];
+    }
+    cout << slow << endl;
+    return 0;
+}`,
+    c: `#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct Entry {
+    char *key, *val;
+    struct Entry* next;
+} Entry;
+
+typedef struct HashTable {
+    Entry** buckets;
+    int size;
+} HashTable;
+
+unsigned int hash(char* str) {
+    unsigned int h = 0;
+    while (*str) h = h * 31 + *str++;
+    return h;
+}
+
+HashTable* createTable(int size) {
+    HashTable* table = (HashTable*)malloc(sizeof(HashTable));
+    table->size = size;
+    table->buckets = (Entry**)calloc(size, sizeof(Entry*));
+    return table;
+}
+
+void insert(HashTable* table, char* key, char* val) {
+    unsigned int h = hash(key) % table->size;
+    Entry* e = (Entry*)malloc(sizeof(Entry));
+    e->key = strdup(key);
+    e->val = strdup(val);
+    e->next = table->buckets[h];
+    table->buckets[h] = e;
+}
+
+char* get(HashTable* table, char* key) {
+    unsigned int h = hash(key) % table->size;
+    for (Entry* e = table->buckets[h]; e != NULL; e = e->next) {
+        if (strcmp(e->key, key) == 0) return e->val;
+    }
+    return NULL;
+}
+
+int main() {
+    int N;
+    if (scanf("%d", &N) != 1) return 0;
+    HashTable* adj = createTable(20000);
+    char u[101], v[101];
+    for (int i = 0; i < N; i++) {
+        scanf("%s %s", u, v);
+        insert(adj, u, v);
+    }
+    char startUrl[101];
+    scanf("%s", startUrl);
+    char* slow = startUrl;
+    char* fast = startUrl;
+    while (1) {
+        char* next_fast = get(adj, fast);
+        if (!next_fast) { printf("NO_CYCLE\\n"); return 0; }
+        char* next_next_fast = get(adj, next_fast);
+        if (!next_next_fast) { printf("NO_CYCLE\\n"); return 0; }
+        slow = get(adj, slow);
+        fast = next_next_fast;
+        if (strcmp(slow, fast) == 0) break;
+    }
+    slow = startUrl;
+    while (strcmp(slow, fast) != 0) {
+        slow = get(adj, slow);
+        fast = get(adj, fast);
+    }
+    printf("%s\\n", slow);
+    return 0;
+}`
   }
 };
