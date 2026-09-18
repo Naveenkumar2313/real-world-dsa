@@ -1,0 +1,61 @@
+{
+    "problem_id": "PROB-DLVR-001",
+    "scenario_id": "SCN-DLVR-001",
+    "sequence": 1,
+    "title": "Reachable Delivery Locations from a Depot",
+    "difficulty": "Easy",
+    "concepts": [
+        "Graph",
+        "Breadth-First Search"
+    ],
+    "real_world_story": "A vehicle starts at a depot and wants to know which delivery locations it can reach using the road network. The network is modeled as an unweighted, undirected graph where depots and intersections are nodes and roads are edges. The company lists reachable delivery locations in the order they are first discovered from the depot.",
+    "real_world_connection": {
+        "system": "Fleet dispatch",
+        "input_represents": "Depots and delivery locations as graph nodes with roads connecting them",
+        "start_represents": "The depot where the vehicle begins",
+        "algorithm_represents": "Exploring the road network level by level to find reachable delivery locations"
+    },
+    "problem_statement": "Given an undirected graph with N nodes and M edges, and a starting node D representing the depot, perform a breadth-first traversal starting from D. Print all nodes visited, in the order they are first discovered (by increasing graph distance from D).",
+    "task": "Perform a BFS from the depot and print the nodes in the order they are visited.",
+    "input_format": "The first line contains three integers N, M and D, where N is the number of nodes (numbered 1 to N), M is the number of edges, and D is the depot. The next M lines each contain two integers U and V indicating an undirected road between node U and node V.",
+    "output_format": "Print the nodes visited during BFS starting from D, separated by spaces, in the order they are first discovered.",
+    "constraints": [
+        "1 <= N <= 10000",
+        "0 <= M <= 50000",
+        "1 <= D <= N"
+    ],
+    "examples": [
+        {
+            "input": "6 5 1\n1 2\n1 3\n2 4\n2 5\n3 6",
+            "output": "1 2 3 4 5 6",
+            "explanation": "From depot 1 the vehicle first reaches nodes 2 and 3, then nodes 4, 5 and 6."
+        },
+        {
+            "input": "4 2 1\n1 2\n3 4",
+            "output": "1 2",
+            "explanation": "Nodes 3 and 4 are in a separate component and are not reachable from depot 1."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph BFS",
+        "module_key": "graph-bfs",
+        "reason": "BFS explores the graph level by level, so it visits nodes in order of increasing distance from the starting depot."
+    },
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Use a queue to keep track of nodes to visit next.",
+        "Visit all neighbors of the current node before moving deeper.",
+        "Track visited nodes so each node is discovered exactly once."
+    ],
+    "real_world_takeaway": "BFS tells a delivery company which locations a vehicle can reach from a depot and how close they are, useful for quick dispatch planning.",
+    "tags": [
+        "graphs",
+        "graph-bfs",
+        "breadth-first-search",
+        "delivery",
+        "reachability"
+    ]
+}

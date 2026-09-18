@@ -1,0 +1,59 @@
+{
+    "problem_id": "PROB-NW-009",
+    "scenario_id": "SCN-NW-002",
+    "sequence": 4,
+    "title": "Build the Minimum-Cost Backbone Network",
+    "difficulty": "Medium",
+    "concepts": [
+        "Weighted Graph",
+        "Union-Find",
+        "Kruskal's Algorithm"
+    ],
+    "real_world_story": "The company has a list of all links it could lease between its towers, routers and switching centers, each with a monthly lease cost. It must choose a subset of these links that connects every node while paying as little as possible overall.",
+    "real_world_connection": {
+        "system": "Communication backbone planning",
+        "input_represents": "All candidate links and their lease costs",
+        "output_represents": "The minimum total cost to connect every node",
+        "algorithm_represents": "Building a minimum spanning backbone network (spanning tree)"
+    },
+    "problem_statement": "Given N nodes numbered 0 to N-1 and E candidate undirected links with lease costs, find the minimum total cost required to connect all N nodes into a single connected backbone network.",
+    "task": "Return the total cost of the minimum-cost spanning network. If the network cannot connect all nodes, return -1.",
+    "input_format": "The first line contains two integers N and E. The next E lines each contain three integers u v w describing a candidate link between nodes u and v with lease cost w.",
+    "output_format": "Print the minimum total lease cost that connects all nodes, or -1 if they cannot all be connected.",
+    "constraints": [
+        "2 <= N <= 100000",
+        "1 <= E <= 200000",
+        "0 <= u, v < N",
+        "1 <= w <= 1000000"
+    ],
+    "examples": [
+        {
+            "input": "4 5\n0 1 10\n0 2 6\n0 3 5\n1 3 15\n2 3 4",
+            "output": "19",
+            "explanation": "The cheapest way to connect all nodes uses the links 2-3 (4), 0-3 (5) and 0-1 (10), for a total of 19."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Kruskal's Algorithm",
+        "module_key": "kruskal",
+        "reason": "Sorting candidate links by cost and adding the cheapest link that does not create a cycle yields the minimum-cost spanning tree."
+    },
+    "complexity": {
+        "time": "O(E log E)",
+        "space": "O(N + E)"
+    },
+    "hint": [
+        "Sort all candidate links by lease cost.",
+        "Add each candidate in order if it connects two still-unconnected groups.",
+        "Use a union-find structure to track which nodes are already connected.",
+        "Stop once N - 1 links have been selected."
+    ],
+    "real_world_takeaway": "Kruskal's algorithm lets a communication company build a fully connected backbone at the minimum lease cost by choosing the cheapest non-redundant links.",
+    "tags": [
+        "graphs",
+        "kruskal",
+        "minimum-spanning-tree",
+        "union-find",
+        "communication-network"
+    ]
+}

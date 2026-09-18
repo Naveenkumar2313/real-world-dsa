@@ -1,0 +1,78 @@
+{
+    "scenario_id": "SCN-CI-001",
+    "title": "City Infrastructure Planning",
+    "slug": "city-infrastructure-planning",
+    "short_description": "Learn how city planners connect roads, utilities, stations, and public facilities while minimizing construction cost and improving accessibility using Graph BFS, Graph DFS, Dijkstra's Algorithm, Kruskal's Algorithm, Floyd-Warshall, and A* Pathfinding.",
+    "category": "Graphs and Network Planning",
+    "industry": "Urban Planning & Civil Engineering",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 180,
+    "real_world_context": {
+        "problem": "A city planner needs to design infrastructure that connects roads, utilities, stations, and public facilities across a growing city. Engineers must trace which areas can be reached from key hubs, find the most cost-effective routes between facilities, decide which connections to build at minimum cost, precompute travel times between all pairs of locations, and find efficient paths using heuristic guidance.",
+        "why_it_matters": "Graph algorithms help city planners design efficient infrastructure networks that minimize construction costs while ensuring all areas are accessible. These algorithms are essential for urban development, emergency response planning, and transportation system design.",
+        "real_world_entities": [
+            "Road Intersection",
+            "Utility Station",
+            "Public Facility",
+            "Transportation Hub",
+            "Construction Cost",
+            "Travel Time",
+            "Distance",
+            "Neighborhood"
+        ]
+    },
+    "learning_objectives": [
+        "Represent a city infrastructure network as a graph using an adjacency list.",
+        "Traverse a network with Breadth-First Search (BFS) to map all reachable facilities from a central hub.",
+        "Traverse a network with Depth-First Search (DFS) to explore connectivity and discover deep routes.",
+        "Use Dijkstra's algorithm to find the minimum-cost route between two facilities.",
+        "Use Kruskal's algorithm to build a minimum-cost infrastructure network connecting all facilities.",
+        "Use Floyd-Warshall to precompute the shortest route between every pair of locations."
+    ],
+    "prerequisites": [
+        "Arrays",
+        "Loops",
+        "Conditional statements",
+        "Basic time complexity",
+        "Introduction to graphs and adjacency lists"
+    ],
+    "algorithms": [
+        {
+            "name": "Graph BFS",
+            "module_key": "graph-bfs"
+        },
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "Dijkstra's Algorithm",
+            "module_key": "dijkstra"
+        },
+        {
+            "name": "Kruskal's Algorithm",
+            "module_key": "kruskal"
+        },
+        {
+            "name": "Floyd-Warshall",
+            "module_key": "floyd-warshall"
+        }
+    ],
+    "real_world_mapping": {
+        "intersection_or_facility": "Graph vertex",
+        "road_or_utility_line": "Undirected edge",
+        "construction_cost": "Edge weight",
+        "travel_time": "Edge weight",
+        "accessibility": "Graph traversal",
+        "connected_city": "Connected graph / spanning tree",
+        "efficient_route": "Shortest path"
+    },
+    "learning_path": [
+        "PROB-CI-001",
+        "PROB-CI-002",
+        "PROB-CI-003",
+        "PROB-CI-004",
+        "PROB-CI-005"
+    ],
+    "completion_message": "You have completed the City Infrastructure Planning mission. You have learned how graph traversals, shortest-path algorithms, minimum-spanning-tree algorithms, all-pairs shortest paths, and heuristic-guided search can be used to design cost-effective and accessible city infrastructure."
+}

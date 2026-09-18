@@ -1,0 +1,62 @@
+{
+    "problem_id": "PROB-NAV-002",
+    "scenario_id": "SCN-NAV-001",
+    "sequence": 2,
+    "title": "Is There a Route Between Two Locations",
+    "difficulty": "Easy",
+    "concepts": [
+        "Graph",
+        "Depth-First Search"
+    ],
+    "real_world_story": "A driver needs to know whether they can travel from one location to another through any sequence of roads. The road network is modeled as a directed graph. Use a depth-first traversal to determine whether the destination is reachable from the starting location.",
+    "real_world_connection": {
+        "system": "Route availability check",
+        "input_represents": "Directed roads between locations",
+        "start_represents": "The starting location",
+        "target_represents": "The destination location",
+        "algorithm_represents": "Following roads as far as possible to discover whether a route exists"
+    },
+    "problem_statement": "Given a directed graph with N nodes and M edges, and two nodes S and T, determine whether there is a path from S to T. Print YES if T is reachable from S, otherwise print NO.",
+    "task": "Use DFS to check whether the destination is reachable from the starting location.",
+    "input_format": "The first line contains four integers N, M, S and T, where N is the number of nodes (numbered 1 to N), M is the number of directed edges, S is the starting location, and T is the destination. The next M lines each contain two integers U and V indicating a directed road from node U to node V.",
+    "output_format": "Print YES if node T is reachable from node S, otherwise print NO.",
+    "constraints": [
+        "1 <= N <= 10000",
+        "0 <= M <= 50000",
+        "1 <= S, T <= N"
+    ],
+    "examples": [
+        {
+            "input": "4 4 1 4\n1 2\n2 3\n3 4\n2 4",
+            "output": "YES",
+            "explanation": "A route exists: 1 -> 2 -> 3 -> 4, and also 1 -> 2 -> 4."
+        },
+        {
+            "input": "4 2 1 4\n1 2\n3 4",
+            "output": "NO",
+            "explanation": "There is no road leading from node 1 toward node 4, so the destination is unreachable."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph DFS",
+        "module_key": "graph-dfs",
+        "reason": "DFS explores one connected route as far as possible and can determine whether the target is reachable using recursion or an explicit stack."
+    },
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Begin the traversal at the starting node S.",
+        "Visit a neighbor and follow it as far as possible before backtracking.",
+        "If the destination T is visited, it is reachable."
+    ],
+    "real_world_takeaway": "DFS helps a navigation system quickly confirm whether a route exists between two places, avoiding directions for impossible trips.",
+    "tags": [
+        "graphs",
+        "graph-dfs",
+        "depth-first-search",
+        "navigation",
+        "reachability"
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "problem_id": "PROB-IR-004",
+    "scenario_id": "SCN-IR-001",
+    "sequence": 4,
+    "title": "Latency Between Every Pair (Floyd-Warshall)",
+    "difficulty": "Medium",
+    "concepts": [
+        "Graph",
+        "Adjacency Matrix",
+        "Floyd-Warshall",
+        "All-Pairs Shortest Path"
+    ],
+    "real_world_story": "A network monitoring system needs to answer latency queries between any two routers instantly. Rather than running a shortest-path search for every query, the system precomputes the minimum latency between every pair of routers.",
+    "real_world_connection": {
+        "system": "Network latency monitoring dashboard",
+        "input_represents": "Routers and weighted links representing latency in milliseconds",
+        "algorithm_represents": "Precomputing the minimum latency between every pair of routers"
+    },
+    "problem_statement": "Given N routers numbered 0 to N-1, E undirected network links each with a latency weight W, and Q queries each asking for the minimum latency between two routers, answer every query. Print -1 if the two routers are not connected.",
+    "task": "For each query (A, B), print the minimum latency between router A and router B, or -1 if they are not connected.",
+    "input_format": "The first line contains two integers N and E. The next E lines each contain three integers u v w describing an undirected link between routers u and v with latency w. The next line contains an integer Q. The next Q lines each contain two integers A B representing a query.",
+    "output_format": "Print Q lines. Each line contains the minimum latency between the queried pair, or -1 if they are not connected.",
+    "constraints": [
+        "2 <= N <= 200",
+        "0 <= E <= N*(N-1)/2",
+        "1 <= w <= 10000",
+        "1 <= Q <= 10000",
+        "0 <= A, B < N"
+    ],
+    "examples": [
+        {
+            "input": "4 5\n0 1 10\n0 2 30\n0 3 50\n1 2 20\n2 3 15\n3\n0 3\n1 3\n0 1",
+            "output": "45\n35\n10",
+            "explanation": "0 to 3: path 0->1->2->3 costs 10+20+15=45. 1 to 3: path 1->2->3 costs 20+15=35. 0 to 1: direct link costs 10."
+        },
+        {
+            "input": "4 2\n0 1 5\n2 3 3\n2\n0 2\n1 3",
+            "output": "-1\n-1",
+            "explanation": "Routers 0 and 1 are disconnected from routers 2 and 3, so both queries return -1."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Floyd-Warshall",
+        "module_key": "floyd-warshall",
+        "reason": "Floyd-Warshall computes the shortest path between every pair of vertices in O(N^3), making it ideal for small networks where many pair queries are expected."
+    },
+    "complexity": {
+        "time": "O(N^3 + Q)",
+        "space": "O(N^2)"
+    },
+    "hint": [
+        "Build an N x N distance matrix initialised to infinity, with dist[i][i] = 0 and direct link weights filled in.",
+        "For each intermediate router k, check whether routing through k improves the path between every pair (i, j).",
+        "After the algorithm, any dist[A][B] still equal to infinity means the routers are not connected."
+    ],
+    "real_world_takeaway": "Floyd-Warshall is used in small-to-medium networks where all-pairs latency must be precomputed, such as in network simulation tools and latency dashboards.",
+    "tags": [
+        "graphs",
+        "floyd-warshall",
+        "all-pairs-shortest-path",
+        "routing",
+        "internet",
+        "weighted-graph"
+    ]
+}

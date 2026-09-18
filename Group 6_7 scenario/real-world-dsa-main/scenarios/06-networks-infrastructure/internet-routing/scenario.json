@@ -1,0 +1,76 @@
+{
+    "scenario_id": "SCN-IR-001",
+    "title": "Internet Routing",
+    "slug": "internet-routing",
+    "short_description": "Learn how data packets travel between computers through a network of interconnected routers while choosing efficient paths using Graph BFS, Graph DFS, Dijkstra's Algorithm, Floyd-Warshall and A* Pathfinding.",
+    "category": "Graphs and Network Planning",
+    "industry": "Telecommunications & Networking",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 120,
+    "real_world_context": {
+        "problem": "Data packets need to travel between computers through a network of interconnected routers while choosing efficient paths. Network engineers must broadcast packets across the network, detect routing loops, find the lowest-latency path between any two routers, and choose the most efficient path using heuristic guidance.",
+        "why_it_matters": "Routing algorithms allow Internet service providers to deliver data efficiently across large router meshes, avoid loops, reduce latency, and keep the network responsive as it grows.",
+        "real_world_entities": [
+            "Computer",
+            "Router",
+            "Data Packet",
+            "Network Link",
+            "Latency",
+            "Gateway"
+        ]
+    },
+    "learning_objectives": [
+        "Represent a router network as a graph using an adjacency list.",
+        "Broadcast a packet across the network with Breadth-First Search (BFS) and measure hops.",
+        "Detect routing loops with Depth-First Search (DFS).",
+        "Use Dijkstra's algorithm to find the lowest-latency path from a gateway to every router.",
+        "Use Floyd-Warshall to answer latency queries between every pair of routers.",
+        "Use A* pathfinding with a heuristic to find an efficient path between two routers."
+    ],
+    "prerequisites": [
+        "Arrays",
+        "Loops",
+        "Conditional statements",
+        "Basic time complexity",
+        "Introduction to graphs and adjacency lists"
+    ],
+    "algorithms": [
+        {
+            "name": "Graph BFS",
+            "module_key": "graph-bfs"
+        },
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "Dijkstra's Algorithm",
+            "module_key": "dijkstra"
+        },
+        {
+            "name": "Floyd-Warshall",
+            "module_key": "floyd-warshall"
+        },
+        {
+            "name": "A* Pathfinding",
+            "module_key": "a-star"
+        }
+    ],
+    "real_world_mapping": {
+        "router": "Graph vertex",
+        "network_link": "Undirected edge",
+        "latency": "Edge weight",
+        "hop": "Unweighted edge in BFS",
+        "packet_broadcast": "Graph traversal (BFS)",
+        "routing_loop": "Cycle",
+        "efficient_path": "Shortest path with heuristic"
+    },
+    "learning_path": [
+        "PROB-IR-001",
+        "PROB-IR-002",
+        "PROB-IR-003",
+        "PROB-IR-004",
+        "PROB-IR-005"
+    ],
+    "completion_message": "You have completed the Internet Routing mission. You have learned how graph traversal, shortest-path and heuristic-guided algorithms can be used to route data packets efficiently and reliably across an interconnected network of routers."
+}

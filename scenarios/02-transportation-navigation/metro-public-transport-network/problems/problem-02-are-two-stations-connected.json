@@ -1,0 +1,62 @@
+{
+    "problem_id": "PROB-TRAN-008",
+    "scenario_id": "SCN-TRAN-002",
+    "sequence": 2,
+    "title": "Are Two Stations Connected",
+    "difficulty": "Easy",
+    "concepts": [
+        "Graph",
+        "Depth-First Search"
+    ],
+    "real_world_story": "A passenger wants to know whether they can travel from one station to another through any sequence of connections. The transit network is modeled as a directed graph. Use a depth-first traversal to determine whether the destination station is reachable from the origin station.",
+    "real_world_connection": {
+        "system": "Network connectivity check",
+        "input_represents": "Directed connections between stations",
+        "start_represents": "The origin station",
+        "target_represents": "The destination station",
+        "algorithm_represents": "Following connections as far as possible to discover whether travel is possible"
+    },
+    "problem_statement": "Given a directed graph with N stations and M connections, and two nodes S and T, determine whether there is a path from S to T. Print YES if T is reachable from S, otherwise print NO.",
+    "task": "Use DFS to check whether the destination station is reachable from the origin station.",
+    "input_format": "The first line contains four integers N, M, S and T, where N is the number of stations, M is the number of directed connections, S is the origin station, and T is the destination station. The next M lines each contain two integers U and V indicating a directed connection from station U to station V.",
+    "output_format": "Print YES if node T is reachable from node S, otherwise print NO.",
+    "constraints": [
+        "1 <= N <= 10000",
+        "0 <= M <= 50000",
+        "1 <= S, T <= N"
+    ],
+    "examples": [
+        {
+            "input": "4 4 1 4\n1 2\n2 3\n3 4\n2 4",
+            "output": "YES",
+            "explanation": "The passenger can travel 1 -> 2 -> 3 -> 4, and also 1 -> 2 -> 4."
+        },
+        {
+            "input": "4 2 1 4\n1 2\n3 4",
+            "output": "NO",
+            "explanation": "There is no connection leading from station 1 toward station 4, so the destination is unreachable."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph DFS",
+        "module_key": "graph-dfs",
+        "reason": "DFS explores one connected route as far as possible and can determine whether the target is reachable using recursion or an explicit stack."
+    },
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Begin the traversal at the origin station S.",
+        "Visit a neighbor and follow it as far as possible before backtracking.",
+        "If the destination station T is visited, it is reachable."
+    ],
+    "real_world_takeaway": "DFS helps a transit system quickly confirm whether two stations are connected, identifying viable trips between parts of the network.",
+    "tags": [
+        "graphs",
+        "graph-dfs",
+        "depth-first-search",
+        "transit",
+        "reachability"
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "problem_id": "PROB-DLVR-005",
+    "scenario_id": "SCN-DLVR-001",
+    "sequence": 5,
+    "title": "Assign Deliveries to Vehicles Efficiently",
+    "difficulty": "Medium",
+    "concepts": [
+        "Sorting",
+        "Greedy"
+    ],
+    "real_world_story": "A depot has a list of deliveries, each with an associated travel distance from the depot, and a set of vehicles of equal capacity. The dispatcher wants to assign deliveries to vehicles so that every vehicle carries a balanced workload. A greedy approach sorts the deliveries and distributes them among vehicles to reduce total route length.",
+    "real_world_connection": {
+        "system": "Fleet assignment",
+        "input_represents": "Deliveries as distances representing workload",
+        "vehicles_represents": "The number of available vehicles",
+        "output_represents": "Minimum possible maximum workload per vehicle",
+        "algorithm_represents": "Using a greedy ordering to balance assignments"
+    },
+    "problem_statement": "Given N delivery jobs with workload values (such as travel distance) and K vehicles, partition the deliveries into K groups by assigning each delivery to a vehicle so that the maximum total workload assigned to any vehicle is as small as possible. Print the minimum possible maximum workload.",
+    "task": "Find the smallest possible maximum workload across all vehicles using a greedy assignment.",
+    "input_format": "The first line contains two integers N and K, where N is the number of deliveries and K is the number of vehicles. The second line contains N integers representing the workload of each delivery.",
+    "output_format": "Print the minimum possible maximum workload assigned to any vehicle.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "1 <= K <= N",
+        "1 <= workload <= 1000000000"
+    ],
+    "examples": [
+        {
+            "input": "5 3\n900 200 500 700 300",
+            "output": "900",
+            "explanation": "The workloads sum to 2600. One balanced assignment puts 900 alone on one vehicle, 700 + 200 on another, and 500 + 300 on the third, giving a maximum workload of 900."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Greedy",
+        "module_key": "greedy",
+        "reason": "A greedy approach that distributes workloads among vehicles can balance the maximum load reasonably while being simple and efficient."
+    },
+    "complexity": {
+        "time": "O(N log N)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Think about how ordering the workloads helps distribute them.",
+        "Fill each vehicle up to the current target load.",
+        "Count how many vehicles a given target requires to determine feasibility."
+    ],
+    "real_world_takeaway": "A greedy assignment keeps delivery workloads balanced across a fleet, which reduces idle time and helps every vehicle finish on time.",
+    "tags": [
+        "greedy",
+        "sorting",
+        "delivery",
+        "assignment",
+        "optimization"
+    ]
+}

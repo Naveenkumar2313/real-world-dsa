@@ -1,0 +1,59 @@
+{
+    "problem_id": "PROB-CNI-004",
+    "scenario_id": "SCN-CNI-001",
+    "sequence": 4,
+    "title": "Connect All Offices at Minimum Cost",
+    "difficulty": "Medium",
+    "concepts": [
+        "Weighted Graph",
+        "Union-Find",
+        "Kruskal's Algorithm"
+    ],
+    "real_world_story": "The organization has a list of all possible network cables it could install between offices, each with a cabling cost. It must choose a subset of these cables that connects every office while spending as little as possible overall.",
+    "real_world_connection": {
+        "system": "Organization infrastructure planning",
+        "input_represents": "All candidate cables and their installation costs",
+        "output_represents": "The minimum total cost to connect every office",
+        "algorithm_represents": "Building a minimum spanning network (spanning tree)"
+    },
+    "problem_statement": "Given N offices numbered 0 to N-1 and E candidate undirected cables with costs, find the minimum total cost required to connect all N offices into a single connected network.",
+    "task": "Return the total cost of the minimum-cost spanning network. If the graph cannot connect all offices, return -1.",
+    "input_format": "The first line contains two integers N and E. The next E lines each contain three integers u v w describing a candidate cable between offices u and v with installation cost w.",
+    "output_format": "Print the minimum total installation cost that connects all offices, or -1 if they cannot all be connected.",
+    "constraints": [
+        "2 <= N <= 100000",
+        "1 <= E <= 200000",
+        "0 <= u, v < N",
+        "1 <= w <= 1000000"
+    ],
+    "examples": [
+        {
+            "input": "4 5\n0 1 10\n0 2 6\n0 3 5\n1 3 15\n2 3 4",
+            "output": "19",
+            "explanation": "The cheapest way to connect all offices uses the cables 2-3 (4), 0-3 (5) and 0-1 (10), for a total of 19."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Kruskal's Algorithm",
+        "module_key": "kruskal",
+        "reason": "Sorting candidate cables by cost and adding the cheapest cable that does not create a cycle yields the minimum-cost spanning tree."
+    },
+    "complexity": {
+        "time": "O(E log E)",
+        "space": "O(N + E)"
+    },
+    "hint": [
+        "Sort all candidate cables by installation cost.",
+        "Add each candidate in order if it connects two still-unconnected groups.",
+        "Use a union-find structure to track which offices are already connected.",
+        "Stop once N - 1 cables have been selected."
+    ],
+    "real_world_takeaway": "Kruskal's algorithm lets an organization build a fully connected office network at the minimum installation cost by choosing the cheapest non-redundant cables.",
+    "tags": [
+        "graphs",
+        "kruskal",
+        "minimum-spanning-tree",
+        "union-find",
+        "computer-network"
+    ]
+}

@@ -1,0 +1,79 @@
+{
+    "scenario_id": "SCN-NAV-001",
+    "title": "GPS Navigation & Route Planning",
+    "slug": "gps-navigation-route-planning",
+    "short_description": "Learn how a navigation system models road connections, distances and travel costs as a graph to compute the best routes between locations.",
+    "category": "Graphs and Pathfinding",
+    "industry": "Transportation and Navigation",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 120,
+    "real_world_context": {
+        "problem": "A GPS navigation system must determine the best route between locations. The road network is modeled as a graph where intersections are nodes and roads are edges carrying distances and travel costs. The system must explore reachable locations, find the cheapest route, guide the search toward the destination, and answer distance queries between many places.",
+        "why_it_matters": "Modeling a city's roads as a graph lets a navigation system choose the best route from the available connections. The right graph algorithm decides how quickly a driver gets directions and how accurate the travel plans are.",
+        "real_world_entities": [
+            "Location",
+            "Intersection",
+            "Road",
+            "Road Connection",
+            "Travel Distance",
+            "Travel Cost",
+            "Route",
+            "Driver"
+        ]
+    },
+    "learning_objectives": [
+        "Understand how a road network can be represented as a graph.",
+        "Use Graph BFS to explore reachable locations level by level.",
+        "Use Graph DFS to explore and detect whether a route exists between locations.",
+        "Use Dijkstra's Algorithm to find the route with the lowest travel cost.",
+        "Use A* Pathfinding to guide the search toward the destination with a heuristic.",
+        "Use Floyd-Warshall to answer shortest-distance queries between many pairs of locations."
+    ],
+    "prerequisites": [
+        "Graphs",
+        "Adjacency lists",
+        "Queues",
+        "Stacks",
+        "Priority queues",
+        "Basic time complexity"
+    ],
+    "algorithms": [
+        {
+            "name": "Graph BFS",
+            "module_key": "graph-bfs"
+        },
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "Dijkstra's Algorithm",
+            "module_key": "dijkstras-algorithm"
+        },
+        {
+            "name": "A* Pathfinding",
+            "module_key": "a-star-pathfinding"
+        },
+        {
+            "name": "Floyd-Warshall",
+            "module_key": "floyd-warshall"
+        }
+    ],
+    "real_world_mapping": {
+        "location": "Graph node",
+        "intersection": "Graph node",
+        "road": "Graph edge",
+        "road_connection": "Graph edge",
+        "travel_distance": "Edge weight",
+        "travel_cost": "Edge weight",
+        "route": "Path in the graph"
+    },
+    "learning_path": [
+        "PROB-NAV-001",
+        "PROB-NAV-002",
+        "PROB-NAV-003",
+        "PROB-NAV-004",
+        "PROB-NAV-005"
+    ],
+    "completion_message": "You have completed the GPS Navigation & Route Planning mission. You have learned how graph traversal, weighted shortest-path and all-pairs distance algorithms help a navigation system plan the best routes between locations."
+}

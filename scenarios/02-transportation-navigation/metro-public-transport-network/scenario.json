@@ -1,0 +1,80 @@
+{
+    "scenario_id": "SCN-TRAN-002",
+    "title": "Metro & Public Transport Network",
+    "slug": "metro-public-transport-network",
+    "short_description": "Learn how a public-transport system models stations and connections as a graph to plan travel between stations using the fewest stops or the most efficient route.",
+    "category": "Graphs and Pathfinding",
+    "industry": "Public Transportation",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 120,
+    "real_world_context": {
+        "problem": "A public-transport system needs to determine how passengers can travel between stations using the fewest stops or the most efficient route. The network is modeled as a graph where stations are nodes and direct connections between stations are edges, some carrying travel time or cost. The system must explore reachable stations, confirm connections, find the fastest path, and answer distance queries between many station pairs.",
+        "why_it_matters": "Modeling a transit network as a graph lets the system plan trips efficiently. The right graph algorithm decides how quickly passengers get from one station to another and how well the network serves the whole city.",
+        "real_world_entities": [
+            "Station",
+            "Stop",
+            "Line",
+            "Connection",
+            "Transfer",
+            "Travel Time",
+            "Travel Cost",
+            "Passenger"
+        ]
+    },
+    "learning_objectives": [
+        "Understand how a transit network can be represented as a graph.",
+        "Use Graph BFS to find the fewest stops between stations.",
+        "Use Graph DFS to explore and detect whether stations are connected.",
+        "Use Dijkstra's Algorithm to find the most efficient route by travel time or cost.",
+        "Use Floyd-Warshall to answer shortest-distance queries between many station pairs.",
+        "Use Kruskal's Algorithm to build the cheapest connection network linking all stations."
+    ],
+    "prerequisites": [
+        "Graphs",
+        "Adjacency lists",
+        "Queues",
+        "Stacks",
+        "Priority queues",
+        "Basic time complexity"
+    ],
+    "algorithms": [
+        {
+            "name": "Graph BFS",
+            "module_key": "graph-bfs"
+        },
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "Dijkstra's Algorithm",
+            "module_key": "dijkstras-algorithm"
+        },
+        {
+            "name": "Floyd-Warshall",
+            "module_key": "floyd-warshall"
+        },
+        {
+            "name": "Kruskal's Algorithm",
+            "module_key": "kruskals-algorithm"
+        }
+    ],
+    "real_world_mapping": {
+        "station": "Graph node",
+        "stop": "Graph node",
+        "connection": "Graph edge",
+        "line": "Set of connected stations",
+        "travel_time": "Edge weight",
+        "travel_cost": "Edge weight",
+        "transit_network": "Graph",
+        "cheapest_connected_network": "Minimum spanning tree"
+    },
+    "learning_path": [
+        "PROB-TRAN-007",
+        "PROB-TRAN-008",
+        "PROB-TRAN-009",
+        "PROB-TRAN-010",
+        "PROB-TRAN-011"
+    ],
+    "completion_message": "You have completed the Metro & Public Transport Network mission. You have learned how graph traversal, weighted shortest-path and all-pairs distance algorithms help a transit system plan travel between stations using the fewest stops or the most efficient route."
+}

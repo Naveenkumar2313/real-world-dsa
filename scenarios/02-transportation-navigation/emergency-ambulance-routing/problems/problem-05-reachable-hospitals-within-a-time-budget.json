@@ -1,0 +1,60 @@
+{
+    "problem_id": "PROB-HEALTH-005",
+    "scenario_id": "SCN-HEALTH-001",
+    "sequence": 5,
+    "title": "Reachable Hospitals Within a Time Budget",
+    "difficulty": "Medium",
+    "concepts": [
+        "Graph",
+        "Dijkstra's Algorithm",
+        "Binary Search on Answer"
+    ],
+    "real_world_story": "The response system wants to know the largest maximum travel time budget for which the ambulance can still reach at least one hospital. Because the number of available hospitals varies with the allowed budget, the system needs to find the boundary budget efficiently instead of trying every possible value.",
+    "real_world_connection": {
+        "system": "Reachability planning under a time budget",
+        "input_represents": "A weighted graph with hospitals marked as special nodes and roads as weighted edges",
+        "budget_represents": "A maximum allowed travel time that is the quantity to be found",
+        "algorithm_represents": "Binary searching on the answer to find the deadline for which the target is still reachable"
+    },
+    "problem_statement": "Given a weighted, undirected graph with N nodes (numbered 1 to N), a starting node S, and a list of hospital nodes H, a target hospital is reachable from S if the shortest travel time from S to that hospital is at most some budget B. The target is considered reachable if at least one hospital has shortest travel time <= B. Find the minimum non-negative integer budget B such that a hospital is reachable within that budget. If no budget makes any hospital reachable, print -1.",
+    "task": "Find the smallest time budget for which at least one hospital is reachable from the ambulance.",
+    "input_format": "The first line contains three integers N, M and S, where N is the number of nodes, M is the number of edges, and S is the ambulance location. The next M lines each contain three integers U, V and W indicating an undirected road between node U and node V with travel time W. The next line contains an integer K, the number of hospitals. The following line contains K integers representing the hospital nodes.",
+    "output_format": "Print the minimum budget B such that some hospital is reachable within travel time <= B. If no hospital is reachable, print -1.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "0 <= M <= 200000",
+        "1 <= S <= N",
+        "1 <= W <= 1000000000",
+        "1 <= K <= N",
+        "Hospital nodes are distinct."
+    ],
+    "examples": [
+        {
+            "input": "5 5 1\n1 2 4\n1 3 2\n2 4 3\n3 4 1\n4 5 2\n2\n4 5",
+            "output": "3",
+            "explanation": "The shortest travel time from ambulance node 1 is 3 to hospital 4 (via 1 -> 3 -> 4) and 5 to hospital 5 (via 1 -> 3 -> 4 -> 5). The minimum budget for which at least one hospital is reachable is 3."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Binary Search on Answer",
+        "module_key": "binary-search-on-answer",
+        "reason": "The reachability answer is monotonic: if a hospital is reachable within budget B, it is reachable within any larger budget. Binary Search on Answer can find the boundary budget efficiently using a feasibility check built on shortest-path distances."
+    },
+    "complexity": {
+        "time": "O((N + M) log N + log(maxW))",
+        "space": "O(N)"
+    },
+    "hint": [
+        "First compute the shortest travel time from the ambulance to every node using Dijkstra.",
+        "The check for a budget B is: does any hospital node have shortest travel time <= B?",
+        "Because this check is monotonic in B, binary search over the budget to find the minimum feasible value."
+    ],
+    "real_world_takeaway": "Binary Search on Answer lets an emergency-response system find the critical time budget for which a hospital is still reachable, without testing every possible value.",
+    "tags": [
+        "graphs",
+        "dijkstras-algorithm",
+        "binary-search-on-answer",
+        "emergency",
+        "reachability"
+    ]
+}

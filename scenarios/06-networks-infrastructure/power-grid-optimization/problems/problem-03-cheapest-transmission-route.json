@@ -1,0 +1,58 @@
+{
+    "problem_id": "PROB-NW-003",
+    "scenario_id": "SCN-NW-001",
+    "sequence": 3,
+    "title": "Find the Cheapest Transmission Route",
+    "difficulty": "Medium",
+    "concepts": [
+        "Weighted Graph",
+        "Dijkstra's Algorithm"
+    ],
+    "real_world_story": "Each possible transmission route between two substations has a construction or operating cost. The operator wants the cheapest way to send power from one facility to another, considering every intermediate substation.",
+    "real_world_connection": {
+        "system": "Power transmission route planning",
+        "input_represents": "Substations, transmission lines and their construction costs",
+        "query_represents": "The source and destination substations",
+        "algorithm_represents": "Finding the route with the minimum total cost"
+    },
+    "problem_statement": "Given N substations numbered 0 to N-1, E undirected transmission lines with costs, and a source S and destination D, find the minimum total cost to route power from S to D.",
+    "task": "Return the minimum cost of the cheapest path from S to D, or -1 if no path exists.",
+    "input_format": "The first line contains two integers N and E. The next E lines each contain three integers u v w describing a transmission line between substations u and v with cost w. The final line contains two integers S and D.",
+    "output_format": "Print the minimum transmission cost from S to D. If D is unreachable, print -1.",
+    "constraints": [
+        "2 <= N <= 10000",
+        "1 <= E <= 50000",
+        "0 <= u, v < N",
+        "1 <= w <= 1000000",
+        "0 <= S, D < N"
+    ],
+    "examples": [
+        {
+            "input": "4 5\n0 1 10\n0 2 30\n0 3 50\n1 2 20\n2 3 15\n0 3",
+            "output": "45",
+            "explanation": "The cheapest route from 0 to 3 is 0 -> 1 -> 2 -> 3 with total cost 10 + 20 + 15 = 45."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Dijkstra's Algorithm",
+        "module_key": "dijkstra",
+        "reason": "All transmission line costs are non-negative, so Dijkstra's algorithm finds the minimum-cost route efficiently using a priority queue."
+    },
+    "complexity": {
+        "time": "O((N + E) log N)",
+        "space": "O(N + E)"
+    },
+    "hint": [
+        "Maintain the best-known cost to reach every substation.",
+        "Repeatedly expand the cheapest unprocessed station.",
+        "Stop as soon as the destination is reached."
+    ],
+    "real_world_takeaway": "Dijkstra's algorithm lets a utility plan the cheapest transmission route even in a large weighted network with many possible paths.",
+    "tags": [
+        "graphs",
+        "dijkstra",
+        "shortest-path",
+        "weighted-graph",
+        "power-grid"
+    ]
+}

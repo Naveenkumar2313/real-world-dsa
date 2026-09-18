@@ -1,0 +1,61 @@
+{
+    "problem_id": "PROB-TRAN-001",
+    "scenario_id": "SCN-TRAN-001",
+    "sequence": 1,
+    "title": "Reachable Delivery Points from a Hub",
+    "difficulty": "Easy",
+    "concepts": [
+        "Graph",
+        "Breadth-First Search"
+    ],
+    "real_world_story": "A rider starts at a distribution hub and wants to know which delivery locations they can reach. The delivery region is modeled as an unweighted, undirected graph where intersections and hubs are nodes and roads are edges. The platform needs the reachable delivery points listed in the order they are first discovered from the hub.",
+    "real_world_connection": {
+        "system": "Food-delivery dispatch",
+        "input_represents": "Restaurants, hubs and delivery locations as graph nodes with roads connecting them",
+        "start_represents": "The distribution hub where the rider begins",
+        "algorithm_represents": "Exploring the road network level by level to find reachable locations"
+    },
+    "problem_statement": "Given an undirected graph with N nodes and M edges, and a starting node H representing the distribution hub, perform a breadth-first traversal starting from H. Print all nodes visited, in the order they are first discovered (by increasing distance from H).",
+    "task": "Perform a BFS from the hub and print the nodes in the order they are visited.",
+    "input_format": "The first line contains three integers N, M and H, where N is the number of nodes (numbered 1 to N), M is the number of edges, and H is the distribution hub. The next M lines each contain two integers U and V indicating an undirected road between node U and node V.",
+    "output_format": "Print the nodes visited during BFS starting from H, separated by spaces, in the order they are first discovered.",
+    "constraints": [
+        "1 <= N <= 10000",
+        "0 <= M <= 50000",
+        "1 <= H <= N"
+    ],
+    "examples": [
+        {
+            "input": "6 5 1\n1 2\n1 3\n2 4\n2 5\n3 6",
+            "output": "1 2 3 4 5 6",
+            "explanation": "From hub 1 the rider first reaches nodes 2 and 3, then nodes 4, 5 and 6."
+        },
+        {
+            "input": "4 2 1\n1 2\n3 4",
+            "output": "1 2",
+            "explanation": "Nodes 3 and 4 are in a separate component and are not reachable from hub 1."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph BFS",
+        "module_key": "graph-bfs",
+        "reason": "BFS explores the graph level by level, so it visits nodes in order of increasing distance from the starting hub."
+    },
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Use a queue to keep track of nodes to visit next.",
+        "Visit all neighbors of the current node before moving deeper.",
+        "Track visited nodes so each node is discovered exactly once."
+    ],
+    "real_world_takeaway": "BFS tells a delivery platform which locations a rider can reach and how close they are, which is useful for immediate dispatch decisions near a hub.",
+    "tags": [
+        "graphs",
+        "graph-bfs",
+        "breadth-first-search",
+        "delivery",
+        "reachability"
+    ]
+}

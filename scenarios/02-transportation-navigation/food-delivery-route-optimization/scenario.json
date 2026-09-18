@@ -1,0 +1,85 @@
+{
+    "scenario_id": "SCN-TRAN-001",
+    "title": "Food Delivery Route Optimization",
+    "slug": "food-delivery-route-optimization",
+    "short_description": "Learn how a food-delivery platform models restaurants, delivery locations and hubs as a graph to compute efficient routes that minimize travel time and distance.",
+    "category": "Graphs and Pathfinding",
+    "industry": "Transportation and Logistics",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 120,
+    "real_world_context": {
+        "problem": "A food-delivery platform needs to plan routes between restaurants, customer delivery locations and distribution hubs. Different roads take different amounts of time, and the platform must decide the most efficient way to serve orders while minimizing travel time or distance.",
+        "why_it_matters": "The roads, intersections and delivery points of a city can be modeled as a graph. Choosing the right graph algorithm decides how quickly the platform can route a rider, connect the delivery network, or answer distance queries between many locations.",
+        "real_world_entities": [
+            "Restaurant",
+            "Delivery Location",
+            "Distribution Hub",
+            "Road or Street",
+            "Intersection",
+            "Travel Time",
+            "Travel Distance",
+            "Delivery Rider"
+        ]
+    },
+    "learning_objectives": [
+        "Understand how a city road network can be represented as a graph.",
+        "Use Graph BFS to explore reachable delivery points level by level.",
+        "Use Graph DFS to explore paths and detect connection between locations.",
+        "Use Dijkstra's Algorithm to find the shortest travel time between a restaurant and a delivery location.",
+        "Use A* Pathfinding to find efficient routes with a heuristic.",
+        "Use Floyd-Warshall to answer shortest-distance queries between many pairs.",
+        "Use Kruskal's Algorithm to build the cheapest road network connecting all points."
+    ],
+    "prerequisites": [
+        "Graphs",
+        "Adjacency lists",
+        "Queues",
+        "Stacks",
+        "Priority queues",
+        "Basic time complexity"
+    ],
+    "algorithms": [
+        {
+            "name": "Graph BFS",
+            "module_key": "graph-bfs"
+        },
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "Dijkstra's Algorithm",
+            "module_key": "dijkstras-algorithm"
+        },
+        {
+            "name": "A* Pathfinding",
+            "module_key": "a-star-pathfinding"
+        },
+        {
+            "name": "Floyd-Warshall",
+            "module_key": "floyd-warshall"
+        },
+        {
+            "name": "Kruskal's Algorithm",
+            "module_key": "kruskals-algorithm"
+        }
+    ],
+    "real_world_mapping": {
+        "restaurant": "Graph node",
+        "delivery_location": "Graph node",
+        "distribution_hub": "Graph node",
+        "road_or_street": "Graph edge",
+        "travel_time": "Edge weight",
+        "road_network": "Graph",
+        "connected_delivery_network": "Minimum spanning tree"
+    },
+    "learning_path": [
+        "PROB-TRAN-001",
+        "PROB-TRAN-002",
+        "PROB-TRAN-003",
+        "PROB-TRAN-004",
+        "PROB-TRAN-005",
+        "PROB-TRAN-006"
+    ],
+    "completion_message": "You have completed the Food Delivery Route Optimization mission. You have learned how graph traversal and weighted shortest-path and network-building algorithms help a delivery platform route riders efficiently and minimize travel time or distance."
+}

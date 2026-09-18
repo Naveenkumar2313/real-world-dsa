@@ -1,0 +1,60 @@
+{
+    "problem_id": "PROB-CI-005",
+    "scenario_id": "SCN-CI-001",
+    "sequence": 5,
+    "title": "Precompute All-Pairs Shortest Paths (Floyd-Warshall)",
+    "difficulty": "Hard",
+    "concepts": [
+        "Weighted Graph",
+        "Dynamic Programming",
+        "Floyd-Warshall Algorithm"
+    ],
+    "real_world_story": "A city planning department needs to answer travel time queries between any two facilities quickly. Rather than computing each route on demand, they precompute the shortest travel times between every pair of facilities so that queries can be answered instantly.",
+    "real_world_connection": {
+        "system": "City navigation and planning system",
+        "input_represents": "Facilities and weighted connections representing travel times",
+        "output_represents": "The shortest travel time between every pair of facilities",
+        "algorithm_represents": "Dynamic programming that considers every possible intermediate facility"
+    },
+    "problem_statement": "Given N facilities numbered 0 to N-1 and E undirected connections each with a travel time weight W, compute the shortest travel time between every pair of facilities using the Floyd-Warshall algorithm. If two facilities are not connected, the distance should be -1.",
+    "task": "Print an N x N matrix where the entry at row i and column j is the shortest travel time from facility i to facility j, or -1 if j is unreachable from i.",
+    "input_format": "The first line contains two integers N and E. The next E lines each contain three integers u v w describing a connection between facilities u and v with travel time w.",
+    "output_format": "Print N lines, each containing N space-separated integers. The j-th integer on the i-th line is the shortest distance from facility i to facility j, or -1 if unreachable.",
+    "constraints": [
+        "2 <= N <= 100",
+        "0 <= E <= 5000",
+        "0 <= u, v < N",
+        "1 <= w <= 1000"
+    ],
+    "examples": [
+        {
+            "input": "4 4\n0 1 10\n0 2 30\n1 2 20\n2 3 15",
+            "output": "0 10 30 45\n10 0 20 35\n30 20 0 15\n45 35 15 0",
+            "explanation": "The shortest path from 0 to 3 goes through facilities 1 and 2: 0->1 (10) + 1->2 (20) + 2->3 (15) = 45."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Floyd-Warshall",
+        "module_key": "floyd-warshall",
+        "reason": "Floyd-Warshall computes the shortest path between every pair of facilities by considering each facility as a potential intermediate point, making it ideal for answering all-pairs queries efficiently when N is moderate."
+    },
+    "complexity": {
+        "time": "O(N^3)",
+        "space": "O(N^2)"
+    },
+    "hint": [
+        "Initialize a distance matrix with the direct connection costs, using infinity for unreachable pairs.",
+        "For each intermediate facility k, consider whether going through k improves the path between any pair (i, j).",
+        "The key recurrence is: dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]).",
+        "After processing all intermediate facilities, the matrix contains the shortest path between every pair."
+    ],
+    "real_world_takeaway": "Floyd-Warshall is useful when a city planning system needs to answer many all-pairs distance queries, such as for navigation, emergency response planning, and accessibility analysis.",
+    "tags": [
+        "graphs",
+        "floyd-warshall",
+        "all-pairs-shortest-path",
+        "dynamic-programming",
+        "weighted-graph",
+        "city-planning"
+    ]
+}

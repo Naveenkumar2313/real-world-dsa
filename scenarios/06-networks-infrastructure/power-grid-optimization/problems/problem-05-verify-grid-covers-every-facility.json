@@ -1,0 +1,69 @@
+{
+    "problem_id": "PROB-NW-005",
+    "scenario_id": "SCN-NW-001",
+    "sequence": 5,
+    "title": "Verify the Grid Covers Every Facility",
+    "difficulty": "Medium",
+    "concepts": [
+        "Graph",
+        "Connected Components",
+        "Graph Traversal"
+    ],
+    "real_world_story": "As the utility grows, it must guarantee that every facility remains connected to the main grid. A single traversal from the central substation can confirm whether the whole network is one connected region.",
+    "real_world_connection": {
+        "system": "Network health verification",
+        "input_represents": "Substations and the transmission lines that connect them",
+        "source_represents": "The central substation",
+        "algorithm_represents": "Checking that a single traversal reaches every facility"
+    },
+    "problem_statement": "Given N substations numbered 0 to N-1 and E undirected transmission lines, starting a traversal from substation 0, determine whether every substation can be reached.",
+    "task": "Print 1 if the entire grid is connected from substation 0, otherwise print 0.",
+    "input_format": "The first line contains two integers N and E. The next E lines each contain two integers u v describing an undirected transmission line between substations u and v.",
+    "output_format": "Print 1 if all N substations are reachable from substation 0, otherwise print 0.",
+    "constraints": [
+        "2 <= N <= 200000",
+        "0 <= E <= 300000"
+    ],
+    "examples": [
+        {
+            "input": "4 3\n0 1\n1 2\n0 3",
+            "output": "1",
+            "explanation": "Starting from substation 0, traversal reaches 1, 3 and 2, covering every facility."
+        },
+        {
+            "input": "5 3\n0 1\n1 2\n2 3",
+            "output": "0",
+            "explanation": "Substation 4 is isolated, so not every facility can be reached from substation 0."
+        }
+    ],
+    "expected_algorithm": {
+        "preferred_algorithms": [
+            {
+                "name": "Graph BFS",
+                "module_key": "graph-bfs"
+            },
+            {
+                "name": "Graph DFS",
+                "module_key": "graph-dfs"
+            }
+        ],
+        "reason": "A single BFS or DFS from the central substation visits every station in its connected component, so comparing the number of visited stations with N confirms full coverage."
+    },
+    "complexity": {
+        "expected_time": "O(N + E)",
+        "expected_space": "O(N)"
+    },
+    "hint": [
+        "Traverse the graph starting from substation 0.",
+        "Count how many distinct stations are visited.",
+        "Compare the count with N to decide full connectivity."
+    ],
+    "real_world_takeaway": "A single graph traversal can verify whether a large network is fully connected, which is a key reliability check as a power grid grows.",
+    "tags": [
+        "graphs",
+        "connected-components",
+        "traversal",
+        "network",
+        "power-grid"
+    ]
+}

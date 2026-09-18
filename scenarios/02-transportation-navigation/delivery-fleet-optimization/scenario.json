@@ -1,0 +1,89 @@
+{
+    "scenario_id": "SCN-DLVR-001",
+    "title": "Delivery Fleet Optimization",
+    "slug": "delivery-fleet-optimization",
+    "short_description": "Learn how a delivery company models vehicles, depots and delivery locations as a graph to organize routes and assignments efficiently while reducing distance and travel time.",
+    "category": "Graphs, Pathfinding and Optimization",
+    "industry": "Logistics and Delivery",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 120,
+    "real_world_context": {
+        "problem": "A delivery company has multiple vehicles and delivery locations and needs to organize routes and assignments efficiently while reducing distance and travel time. The road network is modeled as a graph where depots and delivery points are nodes and roads are edges. The company must explore reachable locations, confirm routes, find the fastest paths, assign deliveries to vehicles greedily, and decide how many deliveries can fit within a time budget.",
+        "why_it_matters": "Efficiently routing and assigning a fleet reduces distance and travel time, which lowers fuel cost and improves delivery speed. The right graph and optimization algorithms decide how well the fleet serves all delivery locations.",
+        "real_world_entities": [
+            "Vehicle",
+            "Depot",
+            "Delivery Location",
+            "Delivery Point",
+            "Road",
+            "Travel Distance",
+            "Travel Time",
+            "Time Budget",
+            "Fleet"
+        ]
+    },
+    "learning_objectives": [
+        "Understand how a delivery region and road network can be represented as a graph.",
+        "Use Graph BFS to explore delivery locations reachable from a depot.",
+        "Use Graph DFS to detect whether a vehicle can reach a delivery location.",
+        "Use Dijkstra's Algorithm to find the fastest route between a depot and a delivery point.",
+        "Use A* Pathfinding to guide a vehicle toward its delivery destination.",
+        "Use a Greedy approach to assign deliveries to vehicles efficiently.",
+        "Use Binary Search on Answer to find how many deliveries fit within a time budget."
+    ],
+    "prerequisites": [
+        "Graphs",
+        "Adjacency lists",
+        "Queues",
+        "Stacks",
+        "Priority queues",
+        "Sorting",
+        "Binary search",
+        "Basic time complexity"
+    ],
+    "algorithms": [
+        {
+            "name": "Graph BFS",
+            "module_key": "graph-bfs"
+        },
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "Dijkstra's Algorithm",
+            "module_key": "dijkstras-algorithm"
+        },
+        {
+            "name": "A* Pathfinding",
+            "module_key": "a-star-pathfinding"
+        },
+        {
+            "name": "Greedy",
+            "module_key": "greedy"
+        },
+        {
+            "name": "Binary Search on Answer",
+            "module_key": "binary-search-on-answer"
+        }
+    ],
+    "real_world_mapping": {
+        "depot": "Graph node",
+        "delivery_location": "Graph node",
+        "delivery_point": "Graph node",
+        "road": "Graph edge",
+        "travel_distance": "Edge weight",
+        "travel_time": "Edge weight",
+        "time_budget": "Binary-searchable answer threshold",
+        "vehicle_assignment": "Greedy selection"
+    },
+    "learning_path": [
+        "PROB-DLVR-001",
+        "PROB-DLVR-002",
+        "PROB-DLVR-003",
+        "PROB-DLVR-004",
+        "PROB-DLVR-005",
+        "PROB-DLVR-006"
+    ],
+    "completion_message": "You have completed the Delivery Fleet Optimization mission. You have learned how graph traversal, weighted shortest-path, guided search, greedy assignment and binary-search-on-answer techniques help a delivery company organize routes and assignments efficiently."
+}

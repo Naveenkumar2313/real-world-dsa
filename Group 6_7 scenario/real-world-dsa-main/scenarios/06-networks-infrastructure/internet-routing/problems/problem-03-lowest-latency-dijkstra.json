@@ -1,0 +1,64 @@
+{
+    "problem_id": "PROB-IR-003",
+    "scenario_id": "SCN-IR-001",
+    "sequence": 3,
+    "title": "Lowest-Latency From the Gateway (Dijkstra)",
+    "difficulty": "Medium",
+    "concepts": [
+        "Graph",
+        "Weighted Adjacency List",
+        "Dijkstra's Algorithm",
+        "Shortest Path"
+    ],
+    "real_world_story": "A gateway router needs to know the minimum latency to reach every other router in the network so it can build its routing table. Each link has a different latency in milliseconds.",
+    "real_world_connection": {
+        "system": "Routing table construction",
+        "input_represents": "Routers and weighted links representing latency in milliseconds",
+        "algorithm_represents": "Finding the minimum-latency path from the gateway to every router"
+    },
+    "problem_statement": "Given N routers numbered 0 to N-1, E undirected network links each with a latency weight W, and a gateway router S, find the minimum latency from S to every other router. Print -1 for routers that cannot be reached.",
+    "task": "Return an array of length N where index i is the minimum latency from S to router i, or -1 if router i is unreachable.",
+    "input_format": "The first line contains two integers N and E. The next E lines each contain three integers u v w describing an undirected link between routers u and v with latency w. The final line contains an integer S, the gateway router.",
+    "output_format": "Print N space-separated integers: the minimum latency from S to each router, or -1 for unreachable routers.",
+    "constraints": [
+        "2 <= N <= 10000",
+        "1 <= E <= 50000",
+        "1 <= w <= 1000000",
+        "0 <= S < N"
+    ],
+    "examples": [
+        {
+            "input": "5 6\n0 1 10\n0 2 30\n0 3 50\n1 2 20\n2 3 15\n3 4 5\n0",
+            "output": "0 10 30 45 50",
+            "explanation": "From gateway 0: router 1 costs 10, router 2 costs 30 (direct), router 3 costs 45 via 0->1->2->3, router 4 costs 50 via 0->1->2->3->4."
+        },
+        {
+            "input": "4 2\n0 1 5\n2 3 3\n0",
+            "output": "0 5 -1 -1",
+            "explanation": "Routers 2 and 3 are in a disconnected component and cannot be reached from gateway 0."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Dijkstra's Algorithm",
+        "module_key": "dijkstra",
+        "reason": "Dijkstra's algorithm finds the minimum-cost path from a single source to all other vertices in a weighted graph with non-negative edge weights."
+    },
+    "complexity": {
+        "time": "O((N + E) log N)",
+        "space": "O(N + E)"
+    },
+    "hint": [
+        "Use a min-heap (priority queue) to always process the router with the current lowest known latency.",
+        "When a shorter path to a router is found, update its distance and push it to the heap.",
+        "Any router whose distance remains infinity after the algorithm is unreachable; report -1."
+    ],
+    "real_world_takeaway": "Dijkstra's algorithm is the foundation of link-state routing protocols such as OSPF, which routers use to build their forwarding tables based on minimum-latency paths.",
+    "tags": [
+        "graphs",
+        "dijkstra",
+        "shortest-path",
+        "routing",
+        "internet",
+        "weighted-graph"
+    ]
+}

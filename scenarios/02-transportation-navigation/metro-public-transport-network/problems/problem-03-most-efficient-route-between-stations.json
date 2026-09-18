@@ -1,0 +1,58 @@
+{
+    "problem_id": "PROB-TRAN-009",
+    "scenario_id": "SCN-TRAN-002",
+    "sequence": 3,
+    "title": "Most Efficient Route Between Stations",
+    "difficulty": "Medium",
+    "concepts": [
+        "Graph",
+        "Dijkstra's Algorithm"
+    ],
+    "real_world_story": "A passenger wants the most efficient route between two stations, where some connections cost more travel time than others. The transit network is modeled as a weighted, undirected graph where each connection has a travel time. Find the minimum total travel time between the origin and destination stations.",
+    "real_world_connection": {
+        "system": "Transit route planner",
+        "input_represents": "Stations as nodes with connections as weighted edges representing travel time",
+        "start_represents": "The origin station",
+        "target_represents": "The destination station",
+        "algorithm_represents": "Computing the most efficient route in terms of total travel time"
+    },
+    "problem_statement": "Given a weighted, undirected graph with N stations and M connections, and a start node S and target node T, find the minimum total travel time from S to T.",
+    "task": "Compute the minimum travel time between the origin and destination stations.",
+    "input_format": "The first line contains four integers N, M, S and T, where N is the number of stations, M is the number of connections, S is the origin station, and T is the destination station. The next M lines each contain three integers U, V and W indicating a connection between station U and station V with travel time W.",
+    "output_format": "Print the minimum total travel time from S to T. If T is unreachable from S, print -1.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "0 <= M <= 200000",
+        "1 <= S, T <= N",
+        "1 <= W <= 1000000000"
+    ],
+    "examples": [
+        {
+            "input": "5 6 1 5\n1 2 4\n1 3 2\n2 4 3\n3 4 1\n4 5 2\n2 5 10",
+            "output": "5",
+            "explanation": "The route 1 -> 3 -> 4 -> 5 has travel time 2 + 1 + 2 = 5, which is the minimum. The direct route 1 -> 2 -> 5 takes 4 + 10 = 14."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Dijkstra's Algorithm",
+        "module_key": "dijkstras-algorithm",
+        "reason": "The connections have non-negative travel times, so Dijkstra's Algorithm correctly computes the most efficient path from a single source."
+    },
+    "complexity": {
+        "time": "O((N + M) log N)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Keep a travel-time value for every station, initially infinite except the start.",
+        "Use a priority queue to always expand the closest unvisited station.",
+        "Relax each connection by updating a neighbor's time when a faster route is found."
+    ],
+    "real_world_takeaway": "Dijkstra's Algorithm lets a transit system give passengers the most efficient route by travel time, reducing total journey time.",
+    "tags": [
+        "graphs",
+        "dijkstras-algorithm",
+        "shortest-path",
+        "transit",
+        "weighted-graph"
+    ]
+}

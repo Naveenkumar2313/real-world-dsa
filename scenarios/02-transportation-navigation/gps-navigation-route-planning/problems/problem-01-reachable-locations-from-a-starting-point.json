@@ -1,0 +1,61 @@
+{
+    "problem_id": "PROB-NAV-001",
+    "scenario_id": "SCN-NAV-001",
+    "sequence": 1,
+    "title": "Reachable Locations from a Starting Point",
+    "difficulty": "Easy",
+    "concepts": [
+        "Graph",
+        "Breadth-First Search"
+    ],
+    "real_world_story": "A driver starts at a given location and wants to know which other locations they can drive to using the road network. The network is modeled as an unweighted, undirected graph where locations and intersections are nodes and roads are edges. The navigation system lists reachable locations in the order they are first discovered from the starting point.",
+    "real_world_connection": {
+        "system": "GPS route exploration",
+        "input_represents": "Locations and intersections as nodes with roads connecting them",
+        "start_represents": "The location where the driver begins",
+        "algorithm_represents": "Exploring the road network level by level to find reachable locations"
+    },
+    "problem_statement": "Given an undirected graph with N nodes and M edges, and a starting node S, perform a breadth-first traversal starting from S. Print all nodes visited, in the order they are first discovered (by increasing graph distance from S).",
+    "task": "Perform a BFS from the starting location and print the nodes in the order they are visited.",
+    "input_format": "The first line contains three integers N, M and S, where N is the number of nodes (numbered 1 to N), M is the number of edges, and S is the starting location. The next M lines each contain two integers U and V indicating an undirected road between node U and node V.",
+    "output_format": "Print the nodes visited during BFS starting from S, separated by spaces, in the order they are first discovered.",
+    "constraints": [
+        "1 <= N <= 10000",
+        "0 <= M <= 50000",
+        "1 <= S <= N"
+    ],
+    "examples": [
+        {
+            "input": "6 5 1\n1 2\n1 3\n2 4\n2 5\n3 6",
+            "output": "1 2 3 4 5 6",
+            "explanation": "From location 1 the driver first reaches locations 2 and 3, then locations 4, 5 and 6."
+        },
+        {
+            "input": "4 2 1\n1 2\n3 4",
+            "output": "1 2",
+            "explanation": "Locations 3 and 4 are in a separate component and are not reachable from location 1."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph BFS",
+        "module_key": "graph-bfs",
+        "reason": "BFS explores the graph level by level, so it visits nodes in order of increasing distance from the starting location."
+    },
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Use a queue to keep track of nodes to visit next.",
+        "Visit all neighbors of the current node before moving deeper.",
+        "Track visited nodes so each node is discovered exactly once."
+    ],
+    "real_world_takeaway": "BFS tells a navigation system which locations a driver can reach and how close they are, useful for exploring nearby options from a starting point.",
+    "tags": [
+        "graphs",
+        "graph-bfs",
+        "breadth-first-search",
+        "navigation",
+        "reachability"
+    ]
+}
