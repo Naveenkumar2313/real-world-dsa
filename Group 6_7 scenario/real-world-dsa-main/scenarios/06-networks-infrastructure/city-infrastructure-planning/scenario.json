@@ -2,7 +2,7 @@
     "scenario_id": "SCN-CI-001",
     "title": "City Infrastructure Planning",
     "slug": "city-infrastructure-planning",
-    "short_description": "Learn how city planners connect roads, utilities, stations, and public facilities while minimizing construction cost and improving accessibility using Graph BFS, Graph DFS, Dijkstra's Algorithm, Kruskal's Algorithm, Floyd-Warshall, and A* Pathfinding.",
+    "short_description": "Learn how city planners connect roads, utilities, stations, and public facilities while minimizing construction cost and improving accessibility using Graph BFS, Graph DFS, Dijkstra's Algorithm, Kruskal's Algorithm, and Floyd-Warshall.",
     "category": "Graphs and Network Planning",
     "industry": "Urban Planning & Civil Engineering",
     "difficulty": "Intermediate",
