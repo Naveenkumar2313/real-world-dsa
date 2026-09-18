@@ -1,5 +1,5 @@
-﻿export const ciSolutions = {
-  'PROB-CI-001': {
+﻿export const cityInfrastructureSolutions = {
+  \"PROB-CI-001\": {
       python: `from collections import deque
 def bfs_order(n, adj, start):
     visited = [False] * n; order = []; q = deque([start])
@@ -31,7 +31,7 @@ const adj = Array.from({ length: n }, () => []);
 for (let i = 0; i < e; i++) { const [u, v] = lines[1 + i].split(' ').map(Number); adj[u].push(v); adj[v].push(u); }
 const s = Number(lines[1 + e]); console.log(bfsOrder(n, adj, s).join(' '));`
   },
-  'PROB-CI-002': {
+  \"PROB-CI-002\": {
       python: `import sys; sys.setrecursionlimit(20000)
 def dfs_order(n, adj, start):
     visited = [False] * n; order = []
@@ -61,7 +61,7 @@ const adj = Array.from({ length: n }, () => []);
 for (let i = 0; i < e; i++) { const [u, v] = lines[1 + i].split(' ').map(Number); adj[u].push(v); adj[v].push(u); }
 const s = Number(lines[1 + e]); console.log(dfsOrder(n, adj, s).join(' '));`
   },
-  'PROB-CI-003': {
+  \"PROB-CI-003\": {
       python: `import heapq
 def dijkstra(n, adj, s, d):
     INF = float('inf'); dist = [INF] * n; dist[s] = 0
@@ -100,7 +100,7 @@ const adj = Array.from({ length: n }, () => []);
 for (let i = 0; i < e; i++) { const [u, v, w] = lines[1 + i].split(' ').map(Number); adj[u].push([v, w]); adj[v].push([u, w]); }
 const [s, d] = lines[1 + e].split(' ').map(Number); console.log(dijkstra(n, adj, s, d));`
   },
-  'PROB-CI-004': {
+  \"PROB-CI-004\": {
       python: `class UnionFind:
     def __init__(self, n):
         self.parent = list(range(n)); self.rank = [0] * n
@@ -143,7 +143,7 @@ const edges = [];
 for (let i = 0; i < e; i++) { const [u, v, w] = lines[1 + i].split(' ').map(Number); edges.push([u, v, w]); }
 console.log(kruskal(n, edges));`
   },
-  'PROB-CI-005': {
+  \"PROB-CI-005\": {
       python: `def floyd_warshall(n, adj):
     INF = float('inf')
     dist = [[INF] * n for _ in range(n)]
