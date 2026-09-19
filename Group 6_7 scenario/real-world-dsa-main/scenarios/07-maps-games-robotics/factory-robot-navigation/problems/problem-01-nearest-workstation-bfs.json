@@ -1,0 +1,61 @@
+{
+    "problem_id": "PROB-FRN-001",
+    "scenario_id": "SCN-FRN-001",
+    "sequence": 1,
+    "title": "Reach the Nearest Workstation (BFS)",
+    "difficulty": "Easy",
+    "concepts": [
+        "Grid Graph",
+        "Breadth-First Search",
+        "Multi-Target Shortest Path"
+    ],
+    "real_world_story": "An autonomous robot waits at its charging dock. Several workstations need material, and the fleet controller wants to send this robot to whichever workstation is closest so the delivery happens as fast as possible.",
+    "real_world_connection": {
+        "system": "Factory fleet task assignment",
+        "input_represents": "Factory floor grid where 0 is a free aisle, 1 is a blocked machine or storage region and 2 is a workstation",
+        "query_represents": "The cell where the robot currently stands",
+        "algorithm_represents": "Spreading outward one move at a time until the first workstation is touched"
+    },
+    "problem_statement": "Given an R x C factory floor grid of 0 (free aisle), 1 (blocked region) and 2 (workstation), and the cell (sr, sc) where a robot is standing, find the minimum number of moves needed to reach any workstation using 4-directional moves (up, down, left, right). The robot cannot enter blocked cells or leave the grid.",
+    "task": "Return the minimum number of moves from the robot to the nearest workstation, or -1 if no workstation can be reached.",
+    "input_format": "The first line contains two integers R and C. The next R lines each contain C integers (0, 1 or 2) describing the floor. The final line contains two integers sr sc.",
+    "output_format": "Print the minimum number of moves to the nearest workstation, or -1 if no workstation is reachable. Print 0 if the robot already stands on a workstation.",
+    "constraints": [
+        "1 <= R, C <= 500",
+        "0 <= sr < R",
+        "0 <= sc < C",
+        "Floor cells are 0 (free), 1 (blocked) or 2 (workstation)",
+        "There may be zero or more workstations"
+    ],
+    "examples": [
+        {
+            "input": "3 4\n0 0 1 2\n1 0 0 0\n0 0 1 0\n0 0",
+            "output": "5",
+            "explanation": "The only workstation is at (0,3). Because (0,2) is blocked, the robot goes (0,0) -> (0,1) -> (1,1) -> (1,2) -> (1,3) -> (0,3), which is 5 moves."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph BFS",
+        "module_key": "graph-bfs",
+        "reason": "Every move costs exactly 1, so BFS from the robot expands level by level and the moment any workstation cell is reached its distance is minimal."
+    },
+    "complexity": {
+        "time": "O(R * C)",
+        "space": "O(R * C)"
+    },
+    "hint": [
+        "Start from the robot cell and expand outward one move at a time.",
+        "Keep track of which cells have already been reached.",
+        "Stop as soon as a workstation cell is reached, because the first one found is the closest."
+    ],
+    "real_world_takeaway": "When every move costs the same, breadth-first expansion answers 'which workstation is closest?' without needing to measure every route.",
+    "tags": [
+        "graphs",
+        "bfs",
+        "graph-bfs",
+        "grid",
+        "factory",
+        "robotics",
+        "pathfinding"
+    ]
+}

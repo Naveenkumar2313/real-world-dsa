@@ -1,0 +1,61 @@
+{
+    "problem_id": "PROB-FRN-004",
+    "scenario_id": "SCN-FRN-001",
+    "sequence": 4,
+    "title": "Fastest Guided Route to a Workstation (A* Pathfinding)",
+    "difficulty": "Medium",
+    "concepts": [
+        "Grid Graph",
+        "A* Pathfinding",
+        "Heuristic Search"
+    ],
+    "real_world_story": "A robot must deliver a part to one specific workstation on a large floor. Exploring the whole floor is wasteful, and the controller already knows roughly where the workstation stands, so it should prefer moves that head toward the target.",
+    "real_world_connection": {
+        "system": "Factory robot route guidance",
+        "input_represents": "Floor plan where 0 is a free aisle and 1 is a blocked machine or storage region",
+        "query_represents": "The robot dock cell and the target workstation cell",
+        "algorithm_represents": "Expanding the most promising cell first, guided by the remaining straight-line distance to the target"
+    },
+    "problem_statement": "Given an R x C floor plan of 0 (free aisle) and 1 (blocked region), a robot dock cell (sr, sc) and a target workstation cell (dr, dc), find the minimum number of 4-directional moves needed to travel from the dock to the workstation. Blocked cells and moves outside the grid are not allowed.",
+    "task": "Return the minimum number of moves from the dock to the target workstation, or -1 if the target cannot be reached.",
+    "input_format": "The first line contains two integers R and C. The next R lines each contain C integers (0 or 1) describing the floor plan. The final line contains four integers sr sc dr dc.",
+    "output_format": "Print the minimum number of moves from the dock to the workstation, or -1 if unreachable. Print 0 when the dock and the workstation are the same cell.",
+    "constraints": [
+        "1 <= R, C <= 500",
+        "0 <= sr, dr < R",
+        "0 <= sc, dc < C",
+        "Floor cells are 0 (free) or 1 (blocked)"
+    ],
+    "examples": [
+        {
+            "input": "3 3\n0 0 0\n1 1 0\n0 0 0\n0 0 2 2",
+            "output": "4",
+            "explanation": "The route (0,0) -> (0,1) -> (0,2) -> (1,2) -> (2,2) needs 4 moves, and the Manhattan distance from the dock to the target is also 4, so the heuristic guides the search straight to the goal."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "A* Pathfinding",
+        "module_key": "a-star",
+        "reason": "The Manhattan distance to the target is an admissible heuristic on a 4-directional grid, so ordering the frontier by distance travelled plus heuristic estimate returns the optimal route while exploring far fewer cells than an unguided search."
+    },
+    "complexity": {
+        "time": "O(R * C * log(R * C))",
+        "space": "O(R * C)"
+    },
+    "hint": [
+        "Estimate the remaining work as the number of straight moves still needed to reach the target.",
+        "Process the most promising cell first, not simply the oldest cell.",
+        "Keep the best known travel cost for every cell so a worse route is never re-explored."
+    ],
+    "real_world_takeaway": "Guided search lets a robot reach a known workstation quickly on a large floor instead of scanning every aisle.",
+    "tags": [
+        "graphs",
+        "a-star",
+        "astar",
+        "heuristic",
+        "grid",
+        "factory",
+        "robotics",
+        "pathfinding"
+    ]
+}

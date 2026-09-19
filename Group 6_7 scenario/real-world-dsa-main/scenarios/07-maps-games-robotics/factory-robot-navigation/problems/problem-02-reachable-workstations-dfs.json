@@ -1,0 +1,60 @@
+{
+    "problem_id": "PROB-FRN-002",
+    "scenario_id": "SCN-FRN-001",
+    "sequence": 2,
+    "title": "Count Reachable Workstations (DFS)",
+    "difficulty": "Easy",
+    "concepts": [
+        "Grid Graph",
+        "Depth-First Search",
+        "Reachability"
+    ],
+    "real_world_story": "Before assigning work, the fleet controller must know which workstations a dock can actually serve. Regions of the floor can be sealed off by machine clusters, so some workstations may be impossible to reach from this dock.",
+    "real_world_connection": {
+        "system": "Factory fleet capacity planning",
+        "input_represents": "Factory floor grid where 0 is a free aisle, 1 is a blocked region and 2 is a workstation",
+        "query_represents": "The dock cell from which robots depart",
+        "algorithm_represents": "Following one corridor as far as possible before backing out, to visit every cell the dock can reach"
+    },
+    "problem_statement": "Given an R x C factory floor grid of 0 (free aisle), 1 (blocked region) and 2 (workstation), and the dock cell (sr, sc), determine how many workstation cells can be reached from the dock using 4-directional moves. A workstation is reachable when there is a route from the dock that never enters a blocked cell. The dock cell itself counts as reachable when it is a workstation.",
+    "task": "Return the number of workstation cells reachable from the dock.",
+    "input_format": "The first line contains two integers R and C. The next R lines each contain C integers (0, 1 or 2) describing the floor. The final line contains two integers sr sc.",
+    "output_format": "Print a single integer: the number of reachable workstation cells. Print 0 when no workstation (including the dock) is reachable.",
+    "constraints": [
+        "1 <= R, C <= 500",
+        "0 <= sr < R",
+        "0 <= sc < C",
+        "Floor cells are 0 (free), 1 (blocked) or 2 (workstation)"
+    ],
+    "examples": [
+        {
+            "input": "3 3\n2 0 1\n1 0 0\n0 1 2\n0 0",
+            "output": "2",
+            "explanation": "From (0,0) the robot can walk to (0,1) -> (1,1) -> (1,2) -> (2,2). Both (0,0) and (2,2) are workstations, and (2,0) is sealed off by the blocked cells (1,0) and (2,1)."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph DFS",
+        "module_key": "graph-dfs",
+        "reason": "The question is reachability rather than distance, so a depth-first traversal that marks visited cells and counts workstation cells is enough."
+    },
+    "complexity": {
+        "time": "O(R * C)",
+        "space": "O(R * C)"
+    },
+    "hint": [
+        "Walk from the dock and never enter a blocked cell.",
+        "Remember every cell you have already visited so no cell is processed twice.",
+        "Count the cells you visit whose value marks them as a workstation."
+    ],
+    "real_world_takeaway": "Reachability queries tell a fleet controller which workstations a robot can serve at all, so jobs are never assigned to an unreachable target.",
+    "tags": [
+        "graphs",
+        "dfs",
+        "graph-dfs",
+        "grid",
+        "factory",
+        "robotics",
+        "reachability"
+    ]
+}

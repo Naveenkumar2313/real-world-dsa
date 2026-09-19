@@ -1,0 +1,83 @@
+{
+    "scenario_id": "SCN-FRN-001",
+    "title": "Factory Robot Navigation",
+    "slug": "factory-robot-navigation",
+    "short_description": "Learn how autonomous robots inside a factory move between workstations, avoid blocked machine regions, and find efficient routes using Graph BFS, Graph DFS, Flood Fill, A* Pathfinding, and Dijkstra's Algorithm.",
+    "category": "Maps, Games & Robotics",
+    "industry": "Manufacturing & Robotics",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 180,
+    "real_world_context": {
+        "problem": "An autonomous robot on a factory floor leaves its charging dock, travels along free aisles, avoids blocked machine and storage regions, reaches workstations, and must do so with the least travel time. Engineers must find the nearest workstation, know which workstations the dock can actually reach, understand how the floor splits into separate open zones, guide the robot with a heuristic, and account for slow zones that cost more time to cross.",
+        "why_it_matters": "Warehouse and factory fleets run on pathfinding. Choosing BFS, DFS, flood fill, A* or Dijkstra decides whether a robot knows its reachable area, whether it reaches a workstation quickly, and whether it respects zones that are physically slower to cross — the wrong choice leaves robots waiting, blocked or inefficient.",
+        "real_world_entities": [
+            "Factory Floor Cell",
+            "Free Aisle",
+            "Blocked Machine or Storage Region",
+            "Workstation",
+            "Robot Dock / Start Position",
+            "Open Zone",
+            "Slow Zone / Traversal Cost",
+            "Heuristic Estimate"
+        ]
+    },
+    "learning_objectives": [
+        "Represent a factory floor as a graph using a 2D grid with blocked cells.",
+        "Use Breadth-First Search (BFS) to find the nearest workstation from a robot dock in an unweighted floor.",
+        "Use Depth-First Search (DFS) to count which workstations are reachable from the dock.",
+        "Use Flood Fill to count the separate open zones a factory floor splits into.",
+        "Use A* Pathfinding with a Manhattan-distance heuristic to guide a robot to a workstation efficiently.",
+        "Use Dijkstra's Algorithm to minimise travel time when parts of the floor are slower than others."
+    ],
+    "prerequisites": [
+        "Arrays",
+        "2D arrays",
+        "Loops",
+        "Conditional statements",
+        "Basic time complexity",
+        "Queues, stacks and recursion basics",
+        "Graph traversal basics"
+    ],
+    "algorithms": [
+        {
+            "name": "Graph BFS",
+            "module_key": "graph-bfs"
+        },
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "Flood Fill",
+            "module_key": "flood-fill"
+        },
+        {
+            "name": "A* Pathfinding",
+            "module_key": "a-star"
+        },
+        {
+            "name": "Dijkstra's Algorithm",
+            "module_key": "dijkstra"
+        }
+    ],
+    "real_world_mapping": {
+        "floor_cell": "Graph vertex",
+        "adjacent_free_cell": "Undirected edge",
+        "blocked_machine_region": "Removed vertex",
+        "movement_step": "Edge weight of 1",
+        "slow_zone": "Edge weight greater than 1",
+        "nearest_workstation": "BFS shortest path to any target",
+        "reachable_workstations": "DFS reachable set",
+        "open_zone": "Flood fill connected region",
+        "heuristic_estimate": "Manhattan distance in A*",
+        "minimum_travel_time": "Dijkstra shortest weighted path"
+    },
+    "learning_path": [
+        "PROB-FRN-001",
+        "PROB-FRN-002",
+        "PROB-FRN-003",
+        "PROB-FRN-004",
+        "PROB-FRN-005"
+    ],
+    "completion_message": "You have completed the Factory Robot Navigation mission. You have learned how BFS finds the nearest workstation, DFS reports which workstations a dock can reach, flood fill counts the floor's open zones, A* guides a robot with a heuristic, and Dijkstra minimises travel time through slow zones."
+}

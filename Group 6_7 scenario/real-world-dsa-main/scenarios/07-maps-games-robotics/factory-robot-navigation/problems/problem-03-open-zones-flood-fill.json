@@ -1,0 +1,57 @@
+{
+    "problem_id": "PROB-FRN-003",
+    "scenario_id": "SCN-FRN-001",
+    "sequence": 3,
+    "title": "Count Separate Open Zones (Flood Fill)",
+    "difficulty": "Medium",
+    "concepts": [
+        "Grid Graph",
+        "Flood Fill",
+        "Connected Components"
+    ],
+    "real_world_story": "Machine clusters and storage racks cut the factory floor into several separate open areas. Robots cannot drive through the racks, so the planner must know how many independent open zones exist before deciding how many robots can work without interfering.",
+    "real_world_connection": {
+        "system": "Factory floor layout analysis",
+        "input_represents": "Floor plan where 0 is drivable floor and 1 is a blocked machine or storage region",
+        "query_represents": "The whole floor plan, with no start cell",
+        "algorithm_represents": "Pouring paint into every open cell and letting it spread to all connected open neighbours"
+    },
+    "problem_statement": "Given an R x C floor plan of 0 (open floor) and 1 (blocked region), count how many separate open zones the floor contains. Two open cells belong to the same zone when they are connected through 4-directional moves across open cells only. A floor with no open cells has 0 zones.",
+    "task": "Return the number of connected open zones in the floor plan.",
+    "input_format": "The first line contains two integers R and C. The next R lines each contain C integers (0 or 1) describing the floor plan. There is no query line.",
+    "output_format": "Print a single integer: the number of separate open zones.",
+    "constraints": [
+        "1 <= R, C <= 500",
+        "Floor cells are 0 (open) or 1 (blocked)"
+    ],
+    "examples": [
+        {
+            "input": "3 4\n0 0 1 0\n1 1 1 0\n0 0 1 1",
+            "output": "3",
+            "explanation": "The open cells (0,0)-(0,1) form one zone, (0,3)-(1,3) form a second zone, and (2,0)-(2,1) form a third. Blocked cells separate them."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Flood Fill",
+        "module_key": "flood-fill",
+        "reason": "Counting independent open regions is exactly counting connected components of the grid graph, which flood fill does by spreading through all open neighbours of a newly found cell."
+    },
+    "complexity": {
+        "time": "O(R * C)",
+        "space": "O(R * C)"
+    },
+    "hint": [
+        "Scan every cell of the floor plan.",
+        "When you find an open cell that was never visited, you have discovered a new zone.",
+        "Spread from that cell through all connected open cells and mark them visited."
+    ],
+    "real_world_takeaway": "Flood fill turns a floor plan into a map of independent working areas, which fleet planners use to keep robots inside safe, connected zones.",
+    "tags": [
+        "graphs",
+        "flood-fill",
+        "grid",
+        "components",
+        "factory",
+        "robotics"
+    ]
+}
