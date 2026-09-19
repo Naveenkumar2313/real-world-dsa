@@ -1,0 +1,59 @@
+{
+    "problem_id": "PROB-RD-001",
+    "scenario_id": "SCN-RD-035",
+    "sequence": 1,
+    "title": "Shortest Corridor Route (Graph BFS)",
+    "difficulty": "Easy",
+    "concepts": [
+        "Explicit Graph",
+        "Breadth-First Search",
+        "Shortest Path"
+    ],
+    "real_world_story": "A warehouse robot has finished its pick and must get back to the charging dock. The building is a network of rooms joined by corridors, and the controller needs the smallest number of corridors the robot must pass through.",
+    "real_world_connection": {
+        "system": "Robot fleet route assignment",
+        "input_represents": "Rooms and the corridors joining them",
+        "query_represents": "The robot room and the charging dock room",
+        "algorithm_represents": "Spreading level by level through rooms until the dock is reached"
+    },
+    "problem_statement": "Given N rooms numbered 0 to N-1 and E undirected corridors, plus a robot room S and a charging dock room G, find the minimum number of corridors the robot must pass through to reach the dock.",
+    "task": "Return the minimum number of corridors from S to G, or -1 if the dock cannot be reached.",
+    "input_format": "The first line contains three integers N, M and D with D = 0 for undirected corridors and D = 1 for one-way doorways. The next M lines each contain two integers u v. The final line contains two integers S and G.",
+    "output_format": "Print the minimum number of corridors from S to G, or -1 if unreachable. Print 0 when S and G are the same room.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "0 <= M <= 200000",
+        "0 <= S, G < N",
+        "Room numbers are 0-based"
+    ],
+    "examples": [
+        {
+            "input": "4 4 0\n0 1\n1 2\n2 3\n3 0\n0 2",
+            "output": "2",
+            "explanation": "From room 0 the robot can go 0 -> 1 -> 2 or 0 -> 3 -> 2, so 2 corridors is the shortest route to room 2."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph BFS",
+        "module_key": "graph-bfs",
+        "reason": "Every corridor costs exactly one move, so visiting rooms level by level guarantees the first time the dock is reached its distance is the shortest possible."
+    },
+    "complexity": {
+        "time": "O(N + M) because every room and corridor is processed once",
+        "space": "O(N + M) for the adjacency list and the queue"
+    },
+    "hint": [
+        "Store the rooms in an adjacency list with one list per room.",
+        "Process rooms in a queue and record the distance of each newly found room.",
+        "Reverse the neighbour order only when doorways are one-way; undirected corridors go both ways."
+    ],
+    "real_world_takeaway": "When every corridor costs the same, breadth-first search answers 'which route is shortest?' without measuring every route.",
+    "tags": [
+        "graphs",
+        "bfs",
+        "graph-bfs",
+        "shortest-path",
+        "robotics",
+        "path-planning"
+    ]
+}

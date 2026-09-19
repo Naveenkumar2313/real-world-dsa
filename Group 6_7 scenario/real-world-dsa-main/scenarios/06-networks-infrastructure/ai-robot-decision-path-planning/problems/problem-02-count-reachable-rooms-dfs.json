@@ -1,0 +1,59 @@
+{
+    "problem_id": "PROB-RD-002",
+    "scenario_id": "SCN-RD-035",
+    "sequence": 2,
+    "title": "Count Reachable Rooms (Graph DFS)",
+    "difficulty": "Easy",
+    "concepts": [
+        "Explicit Graph",
+        "Depth-First Search",
+        "Connected Region"
+    ],
+    "real_world_story": "Before sending a robot into a wing, the controller must know how many rooms the robot can ever enter from its starting room, so cleaning or inspection jobs are never assigned to sealed-off areas.",
+    "real_world_connection": {
+        "system": "Building coverage planner",
+        "input_represents": "Rooms and the corridors joining them",
+        "query_represents": "The room the robot starts in",
+        "algorithm_represents": "Walking one corridor as far as possible and backtracking to try the next one"
+    },
+    "problem_statement": "Given N rooms numbered 0 to N-1 and E corridors, plus a starting room S, count every room the robot can reach from S using any number of corridor moves. A room counts itself as reachable.",
+    "task": "Return the number of rooms reachable from S, including S itself.",
+    "input_format": "The first line contains three integers N, M and D with D = 0 for undirected corridors and D = 1 for one-way doorways. The next M lines each contain two integers u v. The final line contains the start room S.",
+    "output_format": "Print the number of rooms reachable from S, including S itself.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "0 <= M <= 200000",
+        "0 <= S < N",
+        "Room numbers are 0-based"
+    ],
+    "examples": [
+        {
+            "input": "5 4 0\n0 1\n1 2\n2 3\n3 4\n0",
+            "output": "5",
+            "explanation": "From room 0 the robot can walk along the whole chain 0 -> 1 -> 2 -> 3 -> 4, so all 5 rooms are reachable."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph DFS",
+        "module_key": "graph-dfs",
+        "reason": "Following one corridor as far as it goes and backtracking to unvisited branches visits every room of the connected region exactly once, which is depth-first search."
+    },
+    "complexity": {
+        "time": "O(N + M) because every room and corridor is processed once",
+        "space": "O(N + M) for the adjacency list and the visited marks"
+    },
+    "hint": [
+        "Keep a visited mark per room so sealed loops cannot trap the search.",
+        "Push newly found rooms and always finish one branch before trying the next.",
+        "Each room lands in the region exactly once, so the count equals the number of marked rooms."
+    ],
+    "real_world_takeaway": "Depth-first mapping visits every reachable room exactly once, so the robot knows its whole territory in a single walk.",
+    "tags": [
+        "graphs",
+        "dfs",
+        "graph-dfs",
+        "connectivity",
+        "robotics",
+        "path-planning"
+    ]
+}

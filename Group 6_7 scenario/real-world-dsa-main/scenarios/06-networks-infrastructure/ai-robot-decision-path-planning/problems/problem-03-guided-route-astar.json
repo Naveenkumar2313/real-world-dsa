@@ -1,0 +1,60 @@
+{
+    "problem_id": "PROB-RD-003",
+    "scenario_id": "SCN-RD-035",
+    "sequence": 3,
+    "title": "Guided Route to the Dock (A* Pathfinding)",
+    "difficulty": "Medium",
+    "concepts": [
+        "Grid Graph",
+        "A* Pathfinding",
+        "Heuristic Search"
+    ],
+    "real_world_story": "The robot reads a floor map covered with shelves and must reach its dock across open cells. An unguided search would scan the whole warehouse, so the engineer aims the search with a straight-line distance guess that only explores the promising cells.",
+    "real_world_connection": {
+        "system": "Floor navigation for warehouse robots",
+        "input_represents": "Floor grid where 0 is a free cell and 1 is a shelf or wall",
+        "query_represents": "The cell where the robot stands and the dock cell",
+        "algorithm_represents": "Always expanding the cell whose travelled distance plus distance guess is smallest"
+    },
+    "problem_statement": "Given an R x C floor grid of 0 (free) and 1 (obstacle), a start cell (sr, sc) and a dock cell (dr, dc), find the minimum number of 4-directional moves needed to reach the dock. Use A* with the Manhattan distance to the dock as the heuristic, but note that because the heuristic never overestimates, the value A* returns equals the true shortest distance.",
+    "task": "Return the minimum number of moves from start to dock, or -1 if the dock cannot be reached.",
+    "input_format": "The first line contains two integers R and C. The next R lines each contain C integers (0 or 1). The final line contains four integers sr sc dr dc.",
+    "output_format": "Print the minimum number of moves from start to dock, or -1 if unreachable. Print 0 when the robot already stands on the dock.",
+    "constraints": [
+        "1 <= R, C <= 1000",
+        "0 <= sr, dr < R",
+        "0 <= sc, dc < C",
+        "Floor cells are 0 (free) or 1 (obstacle)",
+        "The start cell and the dock cell are always free"
+    ],
+    "examples": [
+        {
+            "input": "3 3\n0 0 0\n1 1 0\n0 0 0\n0 0 2 2",
+            "output": "4",
+            "explanation": "The shortest route is (0,0) -> (0,1) -> (0,2) -> (1,2) -> (2,2) with 4 moves."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "A* Pathfinding",
+        "module_key": "a-star",
+        "reason": "The Manhattan distance cannot overestimate on a 4-directional grid, so expanding cells in order of travelled distance plus this heuristic returns the optimal route while skipping cells that point away from the dock."
+    },
+    "complexity": {
+        "time": "O(R * C * log(R * C)) for the priority queue over the grid",
+        "space": "O(R * C) for the cost map and the frontier"
+    },
+    "hint": [
+        "Give every explored cell a cost g of travelled moves and a guess h of Manhattan distance to the dock.",
+        "Always expand the frontier cell with the smallest g + h value.",
+        "Never step on obstacles or leave the grid."
+    ],
+    "real_world_takeaway": "A good distance guess turns blind wandering into guided navigation, which is how robots cross a warehouse without scanning every aisle.",
+    "tags": [
+        "graphs",
+        "a-star",
+        "heuristic",
+        "grid",
+        "robotics",
+        "path-planning"
+    ]
+}
