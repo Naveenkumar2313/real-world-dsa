@@ -1,0 +1,57 @@
+{
+    "problem_id": "PROB-MP-005",
+    "scenario_id": "SCN-MP-031",
+    "sequence": 5,
+    "title": "Count Every Possible Route (Backtracking)",
+    "difficulty": "Medium",
+    "concepts": [
+        "Grid Graph",
+        "Backtracking",
+        "Path Enumeration"
+    ],
+    "real_world_story": "A puzzle designer wants to know how many different solutions a small maze has. Every route from entrance to exit must be tried without revisiting any cell, so the difficulty can be tuned.",
+    "real_world_connection": {
+        "system": "Puzzle difficulty analyzer",
+        "input_represents": "Small maze where 0 is a path and 1 is a wall",
+        "query_represents": "Entrance cell and exit cell",
+        "algorithm_represents": "Trying every direction and undoing each step to explore the next option"
+    },
+    "problem_statement": "Given an R x C maze grid of 0 (free) and 1 (wall), a start cell (sr, sc) and a destination cell (dr, dc), count all valid routes from start to destination using 4-directional moves. A route may not step on walls, leave the grid, or visit any cell more than once.",
+    "task": "Return the number of distinct valid routes from start to destination.",
+    "input_format": "The first line contains two integers R and C. The next R lines each contain C integers (0 or 1). The final line contains four integers sr sc dr dc.",
+    "output_format": "Print the number of distinct valid routes. Print 0 when no route exists.",
+    "constraints": [
+        "1 <= R, C <= 7",
+        "0 <= sr, dr < R",
+        "0 <= sc, dc < C"
+    ],
+    "examples": [
+        {
+            "input": "2 2\n0 0\n0 0\n0 0 1 1",
+            "output": "2",
+            "explanation": "The two routes are right-then-down and down-then-right."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Backtracking",
+        "module_key": "backtracking",
+        "reason": "Every simple path must be explored with visited marking and undo, which is exactly depth-first backtracking."
+    },
+    "complexity": {
+        "time": "O(4^(R * C)) worst case",
+        "space": "O(R * C)"
+    },
+    "hint": [
+        "Mark the current cell visited before recursing.",
+        "Unmark it after the recursive calls return.",
+        "Count 1 when start equals destination."
+    ],
+    "real_world_takeaway": "Backtracking enumerates every maze solution, which is how designers measure puzzle difficulty.",
+    "tags": [
+        "graphs",
+        "backtracking",
+        "grid",
+        "maze",
+        "path-counting"
+    ]
+}

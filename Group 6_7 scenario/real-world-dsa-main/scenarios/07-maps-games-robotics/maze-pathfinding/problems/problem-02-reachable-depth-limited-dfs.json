@@ -1,0 +1,64 @@
+{
+    "problem_id": "PROB-MP-002",
+    "scenario_id": "SCN-MP-031",
+    "sequence": 2,
+    "title": "Reachable Within K Moves (DFS + Depth-Limited Search)",
+    "difficulty": "Easy",
+    "concepts": [
+        "Grid Graph",
+        "Depth-First Search",
+        "Depth-Limited Search"
+    ],
+    "real_world_story": "A robot has limited battery and can make at most K moves. The operator must know whether the charging station can be reached before the battery runs out, without searching the whole warehouse.",
+    "real_world_connection": {
+        "system": "Robot battery planning",
+        "input_represents": "Warehouse grid with shelves as walls",
+        "query_represents": "Start position, charging station, and the move limit K",
+        "algorithm_represents": "Exploring deep paths first but stopping once K moves are used"
+    },
+    "problem_statement": "Given an R x C maze grid of 0 (free) and 1 (wall), a start cell (sr, sc), a destination cell (dr, dc), and a move limit K, determine whether the destination can be reached from the start in at most K moves using 4-directional moves without stepping on walls.",
+    "task": "Return 1 if the destination is reachable within K moves, otherwise 0.",
+    "input_format": "The first line contains two integers R and C. The next R lines each contain C integers (0 or 1). The final line contains five integers sr sc dr dc K.",
+    "output_format": "Print 1 if reachable within K moves, otherwise 0.",
+    "constraints": [
+        "1 <= R, C <= 100",
+        "0 <= K <= R * C",
+        "0 <= sr, dr < R",
+        "0 <= sc, dc < C"
+    ],
+    "examples": [
+        {
+            "input": "3 3\n0 0 0\n1 1 0\n0 0 0\n0 0 2 2 4",
+            "output": "1",
+            "explanation": "The shortest route needs 4 moves, which fits exactly within K = 4."
+        },
+        {
+            "input": "3 3\n0 0 0\n1 1 0\n0 0 0\n0 0 2 2 3",
+            "output": "0",
+            "explanation": "The shortest route needs 4 moves, so K = 3 is not enough."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Depth-Limited Search",
+        "module_key": "depth-limited-search",
+        "reason": "DFS with a depth limit explores deep routes first but cuts off every path longer than K, matching a battery or lookahead budget."
+    },
+    "complexity": {
+        "time": "O(4^K) worst case, O(R * C) with visited-depth pruning",
+        "space": "O(K)"
+    },
+    "hint": [
+        "Recurse with remaining moves K.",
+        "Stop when K < 0 or the cell is a wall or already visited on this path.",
+        "Return true as soon as the destination is found."
+    ],
+    "real_world_takeaway": "Depth-limited DFS answers bounded-reachability questions without exploring the whole map.",
+    "tags": [
+        "graphs",
+        "dfs",
+        "graph-dfs",
+        "depth-limited-search",
+        "grid",
+        "maze"
+    ]
+}

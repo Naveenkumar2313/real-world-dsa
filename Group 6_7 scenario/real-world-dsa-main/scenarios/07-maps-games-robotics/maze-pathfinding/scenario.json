@@ -1,0 +1,84 @@
+{
+    "scenario_id": "SCN-MP-031",
+    "title": "Maze & Pathfinding",
+    "slug": "maze-pathfinding",
+    "short_description": "Learn how a person, robot, or game character navigates from a start point to a destination through a grid containing obstacles using Graph BFS, Graph DFS, Depth-Limited Search, Flood Fill, A* Pathfinding, and Backtracking.",
+    "category": "Maps, Games & Robotics",
+    "industry": "Gaming, Robotics & Navigation",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 180,
+    "real_world_context": {
+        "problem": "A person, robot, or game character must navigate from a starting point to a destination through a grid containing obstacles. Engineers must find the shortest route, explore paths with a limited lookahead, map every reachable cell, guide movement with a heuristic, and enumerate all valid routes when every option must be tried.",
+        "why_it_matters": "Pathfinding powers game characters, warehouse robots, delivery drones, and map navigation. Choosing BFS vs DFS vs A* vs backtracking decides whether the route is shortest, fast to compute, or exhaustive — and whether the agent gets stuck behind obstacles.",
+        "real_world_entities": [
+            "Maze Cell",
+            "Obstacle / Wall",
+            "Start Position",
+            "Destination",
+            "Robot / Game Character",
+            "Movement Step",
+            "Heuristic Estimate",
+            "Search Depth Limit"
+        ]
+    },
+    "learning_objectives": [
+        "Represent a maze or game grid as a graph using a 2D grid with obstacles.",
+        "Use Breadth-First Search (BFS) to find the shortest path from start to destination in an unweighted grid.",
+        "Use Depth-First Search (DFS) with Depth-Limited Search to explore paths without wandering forever.",
+        "Use Flood Fill to mark every reachable free cell from a starting position.",
+        "Use A* Pathfinding with a Manhattan-distance heuristic to reach the destination efficiently.",
+        "Use Backtracking to count all valid routes through the maze."
+    ],
+    "prerequisites": [
+        "Arrays",
+        "2D arrays",
+        "Loops",
+        "Conditional statements",
+        "Basic time complexity",
+        "Queues, stacks and recursion basics"
+    ],
+    "algorithms": [
+        {
+            "name": "Graph BFS",
+            "module_key": "graph-bfs"
+        },
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "Depth-Limited Search",
+            "module_key": "depth-limited-search"
+        },
+        {
+            "name": "Flood Fill",
+            "module_key": "flood-fill"
+        },
+        {
+            "name": "A* Pathfinding",
+            "module_key": "a-star"
+        },
+        {
+            "name": "Backtracking",
+            "module_key": "backtracking"
+        }
+    ],
+    "real_world_mapping": {
+        "maze_cell": "Graph vertex",
+        "adjacent_open_cell": "Undirected edge",
+        "obstacle_or_wall": "Removed vertex",
+        "movement_step": "Edge weight of 1",
+        "shortest_route": "BFS shortest path / A* path",
+        "reachable_area": "Flood fill region",
+        "depth_limit": "Maximum search depth",
+        "heuristic_estimate": "Manhattan distance in A*"
+    },
+    "learning_path": [
+        "PROB-MP-001",
+        "PROB-MP-002",
+        "PROB-MP-003",
+        "PROB-MP-004",
+        "PROB-MP-005"
+    ],
+    "completion_message": "You have completed the Maze & Pathfinding mission. You have learned how BFS finds shortest grid routes, DFS with depth limits explores safely, flood fill maps reachable areas, A* guides search with a heuristic, and backtracking enumerates every valid path for people, robots, and game characters."
+}

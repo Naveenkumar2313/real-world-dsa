@@ -1,0 +1,59 @@
+{
+    "problem_id": "PROB-MP-001",
+    "scenario_id": "SCN-MP-031",
+    "sequence": 1,
+    "title": "Shortest Path Through the Maze (BFS)",
+    "difficulty": "Easy",
+    "concepts": [
+        "Grid Graph",
+        "Breadth-First Search",
+        "Shortest Path"
+    ],
+    "real_world_story": "A game character must move from its spawn point to a treasure chest through a maze with walls. The designer needs the shortest route so the level stays fair and fun.",
+    "real_world_connection": {
+        "system": "Game level navigation",
+        "input_represents": "Maze grid where 0 is a free cell and 1 is a wall",
+        "query_represents": "The start cell and the destination cell",
+        "algorithm_represents": "Expanding one step at a time in every direction to find the shortest route"
+    },
+    "problem_statement": "Given an R x C maze grid of 0 (free) and 1 (wall), a start cell (sr, sc) and a destination cell (dr, dc), find the minimum number of steps to move from start to destination using 4-directional moves (up, down, left, right). You cannot step on walls or leave the grid.",
+    "task": "Return the minimum number of steps from start to destination, or -1 if the destination cannot be reached.",
+    "input_format": "The first line contains two integers R and C. The next R lines each contain C integers (0 or 1) describing the maze. The final line contains four integers sr sc dr dc.",
+    "output_format": "Print the minimum number of steps from start to destination, or -1 if unreachable.",
+    "constraints": [
+        "1 <= R, C <= 500",
+        "0 <= sr, dr < R",
+        "0 <= sc, dc < C",
+        "Maze cells are 0 (free) or 1 (wall)"
+    ],
+    "examples": [
+        {
+            "input": "3 3\n0 0 0\n1 1 0\n0 0 0\n0 0 2 2",
+            "output": "4",
+            "explanation": "The shortest route is (0,0) -> (0,1) -> (0,2) -> (1,2) -> (2,2) with 4 steps."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph BFS",
+        "module_key": "graph-bfs",
+        "reason": "Every move costs 1, so BFS from the start expands level by level and the first time the destination is reached the distance is minimal."
+    },
+    "complexity": {
+        "time": "O(R * C)",
+        "space": "O(R * C)"
+    },
+    "hint": [
+        "Use a queue starting from the start cell.",
+        "Track visited cells and distance from the start.",
+        "Try all 4 neighbors that are inside the grid and not walls."
+    ],
+    "real_world_takeaway": "BFS gives the shortest route for characters and robots when every step costs the same.",
+    "tags": [
+        "graphs",
+        "bfs",
+        "graph-bfs",
+        "grid",
+        "maze",
+        "pathfinding"
+    ]
+}
