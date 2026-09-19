@@ -777,10 +777,11 @@ static void heap_pop(long long* f, int* g, int* cell) {
   int lg = hg[hn], lc = hcell[hn];
   int i = 0;
   while (1) {
-      int left = 2 * i + 1, right = 2 * i + 2, m = i;
-      if (left < hn && hf[left] < hf[m]) m = left;
-      if (right < hn && hf[right] < hf[m]) m = right;
-      if (m == i) break;
+      int left = 2 * i + 1, right = 2 * i + 2;
+      if (left >= hn) break;
+      int m = left;
+      if (right < hn && hf[right] < hf[left]) m = right;
+      if (hf[m] >= lf) break;
       hf[i] = hf[m]; hg[i] = hg[m]; hcell[i] = hcell[m];
       i = m;
   }
@@ -801,7 +802,7 @@ int astarPath(int r, int c, int* grid, int sr, int sc, int dr, int dc) {
   long long* best = (long long*)malloc((size_t)r * c * sizeof(long long));
   for (int i = 0; i < r * c; i++) best[i] = INF;
   best[sr * c + sc] = 0;
-  int cap = 4 * r * c + 10;
+  int cap = 5 * r * c + 10;
   hf = (long long*)malloc((size_t)cap * sizeof(long long));
   hg = (int*)malloc((size_t)cap * sizeof(int));
   hcell = (int*)malloc((size_t)cap * sizeof(int));
