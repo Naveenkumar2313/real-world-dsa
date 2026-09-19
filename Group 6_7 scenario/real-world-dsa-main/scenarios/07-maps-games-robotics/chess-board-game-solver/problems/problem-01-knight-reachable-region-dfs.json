@@ -1,0 +1,60 @@
+{
+    "problem_id": "PROB-CBGS-001",
+    "scenario_id": "SCN-CBGS-034",
+    "sequence": 1,
+    "title": "Knight's Reachable Region (Graph DFS)",
+    "difficulty": "Easy",
+    "concepts": [
+        "Grid Graph",
+        "Depth-First Search",
+        "Implicit Graph"
+    ],
+    "real_world_story": "A board game engine highlights every square a knight can reach before the player commits a move. The board contains blocked squares, so the engine must follow the jumps from square to square instead of assuming the whole board is open.",
+    "real_world_connection": {
+        "system": "Board game move generator",
+        "input_represents": "Board grid where '.' is a free square and 'X' is a blocked square",
+        "query_represents": "The square where the knight currently stands",
+        "algorithm_represents": "Following knight jumps from square to square and marking every square that can be reached"
+    },
+    "problem_statement": "Given an R x C board of '.' (free) and 'X' (blocked) and a free starting square (sr, sc), count every free square a knight can reach from the start using any number of knight moves. A knight moves two squares in one direction and one square in the other, in all eight combinations, and it may not land on a blocked square or leave the board. The starting square counts as reachable.",
+    "task": "Return the number of free squares reachable from (sr, sc), including the starting square itself.",
+    "input_format": "The first line contains two integers R and C. The next R lines each contain C characters ('.' or 'X'). The final line contains two integers sr sc.",
+    "output_format": "Print the number of reachable free squares, including the starting square.",
+    "constraints": [
+        "1 <= R, C <= 300",
+        "0 <= sr < R",
+        "0 <= sc < C",
+        "Board cells are free (.) or blocked (X)",
+        "The starting square is always free"
+    ],
+    "examples": [
+        {
+            "input": "3 3\n...\n...\n...\n0 0",
+            "output": "8",
+            "explanation": "From (0,0) the knight can reach 8 of the 9 squares. The centre square (1,1) can never be reached, because no knight jump ends there on a 3 x 3 board."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph DFS",
+        "module_key": "graph-dfs",
+        "reason": "Every square is a vertex and every legal knight jump is an edge, so a depth-first traversal from the start marks exactly the connected region of the board graph the knight can move in."
+    },
+    "complexity": {
+        "time": "O(R * C) because each square is visited once and has eight neighbours",
+        "space": "O(R * C) for the visited marks and the stack"
+    },
+    "hint": [
+        "Treat every square as a graph vertex and every knight jump as an edge.",
+        "Push neighbouring squares onto a stack and mark a square visited when you push it, not when you pop it.",
+        "Count each square the first and only time it is removed from the stack."
+    ],
+    "real_world_takeaway": "A depth-first traversal of the board graph answers 'which squares can this piece reach?' in a single pass, even when blocked squares break the board into regions.",
+    "tags": [
+        "graphs",
+        "dfs",
+        "graph-dfs",
+        "grid",
+        "chess",
+        "board-game"
+    ]
+}

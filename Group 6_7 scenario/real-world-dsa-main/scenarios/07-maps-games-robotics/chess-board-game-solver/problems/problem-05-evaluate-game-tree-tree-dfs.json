@@ -1,0 +1,60 @@
+{
+    "problem_id": "PROB-CBGS-005",
+    "scenario_id": "SCN-CBGS-034",
+    "sequence": 5,
+    "title": "Evaluate the Game Tree (Tree DFS)",
+    "difficulty": "Hard",
+    "concepts": [
+        "Tree",
+        "Depth-First Search",
+        "Minimax",
+        "Recursion"
+    ],
+    "real_world_story": "Before the engine plays a move it needs one number that describes the position: the score that each side can force when both players always pick their best continuation. That number is computed by evaluating the game tree from the bottom up.",
+    "real_world_connection": {
+        "system": "Chess engine evaluation",
+        "input_represents": "The tree of possible continuations where each leaf carries the score of a finished position",
+        "query_represents": "The value of the root position",
+        "algorithm_represents": "Scoring every child first and combining the scores with max on the engine's turns and min on the opponent's turns"
+    },
+    "problem_statement": "The engine stores a game tree as a parenthesised expression. An integer is a leaf whose value is the score of a finished position, and ( a b c ) is an internal node whose children are the sub-trees written between the brackets. Node types alternate with depth: the root at depth 0 is a MAX node, its children at depth 1 are MIN nodes, their children are MAX nodes again, and so on. A MAX node takes the largest value of its children and a MIN node the smallest, while a leaf keeps its own score. Evaluate the tree and report the value of the root.",
+    "task": "Return the minimax value of the root position.",
+    "input_format": "A single line containing the game tree expression, with single spaces between its parts.",
+    "output_format": "Print the value of the root position.",
+    "constraints": [
+        "1 <= number of nodes in the tree <= 2000",
+        "0 <= depth of the tree <= 500",
+        "-1000 <= score of a leaf <= 1000",
+        "The expression contains only integers, parentheses and single spaces"
+    ],
+    "examples": [
+        {
+            "input": "( 3 ( -1 5 ) )",
+            "output": "3",
+            "explanation": "The root is a MAX node. Its children are the leaf 3 and the MIN node (-1 5), whose value is -1, so the maximum of 3 and -1 is 3."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Tree DFS",
+        "module_key": "tree-dfs",
+        "reason": "A depth-first post-order traversal scores every child before its parent, so each node can combine its children's values with max or min exactly once."
+    },
+    "complexity": {
+        "time": "O(N) where N is the number of nodes, because every node is evaluated once",
+        "space": "O(D) recursion depth where D is the depth of the tree"
+    },
+    "hint": [
+        "Parse the expression into a tree before evaluating it.",
+        "A leaf simply returns its own score.",
+        "An internal node evaluates all of its children first and then keeps the largest value on a MAX level and the smallest on a MIN level."
+    ],
+    "real_world_takeaway": "Depth-first evaluation of a game tree with min and max levels is the minimax rule that every board game engine is built on.",
+    "tags": [
+        "trees",
+        "dfs",
+        "tree-dfs",
+        "minimax",
+        "game-tree",
+        "chess"
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "problem_id": "PROB-CBGS-003",
+    "scenario_id": "SCN-CBGS-034",
+    "sequence": 3,
+    "title": "Count Legal Piece Arrangements (Backtracking)",
+    "difficulty": "Medium",
+    "concepts": [
+        "Backtracking",
+        "Constraint Checking",
+        "Combinatorial Counting"
+    ],
+    "real_world_story": "A board game engine must set up puzzles and validate starting positions. Some squares of the board are unusable, and no two rooks may share a row or a column, so the engine has to count every arrangement that keeps the position legal.",
+    "real_world_connection": {
+        "system": "Board setup and puzzle validator",
+        "input_represents": "Board grid where '.' is an allowed square and 'X' is a forbidden square",
+        "query_represents": "The number of rooks K that must be placed",
+        "algorithm_represents": "Trying a square for each rook, rejecting rows and columns that are already occupied, and undoing the choice to try the next square"
+    },
+    "problem_statement": "Given an N x N board of '.' (allowed) and 'X' (forbidden) and an integer K, count the distinct ways of placing exactly K non-attacking rooks. No two rooks may share a row or a column, no rook may stand on a forbidden square, and two arrangements are different when the set of occupied squares is different.",
+    "task": "Return the number of legal arrangements of exactly K rooks. When K is 0 the empty arrangement counts as one arrangement.",
+    "input_format": "The first line contains two integers N and K. The next N lines each contain N characters ('.' or 'X').",
+    "output_format": "Print the number of legal arrangements.",
+    "constraints": [
+        "1 <= N <= 8",
+        "0 <= K <= N",
+        "Board cells are allowed (.) or forbidden (X)"
+    ],
+    "examples": [
+        {
+            "input": "3 2\n...\n...\n...",
+            "output": "18",
+            "explanation": "There are 3 choices of two rows and 3 choices of two columns. For each of those 9 pairs the two rooks can be placed in 2 ways, so 3 * 3 * 2 = 18 arrangements exist."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Backtracking",
+        "module_key": "backtracking",
+        "reason": "Rooks are placed row by row, a square is accepted only when its column is still free and allowed, and each placement is undone so the next option can be tried."
+    },
+    "complexity": {
+        "time": "O(N!) with pruning, because each row either stays empty or takes one of the free columns",
+        "space": "O(N) for the used-column flags and the recursion"
+    },
+    "hint": [
+        "Handle one row at a time and either leave it empty or put a rook in one allowed column.",
+        "Keep a flag per column so two rooks never share a column.",
+        "Stop a branch as soon as the remaining rows cannot hold the rooks that are still missing."
+    ],
+    "real_world_takeaway": "Backtracking with a cheap constraint check counts every legal arrangement without ever enumerating arrangements that break the rules.",
+    "tags": [
+        "backtracking",
+        "recursion",
+        "combinatorics",
+        "chess",
+        "board-game",
+        "counting"
+    ]
+}

@@ -1,0 +1,61 @@
+{
+    "problem_id": "PROB-CBGS-004",
+    "scenario_id": "SCN-CBGS-034",
+    "sequence": 4,
+    "title": "Shortest Win Distance (Tree BFS)",
+    "difficulty": "Medium",
+    "concepts": [
+        "Tree",
+        "Breadth-First Search",
+        "Level-Order Traversal",
+        "Game Tree"
+    ],
+    "real_world_story": "A game engine wants to tell the player how quickly a winning position can appear. It stores the tree of continuations and looks through the positions ply by ply, so the first winning position it meets is the closest one.",
+    "real_world_connection": {
+        "system": "Game tree search",
+        "input_represents": "The tree of possible continuations where each leaf carries the score of a finished position",
+        "query_represents": "The score T that counts as a win",
+        "algorithm_represents": "Reading the tree level by level so the shallowest winning position is found first"
+    },
+    "problem_statement": "The engine stores a game tree as a parenthesised expression. An integer is a leaf whose value is the score of a finished position, and ( a b c ) is an internal node whose children are the sub-trees written between the brackets. Given the expression and a threshold T, a leaf is winning when its score is at least T. Find the smallest number of plies (edges from the root) at which a winning leaf appears.",
+    "task": "Return the smallest depth of a winning leaf, or -1 when no leaf reaches the threshold.",
+    "input_format": "The first line contains the game tree expression, with single spaces between its parts. The second line contains the integer T.",
+    "output_format": "Print the smallest depth of a leaf whose score is at least T, or -1 if no such leaf exists. The root itself is at depth 0.",
+    "constraints": [
+        "1 <= number of nodes in the tree <= 2000",
+        "0 <= depth of the tree <= 500",
+        "-1000 <= score of a leaf <= 1000",
+        "-1000 <= T <= 1000",
+        "The expression contains only integers, parentheses and single spaces"
+    ],
+    "examples": [
+        {
+            "input": "( 3 ( -1 5 ) )\n4",
+            "output": "2",
+            "explanation": "The leaves are 3 at depth 1, and -1 and 5 at depth 2. Only the leaf 5 reaches the threshold 4, and it lies 2 plies from the root."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Tree BFS",
+        "module_key": "tree-bfs",
+        "reason": "A level-order traversal visits every node exactly one ply further from the root than the previous level, so the first level that contains a winning leaf is the shortest win distance."
+    },
+    "complexity": {
+        "time": "O(N) where N is the number of nodes, because every node is visited once",
+        "space": "O(N) for the parsed tree and the queue"
+    },
+    "hint": [
+        "Parse the expression into a tree before searching it.",
+        "Keep a queue of the nodes of the current level and build the next level from their children.",
+        "Return the current level as soon as a winning leaf is found; if the queue empties, no win exists."
+    ],
+    "real_world_takeaway": "Breadth-first search over a game tree finds the closest winning position first, which is exactly what a 'win in N' hint needs.",
+    "tags": [
+        "trees",
+        "bfs",
+        "tree-bfs",
+        "game-tree",
+        "chess",
+        "board-game"
+    ]
+}

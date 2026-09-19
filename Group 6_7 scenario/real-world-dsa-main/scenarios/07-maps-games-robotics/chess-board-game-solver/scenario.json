@@ -1,0 +1,85 @@
+{
+    "scenario_id": "SCN-CBGS-034",
+    "title": "Chess & Board Game Solver",
+    "slug": "chess-board-game-solver",
+    "short_description": "Learn how a chess or board game engine explores the board and the game tree to decide which squares a piece can reach, which squares it attacks, which arrangements of pieces are legal, and which continuation is best, using Graph DFS, Bit Manipulation, Backtracking, Tree BFS and Tree DFS.",
+    "category": "Maps, Games & Robotics",
+    "industry": "Gaming & Board Game Engines",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 180,
+    "real_world_context": {
+        "problem": "A chess or board game engine must know every square a piece can reach, generate a piece's attack set quickly, count the legal arrangements of several pieces, and search the tree of possible continuations. Engineers must pack the board into bits, treat squares as graph vertices, try arrangements with backtracking, find the fastest way to a winning position, and score the whole game tree.",
+        "why_it_matters": "Every chess app, board game, puzzle engine and AI opponent depends on these routines. Representing a board as a bitboard, traversing squares as a graph, pruning impossible arrangements and choosing breadth-first or depth-first search decides whether the engine finds the legal answer at all — and whether it finds it in time.",
+        "real_world_entities": [
+            "Board Square",
+            "Piece",
+            "Bitboard",
+            "Attacked Square",
+            "Blocked Square",
+            "Legal Arrangement",
+            "Game Tree Node",
+            "Ply",
+            "Evaluation Score",
+            "Winning Threshold"
+        ]
+    },
+    "learning_objectives": [
+        "Represent a board as a graph of squares and use Graph DFS to find every square a piece can reach.",
+        "Pack an 8 x 8 board into a 64-bit bitboard and use bitwise shifts, masks and popcount to generate a piece's attack set.",
+        "Use Backtracking to count every legal arrangement of K pieces on a board that contains forbidden squares.",
+        "Use Tree BFS to find the smallest number of plies at which a winning position appears in a game tree.",
+        "Use Tree DFS to evaluate a game tree with alternating MAX and MIN levels (minimax)."
+    ],
+    "prerequisites": [
+        "Arrays",
+        "2D arrays",
+        "Strings",
+        "Loops",
+        "Conditional statements",
+        "Basic time complexity",
+        "Queues, stacks and recursion basics",
+        "Binary number basics (bits, shifts, bitwise AND and OR)"
+    ],
+    "algorithms": [
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "Bit Manipulation",
+            "module_key": "bit-manipulation"
+        },
+        {
+            "name": "Backtracking",
+            "module_key": "backtracking"
+        },
+        {
+            "name": "Tree BFS",
+            "module_key": "tree-bfs"
+        },
+        {
+            "name": "Tree DFS",
+            "module_key": "tree-dfs"
+        }
+    ],
+    "real_world_mapping": {
+        "board_square": "Graph vertex",
+        "legal_piece_move": "Undirected edge",
+        "blocked_square": "Removed vertex",
+        "bitboard": "64-bit integer with one bit per square",
+        "attack_set": "Bitmask built with shifts and masks",
+        "legal_arrangement": "Backtracking search path",
+        "game_tree_node": "Tree node",
+        "ply_depth": "Tree level",
+        "evaluation_score": "Leaf value",
+        "best_score": "Minimax value at the root"
+    },
+    "learning_path": [
+        "PROB-CBGS-001",
+        "PROB-CBGS-002",
+        "PROB-CBGS-003",
+        "PROB-CBGS-004",
+        "PROB-CBGS-005"
+    ],
+    "completion_message": "You have completed the Chess & Board Game Solver mission. You have learned how Graph DFS finds every square a knight can reach, how a 64-bit bitboard generates a queen's attack set, how Backtracking counts the legal arrangements of rooks, how Tree BFS finds the shortest distance to a winning position, and how Tree DFS evaluates a whole game tree with minimax."
+}

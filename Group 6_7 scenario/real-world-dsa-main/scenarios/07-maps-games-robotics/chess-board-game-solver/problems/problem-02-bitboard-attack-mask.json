@@ -1,0 +1,60 @@
+{
+    "problem_id": "PROB-CBGS-002",
+    "scenario_id": "SCN-CBGS-034",
+    "sequence": 2,
+    "title": "Bitboard Attack Mask (Bit Manipulation)",
+    "difficulty": "Medium",
+    "concepts": [
+        "Bitboard",
+        "Bit Manipulation",
+        "Bitmask",
+        "Popcount"
+    ],
+    "real_world_story": "A chess engine stores the whole board in a single 64-bit number so that move generation costs a few machine instructions instead of a double loop over squares. The engine needs the attack set of the queen, and any other piece standing in the way stops the queen's ray.",
+    "real_world_connection": {
+        "system": "Chess engine move generator",
+        "input_represents": "Board grid where '.' is an empty square and 'X' is a blocking piece",
+        "query_represents": "The square the queen stands on",
+        "algorithm_represents": "Setting one bit per square and OR-ing the eight rays until a blocker bit is hit"
+    },
+    "problem_statement": "An engine stores the 8 x 8 board as a 64-bit bitboard, where bit (r * 8 + c) belongs to the square in row r and column c. Given the board of '.' (empty) and 'X' (a blocking piece) and the square (qr, qc) of a queen, count the squares the queen attacks. The queen moves any number of squares along its row, its column or either diagonal; the first blocking piece on a ray is attacked, and the ray stops there. The square the queen stands on is not counted.",
+    "task": "Return the number of squares the queen attacks, counting the first blocker on each of the eight rays.",
+    "input_format": "Eight lines each containing eight characters ('.' or 'X'). The final line contains two integers qr qc.",
+    "output_format": "Print the number of attacked squares.",
+    "constraints": [
+        "The board is exactly 8 x 8",
+        "0 <= qr, qc < 8",
+        "Board cells are empty (.) or a blocker (X)",
+        "The queen always stands on an empty square"
+    ],
+    "examples": [
+        {
+            "input": "........\n........\n........\n........\n........\n........\n........\n........\n0 0",
+            "output": "21",
+            "explanation": "On an empty board a corner queen attacks 7 squares along its row, 7 along its column and 7 along its diagonal, which is 21 squares."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Bit Manipulation",
+        "module_key": "bit-manipulation",
+        "reason": "The whole board becomes one 64-bit integer, each ray walks with shifts, blockers are tested with AND, the attack set is built with OR and its size comes from a popcount."
+    },
+    "complexity": {
+        "time": "O(1) because the board is a fixed 8 x 8 and only eight rays are walked",
+        "space": "O(1) for the two 64-bit masks"
+    },
+    "hint": [
+        "Build one 64-bit mask with a 1 bit for every blocking square, using 1 shifted left by (row * 8 + col).",
+        "Walk each of the eight rays one square at a time, OR-ing the square's bit into the attack mask.",
+        "Stop a ray right after a square whose bit is set in the blocker mask, and count the bits at the end with popcount."
+    ],
+    "real_world_takeaway": "Packing a board into a 64-bit bitboard turns attack generation into shifts, masks and popcount, which is why real engines generate moves so quickly.",
+    "tags": [
+        "bit-manipulation",
+        "bitboard",
+        "bits",
+        "chess",
+        "board-game",
+        "move-generation"
+    ]
+}
