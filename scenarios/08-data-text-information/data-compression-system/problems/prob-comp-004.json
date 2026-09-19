@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-COMP-004",
+  "scenario_id": "SCN-COMP-001",
+  "sequence": 4,
+  "title": "Traverse the Compression Tree with DFS",
+  "difficulty": "Medium",
+  "concepts": [
+    "Binary Tree",
+    "Depth First Search",
+    "Tree Traversal"
+  ],
+  "real_world_story": "A compression system needs to inspect every branch of its binary encoding tree to analyze the complete structure of encoded data.",
+  "real_world_connection": {
+    "system": "Binary encoding-tree analysis system",
+    "input_represents": "A binary encoding tree stored in level-order",
+    "target_represents": "The order in which nodes are visited while exploring each branch deeply",
+    "algorithm_represents": "Using Depth First Search to explore a tree branch before moving to the next branch"
+  },
+  "problem_statement": "Given a binary tree represented in level-order where -1 represents a missing node, print all existing node values using a preorder Depth First Search traversal.",
+  "task": "Traverse the binary tree using DFS in preorder and print the values in the order they are visited.",
+  "input_format": "The first line contains an integer N, the number of positions in the level-order representation. The second line contains N space-separated integers. A value of -1 represents a missing node.",
+  "output_format": "Print the existing node values in preorder DFS order separated by spaces. If the tree is empty, print -1.",
+  "constraints": [
+    "1 <= N <= 10000",
+    "-1 <= value[i] <= 1000000000",
+    "The first position represents the root"
+  ],
+  "examples": [
+    {
+      "input": "7\n1 2 3 4 5 -1 7",
+      "output": "1 2 4 5 3 7",
+      "explanation": "Preorder DFS visits the root first, then completely explores the left subtree before visiting the right subtree."
+    },
+    {
+      "input": "7\n10 20 30 40 -1 50 60",
+      "output": "10 20 40 30 50 60",
+      "explanation": "DFS explores the left branch deeply before moving to the right branch."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Tree DFS",
+    "module_key": "tree-dfs",
+    "reason": "Depth First Search explores one branch of the binary tree completely before moving to another branch, making it useful for examining hierarchical encoding structures."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Process the current node before its children.",
+    "Recursively or iteratively visit the left subtree.",
+    "After completing the left subtree, visit the right subtree.",
+    "This produces a preorder traversal."
+  ],
+  "real_world_takeaway": "DFS helps compression systems inspect complete branches of hierarchical encoding structures and analyze how encoded information is organized along individual paths.",
+  "tags": [
+    "binary-tree",
+    "dfs",
+    "depth-first-search",
+    "preorder",
+    "tree-traversal"
+  ]
+}

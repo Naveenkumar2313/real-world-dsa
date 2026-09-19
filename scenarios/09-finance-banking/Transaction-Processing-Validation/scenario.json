@@ -1,0 +1,87 @@
+{
+  "scenario_id": "SCN-TRANS-001",
+  "title": "Transaction Processing & Validation",
+  "slug": "transaction-processing-validation",
+  "short_description": "Learn how banking systems process transaction requests in order, validate operation sequences, monitor transaction activity, detect suspicious patterns, and identify duplicate transactions efficiently.",
+  "category": "Data Structures and String Processing",
+  "industry": "Banking and Financial Services",
+  "difficulty": "Beginner to Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "A banking system processes streams of transaction requests and must maintain the correct processing order, validate transaction operation sequences, monitor periods of high transaction activity, detect suspicious patterns in transaction logs, and identify duplicate transaction IDs.",
+    "why_it_matters": "Efficient data structures and string-processing algorithms allow banking systems to process transaction requests correctly, monitor activity, detect suspicious behavior, and prevent duplicate transactions as transaction volumes increase.",
+    "real_world_entities": [
+      "Transaction",
+      "Transaction ID",
+      "Transaction Request",
+      "Transaction Queue",
+      "Transaction Sequence",
+      "Transaction Log",
+      "Suspicious Pattern",
+      "Transaction Activity"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how queues can maintain the order of incoming transaction requests.",
+    "Apply FIFO queue operations to process transactions in their arrival order.",
+    "Use stacks to validate nested transaction operation sequences.",
+    "Apply Sliding Window techniques to identify periods of high transaction activity.",
+    "Use KMP Pattern Matching to efficiently locate suspicious patterns in transaction logs.",
+    "Use hashing to detect duplicate transaction IDs efficiently.",
+    "Understand how different data structures and algorithms solve different transaction-processing requirements.",
+    "Understand why algorithm efficiency matters when processing large transaction streams."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Strings",
+    "Loops",
+    "Conditional statements",
+    "Basic Queue concepts",
+    "Basic Stack concepts",
+    "Basic Hashing concepts",
+    "Basic pattern matching concepts",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "Queue Operations",
+      "module_key": "queue-operations"
+    },
+    {
+      "name": "Stack Operations",
+      "module_key": "stack-operations"
+    },
+    {
+      "name": "Sliding Window",
+      "module_key": "sliding-window"
+    },
+    {
+      "name": "KMP Pattern Matching",
+      "module_key": "kmp-pattern-matching"
+    },
+    {
+      "name": "Hashing",
+      "module_key": "hashing"
+    }
+  ],
+  "real_world_mapping": {
+    "transaction_request": "Request waiting to be processed by the banking system",
+    "transaction_order": "Order in which transaction requests are received",
+    "transaction_queue": "Queue maintaining pending transactions",
+    "transaction_sequence": "Encoded sequence of transaction operations",
+    "transaction_activity": "Number of transactions processed during a time interval",
+    "transaction_log": "String containing recorded transaction information",
+    "suspicious_pattern": "Transaction sequence being searched for in a transaction log",
+    "transaction_id": "Unique identifier assigned to a transaction",
+    "duplicate_transaction": "Transaction ID appearing more than once",
+    "transaction_validation": "Process of checking whether a transaction request or sequence is valid"
+  },
+  "learning_path": [
+    "PROB-TRANS-001",
+    "PROB-TRANS-002",
+    "PROB-TRANS-003",
+    "PROB-TRANS-004",
+    "PROB-TRANS-005"
+  ],
+  "completion_message": "You have completed the Transaction Processing & Validation mission. You have learned how queues, stacks, sliding windows, KMP pattern matching, and hashing can be applied to transaction processing, monitoring, pattern detection, and validation in banking systems."
+}

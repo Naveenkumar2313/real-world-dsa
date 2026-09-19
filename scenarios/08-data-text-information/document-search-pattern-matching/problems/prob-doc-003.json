@@ -1,0 +1,64 @@
+{
+    "problem_id": "PROB-DOC-003",
+    "scenario_id": "SCN-DOC-001",
+    "sequence": 3,
+    "title": "Document Word Auto-Complete",
+    "difficulty": "Medium",
+    "concepts": [
+        "String",
+        "Trie",
+        "Trie Operations"
+    ],
+    "real_world_story": "A document-management application provides search suggestions while a user types. Given a collection of document words and a typed prefix, the system must display all stored words beginning with that prefix.",
+    "real_world_connection": {
+        "system": "Document search auto-complete",
+        "input_represents": "Words indexed from documents",
+        "target_represents": "Prefix typed by the user",
+        "algorithm_represents": "A Trie for efficient prefix traversal and word retrieval"
+    },
+    "problem_statement": "Given N words and a prefix, find all words in the collection that start with the given prefix. Print the matching words in lexicographical order. If there are no matches, print -1.",
+    "task": "Build a Trie from the given words and use it to retrieve every word beginning with the requested prefix.",
+    "input_format": "The first line contains an integer N. The second line contains N space-separated lowercase words. The third line contains the prefix to search for.",
+    "output_format": "Print all matching words in lexicographical order separated by spaces. If no word matches the prefix, print -1.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "1 <= length of each word <= 50",
+        "1 <= length of prefix <= 50",
+        "Words contain only lowercase English letters"
+    ],
+    "examples": [
+        {
+            "input": "6\ndocument documentation doctor dog download data\ndoc",
+            "output": "doctor document documentation",
+            "explanation": "The words beginning with 'doc' are returned in lexicographical order."
+        },
+        {
+            "input": "5\nsearch storage system source service\napp",
+            "output": "-1",
+            "explanation": "No stored word begins with the prefix 'app'."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Trie Operations",
+        "module_key": "trie-operations",
+        "reason": "A Trie stores words character by character and allows the prefix to be traversed directly before collecting matching words."
+    },
+    "complexity": {
+        "time": "O(total characters + output characters)",
+        "space": "O(total characters)"
+    },
+    "hint": [
+        "Insert every word into a Trie.",
+        "Traverse the Trie using the characters of the prefix.",
+        "If the prefix path does not exist, there are no matches.",
+        "Perform a traversal from the prefix node to collect complete words."
+    ],
+    "real_world_takeaway": "Trie-based indexing can support responsive auto-complete and prefix-based search over large collections of document words.",
+    "tags": [
+        "strings",
+        "trie",
+        "autocomplete",
+        "prefix-search",
+        "document-search"
+    ]
+}

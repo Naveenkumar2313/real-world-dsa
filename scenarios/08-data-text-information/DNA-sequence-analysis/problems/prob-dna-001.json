@@ -1,0 +1,61 @@
+{
+  "problem_id": "PROB-DNA-001",
+  "scenario_id": "SCN-DNA-001",
+  "sequence": 1,
+  "title": "Find the Longest Common DNA Subsequence",
+  "difficulty": "Medium",
+  "concepts": [
+    "String",
+    "Dynamic Programming",
+    "Longest Common Subsequence"
+  ],
+  "real_world_story": "A biological research system compares DNA sequences from two samples to identify the longest sequence of genetic elements that appears in both samples while preserving their original order.",
+  "real_world_connection": {
+    "system": "DNA sequence comparison and biological analysis system",
+    "input_represents": "DNA sequences obtained from two biological samples",
+    "target_represents": "The longest sequence shared by both DNA samples",
+    "algorithm_represents": "Finding the longest common subsequence while preserving the order of biological sequence elements"
+  },
+  "problem_statement": "Given two DNA sequences, find the length of their Longest Common Subsequence (LCS). A subsequence can be formed by deleting zero or more characters without changing the order of the remaining characters.",
+  "task": "Compare the two DNA sequences and return the length of their longest common subsequence.",
+  "input_format": "The first line contains the first DNA sequence. The second line contains the second DNA sequence.",
+  "output_format": "Print a single integer representing the length of the Longest Common Subsequence.",
+  "constraints": [
+    "1 <= length of each DNA sequence <= 1000",
+    "DNA sequences contain only the characters A, C, G, and T"
+  ],
+  "examples": [
+    {
+      "input": "ACGTAC\nAGTAC",
+      "output": "5",
+      "explanation": "The longest common subsequence is 'AGTAC', which has length 5."
+    },
+    {
+      "input": "ACCGGTCGAGTGCGCGGAAGCCGGCCGAA\nGTCGTTCGGAATGCCGTTGCTCTGTAAA",
+      "output": "20",
+      "explanation": "The two DNA sequences share a longest common subsequence of length 20."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Longest Common Subsequence using Dynamic Programming",
+    "module_key": "longest-common-subsequence",
+    "reason": "DNA sequences may contain common genetic patterns at different positions, so dynamic programming can efficiently determine the longest sequence shared while preserving order."
+  },
+  "complexity": {
+    "time": "O(N * M)",
+    "space": "O(N * M)"
+  },
+  "hint": [
+    "Create a table representing prefixes of the two DNA sequences.",
+    "If the current nucleotides match, extend the common subsequence.",
+    "Otherwise, consider skipping a nucleotide from either sequence and keep the larger result."
+  ],
+  "real_world_takeaway": "LCS can help researchers compare biological sequences and identify shared genetic patterns even when insertions or deletions occur between matching elements.",
+  "tags": [
+    "strings",
+    "dna",
+    "dynamic-programming",
+    "lcs",
+    "sequence-analysis"
+  ]
+}

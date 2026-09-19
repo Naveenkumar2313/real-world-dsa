@@ -1,0 +1,85 @@
+{
+  "scenario_id": "SCN-COMP-001",
+  "title": "Data Compression System",
+  "slug": "data-compression-system",
+  "short_description": "Learn how data-compression systems reduce storage requirements and efficiently process encoded information using Huffman coding, binary trees, tree traversal, and priority-based processing.",
+  "category": "Data Structures and Greedy Algorithms",
+  "industry": "Data Compression and Storage",
+  "difficulty": "Beginner to Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "A software system needs to reduce the amount of space required to store or transmit text while preserving the original information. The system also needs to organize encoded data using tree structures and efficiently manage compression-related processing tasks.",
+    "why_it_matters": "Efficient compression reduces storage requirements and transmission costs, while appropriate tree and priority-based algorithms help compression systems process and organize data effectively.",
+    "real_world_entities": [
+      "Compressed Data",
+      "Symbol",
+      "Symbol Frequency",
+      "Huffman Code",
+      "Binary Tree",
+      "Compression Tree",
+      "Compression Task",
+      "Task Priority"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how symbol frequencies can be used to construct Huffman codes.",
+    "Apply Huffman Coding to calculate minimum compression cost.",
+    "Understand the structure and properties of binary trees.",
+    "Calculate the height of a binary tree.",
+    "Apply Breadth First Search to process a compression tree level by level.",
+    "Apply Depth First Search to explore branches of a compression tree.",
+    "Understand how priority-based greedy processing can organize compression tasks.",
+    "Choose appropriate data structures and algorithms for different compression-system requirements."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Functions",
+    "Basic tree concepts",
+    "Basic queue concepts",
+    "Basic greedy algorithm concepts",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "Huffman Coding",
+      "module_key": "huffman-coding"
+    },
+    {
+      "name": "Binary Trees",
+      "module_key": "binary-trees"
+    },
+    {
+      "name": "Tree BFS",
+      "module_key": "tree-bfs"
+    },
+    {
+      "name": "Tree DFS",
+      "module_key": "tree-dfs"
+    },
+    {
+      "name": "Priority-style Greedy Processing",
+      "module_key": "priority-style-greedy-processing"
+    }
+  ],
+  "real_world_mapping": {
+    "compressed_data": "Reduced representation of the original information",
+    "symbol": "Individual character or data item being encoded",
+    "symbol_frequency": "Number of times a symbol occurs in the input data",
+    "huffman_code": "Variable-length binary code assigned to each symbol",
+    "binary_tree": "Hierarchical structure used to represent encoded information",
+    "compression_tree": "Binary tree representing the organization of compressed data",
+    "tree_level": "Depth level of a node within the compression tree",
+    "compression_task": "A file or data-processing operation waiting to be processed",
+    "task_priority": "Importance level used to determine compression task processing order"
+  },
+  "learning_path": [
+    "PROB-COMP-001",
+    "PROB-COMP-002",
+    "PROB-COMP-003",
+    "PROB-COMP-004",
+    "PROB-COMP-005"
+  ],
+  "completion_message": "You have completed the Data Compression System mission. You have learned how Huffman Coding, binary trees, BFS, DFS, and priority-based greedy processing can be applied to storage optimization, encoded data organization, and efficient compression task management."
+}

@@ -1,0 +1,60 @@
+{
+  "problem_id": "PROB-AI-004",
+  "scenario_id": "SCN-AI-001",
+  "sequence": 4,
+  "title": "Generate Valid Action Sequences",
+  "difficulty": "Medium",
+  "concepts": [
+    "Generate Parentheses",
+    "Backtracking"
+  ],
+  "real_world_story": "An AI workflow engine generates sequences of opening and closing actions. A generated sequence is valid only when every opening action is properly matched by a closing action and no closing action appears before its corresponding opening action.",
+  "real_world_connection": {
+    "system": "AI workflow and action-sequence generator",
+    "input_represents": "Number of action pairs",
+    "target_represents": "All valid balanced action sequences",
+    "algorithm_represents": "Backtracking to construct valid sequences while maintaining the number of available opening and closing actions"
+  },
+  "problem_statement": "Given an integer N, generate all valid sequences containing N pairs of parentheses. A sequence is valid if every opening parenthesis is matched with a closing parenthesis and no prefix contains more closing parentheses than opening parentheses.",
+  "task": "Generate all valid balanced parentheses sequences containing exactly N pairs.",
+  "input_format": "The input contains a single integer N.",
+  "output_format": "Print all valid sequences in lexicographical order, separated by spaces. If N is 0, print an empty sequence.",
+  "constraints": [
+    "1 <= N <= 8"
+  ],
+  "examples": [
+    {
+      "input": "2",
+      "output": "(()) ()()",
+      "explanation": "There are two valid sequences containing two pairs of parentheses."
+    },
+    {
+      "input": "3",
+      "output": "((())) (()()) (())() ()(()) ()()()",
+      "explanation": "There are five valid sequences containing three pairs of parentheses."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Generate Parentheses",
+    "module_key": "generate-parentheses",
+    "reason": "Backtracking can generate only valid sequences by adding an opening parenthesis when available and a closing parenthesis only when it does not make the sequence invalid."
+  },
+  "complexity": {
+    "time": "O(Catalan(N) * N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Track the number of opening parentheses already used.",
+    "Track the number of closing parentheses already used.",
+    "An opening parenthesis can be added while fewer than N openings have been used.",
+    "A closing parenthesis can be added only when the number of closings is smaller than the number of openings."
+  ],
+  "real_world_takeaway": "Backtracking can generate valid action sequences by constructing candidates incrementally and preventing invalid states from being explored.",
+  "tags": [
+    "generate-parentheses",
+    "backtracking",
+    "recursion",
+    "combinations",
+    "ai"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-INV-005",
+  "scenario_id": "SCN-INV-001",
+  "sequence": 5,
+  "title": "Choose the Maximum Number of Investment Opportunities",
+  "difficulty": "Easy",
+  "concepts": [
+    "Greedy Algorithm",
+    "Sorting",
+    "Investment Selection"
+  ],
+  "real_world_story": "A financial planning system has a limited number of available investment slots. Each investment requires a certain amount of capital, and the planner wants to select as many opportunities as possible without exceeding the available budget.",
+  "real_world_connection": {
+    "system": "Investment opportunity selection system",
+    "input_represents": "Capital requirements of available investment opportunities",
+    "target_represents": "Maximum number of investment opportunities that can be selected",
+    "algorithm_represents": "Selecting the least expensive available opportunities first to maximize the number of selected investments"
+  },
+  "problem_statement": "Given N investment opportunities and a total investment budget B, determine the maximum number of opportunities that can be selected without exceeding the budget. Each opportunity can be selected at most once.",
+  "task": "Select as many investment opportunities as possible while keeping the total investment cost within the available budget.",
+  "input_format": "The first line contains two integers N and B, representing the number of investment opportunities and the available budget. The second line contains N space-separated integers representing the cost of each investment opportunity.",
+  "output_format": "Print the maximum number of investment opportunities that can be selected within the budget.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= B <= 1000000000",
+    "1 <= cost[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "5 15\n5 3 8 2 7",
+      "output": "3",
+      "explanation": "Selecting investments costing 2, 3, and 5 uses 10 units of the budget. Four investments would require at least 2+3+5+7=17, which exceeds the budget."
+    },
+    {
+      "input": "4 10\n4 6 8 3",
+      "output": "2",
+      "explanation": "The two least expensive investments cost 3 and 4, so two opportunities can be selected within the budget."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Greedy",
+    "module_key": "greedy",
+    "reason": "Choosing the least expensive investment opportunities first maximizes the number of opportunities that can fit within the fixed budget."
+  },
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(1)",
+    "additional_note": "The sorting operation dominates the running time."
+  },
+  "hint": [
+    "Sort the investment costs in ascending order.",
+    "Start selecting from the least expensive opportunity.",
+    "Keep adding costs while the total remains within the budget.",
+    "The number of selected opportunities is the answer."
+  ],
+  "real_world_takeaway": "A greedy strategy can quickly maximize the number of affordable investment opportunities when every selected opportunity has the same selection value and only its cost matters.",
+  "tags": [
+    "greedy",
+    "investment",
+    "sorting",
+    "budget",
+    "optimization"
+  ]
+}

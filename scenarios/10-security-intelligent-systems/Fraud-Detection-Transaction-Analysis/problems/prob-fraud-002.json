@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-FRAUD-002",
+  "scenario_id": "SCN-FRAUD-001",
+  "sequence": 2,
+  "title": "Detect the Most Active Transaction Window",
+  "difficulty": "Medium",
+  "concepts": [
+    "Sliding Window",
+    "Arrays"
+  ],
+  "real_world_story": "A fraud monitoring system receives transaction amounts in chronological order. A sudden increase in transaction activity within a short period may require additional investigation.",
+  "real_world_connection": {
+    "system": "Real-time transaction monitoring system",
+    "input_represents": "Transaction amounts recorded in chronological order",
+    "target_represents": "A fixed monitoring period containing K consecutive transactions",
+    "algorithm_represents": "Sliding Window for efficiently calculating the highest transaction total within any consecutive monitoring period"
+  },
+  "problem_statement": "Given an array of transaction amounts and an integer K, find the maximum total transaction amount among all contiguous windows containing exactly K transactions.",
+  "task": "Identify the K consecutive transactions with the highest total amount.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated transaction amounts. The third line contains K.",
+  "output_format": "Print the maximum sum of any contiguous group of exactly K transaction amounts.",
+  "constraints": [
+    "1 <= K <= N <= 100000",
+    "0 <= transaction[i] <= 1000000"
+  ],
+  "examples": [
+    {
+      "input": "6\n100 250 150 400 300 200\n3",
+      "output": "850",
+      "explanation": "The window 150, 400, 300 has the highest total of 850."
+    },
+    {
+      "input": "5\n50 100 200 150 80\n2",
+      "output": "350",
+      "explanation": "The window 200, 150 has the highest total of 350."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Sliding Window",
+    "module_key": "sliding-window",
+    "reason": "A sliding window updates the transaction total by removing the outgoing transaction and adding the incoming transaction instead of recalculating every window."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Calculate the sum of the first K transactions.",
+    "Move the window one transaction at a time.",
+    "Subtract the transaction leaving the window.",
+    "Add the transaction entering the window.",
+    "Keep track of the maximum window sum."
+  ],
+  "real_world_takeaway": "Sliding Window techniques allow monitoring systems to detect unusually high transaction activity over fixed time periods efficiently.",
+  "tags": [
+    "sliding-window",
+    "arrays",
+    "transaction-analysis",
+    "fraud-detection",
+    "monitoring"
+  ]
+}

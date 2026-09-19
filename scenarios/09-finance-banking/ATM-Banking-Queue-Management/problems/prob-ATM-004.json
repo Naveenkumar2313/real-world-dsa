@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-ATM-004",
+  "scenario_id": "SCN-ATM-001",
+  "sequence": 4,
+  "title": "Schedule Maximum Customer Services",
+  "difficulty": "Medium",
+  "concepts": [
+    "Activity Selection",
+    "Greedy",
+    "Scheduling"
+  ],
+  "real_world_story": "A bank employee has several customer-service appointments during a working day. Each appointment has a start time and an end time, and overlapping appointments cannot be handled by the same employee.",
+  "real_world_connection": {
+    "system": "Bank customer appointment scheduling system",
+    "input_represents": "Customer service appointments with start and end times",
+    "target_represents": "Maximum number of non-overlapping appointments that can be handled",
+    "algorithm_represents": "Activity Selection using a greedy strategy that chooses the appointment ending earliest"
+  },
+  "problem_statement": "Given N customer service appointments with their start and end times, select the maximum number of non-overlapping appointments that can be handled by one bank employee. An appointment can be selected if its start time is greater than or equal to the end time of the previously selected appointment.",
+  "task": "Find the maximum number of non-overlapping customer service appointments that can be scheduled.",
+  "input_format": "The first line contains an integer N, the number of appointments. Each of the next N lines contains two integers representing the start time and end time of an appointment.",
+  "output_format": "Print the maximum number of non-overlapping appointments that can be selected.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "0 <= start_time[i] < end_time[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "6\n1 3\n2 5\n4 7\n6 9\n8 10\n9 11",
+      "output": "3",
+      "explanation": "Appointments (1,3), (4,7), and (8,10) can be selected without overlap."
+    },
+    {
+      "input": "5\n1 2\n3 4\n0 6\n5 7\n8 9",
+      "output": "4",
+      "explanation": "Appointments (1,2), (3,4), (5,7), and (8,9) can be scheduled without overlapping."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Activity Selection",
+    "module_key": "activity-selection",
+    "reason": "Selecting the appointment that finishes earliest leaves the largest possible remaining time for subsequent appointments."
+  },
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Sort the appointments by their ending time.",
+    "Select the first appointment that finishes earliest.",
+    "For each remaining appointment, check whether its start time is at least the previous end time.",
+    "Select it when it does not overlap with the previously selected appointment."
+  ],
+  "real_world_takeaway": "Greedy activity selection can help banks schedule the maximum number of customer appointments when one employee cannot handle overlapping services.",
+  "tags": [
+    "activity-selection",
+    "greedy",
+    "scheduling",
+    "banking",
+    "appointments"
+  ]
+}

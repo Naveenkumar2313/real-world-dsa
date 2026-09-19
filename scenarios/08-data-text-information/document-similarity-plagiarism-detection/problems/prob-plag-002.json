@@ -1,0 +1,61 @@
+{
+  "problem_id": "PROB-PLAG-002",
+  "scenario_id": "SCN-PLAG-001",
+  "sequence": 2,
+  "title": "Calculate Document Edit Distance",
+  "difficulty": "Medium",
+  "concepts": [
+    "String",
+    "Dynamic Programming",
+    "Edit Distance"
+  ],
+  "real_world_story": "An educational platform wants to measure how much one document differs from another by determining the minimum number of character changes required to transform one document into the other.",
+  "real_world_connection": {
+    "system": "Document comparison and text similarity system",
+    "input_represents": "Two document strings that need to be compared",
+    "target_represents": "The minimum number of edits needed to transform one document into the other",
+    "algorithm_represents": "Computing the minimum number of insertions, deletions, and replacements required between two documents"
+  },
+  "problem_statement": "Given two document strings, calculate the minimum number of operations required to transform the first document into the second. The allowed operations are insertion, deletion, and replacement of a character, and each operation has a cost of 1.",
+  "task": "Determine the minimum number of character-level edits required to transform the first document into the second.",
+  "input_format": "The first line contains the first document string. The second line contains the second document string.",
+  "output_format": "Print a single integer representing the minimum edit distance between the two documents.",
+  "constraints": [
+    "1 <= length of each document <= 500",
+    "Documents contain only lowercase English letters"
+  ],
+  "examples": [
+    {
+      "input": "kitten\nsitting",
+      "output": "3",
+      "explanation": "Three operations are required to transform 'kitten' into 'sitting'."
+    },
+    {
+      "input": "book\nback",
+      "output": "2",
+      "explanation": "Two character replacements are sufficient to transform 'book' into 'back'."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Edit Distance using Dynamic Programming",
+    "module_key": "edit-distance",
+    "reason": "Each character comparison can be solved by considering insertion, deletion, or replacement, while previously computed results avoid repeated work."
+  },
+  "complexity": {
+    "time": "O(N * M)",
+    "space": "O(N * M)"
+  },
+  "hint": [
+    "Create a table for prefixes of both documents.",
+    "When the current characters match, no new operation is required.",
+    "When they differ, consider insertion, deletion, and replacement and choose the minimum."
+  ],
+  "real_world_takeaway": "Edit distance can help document systems measure textual differences and identify how much content has changed between two versions.",
+  "tags": [
+    "strings",
+    "dynamic-programming",
+    "edit-distance",
+    "document-comparison",
+    "text-similarity"
+  ]
+}

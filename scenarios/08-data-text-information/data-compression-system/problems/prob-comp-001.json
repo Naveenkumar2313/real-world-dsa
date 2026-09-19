@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-COMP-001",
+  "scenario_id": "SCN-COMP-001",
+  "sequence": 1,
+  "title": "Calculate Huffman Compression Cost",
+  "difficulty": "Medium",
+  "concepts": [
+    "Greedy Algorithm",
+    "Huffman Coding",
+    "Min Heap",
+    "Priority Queue"
+  ],
+  "real_world_story": "A data-compression system needs to reduce the number of bits required to transmit a collection of symbols. Symbols that occur more frequently should receive shorter binary codes.",
+  "real_world_connection": {
+    "system": "Lossless data-compression system",
+    "input_represents": "Frequency of each symbol in the data",
+    "target_represents": "Minimum total number of bits required to encode all symbols using Huffman coding",
+    "algorithm_represents": "Repeatedly combining the two least frequent symbols to construct an optimal prefix-code tree"
+  },
+  "problem_statement": "Given the frequencies of N symbols, calculate the minimum total cost of constructing a Huffman code. At each step, combine the two smallest frequencies and add their sum to the total cost. Continue until only one frequency remains.",
+  "task": "Use Huffman coding to calculate the minimum total number of bits required to represent the given symbol frequencies.",
+  "input_format": "The first line contains an integer N, the number of symbols. The second line contains N space-separated positive integers representing the frequency of each symbol.",
+  "output_format": "Print a single integer representing the minimum total Huffman encoding cost.",
+  "constraints": [
+    "2 <= N <= 100000",
+    "1 <= frequency[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "4\n5 9 12 13",
+      "output": "78",
+      "explanation": "The frequencies are combined as 5+9=14, 12+13=25, 14+25=39, giving a total cost of 14+25+39=78."
+    },
+    {
+      "input": "5\n2 3 7 9 18",
+      "output": "77",
+      "explanation": "Repeatedly combining the two smallest frequencies produces a minimum total Huffman cost of 77."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Huffman Coding",
+    "module_key": "huffman-coding",
+    "reason": "Huffman coding repeatedly combines the two least frequent symbols to construct an optimal prefix-code tree with minimum weighted encoding cost."
+  },
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Insert all frequencies into a min heap.",
+    "Remove the two smallest frequencies.",
+    "Add their sum to the total cost and insert the sum back into the heap.",
+    "Continue until only one value remains."
+  ],
+  "real_world_takeaway": "Huffman coding reduces storage and transmission requirements by assigning shorter codes to frequently occurring symbols while preserving the original information.",
+  "tags": [
+    "huffman-coding",
+    "greedy",
+    "priority-queue",
+    "min-heap",
+    "data-compression"
+  ]
+}

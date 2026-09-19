@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-REC-003",
+  "scenario_id": "SCN-REC-001",
+  "sequence": 3,
+  "title": "Find Three Items with Target Score",
+  "difficulty": "Medium",
+  "concepts": [
+    "Three Sum",
+    "Two Pointer",
+    "Sorting"
+  ],
+  "real_world_story": "A recommendation platform wants to create a bundle of three items whose combined recommendation score matches a user's desired target. The system needs to find such a combination efficiently.",
+  "real_world_connection": {
+    "system": "Recommendation bundle generation system",
+    "input_represents": "Scores of available items",
+    "target_represents": "Desired total score for a three-item recommendation bundle",
+    "algorithm_represents": "Sorting combined with the Three Sum technique and two-pointer searching"
+  },
+  "problem_statement": "Given an array of item scores and a target score, find three different items whose scores add up exactly to the target. Print the first valid triplet in lexicographical order. If no triplet exists, print -1.",
+  "task": "Find three item scores whose sum is exactly equal to the target score.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated integers representing item scores. The third line contains the target score.",
+  "output_format": "Print the three values in ascending order separated by spaces. If no valid triplet exists, print -1.",
+  "constraints": [
+    "3 <= N <= 1000",
+    "-100000 <= score[i] <= 100000",
+    "-300000 <= target <= 300000"
+  ],
+  "examples": [
+    {
+      "input": "6\n-1 0 1 2 -1 -4\n0",
+      "output": "-1 -1 2",
+      "explanation": "The values -1, -1, and 2 add up to 0."
+    },
+    {
+      "input": "5\n2 4 6 8 10\n18",
+      "output": "2 6 10",
+      "explanation": "The values 2, 6, and 10 add up to 18."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Three Sum",
+    "module_key": "three-sum",
+    "reason": "Sorting followed by fixing one value and using two pointers allows three values with the required target sum to be found efficiently."
+  },
+  "complexity": {
+    "time": "O(N^2)",
+    "space": "O(1)",
+    "where": "The input array is sorted in place."
+  },
+  "hint": [
+    "Sort the item scores.",
+    "Fix one item at a time.",
+    "Use two pointers for the remaining two values.",
+    "Move the pointers based on whether the current sum is smaller or larger than the target."
+  ],
+  "real_world_takeaway": "Three Sum techniques can help recommendation systems construct bundles of multiple items that satisfy a target score or compatibility requirement.",
+  "tags": [
+    "three-sum",
+    "two-pointer",
+    "sorting",
+    "recommendation",
+    "arrays"
+  ]
+}

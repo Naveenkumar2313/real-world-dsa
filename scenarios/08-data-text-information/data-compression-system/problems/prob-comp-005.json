@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-COMP-005",
+  "scenario_id": "SCN-COMP-001",
+  "sequence": 5,
+  "title": "Process Highest-Priority Compression Tasks",
+  "difficulty": "Medium",
+  "concepts": [
+    "Greedy Algorithm",
+    "Priority Queue",
+    "Priority Processing"
+  ],
+  "real_world_story": "A compression service receives multiple files waiting to be processed. Some files have higher processing priority than others, so the system must always select the highest-priority available task first.",
+  "real_world_connection": {
+    "system": "Compression task scheduling system",
+    "input_represents": "Compression tasks with priority values",
+    "target_represents": "The order in which tasks should be processed",
+    "algorithm_represents": "Repeatedly selecting the currently highest-priority task before processing the next task"
+  },
+  "problem_statement": "Given N compression tasks, each with a task ID and priority, process the tasks in descending order of priority. If two tasks have the same priority, process the task with the smaller task ID first.",
+  "task": "Determine the order in which the compression system should process all tasks using priority-based greedy processing.",
+  "input_format": "The first line contains an integer N, the number of compression tasks. Each of the next N lines contains two integers: task ID and priority.",
+  "output_format": "Print the task IDs in the order in which they should be processed, separated by spaces.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= task ID <= 1000000000",
+    "1 <= priority <= 1000000000",
+    "All task IDs are unique"
+  ],
+  "examples": [
+    {
+      "input": "5\n101 3\n102 5\n103 2\n104 5\n105 4",
+      "output": "102 104 105 101 103",
+      "explanation": "Tasks 102 and 104 have the highest priority 5, so they are processed first. Task 102 has the smaller ID and is processed before 104."
+    },
+    {
+      "input": "4\n201 10\n202 7\n203 10\n204 8",
+      "output": "201 203 204 202",
+      "explanation": "Tasks with priority 10 are processed first, followed by priority 8 and then priority 7. For equal priority, the smaller task ID comes first."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Priority-style Greedy Processing",
+    "module_key": "priority-style-greedy-processing",
+    "reason": "The system can make the locally optimal choice at each step by selecting the highest-priority available compression task, with task ID used as the tie-breaker."
+  },
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Store each task together with its priority.",
+    "Always select the task with the highest priority.",
+    "When priorities are equal, select the smaller task ID.",
+    "A priority queue or sorting-based approach can efficiently determine the processing order."
+  ],
+  "real_world_takeaway": "Priority-based greedy processing allows compression systems to handle important or urgent tasks first while efficiently managing a large number of pending operations.",
+  "tags": [
+    "greedy",
+    "priority-queue",
+    "priority-processing",
+    "task-scheduling",
+    "data-compression"
+  ]
+}

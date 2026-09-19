@@ -1,0 +1,61 @@
+{
+  "problem_id": "PROB-PORT-004",
+  "scenario_id": "SCN-PORT-001",
+  "sequence": 4,
+  "title": "Rank Investments by Expected Value",
+  "difficulty": "Easy",
+  "concepts": [
+    "Sorting",
+    "Arrays",
+    "Portfolio Analysis"
+  ],
+  "real_world_story": "An investment platform needs to display available investment opportunities in descending order of their expected portfolio value so that investors can quickly review the highest-value opportunities.",
+  "real_world_connection": {
+    "system": "Investment portfolio analysis system",
+    "input_represents": "Expected values of available investments",
+    "target_represents": "Investments arranged from highest expected value to lowest",
+    "algorithm_represents": "Sorting investment values in descending order"
+  },
+  "problem_statement": "Given N investment opportunities and their expected values, arrange the investments in descending order of expected value and print the resulting sequence.",
+  "task": "Sort the expected values of all investment opportunities from highest to lowest.",
+  "input_format": "The first line contains an integer N, the number of investment opportunities. The second line contains N space-separated integers representing their expected values.",
+  "output_format": "Print the expected values in descending order separated by spaces.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= value[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "6\n80 45 120 60 95 30",
+      "output": "120 95 80 60 45 30",
+      "explanation": "The investment values are arranged from the highest expected value to the lowest."
+    },
+    {
+      "input": "5\n50 20 75 40 60",
+      "output": "75 60 50 40 20",
+      "explanation": "Sorting the expected values in descending order produces the required ranking."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Sorting",
+    "module_key": "sorting",
+    "reason": "Sorting allows the investment platform to arrange opportunities according to their expected portfolio value."
+  },
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Read all expected values into an array.",
+    "Sort the array in descending order.",
+    "Print the sorted values in the required format."
+  ],
+  "real_world_takeaway": "Sorting helps portfolio systems organize investment opportunities so that investors can quickly compare and review available choices.",
+  "tags": [
+    "sorting",
+    "arrays",
+    "portfolio",
+    "investment-ranking",
+    "investment-analysis"
+  ]
+}

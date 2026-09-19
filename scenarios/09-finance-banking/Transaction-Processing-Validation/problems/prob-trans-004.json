@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-TRANS-004",
+  "scenario_id": "SCN-TRANS-001",
+  "sequence": 4,
+  "title": "Find Suspicious Transaction Pattern",
+  "difficulty": "Medium",
+  "concepts": [
+    "KMP Pattern Matching",
+    "Strings",
+    "Pattern Searching"
+  ],
+  "real_world_story": "A banking security system analyzes a long transaction log and searches for a suspicious sequence of transaction codes that may indicate repeated or unusual activity.",
+  "real_world_connection": {
+    "system": "Banking security and transaction-monitoring system",
+    "input_represents": "Transaction log and suspicious transaction pattern",
+    "target_represents": "All positions where the suspicious pattern occurs",
+    "algorithm_represents": "KMP pattern matching for efficient searching within a long transaction log"
+  },
+  "problem_statement": "Given a transaction log string and a suspicious pattern string, find every position where the pattern occurs in the transaction log, including overlapping occurrences.",
+  "task": "Locate all occurrences of the suspicious pattern in the transaction log.",
+  "input_format": "The first line contains the transaction log string. The second line contains the suspicious pattern string.",
+  "output_format": "Print the zero-based starting indices of all occurrences separated by spaces. If the pattern does not occur, print -1.",
+  "constraints": [
+    "1 <= length of transaction log <= 100000",
+    "1 <= length of pattern <= 10000",
+    "The strings contain only English letters and digits"
+  ],
+  "examples": [
+    {
+      "input": "ABABABA\nABA",
+      "output": "0 2 4",
+      "explanation": "The pattern 'ABA' occurs starting at positions 0, 2, and 4, including overlapping occurrences."
+    },
+    {
+      "input": "TXN123TXN456TXN789\nTXN",
+      "output": "0 6 12",
+      "explanation": "The transaction pattern 'TXN' appears at positions 0, 6, and 12."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "KMP Pattern Matching",
+    "module_key": "kmp-pattern-matching",
+    "reason": "KMP efficiently searches for all pattern occurrences without repeatedly comparing characters that have already been matched."
+  },
+  "complexity": {
+    "time": "O(N + M)",
+    "space": "O(M)"
+  },
+  "hint": [
+    "Build the LPS array for the suspicious pattern.",
+    "Scan the transaction log while maintaining the matched pattern length.",
+    "When the complete pattern is found, record its starting index.",
+    "Use the LPS array to continue searching for overlapping occurrences."
+  ],
+  "real_world_takeaway": "KMP pattern matching can help security systems search large transaction logs efficiently for suspicious sequences or known activity patterns.",
+  "tags": [
+    "kmp",
+    "pattern-matching",
+    "strings",
+    "transactions",
+    "security"
+  ]
+}

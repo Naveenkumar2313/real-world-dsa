@@ -1,0 +1,85 @@
+{
+  "scenario_id": "SCN-PAY-001",
+  "title": "Payment & Currency System",
+  "slug": "payment-currency-system",
+  "short_description": "Learn how payment systems determine currency combinations, calculate change, analyze payment possibilities, search denominations efficiently, and process transactions in arrival order.",
+  "category": "Data Structures and Algorithms",
+  "industry": "Payments and Financial Services",
+  "difficulty": "Beginner to Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "A payment system needs to determine how different currency denominations can be used to reach target amounts, calculate change efficiently, search supported denominations, analyze possible currency combinations, and process incoming transactions in the order they are received.",
+    "why_it_matters": "Efficient currency calculations, searching, and transaction processing allow payment systems to handle large numbers of payments accurately and respond quickly to customer requests.",
+    "real_world_entities": [
+      "Payment",
+      "Currency",
+      "Coin",
+      "Denomination",
+      "Change",
+      "Payment Combination",
+      "Transaction",
+      "Transaction Queue"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how currency denominations can be represented using arrays.",
+    "Apply Coin Change techniques to determine the minimum number of coins required for a target amount.",
+    "Apply Greedy algorithms to calculate currency change using available denominations.",
+    "Use Dynamic Programming to calculate the number of possible currency combinations.",
+    "Apply Binary Search to quickly locate the first denomination greater than or equal to a target amount.",
+    "Understand FIFO behavior and apply Queue Operations to process payment transactions.",
+    "Choose appropriate algorithms based on the type of payment or currency-processing requirement.",
+    "Understand why algorithm efficiency matters when processing large numbers of payments and transactions."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Strings",
+    "Loops",
+    "Conditional statements",
+    "Basic searching concepts",
+    "Basic Dynamic Programming concepts",
+    "Basic Queue concepts",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "Coin Change",
+      "module_key": "coin-change"
+    },
+    {
+      "name": "Greedy",
+      "module_key": "greedy"
+    },
+    {
+      "name": "Dynamic Programming",
+      "module_key": "dynamic-programming"
+    },
+    {
+      "name": "Binary Search",
+      "module_key": "binary-search"
+    },
+    {
+      "name": "Queue Operations",
+      "module_key": "queue-operations"
+    }
+  ],
+  "real_world_mapping": {
+    "payment": "Amount that needs to be paid or processed",
+    "currency": "Money represented through supported denominations",
+    "coin": "Individual currency unit used to construct an amount",
+    "denomination": "Value assigned to a coin or currency note",
+    "target_amount": "Payment amount that needs to be formed",
+    "change": "Amount returned to a customer after a payment",
+    "payment_combination": "A combination of denominations used to form an amount",
+    "transaction": "Payment operation waiting to be processed",
+    "transaction_queue": "Queue containing payment transactions in their arrival order"
+  },
+  "learning_path": [
+    "PROB-PAY-001",
+    "PROB-PAY-002",
+    "PROB-PAY-003",
+    "PROB-PAY-004",
+    "PROB-PAY-005"
+  ],
+  "completion_message": "You have completed the Payment & Currency System mission. You have learned how Coin Change, Greedy algorithms, Dynamic Programming, Binary Search, and Queue Operations can be applied to currency calculation, payment processing, and transaction management."
+}

@@ -1,0 +1,61 @@
+{
+  "problem_id": "PROB-PLAG-004",
+  "scenario_id": "SCN-PLAG-001",
+  "sequence": 4,
+  "title": "Find the Longest Matching Text Window",
+  "difficulty": "Medium",
+  "concepts": [
+    "String",
+    "Sliding Window",
+    "Document Similarity"
+  ],
+  "real_world_story": "A plagiarism detection system compares two documents by examining continuous sections of text and wants to determine the longest section that appears identically in both documents.",
+  "real_world_connection": {
+    "system": "Document similarity and plagiarism detection system",
+    "input_represents": "Two documents whose continuous text sections are being compared",
+    "target_represents": "The longest continuous matching section between the documents",
+    "algorithm_represents": "Expanding and evaluating matching windows while comparing continuous portions of both documents"
+  },
+  "problem_statement": "Given two document strings, find the length of the longest continuous sequence of characters that appears in both documents. The matching sequence must consist of consecutive characters in both documents.",
+  "task": "Compare continuous windows of the two documents and return the length of the longest matching window.",
+  "input_format": "The first line contains the first document string. The second line contains the second document string.",
+  "output_format": "Print a single integer representing the length of the longest common continuous sequence.",
+  "constraints": [
+    "1 <= length of each document <= 1000",
+    "Documents contain only lowercase English letters"
+  ],
+  "examples": [
+    {
+      "input": "abcdef\nzcdemf",
+      "output": "3",
+      "explanation": "The longest common continuous sequence is 'cde', which has length 3."
+    },
+    {
+      "input": "hello\nyellow",
+      "output": "4",
+      "explanation": "The longest common continuous sequence is 'ello', which has length 4."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Sliding Window Comparison",
+    "module_key": "sliding-window",
+    "reason": "Continuous portions of the documents can be examined as matching windows, allowing the system to track the longest shared section."
+  },
+  "complexity": {
+    "time": "O(N * M)",
+    "space": "O(M)"
+  },
+  "hint": [
+    "Consider each possible alignment between the two documents.",
+    "Maintain the length of the current continuous matching section.",
+    "Reset the current matching length when characters do not match and keep track of the maximum."
+  ],
+  "real_world_takeaway": "Finding long continuous matching sections can help identify copied passages that appear directly in another document.",
+  "tags": [
+    "strings",
+    "sliding-window",
+    "document-similarity",
+    "substring",
+    "plagiarism-detection"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-ATM-001",
+  "scenario_id": "SCN-ATM-001",
+  "sequence": 1,
+  "title": "Process Customers in Waiting Order",
+  "difficulty": "Easy",
+  "concepts": [
+    "Queue",
+    "FIFO",
+    "Queue Operations"
+  ],
+  "real_world_story": "A bank branch receives customers waiting for services such as cash withdrawal, deposits, and account enquiries. Customers must be served in the same order in which they join the waiting line.",
+  "real_world_connection": {
+    "system": "Bank branch customer service system",
+    "input_represents": "Customer IDs entering the service queue",
+    "target_represents": "Order in which customers should be served",
+    "algorithm_represents": "A queue that processes the customer who arrived first before later customers"
+  },
+  "problem_statement": "Given N customer IDs in the order in which they enter a bank service queue, process all customers using FIFO ordering and print their IDs in the order in which they are served.",
+  "task": "Process every customer in the same order in which they joined the queue.",
+  "input_format": "The first line contains an integer N, the number of customers. The second line contains N space-separated customer IDs.",
+  "output_format": "Print the customer IDs in their service order separated by spaces.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= customer_id[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "5\n101 205 309 412 518",
+      "output": "101 205 309 412 518",
+      "explanation": "Customers are served in the same order in which they entered the waiting queue."
+    },
+    {
+      "input": "4\n72 15 89 34",
+      "output": "72 15 89 34",
+      "explanation": "Customer 72 arrived first and is therefore served before the remaining customers."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Queue Operations",
+    "module_key": "queue-operations",
+    "reason": "A queue follows First-In-First-Out ordering, which matches the required customer service order."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Add customers to the queue in their arrival order.",
+    "Remove the customer from the front of the queue.",
+    "Continue until the queue becomes empty.",
+    "Print each customer when it is served."
+  ],
+  "real_world_takeaway": "Queue operations help banks manage waiting customers fairly by ensuring that earlier arrivals are normally served before later arrivals.",
+  "tags": [
+    "queue",
+    "fifo",
+    "banking",
+    "customer-service",
+    "queue-operations"
+  ]
+}

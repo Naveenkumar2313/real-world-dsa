@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-FRAUD-004",
+  "scenario_id": "SCN-FRAUD-001",
+  "sequence": 4,
+  "title": "Find a Suspicious Transaction Pair",
+  "difficulty": "Medium",
+  "concepts": [
+    "Sorting",
+    "Two Pointer"
+  ],
+  "real_world_story": "A financial monitoring system wants to identify two transactions whose combined amount matches a predefined suspicious total. Such combinations may require additional analysis.",
+  "real_world_connection": {
+    "system": "Transaction combination analysis system",
+    "input_represents": "Transaction amounts",
+    "target_represents": "Suspicious combined transaction amount",
+    "algorithm_represents": "Sorting followed by Two Pointer searching to efficiently find a pair with the required total"
+  },
+  "problem_statement": "Given an array of transaction amounts and a target amount, find two different transaction amounts whose sum equals the target. Print the pair in ascending order. If multiple pairs exist, print the lexicographically smallest pair. If no pair exists, print -1.",
+  "task": "Find a pair of transaction amounts whose combined value exactly matches the suspicious target amount.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated transaction amounts. The third line contains the target amount.",
+  "output_format": "Print the two transaction amounts in ascending order separated by a space. If no valid pair exists, print -1.",
+  "constraints": [
+    "2 <= N <= 100000",
+    "0 <= transaction[i] <= 1000000000",
+    "0 <= target <= 2000000000"
+  ],
+  "examples": [
+    {
+      "input": "6\n120 80 250 170 300 50\n300",
+      "output": "50 250",
+      "explanation": "The transaction amounts 50 and 250 add up to the target 300."
+    },
+    {
+      "input": "5\n100 150 200 250 400\n500",
+      "output": "100 400",
+      "explanation": "The transaction amounts 100 and 400 add up to 500."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Two Pointer",
+    "module_key": "two-pointer",
+    "reason": "Sorting the transaction amounts allows two pointers to move toward the required target efficiently."
+  },
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(N)",
+    "where": "Sorting dominates the running time."
+  },
+  "hint": [
+    "Sort the transaction amounts.",
+    "Place one pointer at the beginning and another at the end.",
+    "If their sum is smaller than the target, move the left pointer forward.",
+    "If their sum is larger than the target, move the right pointer backward.",
+    "Return the first valid pair found."
+  ],
+  "real_world_takeaway": "Two Pointer techniques can efficiently identify combinations of transaction values that satisfy suspicious or predefined financial rules.",
+  "tags": [
+    "two-pointer",
+    "sorting",
+    "transaction-pair",
+    "fraud-detection",
+    "arrays"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-PASS-003",
+  "scenario_id": "SCN-PASS-001",
+  "sequence": 3,
+  "title": "Find Suspicious Pattern Occurrences",
+  "difficulty": "Medium",
+  "concepts": [
+    "KMP Pattern Matching",
+    "Strings",
+    "Pattern Searching"
+  ],
+  "real_world_story": "A security monitoring system analyzes authentication logs and searches for a known suspicious sequence that may indicate repeated or unusual authentication activity.",
+  "real_world_connection": {
+    "system": "Authentication security monitoring system",
+    "input_represents": "Authentication log and suspicious pattern",
+    "target_represents": "All positions where the suspicious pattern occurs",
+    "algorithm_represents": "KMP pattern matching for efficient searching within a large authentication log"
+  },
+  "problem_statement": "Given an authentication log string and a suspicious pattern string, find every position where the pattern occurs in the log, including overlapping occurrences.",
+  "task": "Locate all occurrences of the suspicious pattern in the authentication log.",
+  "input_format": "The first line contains the authentication log string. The second line contains the suspicious pattern string.",
+  "output_format": "Print the zero-based starting indices of all occurrences separated by spaces. If the pattern does not occur, print -1.",
+  "constraints": [
+    "1 <= length of log <= 100000",
+    "1 <= length of pattern <= 10000",
+    "The strings contain only English letters and digits"
+  ],
+  "examples": [
+    {
+      "input": "ABABABA\nABA",
+      "output": "0 2 4",
+      "explanation": "The pattern 'ABA' occurs at positions 0, 2, and 4, including overlapping occurrences."
+    },
+    {
+      "input": "login123login456\nlogin",
+      "output": "0 8",
+      "explanation": "The pattern 'login' occurs at positions 0 and 8."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "KMP Pattern Matching",
+    "module_key": "kmp-pattern-matching",
+    "reason": "KMP searches for all pattern occurrences efficiently without repeatedly comparing characters that have already been matched."
+  },
+  "complexity": {
+    "time": "O(N + M)",
+    "space": "O(M)"
+  },
+  "hint": [
+    "Build the LPS array for the suspicious pattern.",
+    "Scan the authentication log while maintaining the matched pattern length.",
+    "Record the starting index whenever the complete pattern is found.",
+    "Use the LPS array to continue searching for overlapping matches."
+  ],
+  "real_world_takeaway": "KMP pattern matching can help security systems efficiently locate known patterns in large authentication and security logs.",
+  "tags": [
+    "kmp",
+    "pattern-matching",
+    "strings",
+    "authentication",
+    "security"
+  ]
+}

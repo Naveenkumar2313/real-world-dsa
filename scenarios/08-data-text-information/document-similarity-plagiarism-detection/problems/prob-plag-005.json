@@ -1,0 +1,67 @@
+{
+  "problem_id": "PROB-PLAG-005",
+  "scenario_id": "SCN-PLAG-001",
+  "sequence": 5,
+  "title": "Find the Longest Repeated Phrase",
+  "difficulty": "Hard",
+  "concepts": [
+    "String",
+    "Substring",
+    "Pattern Matching"
+  ],
+  "real_world_story": "A plagiarism analysis system examines a document to detect sections of text that have been repeated within the same document, which can indicate duplicated or reused content.",
+  "real_world_connection": {
+    "system": "Document analysis and plagiarism detection system",
+    "input_represents": "Text contained within a single document",
+    "target_represents": "The longest continuous text section that appears at least twice",
+    "algorithm_represents": "Comparing repeated portions of the document to identify the longest duplicated phrase"
+  },
+  "problem_statement": "Given a document string, find the length of the longest substring that appears at least twice in the document. The repeated occurrences may overlap. If no substring is repeated, print -1.",
+  "task": "Analyze the document and return the length of its longest repeated substring.",
+  "input_format": "The first line contains the document string.",
+  "output_format": "Print the length of the longest repeated substring. If no substring occurs more than once, print -1.",
+  "constraints": [
+    "1 <= length of document <= 2000",
+    "Document contains only lowercase English letters",
+    "Overlapping repeated substrings must be considered"
+  ],
+  "examples": [
+    {
+      "input": "banana",
+      "output": "3",
+      "explanation": "The substring 'ana' occurs twice, so the longest repeated substring has length 3."
+    },
+    {
+      "input": "abcd",
+      "output": "-1",
+      "explanation": "No substring occurs more than once in the document."
+    },
+    {
+      "input": "aaaaa",
+      "output": "4",
+      "explanation": "The substring 'aaaa' occurs more than once through overlapping occurrences."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Longest Repeated Substring using String Comparison",
+    "module_key": "longest-repeated-substring",
+    "reason": "Repeated document sections can be identified by comparing substrings that begin at different positions and tracking the longest matching sequence."
+  },
+  "complexity": {
+    "time": "O(N^2)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Compare substrings that begin at different positions in the document.",
+    "Track the length of the continuous matching section between two starting positions.",
+    "Keep the maximum length found across all pairs of positions."
+  ],
+  "real_world_takeaway": "Detecting repeated phrases can help identify duplicated sections, reused content, and repetitive text within documents.",
+  "tags": [
+    "strings",
+    "substring",
+    "pattern-matching",
+    "document-analysis",
+    "plagiarism-detection"
+  ]
+}

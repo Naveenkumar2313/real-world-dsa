@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-INV-003",
+  "scenario_id": "SCN-INV-001",
+  "sequence": 3,
+  "title": "Find the Maximum Investment Return for Multiple Budgets",
+  "difficulty": "Medium",
+  "concepts": [
+    "Dynamic Programming",
+    "Investment Planning",
+    "Optimization"
+  ],
+  "real_world_story": "A financial planning system needs to evaluate several possible budget levels before recommending an investment plan. It wants to know the best return achievable for every budget from zero up to a given limit.",
+  "real_world_connection": {
+    "system": "Financial planning and investment analysis system",
+    "input_represents": "Investment opportunities and a maximum planning budget",
+    "target_represents": "Best achievable return for each possible budget",
+    "algorithm_represents": "Building optimal solutions for smaller budgets and reusing them to calculate larger-budget solutions"
+  },
+  "problem_statement": "Given N investment opportunities, each with a cost and expected return, calculate the maximum return that can be achieved for every budget from 0 to B. Each investment can be selected at most once.",
+  "task": "Use Dynamic Programming to calculate and print the maximum achievable return for every budget from 0 through B.",
+  "input_format": "The first line contains two integers N and B, representing the number of investments and the maximum budget. The next N lines contain two integers cost and return for each investment.",
+  "output_format": "Print B+1 space-separated integers where the value at index i represents the maximum return achievable with budget i.",
+  "constraints": [
+    "1 <= N <= 100",
+    "1 <= B <= 10000",
+    "1 <= cost[i] <= B",
+    "1 <= return[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "2 5\n2 3\n3 5",
+      "output": "0 0 3 5 5 8",
+      "explanation": "With budget 2, the first investment gives return 3. With budget 3, the second gives return 5. With budget 5, both can be selected for a total return of 8."
+    },
+    {
+      "input": "2 4\n2 4\n3 5",
+      "output": "0 0 4 5 5",
+      "explanation": "Budget 2 gives return 4, budget 3 gives return 5, and budget 4 cannot select both investments, so the best return remains 5."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Dynamic Programming",
+    "module_key": "dynamic-programming",
+    "reason": "The optimal return for each budget can be calculated from previously computed smaller-budget solutions while ensuring that each investment is selected at most once."
+  },
+  "complexity": {
+    "time": "O(N * B)",
+    "space": "O(B)"
+  },
+  "hint": [
+    "Create a DP array from budget 0 to B.",
+    "Initially every budget has return 0.",
+    "For each investment, update budgets in decreasing order.",
+    "After processing all investments, print the complete DP array."
+  ],
+  "real_world_takeaway": "Dynamic Programming allows financial systems to compare the best possible returns across many budget levels instead of evaluating each budget independently.",
+  "tags": [
+    "dynamic-programming",
+    "investment",
+    "budget-planning",
+    "optimization",
+    "knapsack"
+  ]
+}

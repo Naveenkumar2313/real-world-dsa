@@ -1,0 +1,61 @@
+{
+  "problem_id": "PROB-LOG-002",
+  "scenario_id": "SCN-LOG-001",
+  "sequence": 2,
+  "title": "Process Events Using a Queue",
+  "difficulty": "Easy",
+  "concepts": [
+    "Queue",
+    "FIFO",
+    "Array"
+  ],
+  "real_world_story": "A monitoring system receives events from multiple sources. Events must be processed in the same order in which they arrive so that no earlier event is handled after a later one.",
+  "real_world_connection": {
+    "system": "Real-time event processing system",
+    "input_represents": "Events arriving at the monitoring system",
+    "target_represents": "The event that should be processed next",
+    "algorithm_represents": "Using First-In-First-Out queue operations to process events in arrival order"
+  },
+  "problem_statement": "Given a sequence of queue operations, process them using FIFO behavior. An enqueue operation adds an event to the rear of the queue, while a dequeue operation removes and returns the event at the front. Print the result of every dequeue operation.",
+  "task": "Process all enqueue and dequeue operations and print the event removed by each dequeue operation.",
+  "input_format": "The first line contains an integer Q, the number of queue operations. Each of the next Q lines contains either 'ENQUEUE X' to add event X to the queue or 'DEQUEUE' to remove the front event.",
+  "output_format": "For every DEQUEUE operation, print the removed event on a separate line. If a DEQUEUE operation is performed when the queue is empty, print -1.",
+  "constraints": [
+    "1 <= Q <= 100000",
+    "0 <= X <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "6\nENQUEUE 10\nENQUEUE 20\nDEQUEUE\nENQUEUE 30\nDEQUEUE\nDEQUEUE",
+      "output": "10\n20\n30",
+      "explanation": "Events are processed in the same order in which they were inserted into the queue."
+    },
+    {
+      "input": "5\nENQUEUE 15\nDEQUEUE\nDEQUEUE\nENQUEUE 25\nDEQUEUE",
+      "output": "15\n-1\n25",
+      "explanation": "The second DEQUEUE occurs when the queue is empty, so -1 is printed."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Queue Operations",
+    "module_key": "queue-operations",
+    "reason": "A queue follows FIFO ordering, making it suitable for processing real-time events in the exact order in which they arrive."
+  },
+  "complexity": {
+    "time": "O(Q)",
+    "space": "O(Q)"
+  },
+  "hint": [
+    "Maintain a queue that stores incoming events.",
+    "Add an event to the rear during ENQUEUE.",
+    "Remove the front event during DEQUEUE."
+  ],
+  "real_world_takeaway": "Queue operations are fundamental in event-processing systems where incoming events must be handled in their arrival order.",
+  "tags": [
+    "queue",
+    "fifo",
+    "event-processing",
+    "log-monitoring",
+    "data-structures"
+  ]
+}

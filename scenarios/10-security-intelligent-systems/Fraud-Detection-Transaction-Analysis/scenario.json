@@ -1,0 +1,100 @@
+{
+  "scenario_id": "SCN-FRAUD-001",
+  "title": "Fraud Detection & Transaction Analysis",
+  "slug": "fraud-detection-transaction-analysis",
+  "short_description": "Learn how financial systems analyze transaction streams, detect suspicious patterns, identify unusual activity, and efficiently process transaction values.",
+  "category": "Arrays, Strings & Bit Manipulation",
+  "industry": "Financial Technology and Banking",
+  "difficulty": "Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "A financial system analyzes streams of transactions to identify unusual patterns, repeated activity, suspicious combinations, threshold-crossing values, and transaction codes that differ from expected behavior.",
+    "why_it_matters": "Efficient transaction analysis allows financial monitoring systems to process large volumes of transactions and quickly identify patterns or values that may require further investigation.",
+    "real_world_entities": [
+      "Transaction",
+      "Transaction Stream",
+      "Transaction Amount",
+      "Transaction Pattern",
+      "Suspicious Threshold",
+      "Transaction Code",
+      "Monitoring Window",
+      "Suspicious Combination"
+    ]
+  },
+  "learning_objectives": [
+    "Apply KMP Pattern Matching to locate suspicious transaction patterns efficiently.",
+    "Use Sliding Window techniques to analyze transaction activity over fixed-size windows.",
+    "Apply Binary Search to quickly locate the first transaction crossing a suspicious threshold.",
+    "Use Sorting and Two Pointer techniques to identify suspicious transaction combinations.",
+    "Understand how the Single Number technique can identify an unmatched transaction code.",
+    "Apply Bit Manipulation to count the set bits of a unique transaction code.",
+    "Understand how different algorithms can be combined to analyze large transaction datasets efficiently.",
+    "Choose an appropriate algorithm based on the type of transaction-analysis requirement."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Strings",
+    "Loops",
+    "Conditional statements",
+    "Sorting",
+    "Basic Binary Search",
+    "Basic Two Pointer concepts",
+    "Basic Sliding Window concepts",
+    "Basic Bit Manipulation",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "KMP Pattern Matching",
+      "module_key": "kmp-pattern-matching"
+    },
+    {
+      "name": "Sliding Window",
+      "module_key": "sliding-window"
+    },
+    {
+      "name": "Binary Search",
+      "module_key": "binary-search"
+    },
+    {
+      "name": "Sorting",
+      "module_key": "sorting"
+    },
+    {
+      "name": "Two Pointer",
+      "module_key": "two-pointer"
+    },
+    {
+      "name": "Single Number",
+      "module_key": "single-number"
+    },
+    {
+      "name": "Count Set Bits",
+      "module_key": "count-set-bits"
+    },
+    {
+      "name": "Bit Manipulation",
+      "module_key": "bit-manipulation"
+    }
+  ],
+  "real_world_mapping": {
+    "transaction_stream": "Sequence of transaction codes or transaction records",
+    "transaction_amount": "Numerical value associated with a transaction",
+    "transaction_pattern": "Sequence of transaction codes representing a suspicious activity pattern",
+    "monitoring_window": "Fixed-size consecutive group of transactions analyzed together",
+    "suspicious_threshold": "Transaction amount at or above which additional analysis may be required",
+    "suspicious_combination": "Pair of transaction amounts satisfying a predefined target condition",
+    "transaction_code": "Numeric identifier associated with a transaction record",
+    "unique_transaction_code": "Transaction code that occurs once while other codes occur in pairs",
+    "set_bits": "Number of active binary bits in a transaction code",
+    "fraud_detection": "Process of identifying unusual or potentially suspicious transaction behavior"
+  },
+  "learning_path": [
+    "PROB-FRAUD-001",
+    "PROB-FRAUD-002",
+    "PROB-FRAUD-003",
+    "PROB-FRAUD-004",
+    "PROB-FRAUD-005"
+  ],
+  "completion_message": "You have completed the Fraud Detection & Transaction Analysis mission. You have learned how pattern matching, sliding windows, binary search, sorting, two pointer techniques, and bit manipulation can be applied to transaction monitoring and fraud-analysis problems."
+}

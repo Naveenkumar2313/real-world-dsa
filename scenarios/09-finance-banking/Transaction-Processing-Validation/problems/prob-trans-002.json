@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-TRANS-002",
+  "scenario_id": "SCN-TRANS-001",
+  "sequence": 2,
+  "title": "Validate Transaction Request Sequence",
+  "difficulty": "Easy",
+  "concepts": [
+    "Stack",
+    "Valid Parentheses",
+    "Sequence Validation"
+  ],
+  "real_world_story": "A banking system records transaction actions using symbols to represent opening and closing stages of operations. Before processing a request, the system must verify that all stages are properly ordered and closed.",
+  "real_world_connection": {
+    "system": "Transaction validation system",
+    "input_represents": "Encoded opening and closing transaction operations",
+    "target_represents": "Whether the transaction sequence is properly balanced",
+    "algorithm_represents": "A stack used to match every closing operation with its corresponding opening operation"
+  },
+  "problem_statement": "Given a string containing the characters '(', ')', '[', ']', '{', and '}', determine whether the sequence of transaction operations is valid. A sequence is valid if every opening symbol is closed by the correct type of closing symbol in the proper order.",
+  "task": "Determine whether the given transaction operation sequence is valid.",
+  "input_format": "The input contains a single string consisting only of the characters '(', ')', '[', ']', '{', and '}'.",
+  "output_format": "Print YES if the sequence is valid. Otherwise, print NO.",
+  "constraints": [
+    "1 <= length of sequence <= 100000",
+    "The sequence contains only '(', ')', '[', ']', '{', and '}'"
+  ],
+  "examples": [
+    {
+      "input": "{[()]}",
+      "output": "YES",
+      "explanation": "Every opening operation has the correct closing operation in the proper nested order."
+    },
+    {
+      "input": "{[(])}",
+      "output": "NO",
+      "explanation": "The closing brackets do not match the corresponding opening brackets in the required order."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Stack",
+    "module_key": "stack-operations",
+    "reason": "A stack follows Last-In-First-Out ordering, allowing the most recently opened operation to be matched with its closing operation."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Push every opening symbol onto a stack.",
+    "When a closing symbol appears, check the top of the stack.",
+    "The closing symbol must match the most recently opened symbol.",
+    "The sequence is valid only when the stack is empty at the end."
+  ],
+  "real_world_takeaway": "Stack-based validation helps transaction systems verify that nested operations are completed in the correct order before processing them.",
+  "tags": [
+    "stack",
+    "valid-parentheses",
+    "sequence-validation",
+    "transactions",
+    "validation"
+  ]
+}

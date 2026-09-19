@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-AI-002",
+  "scenario_id": "SCN-AI-001",
+  "sequence": 2,
+  "title": "Generate Valid Feature Configurations",
+  "difficulty": "Medium",
+  "concepts": [
+    "Backtracking",
+    "Combinations"
+  ],
+  "real_world_story": "An AI platform has several optional modules, but some configurations must satisfy a required number of enabled modules. The configuration engine needs to generate valid combinations of modules.",
+  "real_world_connection": {
+    "system": "AI configuration engine",
+    "input_represents": "Available feature modules and the required number of active modules",
+    "target_represents": "Valid feature configurations",
+    "algorithm_represents": "Backtracking to explore possible selections while constructing valid combinations"
+  },
+  "problem_statement": "Given N distinct feature IDs and an integer K, generate all combinations containing exactly K features. Print the number of valid configurations.",
+  "task": "Determine how many different configurations containing exactly K features can be created from N available features.",
+  "input_format": "The first line contains two integers N and K. The second line contains N space-separated distinct feature IDs.",
+  "output_format": "Print the number of valid configurations containing exactly K features.",
+  "constraints": [
+    "1 <= N <= 20",
+    "0 <= K <= N",
+    "1 <= feature_id[i] <= 1000000000",
+    "All feature IDs are distinct"
+  ],
+  "examples": [
+    {
+      "input": "4 2\n10 20 30 40",
+      "output": "6",
+      "explanation": "There are six ways to choose exactly two features from four features."
+    },
+    {
+      "input": "5 3\n1 2 3 4 5",
+      "output": "10",
+      "explanation": "There are ten possible configurations containing exactly three of the five features."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Backtracking",
+    "module_key": "backtracking",
+    "reason": "Backtracking explores the available feature choices and constructs configurations containing exactly K selected features."
+  },
+  "complexity": {
+    "time": "O(C(N,K))",
+    "space": "O(K)",
+    "where": "C(N,K) is the number of valid K-element combinations."
+  },
+  "hint": [
+    "At every step, decide whether to include the current feature.",
+    "Stop exploring a branch when it cannot produce K selected features.",
+    "Count every configuration containing exactly K features.",
+    "Backtracking allows the search space to be explored systematically."
+  ],
+  "real_world_takeaway": "Backtracking is useful when an AI configuration system must explore possible combinations while satisfying a fixed configuration requirement.",
+  "tags": [
+    "backtracking",
+    "combinations",
+    "feature-selection",
+    "configuration",
+    "ai"
+  ]
+}

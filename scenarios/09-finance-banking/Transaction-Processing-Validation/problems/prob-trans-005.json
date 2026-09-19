@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-TRANS-005",
+  "scenario_id": "SCN-TRANS-001",
+  "sequence": 5,
+  "title": "Detect Duplicate Transaction IDs",
+  "difficulty": "Easy",
+  "concepts": [
+    "Hashing",
+    "Hash Set",
+    "Duplicate Detection"
+  ],
+  "real_world_story": "A banking system receives transaction requests identified by unique transaction IDs. Due to network retries or system errors, the same transaction may occasionally be submitted more than once.",
+  "real_world_connection": {
+    "system": "Banking transaction validation system",
+    "input_represents": "Transaction IDs received by the system",
+    "target_represents": "Whether any transaction ID appears more than once",
+    "algorithm_represents": "A hash set used to track transaction IDs that have already been encountered"
+  },
+  "problem_statement": "Given N transaction IDs, determine whether any transaction ID occurs more than once. Print the first duplicated transaction ID encountered while scanning from left to right. If all transaction IDs are unique, print -1.",
+  "task": "Detect the first transaction ID that appears more than once.",
+  "input_format": "The first line contains an integer N, the number of transactions. The second line contains N space-separated transaction IDs.",
+  "output_format": "Print the first transaction ID that is encountered for the second time. If there are no duplicate transaction IDs, print -1.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= transaction_id[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "6\n101 205 309 205 412 518",
+      "output": "205",
+      "explanation": "Transaction ID 205 was already encountered and appears again at the fourth position."
+    },
+    {
+      "input": "5\n12 45 78 91 34",
+      "output": "-1",
+      "explanation": "Every transaction ID is unique, so no duplicate transaction exists."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Hashing",
+    "module_key": "hashing",
+    "reason": "A hash set provides efficient average-case lookup and insertion, allowing duplicate transaction IDs to be detected in a single scan."
+  },
+  "complexity": {
+    "time": "O(N) average",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Create a set to store transaction IDs already seen.",
+    "Scan the transaction IDs from left to right.",
+    "If an ID is already present in the set, it is the first duplicate.",
+    "Otherwise add the ID to the set and continue."
+  ],
+  "real_world_takeaway": "Hashing allows banking systems to quickly detect duplicate transaction requests and prevent the same transaction from being processed multiple times.",
+  "tags": [
+    "hashing",
+    "hash-set",
+    "duplicates",
+    "transactions",
+    "validation"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-PAY-004",
+  "scenario_id": "SCN-PAY-001",
+  "sequence": 4,
+  "title": "Find the First Denomination at or Above a Target",
+  "difficulty": "Easy",
+  "concepts": [
+    "Binary Search",
+    "Sorted Array",
+    "Currency Denominations"
+  ],
+  "real_world_story": "A payment system stores supported currency denominations in sorted order. When a user enters an amount, the system needs to quickly find the smallest available denomination that is greater than or equal to that amount.",
+  "real_world_connection": {
+    "system": "Currency denomination lookup system",
+    "input_represents": "Sorted supported currency denominations",
+    "target_represents": "The requested payment amount",
+    "algorithm_represents": "Searching the sorted denomination list to find the first value greater than or equal to the target"
+  },
+  "problem_statement": "Given a sorted array of currency denominations and a target amount, find the index of the first denomination that is greater than or equal to the target. If no such denomination exists, print -1.",
+  "task": "Use binary search to find the smallest supported denomination that is greater than or equal to the requested amount.",
+  "input_format": "The first line contains an integer N, the number of denominations. The second line contains N space-separated denominations in non-decreasing order. The third line contains the target amount.",
+  "output_format": "Print the zero-based index of the first denomination greater than or equal to the target. If no such denomination exists, print -1.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= denomination[i] <= 1000000000",
+    "1 <= target <= 1000000000",
+    "Denominations are sorted in non-decreasing order"
+  ],
+  "examples": [
+    {
+      "input": "6\n1 5 10 20 50 100\n35",
+      "output": "4",
+      "explanation": "The first denomination greater than or equal to 35 is 50, which is at index 4."
+    },
+    {
+      "input": "5\n10 20 50 100 500\n5",
+      "output": "0",
+      "explanation": "The first denomination greater than or equal to 5 is 10, which is at index 0."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Binary Search",
+    "module_key": "binary-search",
+    "reason": "The denomination list is sorted, allowing the required denomination to be located efficiently without scanning every value."
+  },
+  "complexity": {
+    "time": "O(log N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Maintain low and high indices for the search range.",
+    "If the middle denomination is greater than or equal to the target, store its index.",
+    "Continue searching the left half for a smaller valid denomination.",
+    "Otherwise, search the right half."
+  ],
+  "real_world_takeaway": "Binary Search enables payment systems to quickly locate suitable denominations from a large sorted collection of supported currency values.",
+  "tags": [
+    "binary-search",
+    "sorted-array",
+    "currency",
+    "denominations",
+    "payment-system"
+  ]
+}

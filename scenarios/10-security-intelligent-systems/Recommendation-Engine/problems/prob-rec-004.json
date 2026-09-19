@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-REC-004",
+  "scenario_id": "SCN-REC-001",
+  "sequence": 4,
+  "title": "Find the Best Continuous Recommendation Window",
+  "difficulty": "Medium",
+  "concepts": [
+    "Sliding Window",
+    "Arrays",
+    "Subarray"
+  ],
+  "real_world_story": "A recommendation system receives a sequence of item scores representing items shown during a user's browsing session. The system wants to identify a continuous group of K items with the highest total recommendation score.",
+  "real_world_connection": {
+    "system": "Personalized recommendation ranking system",
+    "input_represents": "Scores of items in the order they were displayed",
+    "target_represents": "Number of consecutive items to consider",
+    "algorithm_represents": "A sliding window that maintains the sum of the current K-item section efficiently"
+  },
+  "problem_statement": "Given an array of item scores and an integer K, find the maximum sum of any contiguous subarray of exactly K elements.",
+  "task": "Find the continuous group of K items having the maximum total recommendation score.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated integers representing item scores. The third line contains K.",
+  "output_format": "Print the maximum sum of any contiguous group of exactly K item scores.",
+  "constraints": [
+    "1 <= K <= N <= 100000",
+    "-100000 <= score[i] <= 100000"
+  ],
+  "examples": [
+    {
+      "input": "6\n2 5 1 8 2 9\n3",
+      "output": "19",
+      "explanation": "The window 8, 2, 9 has the maximum sum of 19."
+    },
+    {
+      "input": "5\n4 2 7 1 6\n2",
+      "output": "8",
+      "explanation": "The windows have sums 6, 9, 8, and 7, so the maximum is 9."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Sliding Window",
+    "module_key": "sliding-window",
+    "reason": "A sliding window avoids recomputing the sum of every K-element section from scratch."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Calculate the sum of the first K items.",
+    "Move the window one position at a time.",
+    "Subtract the score leaving the window.",
+    "Add the new score entering the window and update the maximum."
+  ],
+  "real_world_takeaway": "Sliding Window techniques help recommendation systems analyze continuous browsing or interaction segments efficiently.",
+  "tags": [
+    "sliding-window",
+    "arrays",
+    "subarray",
+    "recommendation",
+    "optimization"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-ATM-002",
+  "scenario_id": "SCN-ATM-001",
+  "sequence": 2,
+  "title": "Manage ATM Service Slots",
+  "difficulty": "Medium",
+  "concepts": [
+    "Circular Queue",
+    "Queue Operations",
+    "Fixed Capacity"
+  ],
+  "real_world_story": "An ATM service system has a fixed number of request slots for temporarily storing customer requests. When requests are removed from the front, newly arriving requests should be able to reuse the freed slots.",
+  "real_world_connection": {
+    "system": "ATM request management system",
+    "input_represents": "Enqueue and dequeue operations on ATM requests",
+    "target_represents": "Requests currently stored in the fixed-size request buffer",
+    "algorithm_represents": "A circular queue that reuses positions freed after dequeue operations"
+  },
+  "problem_statement": "Implement a circular queue of capacity C that processes a sequence of enqueue and dequeue operations. For every dequeue operation, print the removed customer ID. If an enqueue is attempted when the queue is full, ignore that operation. If a dequeue is attempted when the queue is empty, ignore that operation.",
+  "task": "Process all operations using a circular queue and print the customer IDs removed by valid dequeue operations.",
+  "input_format": "The first line contains two integers C and Q, representing the queue capacity and number of operations. Each of the next Q lines contains either 'ENQUEUE X' or 'DEQUEUE'.",
+  "output_format": "For every successful DEQUEUE operation, print the removed customer ID on a separate line. If no dequeue operation is successful, print -1.",
+  "constraints": [
+    "1 <= C <= 1000",
+    "1 <= Q <= 100000",
+    "1 <= X <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "3 7\nENQUEUE 101\nENQUEUE 202\nENQUEUE 303\nDEQUEUE\nENQUEUE 404\nDEQUEUE\nDEQUEUE",
+      "output": "101\n202\n303",
+      "explanation": "Customer 101 is removed first. Its slot is reused by customer 404, while the remaining customers continue to follow FIFO order."
+    },
+    {
+      "input": "2 5\nENQUEUE 50\nENQUEUE 60\nENQUEUE 70\nDEQUEUE\nDEQUEUE",
+      "output": "50\n60",
+      "explanation": "The third enqueue is ignored because the queue is full. The first two customers are then removed in FIFO order."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Circular Queue Operations",
+    "module_key": "circular-queue-operations",
+    "reason": "A circular queue allows freed positions at the beginning of a fixed-size queue to be reused efficiently."
+  },
+  "complexity": {
+    "time": "O(Q)",
+    "space": "O(C)"
+  },
+  "hint": [
+    "Maintain front and rear positions.",
+    "Move the rear position circularly when inserting an element.",
+    "Move the front position circularly when removing an element.",
+    "Track the current number of elements to identify full and empty states."
+  ],
+  "real_world_takeaway": "Circular queues are useful for fixed-size ATM or banking request buffers because they reuse memory positions instead of shifting stored requests.",
+  "tags": [
+    "circular-queue",
+    "queue",
+    "fifo",
+    "atm",
+    "buffer-management"
+  ]
+}

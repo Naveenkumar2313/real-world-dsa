@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-TRANS-003",
+  "scenario_id": "SCN-TRANS-001",
+  "sequence": 3,
+  "title": "Detect Peak Transaction Activity",
+  "difficulty": "Medium",
+  "concepts": [
+    "Sliding Window",
+    "Arrays",
+    "Transaction Monitoring"
+  ],
+  "real_world_story": "A banking monitoring system records the number of transactions processed during consecutive time intervals. The system wants to identify the busiest continuous period of a fixed duration.",
+  "real_world_connection": {
+    "system": "Real-time transaction monitoring system",
+    "input_represents": "Transaction counts recorded during consecutive time intervals",
+    "target_represents": "Maximum transaction count within any continuous monitoring window",
+    "algorithm_represents": "A sliding window that efficiently moves across the transaction stream"
+  },
+  "problem_statement": "Given an array of transaction counts recorded during N consecutive time intervals and an integer K, find the maximum total number of transactions processed in any continuous window of K intervals.",
+  "task": "Find the maximum sum of transaction counts across any K consecutive intervals.",
+  "input_format": "The first line contains two integers N and K. The second line contains N space-separated integers representing transaction counts.",
+  "output_format": "Print the maximum total number of transactions recorded in any K consecutive intervals.",
+  "constraints": [
+    "1 <= K <= N <= 100000",
+    "0 <= transaction_count[i] <= 1000000"
+  ],
+  "examples": [
+    {
+      "input": "6 3\n10 20 15 30 25 10",
+      "output": "70",
+      "explanation": "The window containing 15, 30, and 25 has the maximum total of 70 transactions."
+    },
+    {
+      "input": "5 2\n12 8 20 15 10",
+      "output": "35",
+      "explanation": "The consecutive intervals containing 20 and 15 have the maximum total of 35 transactions."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Sliding Window",
+    "module_key": "sliding-window",
+    "reason": "A sliding window updates the sum when the window moves, avoiding recalculation of every K-element range."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Calculate the sum of the first K transaction counts.",
+    "Move the window one position at a time.",
+    "Subtract the value leaving the window and add the new value.",
+    "Keep track of the maximum window sum."
+  ],
+  "real_world_takeaway": "Sliding Window techniques allow monitoring systems to efficiently detect periods of unusually high transaction activity.",
+  "tags": [
+    "sliding-window",
+    "arrays",
+    "transactions",
+    "monitoring",
+    "activity-analysis"
+  ]
+}

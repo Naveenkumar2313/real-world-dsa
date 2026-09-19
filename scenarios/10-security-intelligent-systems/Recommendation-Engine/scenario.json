@@ -1,0 +1,88 @@
+{
+  "scenario_id": "SCN-REC-001",
+  "title": "Recommendation Engine",
+  "slug": "recommendation-engine",
+  "short_description": "Learn how recommendation systems use Trie operations, Two Pointer techniques, Three Sum, Sliding Window, and Power Set concepts to generate relevant item combinations efficiently.",
+  "category": "Searching, Arrays & Combinatorial Algorithms",
+  "industry": "E-Commerce and Recommendation Systems",
+  "difficulty": "Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "A recommendation platform needs to analyze user preferences and available items to generate relevant suggestions, find compatible item combinations, identify high-scoring groups, and explore possible recommendation configurations efficiently.",
+    "why_it_matters": "Efficient searching, combination, and window-based algorithms allow recommendation systems to process large collections of items and generate useful suggestions without unnecessary computation.",
+    "real_world_entities": [
+      "User",
+      "Product",
+      "Product Category",
+      "Item Score",
+      "Recommendation",
+      "Recommendation Bundle",
+      "Browsing Session",
+      "Recommendation Configuration"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how Trie structures support prefix-based product recommendations.",
+    "Apply Two Pointer techniques to find pairs of items satisfying a target condition.",
+    "Use Three Sum techniques to identify valid three-item recommendation bundles.",
+    "Apply Sliding Window techniques to analyze continuous groups of recommendation scores.",
+    "Understand how a Power Set represents all possible combinations of available items.",
+    "Understand how sorting can improve the efficiency of pair and triplet searching.",
+    "Choose an appropriate algorithm based on the type of recommendation problem being solved.",
+    "Understand why algorithm efficiency matters when processing large collections of products and user preferences."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Strings",
+    "Loops",
+    "Conditional statements",
+    "Sorting",
+    "Basic Trie concepts",
+    "Basic Two Pointer concepts",
+    "Basic Sliding Window concepts",
+    "Basic combinatorial concepts",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "Trie Operations",
+      "module_key": "trie-operations"
+    },
+    {
+      "name": "Two Pointer",
+      "module_key": "two-pointer"
+    },
+    {
+      "name": "Three Sum",
+      "module_key": "three-sum"
+    },
+    {
+      "name": "Sliding Window",
+      "module_key": "sliding-window"
+    },
+    {
+      "name": "Power Set",
+      "module_key": "power-set"
+    }
+  ],
+  "real_world_mapping": {
+    "user": "Person receiving personalized recommendations",
+    "product": "Item available for recommendation",
+    "product_name": "String representing the name of an available item",
+    "category_prefix": "Starting sequence used to search for relevant products",
+    "item_score": "Numerical value representing an item's recommendation score",
+    "target_score": "Desired combined score for a recommendation or bundle",
+    "recommendation_pair": "Two items whose scores satisfy a target condition",
+    "recommendation_bundle": "Three items whose combined scores satisfy a target condition",
+    "recommendation_window": "Continuous group of item scores analyzed together",
+    "recommendation_configuration": "One possible subset of available recommendation items"
+  },
+  "learning_path": [
+    "PROB-REC-001",
+    "PROB-REC-002",
+    "PROB-REC-003",
+    "PROB-REC-004",
+    "PROB-REC-005"
+  ],
+  "completion_message": "You have completed the Recommendation Engine mission. You have learned how Trie operations, Two Pointer techniques, Three Sum, Sliding Window, and Power Set concepts can be applied to product search, recommendation bundles, score analysis, and recommendation configuration generation."
+}

@@ -1,0 +1,85 @@
+{
+  "scenario_id": "SCN-INV-001",
+  "title": "Loan / Investment Optimization",
+  "slug": "loan-investment-optimization",
+  "short_description": "Learn how financial planning systems select investments under budget constraints, maximize returns, evaluate multiple budget levels, determine feasible return thresholds, and optimize investment choices efficiently.",
+  "category": "Optimization and Dynamic Programming",
+  "industry": "Financial Planning and Investment",
+  "difficulty": "Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "A financial planning system needs to choose investment opportunities under constraints such as available budget and investment costs. The system must maximize expected returns, support partial investments, evaluate different budget levels, determine achievable return thresholds, and select the maximum number of affordable opportunities.",
+    "why_it_matters": "Efficient optimization algorithms help financial planning systems make better use of limited capital while evaluating many possible investment choices and constraints.",
+    "real_world_entities": [
+      "Investment",
+      "Investment Cost",
+      "Expected Return",
+      "Budget",
+      "Capital",
+      "Investment Opportunity",
+      "Return Threshold",
+      "Portfolio"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how investment opportunities can be represented using costs and expected returns.",
+    "Apply 0/1 Knapsack to select investments that maximize return under a fixed budget.",
+    "Apply Fractional Knapsack when investment opportunities can be selected partially.",
+    "Use Dynamic Programming to determine the maximum return for multiple budget levels.",
+    "Apply Binary Search on Answer to determine the highest feasible investment return threshold.",
+    "Use Greedy techniques to maximize the number of investment opportunities selected within a fixed budget.",
+    "Understand how different constraints require different optimization strategies.",
+    "Understand why algorithm efficiency matters when evaluating a large number of investment opportunities."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Sorting",
+    "Basic Greedy concepts",
+    "Basic Dynamic Programming concepts",
+    "Basic Binary Search concepts",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "0/1 Knapsack",
+      "module_key": "01-knapsack"
+    },
+    {
+      "name": "Fractional Knapsack",
+      "module_key": "fractional-knapsack"
+    },
+    {
+      "name": "Dynamic Programming",
+      "module_key": "dynamic-programming"
+    },
+    {
+      "name": "Binary Search on Answer",
+      "module_key": "binary-search-on-answer"
+    },
+    {
+      "name": "Greedy",
+      "module_key": "greedy"
+    }
+  ],
+  "real_world_mapping": {
+    "investment": "Opportunity that can be selected using available capital",
+    "investment_cost": "Amount of capital required for an investment",
+    "expected_return": "Return expected from selecting an investment",
+    "budget": "Maximum amount of capital available",
+    "capital": "Money available for investment",
+    "portfolio": "Collection of selected investments",
+    "return_threshold": "Minimum expected return value being evaluated",
+    "partial_investment": "Fraction of an investment selected when full investment is not possible",
+    "investment_opportunity": "Available investment option that can be selected or rejected"
+  },
+  "learning_path": [
+    "PROB-INV-001",
+    "PROB-INV-002",
+    "PROB-INV-003",
+    "PROB-INV-004",
+    "PROB-INV-005"
+  ],
+  "completion_message": "You have completed the Loan / Investment Optimization mission. You have learned how 0/1 Knapsack, Fractional Knapsack, Dynamic Programming, Binary Search on Answer, and Greedy algorithms can be applied to investment selection, budget optimization, and financial planning problems."
+}

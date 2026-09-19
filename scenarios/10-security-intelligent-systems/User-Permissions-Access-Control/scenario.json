@@ -1,0 +1,86 @@
+{
+  "scenario_id": "SCN-PERM-001",
+  "title": "User Permissions & Access Control",
+  "slug": "user-permissions-access-control",
+  "short_description": "Learn how operating systems and applications represent, combine, analyze, and compare user permissions and access-control configurations using bit manipulation techniques.",
+  "category": "Bit Manipulation",
+  "industry": "Software and Access Management",
+  "difficulty": "Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "An operating system or application needs to efficiently represent, combine, and check user permissions and feature-access configurations. Permissions can be stored as binary masks, where each bit represents whether a particular access right is enabled.",
+    "why_it_matters": "Bit-based permission systems allow applications to store many access settings compactly and perform permission checks, comparisons, and configuration operations efficiently.",
+    "real_world_entities": [
+      "User",
+      "User Role",
+      "Permission",
+      "Permission Mask",
+      "Access Right",
+      "Security Code",
+      "Feature Access",
+      "Access Configuration"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how user permissions can be represented using binary values and bit masks.",
+    "Apply bitwise OR to combine permissions from multiple user roles.",
+    "Count set bits to determine the number of enabled permissions.",
+    "Use XOR to identify a unique permission or access code.",
+    "Understand how a Power Set represents all possible permission configurations.",
+    "Apply Maximum XOR techniques to compare permission masks.",
+    "Understand how bit manipulation can reduce storage and improve access-control operations.",
+    "Choose an appropriate bit manipulation technique based on the type of permission operation being performed."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Binary number representation",
+    "Basic bit manipulation",
+    "Bitwise operators",
+    "XOR operation",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "Bit Manipulation",
+      "module_key": "bit-manipulation"
+    },
+    {
+      "name": "Count Set Bits",
+      "module_key": "count-set-bits"
+    },
+    {
+      "name": "Single Number",
+      "module_key": "single-number"
+    },
+    {
+      "name": "Power Set",
+      "module_key": "power-set"
+    },
+    {
+      "name": "Maximum XOR",
+      "module_key": "maximum-xor"
+    }
+  ],
+  "real_world_mapping": {
+    "user": "Person whose access permissions are being managed",
+    "user_role": "Role containing a predefined set of permissions",
+    "permission": "Individual access right such as read, write, or execute",
+    "permission_mask": "Integer whose bits represent enabled or disabled permissions",
+    "combined_permissions": "Permission mask obtained by combining multiple permission sets",
+    "enabled_permission": "Permission represented by a set bit",
+    "unique_permission_code": "Access code that occurs only once among repeated codes",
+    "permission_configuration": "One possible subset of available permissions",
+    "security_code": "Integer representing encoded access-control information",
+    "permission_difference": "Difference between two permission masks represented through XOR"
+  },
+  "learning_path": [
+    "PROB-PERM-001",
+    "PROB-PERM-002",
+    "PROB-PERM-003",
+    "PROB-PERM-004",
+    "PROB-PERM-005"
+  ],
+  "completion_message": "You have completed the User Permissions & Access Control mission. You have learned how bit manipulation, set-bit counting, XOR, power sets, and maximum XOR techniques can be applied to represent, combine, analyze, and compare user permissions and access-control configurations efficiently."
+}

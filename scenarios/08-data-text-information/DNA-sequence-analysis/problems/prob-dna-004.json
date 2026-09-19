@@ -1,0 +1,61 @@
+{
+  "problem_id": "PROB-DNA-004",
+  "scenario_id": "SCN-DNA-001",
+  "sequence": 4,
+  "title": "Find the Longest Palindromic DNA Segment",
+  "difficulty": "Medium",
+  "concepts": [
+    "String",
+    "Palindrome",
+    "Dynamic Programming"
+  ],
+  "real_world_story": "A biological sequence analysis system examines a DNA strand to identify the longest segment that reads identically from both directions.",
+  "real_world_connection": {
+    "system": "DNA sequence structure analysis system",
+    "input_represents": "A DNA sequence obtained from a biological sample",
+    "target_represents": "The longest continuous DNA segment that is identical when read forward and backward",
+    "algorithm_represents": "Finding the longest palindromic substring within a biological sequence"
+  },
+  "problem_statement": "Given a DNA sequence, find the longest contiguous substring that is a palindrome. A palindrome reads the same from left to right and right to left. Return the length of the longest palindromic substring.",
+  "task": "Analyze the DNA sequence and return the length of its longest palindromic segment.",
+  "input_format": "The first line contains the DNA sequence.",
+  "output_format": "Print a single integer representing the length of the longest palindromic substring.",
+  "constraints": [
+    "1 <= length of DNA sequence <= 2000",
+    "DNA sequences contain only the characters A, C, G, and T"
+  ],
+  "examples": [
+    {
+      "input": "ATCGCTA",
+      "output": "7",
+      "explanation": "The complete sequence 'ATCGCTA' is a palindrome, so the longest palindromic substring has length 7."
+    },
+    {
+      "input": "ACGTGC",
+      "output": "3",
+      "explanation": "The longest palindromic substring is 'CGC', which has length 3."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Longest Palindromic Substring",
+    "module_key": "longest-palindromic-substring",
+    "reason": "The DNA sequence may contain palindromic segments of different lengths, so expanding around centers or using dynamic programming can identify the longest continuous palindrome."
+  },
+  "complexity": {
+    "time": "O(N^2)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Consider every position as a possible center of a palindrome.",
+    "Expand outward while the characters on both sides match.",
+    "Check both odd-length and even-length palindromes and keep the maximum length."
+  ],
+  "real_world_takeaway": "Palindromic DNA sequences can be important in biological sequence analysis because certain genetic structures and recognition sites contain symmetrical patterns.",
+  "tags": [
+    "strings",
+    "dna",
+    "palindrome",
+    "longest-palindromic-substring",
+    "sequence-analysis"
+  ]
+}

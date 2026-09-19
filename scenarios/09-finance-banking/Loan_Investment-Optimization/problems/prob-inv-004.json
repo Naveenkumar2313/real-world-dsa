@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-INV-004",
+  "scenario_id": "SCN-INV-001",
+  "sequence": 4,
+  "title": "Find the Maximum Minimum Investment Return",
+  "difficulty": "Medium",
+  "concepts": [
+    "Binary Search on Answer",
+    "Optimization",
+    "Greedy Feasibility"
+  ],
+  "real_world_story": "A financial planning system wants to distribute investments among several opportunities while ensuring that every selected investment receives at least a certain minimum expected return. The system needs to determine the highest minimum return that can be guaranteed under the available budget.",
+  "real_world_connection": {
+    "system": "Investment threshold planning system",
+    "input_represents": "Investment options with their costs and expected returns",
+    "target_represents": "The maximum minimum return that can be achieved within the budget",
+    "algorithm_represents": "Binary searching possible minimum-return values and checking whether each value is feasible"
+  },
+  "problem_statement": "Given N investment opportunities, each with a cost and expected return, and a maximum budget B, find the maximum return threshold R such that at least one investment with expected return greater than or equal to R can be selected within the budget.",
+  "task": "Use Binary Search on Answer to find the highest achievable minimum return threshold.",
+  "input_format": "The first line contains two integers N and B, representing the number of investments and the maximum budget. The next N lines contain two integers cost and return for each investment.",
+  "output_format": "Print the maximum return threshold that can be achieved by selecting an investment within the given budget.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= B <= 1000000000",
+    "1 <= cost[i] <= 1000000000",
+    "1 <= return[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "5 10\n4 50\n8 90\n6 70\n3 40\n10 100",
+      "output": "100",
+      "explanation": "The investment with cost 10 and return 100 can be selected within the budget, so the highest achievable return threshold is 100."
+    },
+    {
+      "input": "4 5\n2 30\n7 90\n4 60\n6 80",
+      "output": "60",
+      "explanation": "The highest-return investment that can be selected within budget 5 has return 60 and cost 4."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Binary Search on Answer",
+    "module_key": "binary-search-on-answer",
+    "reason": "The possible return threshold lies within a numerical range, and feasibility can be checked for each threshold, allowing binary search to find the maximum achievable value efficiently."
+  },
+  "complexity": {
+    "time": "O(N log R)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Identify the minimum and maximum possible return thresholds.",
+    "For a candidate threshold, check whether an investment meeting that return can be purchased within the budget.",
+    "If the threshold is feasible, try a larger value.",
+    "Otherwise, search the lower half of the answer range."
+  ],
+  "real_world_takeaway": "Binary Search on Answer is useful when a financial system needs to find the highest feasible threshold rather than directly searching for a specific investment.",
+  "tags": [
+    "binary-search-on-answer",
+    "optimization",
+    "investment",
+    "threshold",
+    "feasibility"
+  ]
+}

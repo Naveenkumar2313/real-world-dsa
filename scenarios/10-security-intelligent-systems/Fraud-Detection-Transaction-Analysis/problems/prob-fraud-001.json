@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-FRAUD-001",
+  "scenario_id": "SCN-FRAUD-001",
+  "sequence": 1,
+  "title": "Detect a Suspicious Transaction Pattern",
+  "difficulty": "Medium",
+  "concepts": [
+    "KMP Pattern Matching",
+    "String"
+  ],
+  "real_world_story": "A financial monitoring system records transaction types as a continuous sequence. Certain transaction patterns are known to be suspicious, and the system needs to identify every position where such a pattern occurs.",
+  "real_world_connection": {
+    "system": "Fraud detection and transaction monitoring system",
+    "input_represents": "A sequence of transaction codes and a suspicious transaction pattern",
+    "target_represents": "Every location where the suspicious pattern occurs",
+    "algorithm_represents": "KMP pattern matching for efficiently locating repeated patterns in a transaction stream"
+  },
+  "problem_statement": "Given a transaction sequence and a suspicious pattern, find every position where the pattern occurs in the sequence. Overlapping occurrences must also be reported.",
+  "task": "Use KMP pattern matching to find all starting indices of the suspicious pattern.",
+  "input_format": "The first line contains the transaction sequence as a string. The second line contains the suspicious pattern as a string.",
+  "output_format": "Print all zero-based starting indices where the pattern occurs, separated by spaces. If the pattern does not occur, print -1.",
+  "constraints": [
+    "1 <= length of transaction sequence <= 100000",
+    "1 <= length of pattern <= 10000",
+    "Transaction sequence and pattern contain only lowercase English letters"
+  ],
+  "examples": [
+    {
+      "input": "ababcababc\nabc",
+      "output": "2 7",
+      "explanation": "The suspicious pattern abc occurs starting at indices 2 and 7."
+    },
+    {
+      "input": "aaaaa\naaa",
+      "output": "0 1 2",
+      "explanation": "The pattern aaa occurs at indices 0, 1, and 2, including overlapping occurrences."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "KMP Pattern Matching",
+    "module_key": "kmp-pattern-matching",
+    "reason": "KMP avoids unnecessary character comparisons and efficiently finds every occurrence of a suspicious pattern in a large transaction stream."
+  },
+  "complexity": {
+    "time": "O(N + M)",
+    "space": "O(M)",
+    "where": "N is the transaction sequence length and M is the pattern length."
+  },
+  "hint": [
+    "Build the LPS array for the suspicious pattern.",
+    "Scan the transaction sequence using the KMP matching process.",
+    "When the complete pattern is found, record its starting index.",
+    "After finding a match, continue using the LPS array to detect overlapping matches."
+  ],
+  "real_world_takeaway": "Efficient pattern matching allows fraud-monitoring systems to detect suspicious sequences quickly even when transaction streams become very large.",
+  "tags": [
+    "kmp",
+    "pattern-matching",
+    "strings",
+    "fraud-detection",
+    "transaction-analysis"
+  ]
+}

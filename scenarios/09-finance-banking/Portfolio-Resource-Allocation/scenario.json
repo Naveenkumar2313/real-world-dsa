@@ -1,0 +1,84 @@
+{
+  "scenario_id": "SCN-PORT-001",
+  "title": "Portfolio Resource Allocation",
+  "slug": "portfolio-resource-allocation",
+  "short_description": "Learn how financial planning systems allocate limited capital across investment opportunities to maximize portfolio value and make efficient resource-allocation decisions.",
+  "category": "Optimization and Dynamic Programming",
+  "industry": "Finance and Investment",
+  "difficulty": "Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "An investor has limited capital and must choose from several investment opportunities with different capital requirements and expected values. The system needs to determine how available resources can be allocated to maximize portfolio value, support partial investments, maximize diversification, rank opportunities, and construct portfolios under multiple constraints.",
+    "why_it_matters": "Efficient resource-allocation algorithms help investors make effective use of limited capital while evaluating many possible investment combinations and portfolio constraints.",
+    "real_world_entities": [
+      "Investor",
+      "Investment Opportunity",
+      "Capital",
+      "Expected Value",
+      "Portfolio",
+      "Investment Cost",
+      "Capital Allocation",
+      "Portfolio Value"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how investment opportunities can be represented using capital requirements and expected values.",
+    "Apply 0/1 Knapsack to select investments that maximize portfolio value within a capital limit.",
+    "Apply Fractional Knapsack when investment opportunities can receive partial capital allocation.",
+    "Use Greedy techniques to maximize the number of affordable investment opportunities.",
+    "Apply Sorting to rank investment opportunities according to their expected values.",
+    "Use Dynamic Programming to construct a portfolio with both capital and investment-count constraints.",
+    "Understand how different resource-allocation requirements lead to different algorithmic approaches.",
+    "Understand why algorithm efficiency matters when managing a large number of investment opportunities."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Sorting",
+    "Basic Greedy concepts",
+    "Basic Dynamic Programming concepts",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "0/1 Knapsack",
+      "module_key": "01-knapsack"
+    },
+    {
+      "name": "Fractional Knapsack",
+      "module_key": "fractional-knapsack"
+    },
+    {
+      "name": "Greedy",
+      "module_key": "greedy"
+    },
+    {
+      "name": "Sorting",
+      "module_key": "sorting"
+    },
+    {
+      "name": "Dynamic Programming",
+      "module_key": "dynamic-programming"
+    }
+  ],
+  "real_world_mapping": {
+    "investor": "Person or organization allocating available capital",
+    "investment_opportunity": "Available option requiring capital and providing an expected value",
+    "capital": "Limited financial resource available for allocation",
+    "investment_cost": "Amount of capital required for an investment",
+    "expected_value": "Expected value obtained from selecting an investment",
+    "portfolio": "Collection of selected investment opportunities",
+    "capital_allocation": "Distribution of available capital among investments",
+    "portfolio_value": "Total expected value of selected investments",
+    "portfolio_diversification": "Selection of multiple investment opportunities within the available capital"
+  },
+  "learning_path": [
+    "PROB-PORT-001",
+    "PROB-PORT-002",
+    "PROB-PORT-003",
+    "PROB-PORT-004",
+    "PROB-PORT-005"
+  ],
+  "completion_message": "You have completed the Portfolio Resource Allocation mission. You have learned how 0/1 Knapsack, Fractional Knapsack, Greedy, Sorting, and Dynamic Programming can be applied to capital allocation, portfolio optimization, and investment resource-management problems."
+}

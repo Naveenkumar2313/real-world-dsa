@@ -1,0 +1,61 @@
+{
+  "problem_id": "PROB-DNA-002",
+  "scenario_id": "SCN-DNA-001",
+  "sequence": 2,
+  "title": "Calculate DNA Sequence Edit Distance",
+  "difficulty": "Medium",
+  "concepts": [
+    "String",
+    "Dynamic Programming",
+    "Edit Distance"
+  ],
+  "real_world_story": "A genetics research system compares two DNA samples and needs to determine how many basic changes are required to transform one DNA sequence into another.",
+  "real_world_connection": {
+    "system": "Genetic sequence comparison system",
+    "input_represents": "Two DNA sequences obtained from biological samples",
+    "target_represents": "The minimum number of changes required between the two sequences",
+    "algorithm_represents": "Computing the minimum number of insertions, deletions, and substitutions required to transform one DNA sequence into another"
+  },
+  "problem_statement": "Given two DNA sequences, calculate the minimum number of operations required to transform the first sequence into the second. The allowed operations are insertion, deletion, and substitution of a nucleotide, and each operation has a cost of 1.",
+  "task": "Determine the minimum number of nucleotide-level edits required to transform the first DNA sequence into the second.",
+  "input_format": "The first line contains the first DNA sequence. The second line contains the second DNA sequence.",
+  "output_format": "Print a single integer representing the minimum edit distance between the two DNA sequences.",
+  "constraints": [
+    "1 <= length of each DNA sequence <= 500",
+    "DNA sequences contain only the characters A, C, G, and T"
+  ],
+  "examples": [
+    {
+      "input": "GATTACA\nGCATGCU",
+      "output": "4",
+      "explanation": "Four nucleotide-level operations are required to transform the first sequence into the second."
+    },
+    {
+      "input": "ACGT\nACGG",
+      "output": "1",
+      "explanation": "Only one nucleotide substitution is required to transform the first sequence into the second."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Edit Distance using Dynamic Programming",
+    "module_key": "edit-distance",
+    "reason": "Each position in the DNA sequences can be handled through insertion, deletion, or substitution while previously computed results avoid repeated calculations."
+  },
+  "complexity": {
+    "time": "O(N * M)",
+    "space": "O(N * M)"
+  },
+  "hint": [
+    "Create a table for prefixes of both DNA sequences.",
+    "If the current nucleotides are equal, no additional operation is required.",
+    "If they differ, consider insertion, deletion, and substitution and choose the minimum."
+  ],
+  "real_world_takeaway": "Edit distance can help researchers quantify differences between DNA sequences and study how closely two biological samples are related at the sequence level.",
+  "tags": [
+    "strings",
+    "dna",
+    "dynamic-programming",
+    "edit-distance",
+    "sequence-analysis"
+  ]
+}

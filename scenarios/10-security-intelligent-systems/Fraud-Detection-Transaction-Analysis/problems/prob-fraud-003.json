@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-FRAUD-003",
+  "scenario_id": "SCN-FRAUD-001",
+  "sequence": 3,
+  "title": "Find the First Suspicious Transaction Value",
+  "difficulty": "Medium",
+  "concepts": [
+    "Binary Search",
+    "Sorting"
+  ],
+  "real_world_story": "A financial monitoring system maintains transaction amounts in sorted order. A transaction amount equal to or greater than a configured suspicious threshold needs to be identified quickly.",
+  "real_world_connection": {
+    "system": "Transaction risk analysis system",
+    "input_represents": "Sorted transaction amounts",
+    "target_represents": "Suspicious transaction threshold",
+    "algorithm_represents": "Binary Search for finding the first transaction amount that reaches or exceeds the threshold"
+  },
+  "problem_statement": "Given a sorted array of transaction amounts and a threshold value T, find the index of the first transaction amount that is greater than or equal to T. If no such transaction exists, print -1.",
+  "task": "Use Binary Search to locate the first transaction amount that meets or exceeds the suspicious threshold.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated transaction amounts in non-decreasing order. The third line contains the threshold T.",
+  "output_format": "Print the zero-based index of the first transaction amount greater than or equal to T. If no transaction meets the threshold, print -1.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "0 <= transaction[i] <= 1000000000",
+    "0 <= T <= 1000000000",
+    "Transaction amounts are sorted in non-decreasing order"
+  ],
+  "examples": [
+    {
+      "input": "6\n100 150 200 300 450 700\n400",
+      "output": "4",
+      "explanation": "The first transaction amount greater than or equal to 400 is 450 at index 4."
+    },
+    {
+      "input": "5\n50 100 150 200 250\n300",
+      "output": "-1",
+      "explanation": "No transaction amount reaches the threshold of 300."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Binary Search",
+    "module_key": "binary-search",
+    "reason": "Because the transaction amounts are sorted, Binary Search can locate the first value meeting the threshold in logarithmic time."
+  },
+  "complexity": {
+    "time": "O(log N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Maintain left and right boundaries.",
+    "Calculate the middle position.",
+    "If the middle value is at least the threshold, store it as a possible answer and search the left half.",
+    "Otherwise, search the right half.",
+    "The final stored position is the first qualifying transaction."
+  ],
+  "real_world_takeaway": "Binary Search allows financial monitoring systems to quickly locate threshold-crossing transactions when transaction data is maintained in sorted order.",
+  "tags": [
+    "binary-search",
+    "sorting",
+    "threshold",
+    "transaction-analysis",
+    "fraud-detection"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-PORT-001",
+  "scenario_id": "SCN-PORT-001",
+  "sequence": 1,
+  "title": "Select Investments Within Capital",
+  "difficulty": "Medium",
+  "concepts": [
+    "0/1 Knapsack",
+    "Dynamic Programming",
+    "Portfolio Optimization"
+  ],
+  "real_world_story": "An investor has a fixed amount of capital and several investment opportunities. Each investment requires a certain amount of capital and provides an expected value. An investment can either be completely selected or rejected.",
+  "real_world_connection": {
+    "system": "Portfolio resource allocation system",
+    "input_represents": "Investment costs and expected portfolio values",
+    "target_represents": "Maximum portfolio value achievable within the available capital",
+    "algorithm_represents": "Selecting or rejecting each investment while respecting the capital limit"
+  },
+  "problem_statement": "Given N investment opportunities, each with a required capital and expected value, and a maximum available capital, determine the maximum total expected value that can be obtained. Each investment can be selected at most once.",
+  "task": "Select a subset of investments that maximizes the total expected value without exceeding the available capital.",
+  "input_format": "The first line contains two integers N and C, representing the number of investments and the maximum available capital. The next N lines contain two integers capital and value for each investment.",
+  "output_format": "Print the maximum total expected value achievable within the available capital.",
+  "constraints": [
+    "1 <= N <= 100",
+    "1 <= C <= 100000",
+    "1 <= capital[i] <= 100000",
+    "1 <= value[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "4 7\n3 4\n4 5\n5 7\n2 3",
+      "output": "10",
+      "explanation": "Selecting investments requiring 5 and 2 units of capital gives a total value of 10 while using exactly 7 units of capital."
+    },
+    {
+      "input": "3 5\n2 3\n3 5\n4 7",
+      "output": "7",
+      "explanation": "The investment requiring 4 units of capital provides the maximum achievable value of 7."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "0/1 Knapsack",
+    "module_key": "01-knapsack",
+    "reason": "Each investment can either be selected once or rejected, making this a 0/1 Knapsack optimization problem."
+  },
+  "complexity": {
+    "time": "O(N * C)",
+    "space": "O(C)"
+  },
+  "hint": [
+    "Create a DP array representing the maximum value for every capital limit.",
+    "For each investment, decide whether to select it or skip it.",
+    "Process capital limits in decreasing order so that each investment is selected at most once.",
+    "The value at the maximum capital gives the optimal portfolio value."
+  ],
+  "real_world_takeaway": "0/1 Knapsack helps investors choose a combination of indivisible investment opportunities when available capital is limited.",
+  "tags": [
+    "01-knapsack",
+    "dynamic-programming",
+    "portfolio",
+    "investment",
+    "capital"
+  ]
+}

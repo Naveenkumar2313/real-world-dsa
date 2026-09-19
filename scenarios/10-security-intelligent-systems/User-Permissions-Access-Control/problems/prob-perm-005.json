@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-PERM-005",
+  "scenario_id": "SCN-PERM-001",
+  "sequence": 5,
+  "title": "Find the Maximum Permission Difference",
+  "difficulty": "Medium",
+  "concepts": [
+    "Maximum XOR",
+    "Bit Manipulation",
+    "XOR"
+  ],
+  "real_world_story": "A security system compares permission masks assigned to different users or roles. It wants to identify the pair whose permission masks differ across the greatest number of significant binary positions.",
+  "real_world_connection": {
+    "system": "User access comparison system",
+    "input_represents": "Permission masks assigned to users or roles",
+    "target_represents": "Maximum XOR value between any two permission masks",
+    "algorithm_represents": "Maximum XOR using bitwise properties to find the pair with the largest binary difference"
+  },
+  "problem_statement": "Given N permission masks, find the maximum XOR value that can be obtained by XORing any two different permission masks.",
+  "task": "Determine the maximum XOR value among all pairs of permission masks.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated non-negative integers representing permission masks.",
+  "output_format": "Print the maximum XOR value obtainable from any two different permission masks.",
+  "constraints": [
+    "2 <= N <= 100000",
+    "0 <= permission_mask[i] <= 2147483647"
+  ],
+  "examples": [
+    {
+      "input": "4\n3 10 5 25",
+      "output": "28",
+      "explanation": "The maximum XOR is obtained from 5 XOR 25, which equals 28."
+    },
+    {
+      "input": "3\n8 10 2",
+      "output": "10",
+      "explanation": "The maximum XOR is obtained from 8 XOR 2, which equals 10."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Maximum XOR",
+    "module_key": "maximum-xor",
+    "reason": "Bitwise XOR highlights the positions where two permission masks differ, and a bitwise strategy can find the pair producing the largest possible XOR."
+  },
+  "complexity": {
+    "time": "O(N log M)",
+    "space": "O(N log M)",
+    "where": "M is the maximum permission mask value."
+  },
+  "hint": [
+    "Compare permission masks from the most significant bit toward the least significant bit.",
+    "Try to maximize the highest possible bit in the XOR result.",
+    "A binary Trie can efficiently store and query permission masks.",
+    "For each mask, choose the stored value that produces the largest XOR."
+  ],
+  "real_world_takeaway": "Maximum XOR techniques can help compare binary permission configurations and identify pairs with the greatest difference in enabled access bits.",
+  "tags": [
+    "maximum-xor",
+    "xor",
+    "bit-manipulation",
+    "permissions",
+    "access-control"
+  ]
+}

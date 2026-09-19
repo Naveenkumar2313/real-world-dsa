@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-LOG-003",
+  "scenario_id": "SCN-LOG-001",
+  "sequence": 3,
+  "title": "Manage Events with a Circular Queue",
+  "difficulty": "Medium",
+  "concepts": [
+    "Circular Queue",
+    "Queue",
+    "FIFO"
+  ],
+  "real_world_story": "A monitoring device has limited memory for storing incoming events. Once processed events are removed, their memory locations should be reused for new events instead of allocating additional space.",
+  "real_world_connection": {
+    "system": "Memory-efficient real-time event buffer",
+    "input_represents": "Events entering and leaving a fixed-size monitoring buffer",
+    "target_represents": "The event currently at the front of the circular buffer",
+    "algorithm_represents": "Reusing freed positions by wrapping the queue indices around the fixed-size buffer"
+  },
+  "problem_statement": "Implement a circular queue of capacity K that supports ENQUEUE and DEQUEUE operations. The queue must reuse positions that become available after elements are removed. If an ENQUEUE operation is attempted when the queue is full, print -1. If a DEQUEUE operation is attempted when the queue is empty, print -1.",
+  "task": "Process the circular queue operations and print the result of every DEQUEUE operation.",
+  "input_format": "The first line contains an integer K representing the queue capacity. The second line contains an integer Q representing the number of operations. Each of the next Q lines contains either 'ENQUEUE X' or 'DEQUEUE'.",
+  "output_format": "For every DEQUEUE operation, print the removed event on a separate line. For an invalid operation caused by a full or empty queue, print -1.",
+  "constraints": [
+    "1 <= K <= 1000",
+    "1 <= Q <= 100000",
+    "0 <= X <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "3\n7\nENQUEUE 10\nENQUEUE 20\nENQUEUE 30\nDEQUEUE\nENQUEUE 40\nDEQUEUE\nDEQUEUE",
+      "output": "10\n20\n30",
+      "explanation": "After removing 10, the circular queue reuses the freed position to store 40."
+    },
+    {
+      "input": "2\n6\nENQUEUE 5\nENQUEUE 15\nENQUEUE 25\nDEQUEUE\nENQUEUE 35\nDEQUEUE",
+      "output": "-1\n5\n15",
+      "explanation": "The third ENQUEUE occurs when the queue is full, so -1 is printed. The freed position is then reused by the next ENQUEUE."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Circular Queue Operations",
+    "module_key": "circular-queue-operations",
+    "reason": "A circular queue reuses positions released by dequeued events, making it suitable for fixed-size real-time buffers."
+  },
+  "complexity": {
+    "time": "O(Q)",
+    "space": "O(K)"
+  },
+  "hint": [
+    "Maintain front and rear positions in a fixed-size array.",
+    "Use modulo K to wrap the rear and front positions.",
+    "Track the current number of elements to identify full and empty states."
+  ],
+  "real_world_takeaway": "Circular queues are useful for monitoring systems that continuously receive events while operating with a fixed amount of memory.",
+  "tags": [
+    "circular-queue",
+    "queue",
+    "fifo",
+    "event-buffer",
+    "real-time-monitoring"
+  ]
+}

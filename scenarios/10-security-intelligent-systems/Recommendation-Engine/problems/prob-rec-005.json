@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-REC-005",
+  "scenario_id": "SCN-REC-001",
+  "sequence": 5,
+  "title": "Generate All Possible Recommendation Combinations",
+  "difficulty": "Medium",
+  "concepts": [
+    "Power Set",
+    "Bit Manipulation",
+    "Combinations"
+  ],
+  "real_world_story": "A recommendation platform has a small set of available items and wants to understand every possible combination that can be recommended to a user. Each item can either be selected or left out.",
+  "real_world_connection": {
+    "system": "Recommendation bundle generation system",
+    "input_represents": "Available recommendation items",
+    "target_represents": "All possible subsets of items that can form recommendation combinations",
+    "algorithm_represents": "Power Set generation where each item has two choices: selected or not selected"
+  },
+  "problem_statement": "Given N distinct item IDs, determine the total number of possible recommendation combinations. Each item can either be included or excluded from a combination.",
+  "task": "Calculate the number of subsets in the power set of the available items.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated distinct item IDs.",
+  "output_format": "Print the total number of possible recommendation combinations.",
+  "constraints": [
+    "0 <= N <= 20",
+    "1 <= item_id[i] <= 1000000000",
+    "All item IDs are distinct"
+  ],
+  "examples": [
+    {
+      "input": "3\n101 102 103",
+      "output": "8",
+      "explanation": "Three independent items produce 2^3 = 8 possible recommendation combinations."
+    },
+    {
+      "input": "4\n10 20 30 40",
+      "output": "16",
+      "explanation": "Four items produce 2^4 = 16 possible combinations."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Power Set",
+    "module_key": "power-set",
+    "reason": "Every item has two choices, included or excluded, so N items produce exactly 2^N possible combinations."
+  },
+  "complexity": {
+    "time": "O(1)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Each item has two possible states.",
+    "One state includes the item and the other excludes it.",
+    "The number of combinations doubles for every additional item.",
+    "Use the formula 2^N."
+  ],
+  "real_world_takeaway": "Power-set concepts help recommendation systems understand how many possible item combinations can be generated from a small collection of available items.",
+  "tags": [
+    "power-set",
+    "bit-manipulation",
+    "combinations",
+    "recommendation",
+    "subsets"
+  ]
+}

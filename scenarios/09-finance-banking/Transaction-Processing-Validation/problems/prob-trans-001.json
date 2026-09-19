@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-TRANS-001",
+  "scenario_id": "SCN-TRANS-001",
+  "sequence": 1,
+  "title": "Process Transactions in Order",
+  "difficulty": "Easy",
+  "concepts": [
+    "Queue",
+    "FIFO",
+    "Transaction Processing"
+  ],
+  "real_world_story": "A banking system receives transaction requests continuously. Transactions must be processed in exactly the same order in which they were received.",
+  "real_world_connection": {
+    "system": "Banking transaction processing system",
+    "input_represents": "Transaction requests received by the banking system",
+    "target_represents": "Transactions in the order they should be processed",
+    "algorithm_represents": "A queue that processes the earliest received transaction first"
+  },
+  "problem_statement": "Given N transaction IDs in the order they are received, process them using FIFO ordering and print the transaction IDs in the order in which they are processed.",
+  "task": "Process all transaction requests in the same order in which they were received.",
+  "input_format": "The first line contains an integer N, the number of transactions. The second line contains N space-separated transaction IDs.",
+  "output_format": "Print the transaction IDs in their processing order separated by spaces.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= transaction_id[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "5\n101 205 309 412 518",
+      "output": "101 205 309 412 518",
+      "explanation": "Transactions are processed in the same order in which they entered the system."
+    },
+    {
+      "input": "4\n72 15 89 34",
+      "output": "72 15 89 34",
+      "explanation": "The first transaction received is processed first, followed by the remaining transactions."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Queue",
+    "module_key": "queue-operations",
+    "reason": "A queue follows First-In-First-Out ordering, which matches the required transaction-processing order."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Insert each transaction into a queue.",
+    "Remove transactions from the front of the queue.",
+    "Process each transaction in the order it was inserted.",
+    "Print the processed transaction IDs."
+  ],
+  "real_world_takeaway": "Queue operations are useful when banking systems must process incoming requests fairly and maintain their arrival order.",
+  "tags": [
+    "queue",
+    "fifo",
+    "transactions",
+    "banking",
+    "transaction-processing"
+  ]
+}

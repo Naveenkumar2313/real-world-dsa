@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-PERM-004",
+  "scenario_id": "SCN-PERM-001",
+  "sequence": 4,
+  "title": "Generate All Permission Combinations",
+  "difficulty": "Medium",
+  "concepts": [
+    "Power Set",
+    "Bit Manipulation",
+    "Combinations"
+  ],
+  "real_world_story": "An access-control system has a small set of optional permissions that can be enabled or disabled independently. The system needs to generate every possible combination of these permissions.",
+  "real_world_connection": {
+    "system": "Access-control configuration system",
+    "input_represents": "Available permission identifiers",
+    "target_represents": "Every possible permission configuration",
+    "algorithm_represents": "Power Set generation where every element can either be included or excluded"
+  },
+  "problem_statement": "Given N distinct permission IDs, generate all possible subsets of those permissions. Each permission may either be included or excluded from a configuration. Print the total number of possible configurations.",
+  "task": "Determine the number of possible permission configurations for the given set of distinct permissions.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated distinct permission IDs.",
+  "output_format": "Print the number of subsets in the power set.",
+  "constraints": [
+    "0 <= N <= 20",
+    "1 <= permission_id[i] <= 1000000000",
+    "All permission IDs are distinct"
+  ],
+  "examples": [
+    {
+      "input": "3\n10 20 30",
+      "output": "8",
+      "explanation": "Three independent permissions produce 2^3 = 8 possible configurations."
+    },
+    {
+      "input": "4\n1 2 3 4",
+      "output": "16",
+      "explanation": "Four permissions produce 2^4 = 16 possible subsets."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Power Set",
+    "module_key": "power-set",
+    "reason": "Each permission has two choices, included or excluded, so N permissions produce 2^N possible configurations."
+  },
+  "complexity": {
+    "time": "O(2^N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Each permission has two possible states: selected or not selected.",
+    "The number of possible subsets doubles whenever another permission is added.",
+    "Use the relationship between subsets and powers of two.",
+    "For N permissions, the power set contains 2^N subsets."
+  ],
+  "real_world_takeaway": "Power-set reasoning helps access-control systems understand how many possible permission configurations can be created from a set of independent permissions.",
+  "tags": [
+    "power-set",
+    "bit-manipulation",
+    "permissions",
+    "combinations",
+    "access-control"
+  ]
+}

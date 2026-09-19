@@ -1,0 +1,64 @@
+{
+    "problem_id": "PROB-DOC-004",
+    "scenario_id": "SCN-DOC-001",
+    "sequence": 4,
+    "title": "Count Words with a Given Prefix",
+    "difficulty": "Medium",
+    "concepts": [
+        "String",
+        "Trie",
+        "Prefix Search"
+    ],
+    "real_world_story": "A document analytics system groups words by their prefixes. For a given prefix, it must quickly determine how many indexed words begin with that prefix.",
+    "real_world_connection": {
+        "system": "Document analytics and prefix indexing",
+        "input_represents": "Words indexed from multiple documents",
+        "target_represents": "Prefix used for filtering words",
+        "algorithm_represents": "Trie prefix traversal with counts stored at Trie nodes"
+    },
+    "problem_statement": "Given N words and a prefix, determine how many words in the collection begin with that prefix. Each occurrence of a word in the input is counted separately.",
+    "task": "Build a Trie and return the number of input words whose prefix matches the requested prefix.",
+    "input_format": "The first line contains an integer N. The second line contains N space-separated lowercase words. The third line contains the prefix.",
+    "output_format": "Print the number of words that start with the given prefix.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "1 <= length of each word <= 50",
+        "1 <= length of prefix <= 50",
+        "Words contain only lowercase English letters"
+    ],
+    "examples": [
+        {
+            "input": "7\ndocument documentation doctor dog download data database\ndoc",
+            "output": "3",
+            "explanation": "The words 'document', 'documentation', and 'doctor' begin with 'doc'."
+        },
+        {
+            "input": "6\nsearch storage system source service server\nse",
+            "output": "2",
+            "explanation": "The words 'search' and 'service' begin with 'se'."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Trie Prefix Search",
+        "module_key": "trie-prefix-search",
+        "reason": "A Trie can reach the node representing the prefix directly and store or aggregate the number of words passing through that node."
+    },
+    "complexity": {
+        "time": "O(total characters + prefix length)",
+        "space": "O(total characters)"
+    },
+    "hint": [
+        "Insert each word into the Trie.",
+        "Maintain a count for each Trie node representing how many inserted words pass through it.",
+        "Traverse the Trie using the prefix.",
+        "The count at the prefix node is the answer."
+    ],
+    "real_world_takeaway": "Prefix counts can help document systems provide search statistics, filters, suggestions, and fast category-like grouping of text.",
+    "tags": [
+        "strings",
+        "trie",
+        "prefix",
+        "counting",
+        "document-analytics"
+    ]
+}

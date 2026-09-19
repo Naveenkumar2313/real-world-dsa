@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-PASS-001",
+  "scenario_id": "SCN-PASS-001",
+  "sequence": 1,
+  "title": "Detect Repeated Characters in a Password Window",
+  "difficulty": "Easy",
+  "concepts": [
+    "Sliding Window",
+    "Strings",
+    "Character Frequency"
+  ],
+  "real_world_story": "A security system analyzes passwords and authentication strings to detect suspicious repetition. It checks whether any fixed-size section of a password contains a repeated character.",
+  "real_world_connection": {
+    "system": "Password security analysis system",
+    "input_represents": "Password or authentication string",
+    "target_represents": "Whether a repeated character exists inside any window of a specified size",
+    "algorithm_represents": "A sliding window that maintains character frequencies while moving across the string"
+  },
+  "problem_statement": "Given a string and an integer K, determine whether any substring of length K contains a repeated character. Print YES if such a window exists; otherwise print NO.",
+  "task": "Check every continuous window of K characters and determine whether at least one window contains a repeated character.",
+  "input_format": "The first line contains a string S. The second line contains an integer K.",
+  "output_format": "Print YES if any window of length K contains a repeated character. Otherwise, print NO.",
+  "constraints": [
+    "1 <= length of S <= 100000",
+    "1 <= K <= length of S",
+    "S contains only English letters and digits"
+  ],
+  "examples": [
+    {
+      "input": "aBcaDde\n4",
+      "output": "YES",
+      "explanation": "The window 'aDde' contains the character 'd' twice."
+    },
+    {
+      "input": "abCDeF\n3",
+      "output": "NO",
+      "explanation": "Every window of length 3 contains unique characters."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Sliding Window",
+    "module_key": "sliding-window",
+    "reason": "A sliding window can maintain character frequencies efficiently while moving across the password."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(K)"
+  },
+  "hint": [
+    "Create a window containing the first K characters.",
+    "Track the frequency of characters inside the window.",
+    "Move the window one character at a time.",
+    "Remove the character leaving the window and add the new character."
+  ],
+  "real_world_takeaway": "Sliding Window techniques can efficiently inspect local sections of authentication strings for repeated or suspicious character patterns.",
+  "tags": [
+    "sliding-window",
+    "strings",
+    "password",
+    "security",
+    "character-frequency"
+  ]
+}

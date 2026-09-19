@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-ATM-005",
+  "scenario_id": "SCN-ATM-001",
+  "sequence": 5,
+  "title": "Minimize Waiting Customers at Service Counters",
+  "difficulty": "Medium",
+  "concepts": [
+    "Greedy",
+    "Sorting",
+    "Waiting Time"
+  ],
+  "real_world_story": "A bank has one service counter and a group of customers waiting for different services. Each customer requires a different amount of service time. The bank wants to arrange the customers so that the total waiting time is as small as possible.",
+  "real_world_connection": {
+    "system": "Bank customer service counter",
+    "input_represents": "Service times required by waiting customers",
+    "target_represents": "Minimum possible total waiting time",
+    "algorithm_represents": "A greedy strategy that serves customers requiring the shortest service time first"
+  },
+  "problem_statement": "Given N customers and the amount of service time required for each customer, arrange the customers in an order that minimizes the total waiting time of all customers. Print the minimum possible total waiting time.",
+  "task": "Determine the minimum total waiting time by choosing an appropriate service order.",
+  "input_format": "The first line contains an integer N, the number of customers. The second line contains N space-separated integers representing the service time required by each customer.",
+  "output_format": "Print the minimum possible total waiting time.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= service_time[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "4\n6 2 8 3",
+      "output": "15",
+      "explanation": "Serving customers in the order 2, 3, 6, 8 gives waiting times of 0, 2, 5, and 11, for a total of 18. The total completion-time-based waiting calculation gives 18."
+    },
+    {
+      "input": "3\n5 1 4",
+      "output": "7",
+      "explanation": "Serving customers in the order 1, 4, 5 gives waiting times of 0, 1, and 5, for a total waiting time of 6."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Greedy",
+    "module_key": "greedy",
+    "reason": "Serving the customer with the shortest service time first reduces the amount of time that subsequent customers have to wait."
+  },
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Sort the service times in ascending order.",
+    "Serve the customer requiring the shortest time first.",
+    "Keep track of the elapsed service time.",
+    "Add the elapsed time before each customer is served to the total waiting time."
+  ],
+  "real_world_takeaway": "Greedy scheduling can reduce customer waiting time when a bank needs to decide the order in which customers with different service requirements should be handled."
+  ,
+  "tags": [
+    "greedy",
+    "sorting",
+    "scheduling",
+    "waiting-time",
+    "banking"
+  ]
+}

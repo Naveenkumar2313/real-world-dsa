@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-PORT-005",
+  "scenario_id": "SCN-PORT-001",
+  "sequence": 5,
+  "title": "Maximize Portfolio Value with a Fixed Number of Investments",
+  "difficulty": "Medium",
+  "concepts": [
+    "Dynamic Programming",
+    "0/1 Knapsack",
+    "Portfolio Optimization"
+  ],
+  "real_world_story": "An investor wants to build a portfolio containing exactly K investments while staying within a fixed capital limit. Each investment has a capital requirement and an expected value.",
+  "real_world_connection": {
+    "system": "Portfolio construction and resource allocation system",
+    "input_represents": "Investment costs, expected values, available capital, and required portfolio size",
+    "target_represents": "Maximum portfolio value achievable using exactly K investments",
+    "algorithm_represents": "Tracking both capital usage and the number of selected investments using Dynamic Programming"
+  },
+  "problem_statement": "Given N investment opportunities, each with a capital requirement and expected value, a maximum available capital C, and an exact number K of investments that must be selected, determine the maximum total expected value of a valid portfolio.",
+  "task": "Select exactly K investments such that their total capital requirement does not exceed C and their total expected value is maximized.",
+  "input_format": "The first line contains three integers N, C, and K, representing the number of investments, available capital, and required number of investments. The next N lines contain two integers capital and value for each investment.",
+  "output_format": "Print the maximum total expected value of a portfolio containing exactly K investments. If no valid portfolio can be formed, print -1.",
+  "constraints": [
+    "1 <= K <= N <= 100",
+    "1 <= C <= 10000",
+    "1 <= capital[i] <= C",
+    "1 <= value[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "5 10 2\n2 4\n5 8\n6 10\n4 7\n3 5",
+      "output": "15",
+      "explanation": "Selecting investments with costs 5 and 4 uses 9 units of capital and gives a total value of 15, which is the maximum for exactly two investments."
+    },
+    {
+      "input": "4 7 2\n2 3\n3 5\n4 6\n5 8",
+      "output": "11",
+      "explanation": "Selecting the investments costing 3 and 4 gives a total cost of 7 and a total value of 11."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Dynamic Programming",
+    "module_key": "dynamic-programming",
+    "reason": "The problem requires optimizing both the total capital and the exact number of selected investments, which can be handled using a two-dimensional Dynamic Programming state."
+  },
+  "complexity": {
+    "time": "O(N * K * C)",
+    "space": "O(K * C)"
+  },
+  "hint": [
+    "Use a DP state representing the maximum value for a given capital limit and number of selected investments.",
+    "Initialize impossible states with a very small value.",
+    "Process each investment once and update the number of selected investments in decreasing order.",
+    "The state for exactly K investments and capital C gives the answer."
+  ],
+  "real_world_takeaway": "Dynamic Programming can help construct portfolios when an investor must satisfy multiple constraints, such as both a capital limit and a fixed number of investments.",
+  "tags": [
+    "dynamic-programming",
+    "01-knapsack",
+    "portfolio",
+    "investment",
+    "resource-allocation"
+  ]
+}

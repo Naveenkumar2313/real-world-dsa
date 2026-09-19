@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-PASS-005",
+  "scenario_id": "SCN-PASS-001",
+  "sequence": 5,
+  "title": "Find the Longest Secure Substring",
+  "difficulty": "Medium",
+  "concepts": [
+    "Longest Substring Without Repeating Characters",
+    "Sliding Window",
+    "Hashing"
+  ],
+  "real_world_story": "A password analyzer evaluates a password to determine the longest continuous section in which every character is unique. Such analysis helps measure the structural variety of an authentication string.",
+  "real_world_connection": {
+    "system": "Password strength analysis system",
+    "input_represents": "Password or authentication string",
+    "target_represents": "Longest continuous substring containing no repeated characters",
+    "algorithm_represents": "A sliding window with character tracking to maintain the longest substring with unique characters"
+  },
+  "problem_statement": "Given a string representing a password, find the length of the longest substring that contains no repeated characters.",
+  "task": "Determine the maximum length of a continuous substring in which every character occurs at most once.",
+  "input_format": "The input contains a single string S.",
+  "output_format": "Print the length of the longest substring without repeating characters.",
+  "constraints": [
+    "1 <= length of S <= 100000",
+    "S contains only English letters and digits"
+  ],
+  "examples": [
+    {
+      "input": "abcabcbb",
+      "output": "3",
+      "explanation": "The longest substrings without repeated characters include 'abc', which has length 3."
+    },
+    {
+      "input": "security",
+      "output": "6",
+      "explanation": "The longest substring without repeated characters is 'ecurit', which has length 6."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Longest Substring Without Repeating Characters",
+    "module_key": "longest-substring-without-repeating-characters",
+    "reason": "A sliding window with character tracking efficiently maintains the longest substring containing unique characters."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(K)",
+    "where": "K is the number of distinct characters in the input."
+  },
+  "hint": [
+    "Maintain a window containing only unique characters.",
+    "Track the most recent position of each character.",
+    "When a repeated character appears, move the left side of the window forward.",
+    "Keep track of the maximum window length."
+  ],
+  "real_world_takeaway": "Longest-substring analysis can help password analyzers measure character diversity and identify continuous sections with unique characters.",
+  "tags": [
+    "sliding-window",
+    "longest-substring",
+    "strings",
+    "password",
+    "security"
+  ]
+}

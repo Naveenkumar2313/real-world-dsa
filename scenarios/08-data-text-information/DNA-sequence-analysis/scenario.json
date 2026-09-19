@@ -1,0 +1,78 @@
+{
+  "scenario_id": "SCN-DNA-001",
+  "title": "DNA / Biological Sequence Analysis",
+  "slug": "dna-biological-sequence-analysis",
+  "short_description": "Learn how biological systems compare DNA sequences, measure sequence differences, locate genetic patterns, identify palindromic segments and analyze nucleotide diversity efficiently.",
+  "category": "Data, Biology & Sequence Processing",
+  "industry": "Biotechnology & Biological Research",
+  "difficulty": "Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "Biological research systems process large DNA sequences to identify shared genetic patterns, measure differences between sequences, locate specific nucleotide patterns, detect palindromic regions, and analyze local nucleotide diversity.",
+    "why_it_matters": "Efficient DNA sequence analysis allows researchers to process large biological datasets and identify meaningful similarities, differences, patterns, and structural characteristics more quickly.",
+    "real_world_entities": [
+      "DNA Sequence",
+      "Nucleotide",
+      "Genetic Pattern",
+      "Biological Sample",
+      "DNA Segment",
+      "Sequence Window"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how DNA sequences can be represented using strings.",
+    "Understand how Dynamic Programming can be applied to biological sequence comparison.",
+    "Apply Longest Common Subsequence to identify shared patterns between DNA sequences.",
+    "Calculate Edit Distance to measure differences between biological sequences.",
+    "Understand how KMP efficiently locates genetic patterns within large DNA sequences.",
+    "Identify the longest palindromic segment within a DNA sequence.",
+    "Apply Sliding Window techniques to analyze nucleotide diversity in local DNA regions.",
+    "Understand how algorithm choice affects performance when processing large biological sequences."
+  ],
+  "prerequisites": [
+    "Strings",
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Basic Dynamic Programming",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "Longest Common Subsequence",
+      "module_key": "longest-common-subsequence"
+    },
+    {
+      "name": "Edit Distance",
+      "module_key": "edit-distance"
+    },
+    {
+      "name": "KMP Pattern Matching",
+      "module_key": "kmp-pattern-matching"
+    },
+    {
+      "name": "Longest Palindromic Substring",
+      "module_key": "longest-palindromic-substring"
+    },
+    {
+      "name": "Sliding Window",
+      "module_key": "sliding-window"
+    }
+  ],
+  "real_world_mapping": {
+    "dna_sequence": "String containing nucleotides A, C, G, and T",
+    "nucleotide": "Character representing A, C, G, or T",
+    "sequence_comparison": "Comparison between two DNA strings",
+    "genetic_pattern": "Substring to locate within a DNA sequence",
+    "palindromic_segment": "Continuous DNA substring that reads identically in both directions",
+    "sequence_window": "Fixed-size contiguous section of a DNA sequence"
+  },
+  "learning_path": [
+    "PROB-DNA-001",
+    "PROB-DNA-002",
+    "PROB-DNA-003",
+    "PROB-DNA-004",
+    "PROB-DNA-005"
+  ],
+  "completion_message": "You have completed the DNA / Biological Sequence Analysis mission. You have learned how sequence comparison, edit distance, pattern matching, palindrome detection and sliding window techniques can be applied to real-world biological sequence analysis problems."
+}

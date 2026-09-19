@@ -1,0 +1,60 @@
+{
+    "problem_id": "PROB-DOC-001",
+    "scenario_id": "SCN-DOC-001",
+    "sequence": 1,
+    "title": "Find a Word in a Document",
+    "difficulty": "Easy",
+    "concepts": [
+        "String",
+        "Linear Search"
+    ],
+    "real_world_story": "A document-management system stores the words of a document in the order in which they appear. A user wants to know whether a particular word exists in the document.",
+    "real_world_connection": {
+        "system": "Document management and search system",
+        "input_represents": "Words extracted from a document",
+        "target_represents": "Word requested by the user",
+        "algorithm_represents": "Sequentially checking document words to locate the requested word"
+    },
+    "problem_statement": "Given an array of words and a target word, determine whether the target word exists in the document. Return the zero-based index of its first occurrence if it exists; otherwise return -1.",
+    "task": "Search the document words and return the index of the first occurrence of the requested word.",
+    "input_format": "The first line contains an integer N, the number of words. The second line contains N space-separated words. The third line contains the target word to search for.",
+    "output_format": "Print the zero-based index of the first occurrence of the target word. Otherwise, print -1.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "1 <= length of each word <= 100",
+        "Words contain only English letters"
+    ],
+    "examples": [
+        {
+            "input": "6\nsystem stores important user documents\nuser",
+            "output": "3",
+            "explanation": "The word 'user' occurs first at index 3."
+        },
+        {
+            "input": "5\nsearch files using document indexing\nemail",
+            "output": "-1",
+            "explanation": "The word 'email' does not occur in the document."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Linear Search",
+        "module_key": "linear-search",
+        "reason": "The document words are not guaranteed to be sorted, so the words must be checked sequentially."
+    },
+    "complexity": {
+        "time": "O(N)",
+        "space": "O(1)"
+    },
+    "hint": [
+        "Start from the first word.",
+        "Compare each word with the target.",
+        "Return the index as soon as the target is found."
+    ],
+    "real_world_takeaway": "A sequential scan is simple and useful when document content is stored in its original order, but repeated searches over very large documents can require more advanced indexing.",
+    "tags": [
+        "strings",
+        "arrays",
+        "linear-search",
+        "document-search"
+    ]
+}

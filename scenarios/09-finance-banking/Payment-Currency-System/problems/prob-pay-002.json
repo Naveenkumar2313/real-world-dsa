@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-PAY-002",
+  "scenario_id": "SCN-PAY-001",
+  "sequence": 2,
+  "title": "Calculate Currency Notes Using Greedy Selection",
+  "difficulty": "Easy",
+  "concepts": [
+    "Greedy Algorithm",
+    "Currency Denominations",
+    "Arrays"
+  ],
+  "real_world_story": "A payment counter needs to return change to a customer. The system should use the largest available denomination first and continue selecting smaller denominations until the required change is distributed.",
+  "real_world_connection": {
+    "system": "Cash payment and change-management system",
+    "input_represents": "Available currency denominations and the change amount",
+    "target_represents": "The number of currency notes required to provide the exact change",
+    "algorithm_represents": "Choosing the largest possible denomination at every step before moving to smaller denominations"
+  },
+  "problem_statement": "Given a set of standard currency denominations and a change amount, determine the minimum number of notes required by repeatedly selecting the largest denomination that does not exceed the remaining amount.",
+  "task": "Use a greedy strategy to calculate the number of currency notes required to produce the exact change.",
+  "input_format": "The first line contains an integer N, the number of denominations. The second line contains N space-separated positive integers representing the denominations. The third line contains the change amount.",
+  "output_format": "Print the total number of currency notes used. If the exact amount cannot be formed using the given denominations, print -1.",
+  "constraints": [
+    "1 <= N <= 100",
+    "1 <= denomination[i] <= 100000",
+    "1 <= amount <= 1000000",
+    "Denominations are positive integers"
+  ],
+  "examples": [
+    {
+      "input": "5\n1 5 10 20 50\n93",
+      "output": "5",
+      "explanation": "The greedy selection uses 50 + 20 + 20 + 2 × 1, requiring 5 notes."
+    },
+    {
+      "input": "4\n1 10 20 50\n80",
+      "output": "4",
+      "explanation": "The greedy strategy selects 50 + 20 + 10, requiring 3 notes."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Greedy",
+    "module_key": "greedy",
+    "reason": "The system repeatedly chooses the largest denomination that can be used for the remaining amount, making a locally optimal choice at each step."
+  },
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Sort the denominations in descending order.",
+    "Select as many notes of the largest denomination as possible.",
+    "Reduce the remaining amount after each selection.",
+    "Continue until the amount becomes zero or no denomination can be used."
+  ],
+  "real_world_takeaway": "Greedy selection can quickly calculate change for standard currency systems where choosing larger denominations first provides an efficient solution.",
+  "tags": [
+    "greedy",
+    "currency",
+    "denominations",
+    "change-making",
+    "payment-system"
+  ]
+}

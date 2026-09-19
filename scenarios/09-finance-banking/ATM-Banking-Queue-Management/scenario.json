@@ -1,0 +1,90 @@
+{
+  "scenario_id": "SCN-ATM-001",
+  "title": "ATM / Banking Queue Management",
+  "slug": "atm-banking-queue-management",
+  "short_description": "Learn how banks and ATM systems manage customer queues, reuse fixed service slots, process requests using stacks, schedule customer services, and reduce waiting time efficiently.",
+  "category": "Data Structures and Greedy Algorithms",
+  "industry": "Banking and Financial Services",
+  "difficulty": "Beginner to Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "A bank branch or ATM network needs to manage customers waiting for services and process requests in an organized manner. The system must maintain customer order, efficiently reuse limited request slots, handle service requests in reverse order when required, schedule non-overlapping appointments, and reduce overall customer waiting time.",
+    "why_it_matters": "Efficient queue management and scheduling algorithms help banking systems organize customer requests, utilize limited service resources, schedule appointments effectively, and reduce waiting times as the number of customers increases.",
+    "real_world_entities": [
+      "Customer",
+      "Customer ID",
+      "Service Request",
+      "ATM Request",
+      "Waiting Queue",
+      "Service Slot",
+      "Appointment",
+      "Service Counter",
+      "Service Time"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how queues maintain the order of customers waiting for banking services.",
+    "Apply FIFO queue operations to process customers in their arrival order.",
+    "Understand how circular queues efficiently reuse fixed-size service slots.",
+    "Apply stack operations to process service requests in reverse order.",
+    "Use Activity Selection to schedule the maximum number of non-overlapping customer services.",
+    "Apply Greedy techniques to minimize the total waiting time of customers.",
+    "Understand how sorting can support efficient scheduling and service-order decisions.",
+    "Understand why appropriate data structures and algorithms are important for managing banking queues efficiently."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Basic Queue concepts",
+    "Basic Circular Queue concepts",
+    "Basic Stack concepts",
+    "Basic Sorting concepts",
+    "Basic Greedy concepts",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "Queue Operations",
+      "module_key": "queue-operations"
+    },
+    {
+      "name": "Circular Queue Operations",
+      "module_key": "circular-queue-operations"
+    },
+    {
+      "name": "Stack Operations",
+      "module_key": "stack-operations"
+    },
+    {
+      "name": "Activity Selection",
+      "module_key": "activity-selection"
+    },
+    {
+      "name": "Greedy",
+      "module_key": "greedy"
+    }
+  ],
+  "real_world_mapping": {
+    "customer": "Person waiting for a banking service",
+    "customer_id": "Identifier assigned to a customer",
+    "service_request": "Request submitted by a customer for a banking service",
+    "waiting_queue": "Queue containing customers waiting to be served",
+    "service_slot": "Fixed position available for temporarily storing ATM or banking requests",
+    "circular_queue": "Fixed-size queue that reuses positions released after dequeue operations",
+    "service_request_sequence": "Sequence of banking requests that can be processed using stack operations",
+    "appointment": "Scheduled customer service with a start and end time",
+    "service_counter": "Banking counter where customers receive services",
+    "service_time": "Amount of time required to serve a customer",
+    "waiting_time": "Time a customer waits before their service begins",
+    "customer_scheduling": "Process of arranging customers or appointments for efficient service"
+  },
+  "learning_path": [
+    "PROB-ATM-001",
+    "PROB-ATM-002",
+    "PROB-ATM-003",
+    "PROB-ATM-004",
+    "PROB-ATM-005"
+  ],
+  "completion_message": "You have completed the ATM / Banking Queue Management mission. You have learned how queues, circular queues, stacks, activity selection, and greedy scheduling can be applied to customer management, service scheduling, resource reuse, and waiting-time optimization in banking systems."
+}

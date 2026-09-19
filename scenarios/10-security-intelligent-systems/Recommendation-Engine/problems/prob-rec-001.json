@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-REC-001",
+  "scenario_id": "SCN-REC-001",
+  "sequence": 1,
+  "title": "Find Recommendations by Category Prefix",
+  "difficulty": "Easy",
+  "concepts": [
+    "Trie Operations",
+    "Prefix Search"
+  ],
+  "real_world_story": "A recommendation platform stores thousands of product names and categories. When a user starts typing a category or product prefix, the system needs to quickly find all matching items.",
+  "real_world_connection": {
+    "system": "Product recommendation and search system",
+    "input_represents": "Available product names and a search prefix",
+    "target_represents": "Products whose names begin with the requested prefix",
+    "algorithm_represents": "A Trie that stores product names character by character for efficient prefix-based searching"
+  },
+  "problem_statement": "Given N product names and a prefix entered by the user, find all product names that begin with the given prefix. Print the matching product names in lexicographical order. If no product matches, print -1.",
+  "task": "Use a Trie to efficiently retrieve all products whose names begin with the given prefix.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated product names. The third line contains the prefix to search for.",
+  "output_format": "Print all matching product names in lexicographical order separated by spaces. If no product matches, print -1.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= length of each product name <= 50",
+    "1 <= length of prefix <= 50",
+    "Product names and prefix contain only lowercase English letters"
+  ],
+  "examples": [
+    {
+      "input": "5\nphone phonestand photo printer projector\npho",
+      "output": "phone phonestand photo",
+      "explanation": "The products phone, phonestand, and photo begin with the prefix pho."
+    },
+    {
+      "input": "4\nlaptop tablet monitor keyboard\nsmart",
+      "output": "-1",
+      "explanation": "No product name begins with the prefix smart."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Trie Operations",
+    "module_key": "trie-operations",
+    "reason": "A Trie allows product names to be stored character by character and makes prefix-based recommendation searches efficient."
+  },
+  "complexity": {
+    "time": "O(T + P + R)",
+    "space": "O(T)",
+    "where": "T is the total length of all product names, P is the prefix length, and R is the total length of returned recommendations."
+  },
+  "hint": [
+    "Insert every product name into a Trie.",
+    "Traverse the Trie using the characters of the prefix.",
+    "If the prefix does not exist, return -1.",
+    "Collect all complete product names below the prefix node."
+  ],
+  "real_world_takeaway": "Trie-based prefix searching is useful for autocomplete and recommendation systems where users expect relevant suggestions while typing.",
+  "tags": [
+    "trie",
+    "prefix-search",
+    "recommendation",
+    "strings",
+    "autocomplete"
+  ]
+}

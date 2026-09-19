@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-PORT-003",
+  "scenario_id": "SCN-PORT-001",
+  "sequence": 3,
+  "title": "Select the Maximum Number of Affordable Investments",
+  "difficulty": "Easy",
+  "concepts": [
+    "Greedy",
+    "Sorting",
+    "Portfolio Allocation"
+  ],
+  "real_world_story": "An investor wants to diversify a portfolio across as many investment opportunities as possible. Each opportunity requires a different amount of capital, and the investor has a fixed capital limit.",
+  "real_world_connection": {
+    "system": "Portfolio diversification system",
+    "input_represents": "Capital requirements of investment opportunities",
+    "target_represents": "Maximum number of investment opportunities that can be selected",
+    "algorithm_represents": "Selecting the least expensive opportunities first to maximize the number of selected investments"
+  },
+  "problem_statement": "Given N investment opportunities and their capital requirements, determine the maximum number of opportunities that can be selected without exceeding the available capital. Each opportunity can be selected at most once.",
+  "task": "Select as many investment opportunities as possible while keeping the total required capital within the available capital.",
+  "input_format": "The first line contains two integers N and C, representing the number of investments and the available capital. The second line contains N space-separated integers representing the capital required for each investment.",
+  "output_format": "Print the maximum number of investment opportunities that can be selected.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= C <= 1000000000",
+    "1 <= capital[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "5 15\n5 3 8 2 7",
+      "output": "3",
+      "explanation": "Selecting investments requiring 2, 3, and 5 units uses 10 units of capital. Four investments would require at least 17 units, exceeding the available capital."
+    },
+    {
+      "input": "4 10\n4 6 8 3",
+      "output": "2",
+      "explanation": "The two least expensive investments require 3 and 4 units, so two investments can be selected within the capital limit."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Greedy",
+    "module_key": "greedy",
+    "reason": "Selecting the least expensive investment opportunities first maximizes the number of opportunities that can fit within the available capital."
+  },
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Sort the capital requirements in ascending order.",
+    "Start with the least expensive investment.",
+    "Keep selecting investments while the total capital remains within the limit.",
+    "The number of selected investments is the answer."
+  ],
+  "real_world_takeaway": "A greedy strategy can help investors maximize portfolio diversification when the goal is to select the largest possible number of opportunities under a capital constraint.",
+  "tags": [
+    "greedy",
+    "sorting",
+    "portfolio",
+    "diversification",
+    "capital"
+  ]
+}

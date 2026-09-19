@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-COMP-002",
+  "scenario_id": "SCN-COMP-001",
+  "sequence": 2,
+  "title": "Calculate the Height of a Binary Tree",
+  "difficulty": "Easy",
+  "concepts": [
+    "Binary Tree",
+    "Tree",
+    "Recursion"
+  ],
+  "real_world_story": "A compression system stores encoded data using a binary tree. The system needs to determine how many levels the tree contains to understand the structure and depth of the encoded representation.",
+  "real_world_connection": {
+    "system": "Binary-tree based data representation system",
+    "input_represents": "A binary tree stored using node relationships",
+    "target_represents": "The number of levels in the binary tree",
+    "algorithm_represents": "Recursively determining the maximum depth of the left and right subtrees"
+  },
+  "problem_statement": "Given a binary tree represented using an array in level-order where -1 represents a missing node, find the height of the binary tree. The height is defined as the number of nodes on the longest path from the root to a leaf.",
+  "task": "Build the binary tree from the given level-order representation and return its height.",
+  "input_format": "The first line contains an integer N, the number of positions in the level-order representation. The second line contains N space-separated integers. A value of -1 represents a missing node.",
+  "output_format": "Print the height of the binary tree. If the tree is empty, print 0.",
+  "constraints": [
+    "1 <= N <= 10000",
+    "-1 <= value[i] <= 1000000000",
+    "The first position represents the root"
+  ],
+  "examples": [
+    {
+      "input": "7\n1 2 3 4 5 -1 7",
+      "output": "3",
+      "explanation": "The longest root-to-leaf path contains three nodes: 1 → 2 → 4."
+    },
+    {
+      "input": "3\n10 20 30",
+      "output": "2",
+      "explanation": "The root has two children, so the tree contains two levels."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Binary Trees",
+    "module_key": "binary-trees",
+    "reason": "The height of a binary tree can be determined by recursively finding the maximum height of its left and right subtrees."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Build the binary tree from the level-order representation.",
+    "The height of an empty tree is 0.",
+    "For every node, find the height of its left and right subtrees.",
+    "Return one plus the larger subtree height."
+  ],
+  "real_world_takeaway": "Understanding binary-tree structure helps compression systems organize hierarchical encoded data and analyze the depth of the resulting representation.",
+  "tags": [
+    "binary-tree",
+    "trees",
+    "recursion",
+    "tree-height",
+    "data-structure"
+  ]
+}

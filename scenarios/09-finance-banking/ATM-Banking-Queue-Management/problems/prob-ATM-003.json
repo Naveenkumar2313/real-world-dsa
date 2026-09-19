@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-ATM-003",
+  "scenario_id": "SCN-ATM-001",
+  "sequence": 3,
+  "title": "Reverse a Service Request Sequence",
+  "difficulty": "Easy",
+  "concepts": [
+    "Stack",
+    "LIFO",
+    "Stack Operations"
+  ],
+  "real_world_story": "A banking system temporarily records a sequence of service requests. For a rollback or review operation, the system needs to process the most recently recorded request first.",
+  "real_world_connection": {
+    "system": "Banking service request management system",
+    "input_represents": "Customer service request IDs",
+    "target_represents": "Requests in reverse processing order",
+    "algorithm_represents": "A stack that returns the most recently inserted request first"
+  },
+  "problem_statement": "Given N service request IDs, insert them into a stack and remove them one by one. Print the request IDs in the order in which they are removed from the stack.",
+  "task": "Use stack operations to reverse the given sequence of service request IDs.",
+  "input_format": "The first line contains an integer N, the number of service requests. The second line contains N space-separated request IDs.",
+  "output_format": "Print the request IDs in reverse order separated by spaces.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= request_id[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "5\n101 205 309 412 518",
+      "output": "518 412 309 205 101",
+      "explanation": "The last request inserted into the stack is the first request removed."
+    },
+    {
+      "input": "4\n25 40 15 80",
+      "output": "80 15 40 25",
+      "explanation": "Stack operations follow Last-In-First-Out ordering, so the sequence is reversed."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Stack Operations",
+    "module_key": "stack-operations",
+    "reason": "A stack follows Last-In-First-Out ordering, which naturally reverses the order of service requests."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Push every request ID onto the stack.",
+    "The last inserted request will be at the top.",
+    "Pop the stack one element at a time.",
+    "Print each popped request ID."
+  ],
+  "real_world_takeaway": "Stack operations are useful when banking systems need to review or roll back the most recently recorded operations first.",
+  "tags": [
+    "stack",
+    "lifo",
+    "banking",
+    "service-requests",
+    "stack-operations"
+  ]
+}

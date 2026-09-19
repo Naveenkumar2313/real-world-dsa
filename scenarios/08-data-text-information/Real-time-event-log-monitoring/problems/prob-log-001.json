@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-LOG-001",
+  "scenario_id": "SCN-LOG-001",
+  "sequence": 1,
+  "title": "Find the Maximum Events in a Time Window",
+  "difficulty": "Easy",
+  "concepts": [
+    "Array",
+    "Sliding Window",
+    "Frequency Counting"
+  ],
+  "real_world_story": "A real-time monitoring system receives events continuously and needs to determine the highest number of events recorded within any fixed time window.",
+  "real_world_connection": {
+    "system": "Real-time event and log monitoring system",
+    "input_represents": "The number of events received during consecutive time intervals",
+    "target_represents": "The maximum number of events occurring within a fixed-size monitoring window",
+    "algorithm_represents": "Moving a fixed-size window across event data while efficiently maintaining the current event count"
+  },
+  "problem_statement": "Given an array representing the number of events received during consecutive time intervals and an integer K, find the maximum total number of events recorded in any K consecutive intervals.",
+  "task": "Analyze the event stream using a fixed-size sliding window and return the maximum number of events observed in any K consecutive intervals.",
+  "input_format": "The first line contains an integer N, the number of time intervals. The second line contains N space-separated integers representing the number of events in each interval. The third line contains an integer K, the size of the monitoring window.",
+  "output_format": "Print a single integer representing the maximum number of events present in any K consecutive intervals.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= K <= N",
+    "0 <= events[i] <= 1000"
+  ],
+  "examples": [
+    {
+      "input": "6\n2 5 1 8 2 6\n3",
+      "output": "11",
+      "explanation": "The window [5, 1, 8] contains 14 events, which is the maximum total."
+    },
+    {
+      "input": "5\n4 2 7 3 1\n2",
+      "output": "10",
+      "explanation": "The window [7, 3] contains the maximum total of 10 events."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Sliding Window",
+    "module_key": "sliding-window",
+    "reason": "A fixed-size monitoring window can be moved across the event stream while adding the new interval and removing the interval that leaves the window."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Calculate the total number of events in the first K intervals.",
+    "Move the window one position at a time.",
+    "Add the new interval and subtract the interval that leaves the window."
+  ],
+  "real_world_takeaway": "Sliding Window allows monitoring systems to analyze large event streams efficiently without repeatedly calculating the total for every time window.",
+  "tags": [
+    "arrays",
+    "sliding-window",
+    "event-stream",
+    "log-monitoring",
+    "real-time-analysis"
+  ]
+}

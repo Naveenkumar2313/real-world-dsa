@@ -1,0 +1,61 @@
+{
+    "problem_id": "PROB-DOC-005",
+    "scenario_id": "SCN-DOC-001",
+    "sequence": 5,
+    "title": "Find the Longest Common Prefix",
+    "difficulty": "Medium",
+    "concepts": [
+        "Strings",
+        "Longest Common Prefix"
+    ],
+    "real_world_story": "A document-management system organizes related documents by common naming or textual prefixes. Given several document names, the system needs to identify the longest prefix shared by all of them.",
+    "real_world_connection": {
+        "system": "Document naming and grouping system",
+        "input_represents": "Names or strings associated with documents",
+        "target_represents": "Common beginning shared by all document names",
+        "algorithm_represents": "Comparing characters across strings to determine their longest common prefix"
+    },
+    "problem_statement": "Given N strings, find the longest common prefix shared by every string. If the strings have no common prefix, print -1.",
+    "task": "Determine the longest sequence of starting characters that is identical in all given document names.",
+    "input_format": "The first line contains an integer N. The second line contains N space-separated lowercase strings.",
+    "output_format": "Print the longest common prefix. If there is no common prefix, print -1.",
+    "constraints": [
+        "1 <= N <= 100000",
+        "1 <= length of each string <= 100",
+        "Strings contain only lowercase English letters"
+    ],
+    "examples": [
+        {
+            "input": "4\napplication apple apply app",
+            "output": "app",
+            "explanation": "All four strings begin with 'app', and the next character is not common to all strings."
+        },
+        {
+            "input": "3\nreport invoice receipt",
+            "output": "-1",
+            "explanation": "The three strings do not share a common starting character."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Longest Common Prefix",
+        "module_key": "longest-common-prefix",
+        "reason": "The common prefix can be found by comparing characters position by position across all strings or by progressively reducing a candidate prefix."
+    },
+    "complexity": {
+        "time": "O(total characters)",
+        "space": "O(1) excluding the output"
+    },
+    "hint": [
+        "Start with the first string as the candidate prefix.",
+        "Compare it with the other strings.",
+        "Shorten the candidate whenever characters differ.",
+        "If the candidate becomes empty, there is no common prefix."
+    ],
+    "real_world_takeaway": "Longest-common-prefix processing is useful for grouping related document names, organizing hierarchical text labels, and identifying shared naming patterns.",
+    "tags": [
+        "strings",
+        "longest-common-prefix",
+        "text-processing",
+        "document-management"
+    ]
+}

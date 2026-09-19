@@ -1,0 +1,66 @@
+{
+  "problem_id": "PROB-FRAUD-005",
+  "scenario_id": "SCN-FRAUD-001",
+  "sequence": 5,
+  "title": "Identify the Unique Transaction Code",
+  "difficulty": "Medium",
+  "concepts": [
+    "Single Number",
+    "Bit Manipulation",
+    "Count Set Bits"
+  ],
+  "real_world_story": "A transaction processing system assigns numeric codes to transaction records. Normally every transaction code appears exactly twice because records are stored in paired entries. One transaction code appears only once and needs to be identified for investigation.",
+  "real_world_connection": {
+    "system": "Transaction record validation system",
+    "input_represents": "Transaction codes where every code appears twice except one",
+    "target_represents": "The transaction code that occurs only once",
+    "algorithm_represents": "XOR-based Single Number detection followed by counting the set bits in the unique code"
+  },
+  "problem_statement": "Given an array of transaction codes in which every code appears exactly twice except one code that appears exactly once, find the unique transaction code and count the number of set bits in its binary representation.",
+  "task": "Use XOR to identify the unique transaction code and then count the number of set bits in that code.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated transaction codes.",
+  "output_format": "Print two integers separated by a space: the unique transaction code followed by the number of set bits in its binary representation.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "N is odd",
+    "0 <= transaction_code[i] <= 1000000000",
+    "Every transaction code appears exactly twice except one code that appears exactly once"
+  ],
+  "examples": [
+    {
+      "input": "7\n4 1 2 1 2 4 7",
+      "output": "7 3",
+      "explanation": "All codes except 7 appear twice. The binary representation of 7 is 111, which contains 3 set bits."
+    },
+    {
+      "input": "5\n8 3 8 3 5",
+      "output": "5 2",
+      "explanation": "The unique code is 5, whose binary representation is 101 and therefore contains 2 set bits."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Single Number with Bit Manipulation",
+    "module_key": "single-number",
+    "reason": "XOR cancels all transaction codes that occur twice and leaves the unique code. Counting its set bits then reveals how many binary flags are active."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Initialize an XOR result to zero.",
+    "XOR every transaction code with the result.",
+    "Pairs cancel each other because x XOR x equals zero.",
+    "The remaining value is the unique transaction code.",
+    "Use bit operations to count the set bits in the unique value."
+  ],
+  "real_world_takeaway": "Bit manipulation can help transaction systems detect anomalous or unmatched records efficiently without requiring additional storage for frequency tables.",
+  "tags": [
+    "single-number",
+    "xor",
+    "bit-manipulation",
+    "count-set-bits",
+    "fraud-detection",
+    "transaction-analysis"
+  ]
+}

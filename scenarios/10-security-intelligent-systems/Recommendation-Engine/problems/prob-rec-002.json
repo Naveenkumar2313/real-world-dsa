@@ -1,0 +1,65 @@
+{
+  "problem_id": "PROB-REC-002",
+  "scenario_id": "SCN-REC-001",
+  "sequence": 2,
+  "title": "Find a Pair of Items with Target Rating",
+  "difficulty": "Easy",
+  "concepts": [
+    "Two Pointer",
+    "Binary Search",
+    "Sorting"
+  ],
+  "real_world_story": "A recommendation system assigns numerical scores to items. The system wants to find two different items whose combined score matches a target value.",
+  "real_world_connection": {
+    "system": "Recommendation scoring system",
+    "input_represents": "Scores assigned to available items",
+    "target_represents": "Desired combined recommendation score",
+    "algorithm_represents": "Sorting followed by a two-pointer search to efficiently locate a pair with the required sum"
+  },
+  "problem_statement": "Given an array of item scores and a target score, find two different scores whose sum equals the target. Print the two values in ascending order. If no such pair exists, print -1.",
+  "task": "Find a pair of item scores whose sum is exactly equal to the target score.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated integers representing item scores. The third line contains the target score.",
+  "output_format": "Print the two values forming the target sum in ascending order. If multiple pairs exist, print the lexicographically smallest pair. If no pair exists, print -1.",
+  "constraints": [
+    "2 <= N <= 100000",
+    "0 <= score[i] <= 1000000000",
+    "0 <= target <= 2000000000"
+  ],
+  "examples": [
+    {
+      "input": "6\n10 4 7 3 8 2\n10",
+      "output": "2 8",
+      "explanation": "The scores 2 and 8 add up to the target 10."
+    },
+    {
+      "input": "5\n5 12 7 20 3\n15",
+      "output": "3 12",
+      "explanation": "The scores 3 and 12 add up to 15."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Two Pointer",
+    "module_key": "two-pointer",
+    "reason": "After sorting the scores, two pointers can efficiently move toward a pair whose sum equals the target. Binary search can also be used for pair lookup."
+  },
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(N)",
+    "where": "Sorting dominates the running time."
+  },
+  "hint": [
+    "Sort the item scores.",
+    "Start one pointer at the beginning and another at the end.",
+    "If the sum is too small, move the left pointer forward.",
+    "If the sum is too large, move the right pointer backward."
+  ],
+  "real_world_takeaway": "Two-pointer searching can efficiently identify compatible item combinations when recommendation data can be sorted by score."
+  ,
+  "tags": [
+    "two-pointer",
+    "binary-search",
+    "sorting",
+    "recommendation",
+    "arrays"
+  ]
+}

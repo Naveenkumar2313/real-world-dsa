@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-PORT-002",
+  "scenario_id": "SCN-PORT-001",
+  "sequence": 2,
+  "title": "Allocate Capital Across Partial Investments",
+  "difficulty": "Medium",
+  "concepts": [
+    "Fractional Knapsack",
+    "Greedy",
+    "Portfolio Optimization"
+  ],
+  "real_world_story": "An investment platform allows an investor to divide capital across different opportunities. Some investments can be partially funded, allowing the investor to invest only a fraction of the required capital.",
+  "real_world_connection": {
+    "system": "Flexible portfolio allocation system",
+    "input_represents": "Investment capital requirements and expected values",
+    "target_represents": "Maximum portfolio value achievable using the available capital",
+    "algorithm_represents": "Prioritizing investments according to their expected value per unit of capital"
+  },
+  "problem_statement": "Given N investment opportunities, each with a capital requirement and expected value, and a fixed amount of available capital, determine the maximum portfolio value when investments can be selected partially.",
+  "task": "Allocate the available capital to maximize the total expected value. An investment may be selected completely or partially.",
+  "input_format": "The first line contains two integers N and C, representing the number of investments and the available capital. The next N lines contain two integers capital and value for each investment.",
+  "output_format": "Print the maximum portfolio value rounded to two decimal places.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= C <= 1000000000",
+    "1 <= capital[i] <= 1000000000",
+    "1 <= value[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "3 50\n10 60\n20 100\n30 120",
+      "output": "240.00",
+      "explanation": "The first two investments use 30 units of capital and provide 160 value. The remaining 20 units are invested in half of the third investment, providing another 80 value."
+    },
+    {
+      "input": "2 30\n10 40\n20 100",
+      "output": "140.00",
+      "explanation": "Both investments can be selected completely because their combined capital requirement is exactly 30."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Fractional Knapsack",
+    "module_key": "fractional-knapsack",
+    "reason": "Investments can be partially selected, so choosing opportunities with the highest value-to-capital ratio first maximizes the portfolio value."
+  },
+  "complexity": {
+    "time": "O(N log N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Calculate the value-to-capital ratio for every investment.",
+    "Sort investments by decreasing ratio.",
+    "Select the highest-ratio investments completely whenever possible.",
+    "Take a fraction of the next investment when the remaining capital is insufficient."
+  ],
+  "real_world_takeaway": "Fractional Knapsack models portfolio allocation when investment opportunities can receive partial funding.",
+  "tags": [
+    "fractional-knapsack",
+    "greedy",
+    "portfolio",
+    "capital-allocation",
+    "optimization"
+  ]
+}

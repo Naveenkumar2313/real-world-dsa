@@ -1,0 +1,76 @@
+{
+    "scenario_id": "SCN-DOC-001",
+    "title": "Document Search & Pattern Matching",
+    "slug": "document-search-pattern-matching",
+    "short_description": "Learn how document-management systems search words, locate patterns, provide prefix-based suggestions and analyze common text efficiently.",
+    "category": "Data, Text & Information Processing",
+    "industry": "Document Management",
+    "difficulty": "Beginner to Intermediate",
+    "estimated_time_minutes": 90,
+    "real_world_context": {
+        "problem": "A document-management system may contain thousands or millions of words across many documents. Users need to search for words, locate repeated patterns, receive relevant auto-complete suggestions, count words beginning with a prefix, and identify common text shared by document names.",
+        "why_it_matters": "Efficient text searching and indexing allow document systems to respond quickly even when the amount of stored text becomes very large.",
+        "real_world_entities": [
+            "Document",
+            "Document Text",
+            "Keyword",
+            "Search Pattern",
+            "Prefix",
+            "Document Name"
+        ]
+    },
+    "learning_objectives": [
+        "Understand how document text can be represented using strings and arrays of words.",
+        "Understand the difference between linear search and efficient pattern matching.",
+        "Understand how KMP avoids unnecessary character comparisons.",
+        "Understand how a Trie supports prefix-based searching and auto-complete.",
+        "Apply prefix counting to indexed document words.",
+        "Find the longest common prefix shared by multiple document names.",
+        "Understand how algorithm choice affects performance as text data size increases."
+    ],
+    "prerequisites": [
+        "Strings",
+        "Arrays",
+        "Loops",
+        "Conditional statements",
+        "Basic time complexity"
+    ],
+    "algorithms": [
+        {
+            "name": "Linear Search",
+            "module_key": "linear-search"
+        },
+        {
+            "name": "KMP Pattern Matching",
+            "module_key": "kmp-pattern-matching"
+        },
+        {
+            "name": "Trie Operations",
+            "module_key": "trie-operations"
+        },
+        {
+            "name": "Prefix Search",
+            "module_key": "prefix-search"
+        },
+        {
+            "name": "Longest Common Prefix",
+            "module_key": "longest-common-prefix"
+        }
+    ],
+    "real_world_mapping": {
+        "document_collection": "Array of words or strings",
+        "document_text": "String",
+        "keyword": "Search key",
+        "pattern": "Substring to locate",
+        "prefix": "Starting sequence of characters",
+        "document_name": "String used for comparison"
+    },
+    "learning_path": [
+        "PROB-DOC-001",
+        "PROB-DOC-002",
+        "PROB-DOC-003",
+        "PROB-DOC-004",
+        "PROB-DOC-005"
+    ],
+    "completion_message": "You have completed the Document Search & Pattern Matching mission. You have learned how searching, pattern matching, Trie-based indexing and prefix techniques can be applied to common document-management problems."
+}

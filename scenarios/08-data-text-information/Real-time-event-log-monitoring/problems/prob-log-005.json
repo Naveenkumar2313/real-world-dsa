@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-LOG-005",
+  "scenario_id": "SCN-LOG-001",
+  "sequence": 5,
+  "title": "Find the First Event at or After a Timestamp",
+  "difficulty": "Medium",
+  "concepts": [
+    "Array",
+    "Binary Search",
+    "Sorted Data"
+  ],
+  "real_world_story": "A monitoring system stores event timestamps in sorted order. When an operator enters a timestamp, the system needs to quickly locate the first event that occurred at that time or after it.",
+  "real_world_connection": {
+    "system": "Time-indexed event and log monitoring system",
+    "input_represents": "Sorted timestamps of recorded events",
+    "target_represents": "The earliest event timestamp that is greater than or equal to the requested timestamp",
+    "algorithm_represents": "Using binary search to quickly locate a lower-bound position in sorted event data"
+  },
+  "problem_statement": "Given a sorted array of event timestamps and a target timestamp, find the index of the first timestamp that is greater than or equal to the target. If no such timestamp exists, print -1.",
+  "task": "Search the sorted event timestamps and return the zero-based index of the first timestamp greater than or equal to the target.",
+  "input_format": "The first line contains an integer N, the number of recorded events. The second line contains N space-separated timestamps in non-decreasing order. The third line contains the target timestamp.",
+  "output_format": "Print the zero-based index of the first timestamp greater than or equal to the target. If no such timestamp exists, print -1.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "0 <= timestamp[i] <= 1000000000",
+    "Timestamps are sorted in non-decreasing order"
+  ],
+  "examples": [
+    {
+      "input": "6\n10 20 30 40 50 60\n35",
+      "output": "3",
+      "explanation": "The first timestamp greater than or equal to 35 is 40 at index 3."
+    },
+    {
+      "input": "5\n10 20 30 40 50\n60",
+      "output": "-1",
+      "explanation": "There is no timestamp greater than or equal to 60."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Binary Search",
+    "module_key": "binary-search",
+    "reason": "The event timestamps are sorted, allowing binary search to locate the required timestamp position in logarithmic time."
+  },
+  "complexity": {
+    "time": "O(log N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Maintain low and high boundaries for the search range.",
+    "If the middle timestamp is greater than or equal to the target, store it and search the left half.",
+    "Otherwise, search the right half."
+  ],
+  "real_world_takeaway": "Binary search enables monitoring systems to quickly locate events in large time-indexed logs without scanning every recorded event.",
+  "tags": [
+    "arrays",
+    "binary-search",
+    "timestamps",
+    "event-logs",
+    "log-monitoring"
+  ]
+}

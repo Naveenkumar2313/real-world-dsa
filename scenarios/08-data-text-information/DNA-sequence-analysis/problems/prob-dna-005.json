@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-DNA-005",
+  "scenario_id": "SCN-DNA-001",
+  "sequence": 5,
+  "title": "Find the Most Diverse DNA Window",
+  "difficulty": "Medium",
+  "concepts": [
+    "String",
+    "Sliding Window",
+    "Frequency Counting"
+  ],
+  "real_world_story": "A biological research system analyzes a DNA sequence using fixed-length regions and wants to determine which region contains the greatest number of distinct nucleotide types.",
+  "real_world_connection": {
+    "system": "DNA sequence diversity analysis system",
+    "input_represents": "A DNA sequence and the size of a region to analyze",
+    "target_represents": "The number of distinct nucleotide types present in the most diverse window",
+    "algorithm_represents": "Maintaining nucleotide frequencies while moving a fixed-size window across the DNA sequence"
+  },
+  "problem_statement": "Given a DNA sequence and an integer K, consider every contiguous substring of length K and find the maximum number of distinct nucleotide types present in any such window.",
+  "task": "Slide a window of length K across the DNA sequence and return the maximum number of distinct nucleotides found in any window.",
+  "input_format": "The first line contains the DNA sequence. The second line contains an integer K representing the window size.",
+  "output_format": "Print a single integer representing the maximum number of distinct nucleotides present in any window of length K.",
+  "constraints": [
+    "1 <= length of DNA sequence <= 100000",
+    "1 <= K <= length of DNA sequence",
+    "DNA sequences contain only the characters A, C, G, and T"
+  ],
+  "examples": [
+    {
+      "input": "ACGTAC\n3",
+      "output": "3",
+      "explanation": "The window 'ACG' contains three distinct nucleotides, which is the maximum for any window of length 3."
+    },
+    {
+      "input": "AAAAACCCCC\n4",
+      "output": "2",
+      "explanation": "A window such as 'ACCC' contains two distinct nucleotide types, and no window contains more than two."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Sliding Window",
+    "module_key": "sliding-window",
+    "reason": "A fixed-size window can be moved across the DNA sequence while maintaining nucleotide frequencies, avoiding the need to recount every window from scratch."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Maintain the frequency of A, C, G, and T inside the current window.",
+    "Add the new nucleotide when the window moves forward.",
+    "Remove the nucleotide that leaves the window and update the maximum number of distinct nucleotides."
+  ],
+  "real_world_takeaway": "Sliding window analysis allows researchers to efficiently examine local nucleotide diversity across very large DNA sequences.",
+  "tags": [
+    "strings",
+    "dna",
+    "sliding-window",
+    "frequency-counting",
+    "sequence-analysis"
+  ]
+}

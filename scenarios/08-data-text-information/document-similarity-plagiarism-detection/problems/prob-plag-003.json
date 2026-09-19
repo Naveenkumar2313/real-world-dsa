@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-PLAG-003",
+  "scenario_id": "SCN-PLAG-001",
+  "sequence": 3,
+  "title": "Find All Occurrences of a Suspicious Pattern",
+  "difficulty": "Medium",
+  "concepts": [
+    "String",
+    "Pattern Matching",
+    "KMP"
+  ],
+  "real_world_story": "A plagiarism detection system receives a suspicious phrase or text pattern and needs to locate every position where that pattern appears inside a document.",
+  "real_world_connection": {
+    "system": "Plagiarism detection and document search system",
+    "input_represents": "The document and a suspicious text pattern",
+    "target_represents": "All positions where the suspicious pattern occurs",
+    "algorithm_represents": "Efficiently searching for a pattern throughout a document using prefix information"
+  },
+  "problem_statement": "Given a document string and a pattern string, find all starting indices where the pattern occurs in the document. Overlapping occurrences must also be included.",
+  "task": "Search the document for every occurrence of the given pattern and print their zero-based starting indices.",
+  "input_format": "The first line contains the document string. The second line contains the pattern string.",
+  "output_format": "Print all zero-based starting indices of the pattern separated by spaces. If the pattern does not occur, print -1.",
+  "constraints": [
+    "1 <= length of document <= 100000",
+    "1 <= length of pattern <= 10000",
+    "Document and pattern contain only lowercase English letters",
+    "Overlapping occurrences must be considered"
+  ],
+  "examples": [
+    {
+      "input": "ababcabcab\nabc",
+      "output": "2 5",
+      "explanation": "The pattern 'abc' starts at indices 2 and 5 in the document."
+    },
+    {
+      "input": "aaaaa\naaa",
+      "output": "0 1 2",
+      "explanation": "The pattern occurs at indices 0, 1, and 2, including overlapping occurrences."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "KMP Pattern Matching",
+    "module_key": "kmp-pattern-matching",
+    "reason": "KMP uses a prefix table to avoid unnecessary comparisons and efficiently finds all occurrences of a pattern in a large document."
+  },
+  "complexity": {
+    "time": "O(N + M)",
+    "space": "O(M)"
+  },
+  "hint": [
+    "Build the Longest Prefix Suffix array for the pattern.",
+    "Scan the document while maintaining the current matched pattern length.",
+    "After finding a complete match, continue using the prefix table to detect overlapping occurrences."
+  ],
+  "real_world_takeaway": "Efficient pattern matching allows plagiarism systems to quickly locate suspicious phrases even in very large documents.",
+  "tags": [
+    "strings",
+    "kmp",
+    "pattern-matching",
+    "document-search",
+    "plagiarism-detection"
+  ]
+}

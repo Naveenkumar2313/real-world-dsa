@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-DNA-003",
+  "scenario_id": "SCN-DNA-001",
+  "sequence": 3,
+  "title": "Find All Occurrences of a DNA Pattern",
+  "difficulty": "Medium",
+  "concepts": [
+    "String",
+    "Pattern Matching",
+    "KMP"
+  ],
+  "real_world_story": "A biological analysis system is given a long DNA sequence and a known genetic pattern and needs to locate every position where that pattern occurs.",
+  "real_world_connection": {
+    "system": "DNA pattern analysis and biological sequence search system",
+    "input_represents": "A DNA sequence and a target genetic pattern",
+    "target_represents": "All positions where the genetic pattern occurs",
+    "algorithm_represents": "Efficiently searching a DNA sequence for a known pattern using prefix information"
+  },
+  "problem_statement": "Given a DNA sequence and a pattern sequence, find all starting indices where the pattern occurs in the DNA sequence. Overlapping occurrences must also be included.",
+  "task": "Search the DNA sequence for every occurrence of the given genetic pattern and print their zero-based starting indices.",
+  "input_format": "The first line contains the DNA sequence. The second line contains the pattern sequence.",
+  "output_format": "Print all zero-based starting indices of the pattern separated by spaces. If the pattern does not occur, print -1.",
+  "constraints": [
+    "1 <= length of DNA sequence <= 100000",
+    "1 <= length of pattern <= 10000",
+    "DNA sequences contain only the characters A, C, G, and T",
+    "Overlapping occurrences must be considered"
+  ],
+  "examples": [
+    {
+      "input": "ACGTACGTAC\nCGT",
+      "output": "1 5",
+      "explanation": "The pattern 'CGT' starts at indices 1 and 5."
+    },
+    {
+      "input": "AAAAAA\nAAA",
+      "output": "0 1 2 3",
+      "explanation": "The pattern occurs at indices 0, 1, 2, and 3, including overlapping occurrences."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "KMP Pattern Matching",
+    "module_key": "kmp-pattern-matching",
+    "reason": "KMP uses prefix information to avoid unnecessary comparisons and efficiently locate a genetic pattern in a large DNA sequence."
+  },
+  "complexity": {
+    "time": "O(N + M)",
+    "space": "O(M)"
+  },
+  "hint": [
+    "Build the Longest Prefix Suffix array for the pattern.",
+    "Scan the DNA sequence while maintaining the number of matched pattern characters.",
+    "After finding a complete match, use the prefix table to continue searching for overlapping occurrences."
+  ],
+  "real_world_takeaway": "Efficient pattern matching can help researchers locate known genetic markers or motifs within very large biological sequences.",
+  "tags": [
+    "strings",
+    "dna",
+    "kmp",
+    "pattern-matching",
+    "sequence-analysis"
+  ]
+}

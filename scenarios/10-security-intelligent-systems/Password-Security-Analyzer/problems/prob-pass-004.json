@@ -1,0 +1,61 @@
+{
+  "problem_id": "PROB-PASS-004",
+  "scenario_id": "SCN-PASS-001",
+  "sequence": 4,
+  "title": "Count Set Bits in a Security Code",
+  "difficulty": "Easy",
+  "concepts": [
+    "Bit Manipulation",
+    "Count Set Bits",
+    "Binary Representation"
+  ],
+  "real_world_story": "A security system represents certain authentication properties using a binary security code. Each set bit represents an enabled security feature, and the system needs to count how many features are active.",
+  "real_world_connection": {
+    "system": "Binary security configuration system",
+    "input_represents": "Integer representing an encoded security configuration",
+    "target_represents": "Number of enabled binary security features",
+    "algorithm_represents": "Counting the number of 1-bits in the binary representation of the security code"
+  },
+  "problem_statement": "Given a non-negative integer security code, count the number of set bits, or 1s, in its binary representation.",
+  "task": "Determine how many bits are set to 1 in the given security code.",
+  "input_format": "The input contains a single non-negative integer N.",
+  "output_format": "Print the number of set bits in the binary representation of N.",
+  "constraints": [
+    "0 <= N <= 2147483647"
+  ],
+  "examples": [
+    {
+      "input": "29",
+      "output": "4",
+      "explanation": "The binary representation of 29 is 11101, which contains four set bits."
+    },
+    {
+      "input": "16",
+      "output": "1",
+      "explanation": "The binary representation of 16 is 10000, which contains one set bit."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Count Set Bits",
+    "module_key": "count-set-bits",
+    "reason": "Bit manipulation allows the number of enabled binary features to be counted efficiently."
+  },
+  "complexity": {
+    "time": "O(log N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Check the least significant bit.",
+    "Use bitwise operations to remove or shift processed bits.",
+    "Increase the count whenever a set bit is found.",
+    "Continue until all significant bits have been processed."
+  ],
+  "real_world_takeaway": "Counting set bits is useful when security systems encode multiple enabled or disabled features inside a compact binary value.",
+  "tags": [
+    "bit-manipulation",
+    "set-bits",
+    "binary",
+    "security",
+    "authentication"
+  ]
+}

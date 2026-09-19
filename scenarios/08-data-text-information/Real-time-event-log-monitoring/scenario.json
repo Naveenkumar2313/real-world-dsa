@@ -1,0 +1,83 @@
+{
+  "scenario_id": "SCN-LOG-001",
+  "title": "Real-Time Event & Log Monitoring",
+  "slug": "real-time-event-log-monitoring",
+  "short_description": "Learn how real-time monitoring systems process continuous event streams, detect patterns, manage event queues, and efficiently analyze time-based logs.",
+  "category": "Data Structures and Algorithms",
+  "industry": "Real-Time Monitoring and Log Management",
+  "difficulty": "Beginner to Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "A monitoring system receives a continuous stream of events and needs to process incoming data, analyze activity over time windows, manage pending events, detect specific patterns in logs, and quickly locate events based on timestamps.",
+    "why_it_matters": "Efficient event processing and log analysis allow monitoring systems to respond quickly to large volumes of incoming data while maintaining reliable performance.",
+    "real_world_entities": [
+      "Event",
+      "Event Stream",
+      "Log Entry",
+      "Monitoring Window",
+      "Event Queue",
+      "Circular Buffer",
+      "Event Pattern",
+      "Timestamp"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how continuous event streams can be represented using arrays and strings.",
+    "Apply Sliding Window techniques to analyze events within fixed-size time intervals.",
+    "Understand FIFO behavior and apply Queue operations to process incoming events.",
+    "Implement Circular Queue operations for fixed-size real-time event buffers.",
+    "Apply KMP Pattern Matching to efficiently locate patterns in event logs.",
+    "Use Binary Search to quickly locate events in sorted timestamp data.",
+    "Understand how algorithm efficiency affects real-time monitoring systems.",
+    "Choose appropriate data structures and algorithms based on the type of event-processing requirement."
+  ],
+  "prerequisites": [
+    "Arrays",
+    "Strings",
+    "Loops",
+    "Conditional statements",
+    "Basic Queue concepts",
+    "Basic searching concepts",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "Sliding Window",
+      "module_key": "sliding-window"
+    },
+    {
+      "name": "Queue Operations",
+      "module_key": "queue-operations"
+    },
+    {
+      "name": "Circular Queue Operations",
+      "module_key": "circular-queue-operations"
+    },
+    {
+      "name": "KMP Pattern Matching",
+      "module_key": "kmp-pattern-matching"
+    },
+    {
+      "name": "Binary Search",
+      "module_key": "binary-search"
+    }
+  ],
+  "real_world_mapping": {
+    "event_stream": "Array representing events received over consecutive time intervals",
+    "monitoring_window": "Fixed-size section of consecutive event data",
+    "incoming_events": "Elements inserted into a queue",
+    "event_buffer": "Fixed-size circular queue storing active events",
+    "event_log": "String containing recorded monitoring activity",
+    "event_pattern": "Pattern searched within an event log",
+    "event_timestamp": "Sorted numerical value representing when an event occurred",
+    "log_analysis": "Process of searching and analyzing recorded monitoring events"
+  },
+  "learning_path": [
+    "PROB-LOG-001",
+    "PROB-LOG-002",
+    "PROB-LOG-003",
+    "PROB-LOG-004",
+    "PROB-LOG-005"
+  ],
+  "completion_message": "You have completed the Real-Time Event & Log Monitoring mission. You have learned how sliding windows, queue operations, circular queues, KMP pattern matching, and binary search can be applied to real-time event processing and log analysis."
+}

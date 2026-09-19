@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-PERM-003",
+  "scenario_id": "SCN-PERM-001",
+  "sequence": 3,
+  "title": "Find the Unique Permission Code",
+  "difficulty": "Easy",
+  "concepts": [
+    "Single Number",
+    "Bit Manipulation",
+    "XOR"
+  ],
+  "real_world_story": "A system stores permission or access-operation codes generated from multiple user requests. Every code appears exactly twice except one code that appears only once. The system needs to identify the unique code.",
+  "real_world_connection": {
+    "system": "Access-operation tracking system",
+    "input_represents": "Permission or operation codes",
+    "target_represents": "The code that appears only once",
+    "algorithm_represents": "Bitwise XOR, where identical values cancel each other and the unique value remains"
+  },
+  "problem_statement": "Given an array of integers where every value appears exactly twice except one value that appears exactly once, find and print the value that appears only once.",
+  "task": "Use XOR to identify the unique permission code without using extra storage for frequencies.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated integers.",
+  "output_format": "Print the integer that appears exactly once.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "N is odd",
+    "0 <= values[i] <= 2147483647",
+    "Every value appears exactly twice except one value that appears once"
+  ],
+  "examples": [
+    {
+      "input": "5\n4 1 2 1 2",
+      "output": "4",
+      "explanation": "The values 1 and 2 appear twice, while 4 appears only once."
+    },
+    {
+      "input": "7\n9 7 9 3 7 5 3",
+      "output": "5",
+      "explanation": "The values 9, 7, and 3 occur twice, leaving 5 as the unique value."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Single Number",
+    "module_key": "single-number",
+    "reason": "XOR cancels equal pairs because x XOR x is 0, leaving the value that occurs only once."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Initialize an XOR result to zero.",
+    "XOR the result with every value in the array.",
+    "Pairs of equal values cancel each other.",
+    "The remaining value is the unique permission code."
+  ],
+  "real_world_takeaway": "XOR-based single-number detection can identify an unmatched access code efficiently without maintaining a frequency table.",
+  "tags": [
+    "single-number",
+    "xor",
+    "bit-manipulation",
+    "permissions",
+    "access-control"
+  ]
+}

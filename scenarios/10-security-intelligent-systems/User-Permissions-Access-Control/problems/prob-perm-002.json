@@ -1,0 +1,60 @@
+{
+  "problem_id": "PROB-PERM-002",
+  "scenario_id": "SCN-PERM-001",
+  "sequence": 2,
+  "title": "Count Enabled Permissions",
+  "difficulty": "Easy",
+  "concepts": [
+    "Count Set Bits",
+    "Bit Manipulation",
+    "Binary Representation"
+  ],
+  "real_world_story": "A security system stores user permissions as a binary permission mask. Every set bit represents one enabled permission, and the system needs to determine how many permissions are currently active.",
+  "real_world_connection": {
+    "system": "User permission analysis system",
+    "input_represents": "Binary permission mask stored as an integer",
+    "target_represents": "Number of permissions enabled for the user",
+    "algorithm_represents": "Counting the set bits in the permission mask"
+  },
+  "problem_statement": "Given a non-negative integer representing a user's permission mask, count the number of set bits, or 1s, in its binary representation.",
+  "task": "Determine the number of enabled permissions represented by the set bits.",
+  "input_format": "The input contains a single non-negative integer N representing the permission mask.",
+  "output_format": "Print the number of set bits in the binary representation of N.",
+  "constraints": [
+    "0 <= N <= 2147483647"
+  ],
+  "examples": [
+    {
+      "input": "29",
+      "output": "4",
+      "explanation": "29 is 11101 in binary, which contains four set bits."
+    },
+    {
+      "input": "16",
+      "output": "1",
+      "explanation": "16 is 10000 in binary, so exactly one permission bit is enabled."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Count Set Bits",
+    "module_key": "count-set-bits",
+    "reason": "Counting set bits determines how many individual permissions are enabled in a permission mask."
+  },
+  "complexity": {
+    "time": "O(log N)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Inspect the binary representation of the permission mask.",
+    "Count every bit whose value is 1.",
+    "The operation N & (N - 1) can remove the lowest set bit efficiently."
+  ],
+  "real_world_takeaway": "Counting set bits is useful when permission systems store many enabled or disabled access features inside a compact binary mask.",
+  "tags": [
+    "count-set-bits",
+    "bit-manipulation",
+    "permissions",
+    "binary",
+    "access-control"
+  ]
+}

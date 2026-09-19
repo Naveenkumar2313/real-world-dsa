@@ -1,0 +1,62 @@
+{
+    "problem_id": "PROB-DOC-002",
+    "scenario_id": "SCN-DOC-001",
+    "sequence": 2,
+    "title": "Find All Occurrences of a Pattern",
+    "difficulty": "Medium",
+    "concepts": [
+        "String",
+        "KMP Pattern Matching"
+    ],
+    "real_world_story": "A document-analysis system needs to locate every occurrence of a keyword or phrase inside a large document. The search should avoid repeatedly comparing characters that have already been matched.",
+    "real_world_connection": {
+        "system": "Document content search",
+        "input_represents": "Document text and search pattern",
+        "target_represents": "Keyword or pattern to locate",
+        "algorithm_represents": "KMP pattern matching using a prefix table to search efficiently"
+    },
+    "problem_statement": "Given a text string and a pattern string, find all starting indices where the pattern occurs in the text. Print the indices in increasing order. If the pattern does not occur, print -1.",
+    "task": "Use the KMP pattern-matching algorithm to locate every occurrence of the pattern, including overlapping occurrences.",
+    "input_format": "The first line contains the text string. The second line contains the pattern string.",
+    "output_format": "Print all zero-based starting indices separated by spaces. If there is no occurrence, print -1.",
+    "constraints": [
+        "1 <= length of text <= 200000",
+        "1 <= length of pattern <= 100000",
+        "Text and pattern contain lowercase English letters"
+    ],
+    "examples": [
+        {
+            "input": "ababcabcabababd\nababd",
+            "output": "10",
+            "explanation": "The pattern 'ababd' starts at index 10."
+        },
+        {
+            "input": "aaaaa\naaa",
+            "output": "0 1 2",
+            "explanation": "The pattern occurs at indices 0, 1, and 2, including overlapping occurrences."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "KMP Pattern Matching",
+        "module_key": "kmp-pattern-matching",
+        "reason": "KMP preprocesses the pattern and avoids unnecessary re-comparisons, making it suitable for large text searches."
+    },
+    "complexity": {
+        "time": "O(N + M)",
+        "space": "O(M)"
+    },
+    "hint": [
+        "Build the LPS/prefix table for the pattern.",
+        "Scan the text using the pattern index.",
+        "When a mismatch occurs, use the LPS value instead of restarting from the beginning.",
+        "Record every complete match and continue searching for overlaps."
+    ],
+    "real_world_takeaway": "Efficient pattern matching is important when search systems process large documents, logs, source files, or repeated keyword queries.",
+    "tags": [
+        "strings",
+        "kmp",
+        "pattern-matching",
+        "text-search",
+        "document-search"
+    ]
+}

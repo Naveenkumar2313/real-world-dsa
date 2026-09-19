@@ -1,0 +1,89 @@
+{
+  "scenario_id": "SCN-PASS-001",
+  "title": "Password & Security Analyzer",
+  "slug": "password-security-analyzer",
+  "short_description": "Learn how security systems analyze passwords and authentication strings for repeated characters, prefix patterns, suspicious sequences, binary security properties, and unique character substrings.",
+  "category": "Strings, Pattern Matching & Bit Manipulation",
+  "industry": "Cybersecurity",
+  "difficulty": "Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "A security system needs to inspect passwords and authentication strings for repeated characters, registered security prefixes, suspicious patterns, enabled binary security properties, and continuous sections containing unique characters.",
+    "why_it_matters": "Efficient string-processing and bit-manipulation algorithms help security systems analyze authentication data quickly and identify structural patterns as the amount of security-related data increases.",
+    "real_world_entities": [
+      "Password",
+      "Authentication String",
+      "Security Prefix",
+      "Suspicious Pattern",
+      "Security Code",
+      "Authentication Log",
+      "Security Rule",
+      "Character Sequence"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how passwords and authentication strings can be represented using strings.",
+    "Apply Sliding Window techniques to analyze fixed-size sections of passwords.",
+    "Understand how a Trie supports efficient prefix-based security rule searching.",
+    "Apply KMP Pattern Matching to locate suspicious patterns efficiently.",
+    "Use bit manipulation to count set bits in binary security codes.",
+    "Find the longest substring containing no repeated characters.",
+    "Understand how different string algorithms can be applied to password and authentication analysis.",
+    "Understand why algorithm efficiency matters when processing large amounts of security data."
+  ],
+  "prerequisites": [
+    "Strings",
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Basic Sliding Window concepts",
+    "Basic Trie concepts",
+    "Basic pattern matching concepts",
+    "Basic bit manipulation",
+    "Basic hashing concepts",
+    "Basic time complexity"
+  ],
+  "algorithms": [
+    {
+      "name": "Sliding Window",
+      "module_key": "sliding-window"
+    },
+    {
+      "name": "Trie Operations",
+      "module_key": "trie-operations"
+    },
+    {
+      "name": "KMP Pattern Matching",
+      "module_key": "kmp-pattern-matching"
+    },
+    {
+      "name": "Count Set Bits",
+      "module_key": "count-set-bits"
+    },
+    {
+      "name": "Longest Substring Without Repeating Characters",
+      "module_key": "longest-substring-without-repeating-characters"
+    }
+  ],
+  "real_world_mapping": {
+    "password": "String representing a user's authentication password",
+    "authentication_string": "String generated or submitted during authentication",
+    "security_prefix": "Registered sequence of characters used by a security rule",
+    "prefix_search": "Searching for a registered security prefix within a password",
+    "suspicious_pattern": "Known sequence of characters searched for in an authentication log",
+    "authentication_log": "String containing recorded authentication activity",
+    "security_code": "Integer representing encoded binary security properties",
+    "set_bit": "Enabled security property represented by a binary 1",
+    "unique_substring": "Continuous section of a password containing no repeated characters",
+    "character_window": "Fixed-size section of a password inspected for repeated characters",
+    "security_analysis": "Process of examining authentication data for structural patterns and properties"
+  },
+  "learning_path": [
+    "PROB-PASS-001",
+    "PROB-PASS-002",
+    "PROB-PASS-003",
+    "PROB-PASS-004",
+    "PROB-PASS-005"
+  ],
+  "completion_message": "You have completed the Password & Security Analyzer mission. You have learned how sliding windows, Trie operations, KMP pattern matching, bit manipulation, and unique-substring techniques can be applied to password analysis, authentication monitoring, security-rule searching, and security data processing."
+}

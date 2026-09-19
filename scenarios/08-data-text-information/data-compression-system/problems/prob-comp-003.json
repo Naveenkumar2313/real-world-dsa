@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-COMP-003",
+  "scenario_id": "SCN-COMP-001",
+  "sequence": 3,
+  "title": "Process the Compression Tree Level by Level",
+  "difficulty": "Medium",
+  "concepts": [
+    "Binary Tree",
+    "Breadth First Search",
+    "Queue"
+  ],
+  "real_world_story": "A data-compression system needs to inspect its encoding tree level by level to analyze how encoded symbols are distributed across different depths.",
+  "real_world_connection": {
+    "system": "Compression-tree analysis system",
+    "input_represents": "A binary encoding tree stored in level-order",
+    "target_represents": "The nodes visited from the top level to the deepest level",
+    "algorithm_represents": "Using a queue to visit every node level by level"
+  },
+  "problem_statement": "Given a binary tree represented in level-order where -1 represents a missing node, print all existing node values using Breadth First Search traversal.",
+  "task": "Traverse the binary tree level by level from the root and print the values of all existing nodes.",
+  "input_format": "The first line contains an integer N, the number of positions in the level-order representation. The second line contains N space-separated integers. A value of -1 represents a missing node.",
+  "output_format": "Print the existing node values in Breadth First Search order separated by spaces. If the tree is empty, print -1.",
+  "constraints": [
+    "1 <= N <= 10000",
+    "-1 <= value[i] <= 1000000000",
+    "The first position represents the root"
+  ],
+  "examples": [
+    {
+      "input": "7\n1 2 3 4 5 -1 7",
+      "output": "1 2 3 4 5 7",
+      "explanation": "The nodes are visited level by level: 1, then 2 and 3, then 4, 5, and 7."
+    },
+    {
+      "input": "7\n10 20 30 40 -1 50 60",
+      "output": "10 20 30 40 50 60",
+      "explanation": "Breadth First Search visits each existing node from the highest level to the lowest level."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Tree BFS",
+    "module_key": "tree-bfs",
+    "reason": "Breadth First Search uses a queue to process tree nodes level by level, making it suitable for analyzing the structure of an encoding tree by depth."
+  },
+  "complexity": {
+    "time": "O(N)",
+    "space": "O(N)"
+  },
+  "hint": [
+    "Start with the root node in a queue.",
+    "Remove the front node from the queue and process it.",
+    "Add its existing children to the queue.",
+    "Continue until the queue becomes empty."
+  ],
+  "real_world_takeaway": "Tree BFS allows compression systems to inspect hierarchical encoding structures level by level and understand how data is distributed across tree depths.",
+  "tags": [
+    "binary-tree",
+    "bfs",
+    "breadth-first-search",
+    "queue",
+    "tree-traversal"
+  ]
+}

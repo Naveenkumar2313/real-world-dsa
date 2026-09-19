@@ -1,0 +1,65 @@
+{
+  "problem_id": "PROB-PASS-002",
+  "scenario_id": "SCN-PASS-001",
+  "sequence": 2,
+  "title": "Validate Password Prefix Against Security Rules",
+  "difficulty": "Medium",
+  "concepts": [
+    "Trie",
+    "Prefix Search",
+    "String Matching"
+  ],
+  "real_world_story": "A security system maintains a collection of approved password prefixes used by different authentication policies. When a new password is submitted, the system needs to determine whether its starting characters match any stored security prefix.",
+  "real_world_connection": {
+    "system": "Password policy and authentication system",
+    "input_represents": "Stored security prefixes and a password to analyze",
+    "target_represents": "Whether the password begins with any registered security prefix",
+    "algorithm_represents": "A Trie that stores prefixes character by character for efficient prefix searching"
+  },
+  "problem_statement": "Given N registered security prefixes and a password string, determine whether the password starts with at least one of the registered prefixes. Print the first matching prefix in lexicographic order, or -1 if no registered prefix matches.",
+  "task": "Use a Trie to search whether the password begins with any registered security prefix.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated lowercase security prefixes. The third line contains the password string.",
+  "output_format": "Print the lexicographically smallest registered prefix that is a prefix of the password. If no registered prefix matches, print -1.",
+  "constraints": [
+    "1 <= N <= 100000",
+    "1 <= length of each prefix <= 50",
+    "1 <= length of password <= 100000",
+    "Prefixes and password contain only lowercase English letters"
+  ],
+  "examples": [
+    {
+      "input": "4\nsec safe pass admin\nsafepassword",
+      "output": "safe",
+      "explanation": "The password begins with the registered prefix 'safe'."
+    },
+    {
+      "input": "3\nsecure login auth\npassword123",
+      "output": "-1",
+      "explanation": "The password does not begin with any of the registered security prefixes."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Trie Operations",
+    "module_key": "trie-operations",
+    "reason": "A Trie stores prefixes character by character and allows efficient prefix-based searching."
+  },
+  "complexity": {
+    "time": "O(T + P)",
+    "space": "O(T)",
+    "where": "T is the total length of stored prefixes and P is the length of the password."
+  },
+  "hint": [
+    "Insert every registered prefix into a Trie.",
+    "Traverse the Trie using the characters of the password.",
+    "Track registered prefixes encountered during the traversal.",
+    "Return the lexicographically smallest matching prefix."
+  ],
+  "real_world_takeaway": "Trie structures are useful for efficiently managing prefix-based security rules, authentication patterns, and policy lookups.",
+  "tags": [
+    "trie",
+    "prefix-search",
+    "strings",
+    "password",
+    "security"
+  ]
+}

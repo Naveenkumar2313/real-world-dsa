@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-INV-001",
+  "scenario_id": "SCN-INV-001",
+  "sequence": 1,
+  "title": "Select Investments Within a Budget",
+  "difficulty": "Medium",
+  "concepts": [
+    "0/1 Knapsack",
+    "Dynamic Programming",
+    "Optimization"
+  ],
+  "real_world_story": "A financial planning system has a fixed investment budget and several investment opportunities. Each investment requires a certain amount of money and provides an expected return. An investment can either be selected completely or rejected.",
+  "real_world_connection": {
+    "system": "Investment planning and portfolio selection system",
+    "input_represents": "Investment costs and expected returns",
+    "target_represents": "Maximum expected return achievable within the available budget",
+    "algorithm_represents": "Selecting or rejecting each investment while respecting the budget constraint"
+  },
+  "problem_statement": "Given N investment opportunities, each with a cost and expected return, and a maximum investment budget, determine the maximum total return that can be obtained. Each investment can be selected at most once.",
+  "task": "Select a subset of investments that maximizes the total expected return without exceeding the available budget.",
+  "input_format": "The first line contains two integers N and B, representing the number of investments and the maximum budget. The next N lines contain two integers cost and return for each investment.",
+  "output_format": "Print the maximum total expected return achievable within the budget.",
+  "constraints": [
+    "1 <= N <= 100",
+    "1 <= B <= 100000",
+    "1 <= cost[i] <= 100000",
+    "1 <= return[i] <= 1000000000"
+  ],
+  "examples": [
+    {
+      "input": "4 7\n3 4\n4 5\n5 7\n2 3",
+      "output": "10",
+      "explanation": "Selecting investments with costs 3 and 4 gives a total cost of 7 and a total return of 9. Selecting costs 5 and 2 gives a return of 10, which is the maximum possible."
+    },
+    {
+      "input": "3 5\n2 3\n3 5\n4 7",
+      "output": "7",
+      "explanation": "The investment costing 4 provides the highest achievable return of 7 within the budget."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "0/1 Knapsack",
+    "module_key": "01-knapsack",
+    "reason": "Each investment can either be selected once or rejected, making the problem a 0/1 Knapsack optimization problem."
+  },
+  "complexity": {
+    "time": "O(N * B)",
+    "space": "O(B)"
+  },
+  "hint": [
+    "Create a DP array representing the maximum return achievable for each budget.",
+    "For every investment, consider selecting or rejecting it.",
+    "Process the budget in decreasing order so that each investment is used at most once.",
+    "The value at the maximum budget gives the best achievable return."
+  ],
+  "real_world_takeaway": "0/1 Knapsack models investment decisions where each opportunity must be either fully selected or completely rejected under a limited budget.",
+  "tags": [
+    "01-knapsack",
+    "dynamic-programming",
+    "investment",
+    "budget",
+    "optimization"
+  ]
+}

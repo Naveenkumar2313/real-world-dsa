@@ -1,0 +1,61 @@
+{
+  "problem_id": "PROB-PLAG-001",
+  "scenario_id": "SCN-PLAG-001",
+  "sequence": 1,
+  "title": "Find the Longest Common Subsequence",
+  "difficulty": "Medium",
+  "concepts": [
+    "String",
+    "Dynamic Programming",
+    "Longest Common Subsequence"
+  ],
+  "real_world_story": "A plagiarism detection system compares two documents to identify how much of their content appears in the same order, even when some words or characters are missing between matching portions.",
+  "real_world_connection": {
+    "system": "Document similarity and plagiarism detection system",
+    "input_represents": "Content from two documents being compared",
+    "target_represents": "The common sequence of characters shared by both documents",
+    "algorithm_represents": "Finding the longest sequence that appears in both documents while preserving the original order"
+  },
+  "problem_statement": "Given two document strings, find the length of their Longest Common Subsequence (LCS). A subsequence can be formed by deleting zero or more characters from a string without changing the order of the remaining characters.",
+  "task": "Compare the two documents and return the length of their longest common subsequence.",
+  "input_format": "The first line contains the first document string. The second line contains the second document string.",
+  "output_format": "Print a single integer representing the length of the Longest Common Subsequence.",
+  "constraints": [
+    "1 <= length of each document <= 1000",
+    "Documents contain only lowercase English letters"
+  ],
+  "examples": [
+    {
+      "input": "abcde\nace",
+      "output": "3",
+      "explanation": "The longest common subsequence is 'ace', which has length 3."
+    },
+    {
+      "input": "student\nteacher",
+      "output": "2",
+      "explanation": "The two documents share a longest common subsequence of length 2."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Longest Common Subsequence using Dynamic Programming",
+    "module_key": "longest-common-subsequence",
+    "reason": "The documents may contain matching characters at different positions, so dynamic programming can efficiently determine the longest common subsequence."
+  },
+  "complexity": {
+    "time": "O(N * M)",
+    "space": "O(N * M)"
+  },
+  "hint": [
+    "Create a table representing prefixes of the two documents.",
+    "If the current characters match, extend the common subsequence.",
+    "Otherwise, take the better result obtained by skipping a character from either document."
+  ],
+  "real_world_takeaway": "LCS is useful for comparing documents when common content may appear in the same order but not necessarily as a continuous block.",
+  "tags": [
+    "strings",
+    "dynamic-programming",
+    "lcs",
+    "document-similarity",
+    "plagiarism-detection"
+  ]
+}

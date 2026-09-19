@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-PAY-005",
+  "scenario_id": "SCN-PAY-001",
+  "sequence": 5,
+  "title": "Process Payment Transactions in Arrival Order",
+  "difficulty": "Easy",
+  "concepts": [
+    "Queue",
+    "FIFO",
+    "Queue Operations"
+  ],
+  "real_world_story": "A payment gateway receives multiple transactions at the same time. To ensure fair processing, transactions must be handled in the same order in which they were received.",
+  "real_world_connection": {
+    "system": "Payment transaction processing system",
+    "input_represents": "Transactions arriving at the payment gateway",
+    "target_represents": "The transaction that should be processed next",
+    "algorithm_represents": "Using First-In-First-Out queue operations to process transactions in arrival order"
+  },
+  "problem_statement": "Given a sequence of payment queue operations, process the transactions using FIFO behavior. An ENQUEUE operation adds a transaction to the rear of the queue, while a DEQUEUE operation processes and removes the transaction at the front.",
+  "task": "Process all payment transaction operations and print the transaction ID removed by each DEQUEUE operation.",
+  "input_format": "The first line contains an integer Q, the number of queue operations. Each of the next Q lines contains either 'ENQUEUE X' to add transaction X to the queue or 'DEQUEUE' to process the front transaction.",
+  "output_format": "For every DEQUEUE operation, print the processed transaction ID on a separate line. If the queue is empty, print -1.",
+  "constraints": [
+    "1 <= Q <= 100000",
+    "1 <= transaction ID <= 1000000000",
+    "Transaction IDs are positive integers"
+  ],
+  "examples": [
+    {
+      "input": "6\nENQUEUE 101\nENQUEUE 102\nDEQUEUE\nENQUEUE 103\nDEQUEUE\nDEQUEUE",
+      "output": "101\n102\n103",
+      "explanation": "Transactions are processed in the same order in which they entered the payment queue."
+    },
+    {
+      "input": "5\nENQUEUE 201\nDEQUEUE\nDEQUEUE\nENQUEUE 202\nDEQUEUE",
+      "output": "201\n-1\n202",
+      "explanation": "The second DEQUEUE occurs when the queue is empty, so -1 is printed."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Queue Operations",
+    "module_key": "queue-operations",
+    "reason": "A queue follows FIFO ordering, making it suitable for processing payment transactions in the order in which they arrive."
+  },
+  "complexity": {
+    "time": "O(Q)",
+    "space": "O(Q)"
+  },
+  "hint": [
+    "Maintain a queue of incoming transaction IDs.",
+    "Add each transaction to the rear during ENQUEUE.",
+    "Remove the transaction from the front during DEQUEUE.",
+    "Return -1 when a DEQUEUE operation is attempted on an empty queue."
+  ],
+  "real_world_takeaway": "Queue operations help payment gateways process transactions fairly and reliably according to their arrival order.",
+  "tags": [
+    "queue",
+    "fifo",
+    "queue-operations",
+    "transactions",
+    "payment-system"
+  ]
+}

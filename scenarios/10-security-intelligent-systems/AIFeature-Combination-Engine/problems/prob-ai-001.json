@@ -1,0 +1,62 @@
+{
+  "problem_id": "PROB-AI-001",
+  "scenario_id": "SCN-AI-001",
+  "sequence": 1,
+  "title": "Generate All Feature Combinations",
+  "difficulty": "Easy",
+  "concepts": [
+    "Power Set",
+    "Bit Manipulation"
+  ],
+  "real_world_story": "An AI configuration system has a set of optional features that can be enabled or disabled independently. The system needs to determine every possible feature configuration that can be created.",
+  "real_world_connection": {
+    "system": "AI feature configuration system",
+    "input_represents": "Available optional features",
+    "target_represents": "All possible feature configurations",
+    "algorithm_represents": "Power Set generation where every feature can either be selected or excluded"
+  },
+  "problem_statement": "Given N distinct feature IDs, generate all possible subsets of these features. Each feature can either be included or excluded from a configuration. Print the total number of possible configurations.",
+  "task": "Determine the number of possible feature configurations that can be generated from the given features.",
+  "input_format": "The first line contains an integer N. The second line contains N space-separated distinct feature IDs.",
+  "output_format": "Print the total number of possible feature configurations.",
+  "constraints": [
+    "0 <= N <= 20",
+    "1 <= feature_id[i] <= 1000000000",
+    "All feature IDs are distinct"
+  ],
+  "examples": [
+    {
+      "input": "3\n101 102 103",
+      "output": "8",
+      "explanation": "Each of the three features can either be selected or excluded, giving 2^3 = 8 configurations."
+    },
+    {
+      "input": "4\n10 20 30 40",
+      "output": "16",
+      "explanation": "Four independent features produce 2^4 = 16 possible configurations."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Power Set",
+    "module_key": "power-set",
+    "reason": "Each feature has two possible states, selected or not selected, so N features produce 2^N possible configurations."
+  },
+  "complexity": {
+    "time": "O(1)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Each feature has two possible states.",
+    "The number of configurations doubles whenever another feature is added.",
+    "Use the relationship between a set and its power set.",
+    "For N features, the number of configurations is 2^N."
+  ],
+  "real_world_takeaway": "Power-set reasoning helps configuration systems understand how many possible combinations can be generated from a set of optional features.",
+  "tags": [
+    "power-set",
+    "bit-manipulation",
+    "feature-combinations",
+    "configuration",
+    "subsets"
+  ]
+}

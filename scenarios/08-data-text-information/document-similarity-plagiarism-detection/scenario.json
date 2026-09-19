@@ -1,0 +1,87 @@
+{
+  "scenario_id": "SCN-PLAG-001",
+  "title": "Document Similarity & Plagiarism Detection",
+  "slug": "document-similarity-plagiarism-detection",
+  "short_description": "Learn how educational and publishing systems compare documents, detect common content, identify suspicious patterns, and analyze repeated text efficiently.",
+  "category": "Strings and Dynamic Programming",
+  "industry": "Education and Publishing",
+  "difficulty": "Intermediate",
+  "estimated_time_minutes": 90,
+  "real_world_context": {
+    "problem": "Educational and publishing systems need to compare documents to identify common content, measure textual differences, locate suspicious patterns, and detect repeated or duplicated sections.",
+    "why_it_matters": "Efficient string and dynamic programming algorithms allow document-analysis systems to process large amounts of text and identify similarities or differences effectively.",
+    "real_world_entities": [
+      "Document",
+      "Document Content",
+      "Text Pattern",
+      "Common Sequence",
+      "Matching Section",
+      "Repeated Phrase",
+      "Similarity Score"
+    ]
+  },
+  "learning_objectives": [
+    "Understand how document content can be represented using strings.",
+    "Apply Dynamic Programming to find the Longest Common Subsequence between two documents.",
+    "Apply Edit Distance to measure the minimum changes required between two documents.",
+    "Use KMP Pattern Matching to efficiently locate suspicious patterns in large documents.",
+    "Apply matching-window techniques to identify the longest continuous section shared by two documents.",
+    "Analyze repeated substrings to detect duplicated content within a document.",
+    "Choose an appropriate algorithm based on document size and the type of similarity being measured."
+  ],
+  "prerequisites": [
+    "Strings",
+    "Arrays",
+    "Loops",
+    "Conditional statements",
+    "Basic Dynamic Programming concepts",
+    "Basic time complexity",
+    "Basic pattern matching concepts"
+  ],
+  "algorithms": [
+    {
+      "name": "Longest Common Subsequence",
+      "module_key": "longest-common-subsequence"
+    },
+    {
+      "name": "Edit Distance",
+      "module_key": "edit-distance"
+    },
+    {
+      "name": "KMP Pattern Matching",
+      "module_key": "kmp-pattern-matching"
+    },
+    {
+      "name": "Sliding Window",
+      "module_key": "sliding-window"
+    },
+    {
+      "name": "Longest Repeated Substring",
+      "module_key": "longest-repeated-substring"
+    },
+    {
+      "name": "Dynamic Programming",
+      "module_key": "dynamic-programming"
+    }
+  ],
+  "real_world_mapping": {
+    "document": "Text content being analyzed",
+    "document_content": "String representing the contents of a document",
+    "common_sequence": "Content appearing in both documents in the same order",
+    "edit_distance": "Minimum number of changes required between two documents",
+    "text_pattern": "Suspicious phrase or sequence being searched for",
+    "pattern_occurrence": "Location where a suspicious pattern appears",
+    "matching_window": "Continuous text section shared by two documents",
+    "repeated_substring": "Duplicated text appearing within the same document",
+    "similarity_analysis": "Process of identifying common or duplicated content",
+    "plagiarism_detection": "Identification of potentially copied or reused text"
+  },
+  "learning_path": [
+    "PROB-PLAG-001",
+    "PROB-PLAG-002",
+    "PROB-PLAG-003",
+    "PROB-PLAG-004",
+    "PROB-PLAG-005"
+  ],
+  "completion_message": "You have completed the Document Similarity & Plagiarism Detection scenario. You have learned how dynamic programming, pattern matching, matching-window techniques, and substring analysis can be applied to document comparison and plagiarism detection."
+}

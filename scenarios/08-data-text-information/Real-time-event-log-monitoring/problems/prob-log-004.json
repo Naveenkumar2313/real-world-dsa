@@ -1,0 +1,63 @@
+{
+  "problem_id": "PROB-LOG-004",
+  "scenario_id": "SCN-LOG-001",
+  "sequence": 4,
+  "title": "Find a Pattern in Event Logs",
+  "difficulty": "Medium",
+  "concepts": [
+    "String",
+    "Pattern Matching",
+    "KMP"
+  ],
+  "real_world_story": "A security monitoring system receives large log messages and needs to detect whether a known event pattern or alert signature appears within the incoming log stream.",
+  "real_world_connection": {
+    "system": "Real-time log monitoring and alert detection system",
+    "input_represents": "A log stream and a suspicious event pattern",
+    "target_represents": "All positions where the monitored pattern occurs",
+    "algorithm_represents": "Efficiently locating a pattern in a large log stream using prefix information"
+  },
+  "problem_statement": "Given a log string and a target pattern, find all starting indices where the pattern occurs in the log. Overlapping occurrences must also be included.",
+  "task": "Search the event log for every occurrence of the specified pattern and print its zero-based starting indices.",
+  "input_format": "The first line contains the log string. The second line contains the pattern to search for.",
+  "output_format": "Print all zero-based starting indices of the pattern separated by spaces. If the pattern does not occur, print -1.",
+  "constraints": [
+    "1 <= length of log <= 100000",
+    "1 <= length of pattern <= 10000",
+    "Log and pattern contain lowercase English letters",
+    "Overlapping occurrences must be considered"
+  ],
+  "examples": [
+    {
+      "input": "erroralertalert\nalert",
+      "output": "5 10",
+      "explanation": "The pattern 'alert' starts at indices 5 and 10 in the log."
+    },
+    {
+      "input": "abababa\naba",
+      "output": "0 2 4",
+      "explanation": "The pattern occurs at indices 0, 2, and 4, including overlapping occurrences."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "KMP Pattern Matching",
+    "module_key": "kmp-pattern-matching",
+    "reason": "KMP uses prefix information to avoid unnecessary comparisons and efficiently locate alert patterns in large log streams."
+  },
+  "complexity": {
+    "time": "O(N + M)",
+    "space": "O(M)"
+  },
+  "hint": [
+    "Build the Longest Prefix Suffix array for the pattern.",
+    "Scan the log while keeping track of the matched pattern length.",
+    "After finding a match, use the prefix table to continue searching for overlapping matches."
+  ],
+  "real_world_takeaway": "KMP allows monitoring systems to detect known event signatures efficiently even when log streams become very large.",
+  "tags": [
+    "strings",
+    "kmp",
+    "pattern-matching",
+    "event-logs",
+    "real-time-monitoring"
+  ]
+}

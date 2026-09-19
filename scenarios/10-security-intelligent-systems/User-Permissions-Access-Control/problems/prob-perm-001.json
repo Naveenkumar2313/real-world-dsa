@@ -1,0 +1,60 @@
+{
+  "problem_id": "PROB-PERM-001",
+  "scenario_id": "SCN-PERM-001",
+  "sequence": 1,
+  "title": "Combine User Permissions",
+  "difficulty": "Easy",
+  "concepts": [
+    "Bit Manipulation",
+    "Bitwise OR"
+  ],
+  "real_world_story": "An application represents user permissions using bits. Different roles provide different permissions, and the system needs to combine the permissions granted by two roles.",
+  "real_world_connection": {
+    "system": "Application permission management system",
+    "input_represents": "Permission masks assigned to two user roles",
+    "target_represents": "Combined permissions available to the user",
+    "algorithm_represents": "Bitwise OR to combine enabled permission bits"
+  },
+  "problem_statement": "Given two non-negative integers representing permission masks for two user roles, combine their permissions using bitwise OR and print the resulting permission mask.",
+  "task": "Combine the enabled permissions from two permission masks using bit manipulation.",
+  "input_format": "The input contains two space-separated non-negative integers A and B representing permission masks.",
+  "output_format": "Print the permission mask obtained by applying bitwise OR to A and B.",
+  "constraints": [
+    "0 <= A <= 2147483647",
+    "0 <= B <= 2147483647"
+  ],
+  "examples": [
+    {
+      "input": "10 12",
+      "output": "14",
+      "explanation": "10 is 1010 and 12 is 1100 in binary. Their bitwise OR is 1110, which is 14."
+    },
+    {
+      "input": "5 2",
+      "output": "7",
+      "explanation": "5 is 0101 and 2 is 0010. Their bitwise OR is 0111, which is 7."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Bit Manipulation",
+    "module_key": "bit-manipulation",
+    "reason": "Bitwise OR combines the permission bits that are enabled in either of the two permission masks."
+  },
+  "complexity": {
+    "time": "O(1)",
+    "space": "O(1)"
+  },
+  "hint": [
+    "Represent the permission masks as integers.",
+    "Use the bitwise OR operator.",
+    "A permission remains enabled if it is enabled in either mask."
+  ],
+  "real_world_takeaway": "Bit masks allow applications to store and combine many permission settings efficiently inside a single integer.",
+  "tags": [
+    "bit-manipulation",
+    "bitwise-or",
+    "permissions",
+    "access-control",
+    "user-roles"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "problem_id": "PROB-PAY-001",
+  "scenario_id": "SCN-PAY-001",
+  "sequence": 1,
+  "title": "Find the Minimum Coins for a Target Amount",
+  "difficulty": "Medium",
+  "concepts": [
+    "Coin Change",
+    "Dynamic Programming",
+    "Arrays"
+  ],
+  "real_world_story": "A payment system supports several coin denominations and needs to determine the minimum number of coins required to make an exact payment amount.",
+  "real_world_connection": {
+    "system": "Digital payment and currency calculation system",
+    "input_represents": "Available coin denominations and the target payment amount",
+    "target_represents": "The minimum number of coins required to reach the exact payment amount",
+    "algorithm_represents": "Building the minimum number of coins required for every amount up to the target"
+  },
+  "problem_statement": "Given N coin denominations and a target amount, find the minimum number of coins required to make the exact target amount. Each coin denomination can be used any number of times. If the target amount cannot be formed, print -1.",
+  "task": "Calculate the minimum number of coins required to reach the target payment amount.",
+  "input_format": "The first line contains an integer N, the number of coin denominations. The second line contains N space-separated positive integers representing the denominations. The third line contains the target amount.",
+  "output_format": "Print the minimum number of coins required to make the exact target amount. If the amount cannot be formed, print -1.",
+  "constraints": [
+    "1 <= N <= 100",
+    "1 <= coin[i] <= 10000",
+    "0 <= target <= 100000",
+    "Each coin denomination can be used multiple times"
+  ],
+  "examples": [
+    {
+      "input": "3\n1 3 4\n6",
+      "output": "2",
+      "explanation": "The amount 6 can be formed using two coins: 3 + 3."
+    },
+    {
+      "input": "3\n2 5 10\n3",
+      "output": "-1",
+      "explanation": "No combination of 2, 5, and 10 can form the target amount 3."
+    }
+  ],
+  "expected_algorithm": {
+    "name": "Coin Change",
+    "module_key": "coin-change",
+    "reason": "The minimum number of coins for each amount can be calculated by building solutions for smaller amounts and reusing them to solve the target amount."
+  },
+  "complexity": {
+    "time": "O(N * target)",
+    "space": "O(target)"
+  },
+  "hint": [
+    "Create an array where each position stores the minimum coins needed for that amount.",
+    "Initialize the target amounts as unreachable.",
+    "For every amount, try each available coin.",
+    "Take the minimum number of coins among all valid choices."
+  ],
+  "real_world_takeaway": "Coin-change algorithms help payment systems determine how currency can be combined efficiently to reach exact payment amounts.",
+  "tags": [
+    "coin-change",
+    "dynamic-programming",
+    "coins",
+    "payment-system",
+    "currency"
+  ]
+}
