@@ -1,0 +1,58 @@
+{
+    "problem_id": "PROB-CNI-003",
+    "scenario_id": "SCN-CNI-001",
+    "sequence": 3,
+    "title": "Find the Lowest-Latency Route",
+    "difficulty": "Medium",
+    "concepts": [
+        "Weighted Graph",
+        "Dijkstra's Algorithm"
+    ],
+    "real_world_story": "Each network link between two devices has a latency cost measured in milliseconds. The organization wants the fastest way to send data from one server to another, considering every intermediate router and switch.",
+    "real_world_connection": {
+        "system": "Network routing and performance",
+        "input_represents": "Devices, network links and their latency costs",
+        "query_represents": "The source and destination servers",
+        "algorithm_represents": "Finding the route with the minimum total latency"
+    },
+    "problem_statement": "Given N devices numbered 0 to N-1, E undirected network links with latency costs, and a source S and destination D, find the minimum total latency to route data from S to D.",
+    "task": "Return the minimum latency of the fastest path from S to D, or -1 if no path exists.",
+    "input_format": "The first line contains two integers N and E. The next E lines each contain three integers u v w describing a link between devices u and v with latency cost w. The final line contains two integers S and D.",
+    "output_format": "Print the minimum latency from S to D. If D is unreachable, print -1.",
+    "constraints": [
+        "2 <= N <= 10000",
+        "1 <= E <= 50000",
+        "0 <= u, v < N",
+        "1 <= w <= 1000000",
+        "0 <= S, D < N"
+    ],
+    "examples": [
+        {
+            "input": "4 5\n0 1 10\n0 2 30\n0 3 50\n1 2 20\n2 3 15\n0 3",
+            "output": "45",
+            "explanation": "The fastest route from 0 to 3 is 0 -> 1 -> 2 -> 3 with total latency 10 + 20 + 15 = 45."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Dijkstra's Algorithm",
+        "module_key": "dijkstra",
+        "reason": "All network latency costs are non-negative, so Dijkstra's algorithm finds the minimum-latency route efficiently using a priority queue."
+    },
+    "complexity": {
+        "time": "O((N + E) log N)",
+        "space": "O(N + E)"
+    },
+    "hint": [
+        "Maintain the best-known latency to reach every device.",
+        "Repeatedly expand the cheapest unprocessed device.",
+        "Stop as soon as the destination is reached."
+    ],
+    "real_world_takeaway": "Dijkstra's algorithm lets an organization plan the fastest data route even in a large latency-weighted network with many possible paths.",
+    "tags": [
+        "graphs",
+        "dijkstra",
+        "shortest-path",
+        "weighted-graph",
+        "computer-network"
+    ]
+}
