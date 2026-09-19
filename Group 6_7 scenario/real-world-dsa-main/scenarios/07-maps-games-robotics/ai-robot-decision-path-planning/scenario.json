@@ -1,0 +1,91 @@
+{
+    "scenario_id": "SCN-RD-035",
+    "title": "AI Robot Decision & Path Planning",
+    "slug": "ai-robot-decision-path-planning",
+    "short_description": "Learn how an autonomous robot examines possible actions, navigates an environment, and chooses an efficient path toward a goal using Graph BFS, Graph DFS, A* Pathfinding, Depth-Limited Search, Backtracking and Dynamic Programming.",
+    "category": "Maps, Games & Robotics",
+    "industry": "Robotics & Autonomous Systems",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 180,
+    "real_world_context": {
+        "problem": "An autonomous robot must explore an unknown building, map the rooms it can reach, plan a short route to its charging dock, check whether the dock lies within its remaining battery budget, compare every possible route when it must avoid a guarded corridor, and finally learn from every past trip so it can quote the cheapest cost to each room. Engineers must pick the right search method for each of these decisions.",
+        "why_it_matters": "Warehouse robots, delivery drones and home assistants all navigate with these six tools. Breadth-first search finds the shortest route when every move costs the same, depth-first search maps the unknown, A* aims straight at the goal, a depth limit enforces a hard budget, backtracking compares every option, and dynamic programming reuses yesterday's answers instead of searching again.",
+        "real_world_entities": [
+            "Room",
+            "Corridor",
+            "Free Cell",
+            "Obstacle",
+            "Charging Dock",
+            "Robot Position",
+            "Battery Budget",
+            "Search Depth Limit",
+            "Travel Cost",
+            "Heuristic Estimate"
+        ]
+    },
+    "learning_objectives": [
+        "Represent rooms as graph vertices and corridors as edges, or a floor as a 2D grid with obstacles.",
+        "Use Breadth-First Search (BFS) to find the shortest path between two rooms in an unweighted network.",
+        "Use Depth-First Search (DFS) to count every room the robot can reach from its dock.",
+        "Use A* Pathfinding with an admissible Manhattan heuristic to reach a destination while exploring fewer cells.",
+        "Use Depth-Limited Search (DLS) to test whether a destination is reachable within a battery budget of K moves.",
+        "Use Backtracking to count every valid route from start to destination, and use Dynamic Programming to reuse the cheapest cost of every subproblem instead of re-searching it."
+    ],
+    "prerequisites": [
+        "Arrays",
+        "2D arrays",
+        "Loops",
+        "Conditional statements",
+        "Basic time complexity",
+        "Queues, stacks and recursion basics"
+    ],
+    "algorithms": [
+        {
+            "name": "Graph BFS",
+            "module_key": "graph-bfs"
+        },
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "A* Pathfinding",
+            "module_key": "a-star"
+        },
+        {
+            "name": "Depth-Limited Search",
+            "module_key": "depth-limited-search"
+        },
+        {
+            "name": "Backtracking",
+            "module_key": "backtracking"
+        },
+        {
+            "name": "Dynamic Programming",
+            "module_key": "dynamic-programming"
+        }
+    ],
+    "real_world_mapping": {
+        "room": "Graph vertex",
+        "corridor": "Undirected edge",
+        "doorway": "Directed edge",
+        "floor_cell": "Grid graph vertex",
+        "obstacle": "Removed vertex",
+        "movement_step": "Edge weight of 1",
+        "shortest_route": "BFS shortest path / A* path",
+        "reachable_set": "DFS reachable set",
+        "depth_limit": "Maximum search depth / battery budget",
+        "heuristic_estimate": "Manhattan distance in A*",
+        "route_option": "Backtracking search path",
+        "cheapest_known_cost": "DP table value"
+    },
+    "learning_path": [
+        "PROB-RD-001",
+        "PROB-RD-002",
+        "PROB-RD-003",
+        "PROB-RD-004",
+        "PROB-RD-005",
+        "PROB-RD-006"
+    ],
+    "completion_message": "You have completed the AI Robot Decision & Path Planning mission. You have learned how BFS finds the shortest corridor route, DFS maps everything the robot can reach, A* aims a floor search at the dock, a depth limit enforces the battery budget, backtracking counts every valid route, and dynamic programming reuses the cheapest known cost of every room instead of searching it again."
+}
