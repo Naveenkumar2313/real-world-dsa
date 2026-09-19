@@ -1,0 +1,76 @@
+{
+    "scenario_id": "SCN-PS-032",
+    "title": "Puzzle & Sudoku Solver",
+    "slug": "puzzle-sudoku-solver",
+    "short_description": "Learn how a puzzle-solving system explores multiple possible configurations and finds a valid arrangement satisfying all constraints using Stack Operations, Backtracking, DFS on Grids, Constraint Checking, and Exhaustive Search.",
+    "category": "Maps, Games & Robotics",
+    "industry": "Gaming, Puzzles & Constraint Systems",
+    "difficulty": "Intermediate",
+    "estimated_time_minutes": 180,
+    "real_world_context": {
+        "problem": "A puzzle-solving system must explore multiple possible configurations and find a valid arrangement satisfying all constraints. Brackets must balance, parentheses must be generated, words must be traced on a letter grid, Sudoku cells must satisfy row, column and box rules, and queens must all be placed without attacking each other.",
+        "why_it_matters": "Backtracking and DFS power puzzle games, Sudoku apps, word games, code editors that match brackets, and combinatorial planners. Choosing an explicit stack vs recursion, pruning invalid prefixes early, and undoing each choice decides whether the solver is correct, fast, and complete.",
+        "real_world_entities": [
+            "Puzzle Configuration",
+            "Bracket / Parenthesis",
+            "Validation Stack",
+            "Letter Grid",
+            "Sudoku Board",
+            "Sudoku Row / Column / Box Constraint",
+            "Queen Placement",
+            "Search Choice / Undo Step"
+        ]
+    },
+    "learning_objectives": [
+        "Use an explicit Stack to validate balanced bracket sequences.",
+        "Use Backtracking to generate all valid parenthesis combinations.",
+        "Use DFS with Backtracking to search for a word on a 2D letter grid.",
+        "Use Backtracking with constraint checking to solve a Sudoku puzzle.",
+        "Use DFS with Backtracking to count all valid N-Queens configurations."
+    ],
+    "prerequisites": [
+        "Arrays",
+        "2D arrays",
+        "Strings",
+        "Loops",
+        "Conditional statements",
+        "Basic time complexity",
+        "Queues, stacks and recursion basics"
+    ],
+    "algorithms": [
+        {
+            "name": "Stack Operations",
+            "module_key": "stack"
+        },
+        {
+            "name": "Backtracking",
+            "module_key": "backtracking"
+        },
+        {
+            "name": "Graph DFS",
+            "module_key": "graph-dfs"
+        },
+        {
+            "name": "Constraint Checking",
+            "module_key": "constraint-checking"
+        }
+    ],
+    "real_world_mapping": {
+        "bracket_sequence": "Stack push / pop sequence",
+        "parenthesis_prefix": "Backtracking choice path",
+        "letter_cell": "Graph vertex",
+        "adjacent_letter_cell": "Undirected edge",
+        "sudoku_cell": "Constrained variable",
+        "sudoku_row_column_box": "Constraint set",
+        "queen_placement": "DFS placement with pruning",
+        "undo_step": "Backtracking revert"
+    },
+    "learning_path": [
+        "PROB-PS-001",
+        "PROB-PS-002",
+        "PROB-PS-003",
+        "PROB-PS-004",
+        "PROB-PS-005"
+    ],
+    "completion_message": "You have completed the Puzzle & Sudoku Solver mission. You have learned how stacks validate bracket puzzles, backtracking generates every valid parenthesis string, DFS finds words on letter grids, constraint-checked backtracking solves Sudoku, and exhaustive search counts every N-Queens arrangement."
+}

@@ -1,0 +1,57 @@
+{
+    "problem_id": "PROB-PS-004",
+    "scenario_id": "SCN-PS-032",
+    "sequence": 4,
+    "title": "Complete the Sudoku Board (Backtracking + Constraints)",
+    "difficulty": "Hard",
+    "concepts": [
+        "Backtracking",
+        "Constraint Checking",
+        "Sudoku"
+    ],
+    "real_world_story": "A Sudoku app receives a partially filled 9x9 board with dots for empty cells. The hint engine must fill every empty cell so each row, column, and 3x3 box contains digits 1-9 exactly once.",
+    "real_world_connection": {
+        "system": "Sudoku hint engine",
+        "input_represents": "9x9 board where '.' is an empty cell",
+        "query_represents": "The completed valid board",
+        "algorithm_represents": "Trying digits 1-9 in each empty cell and undoing placements that break row, column, or box rules"
+    },
+    "problem_statement": "Given a 9x9 Sudoku board where '.' marks an empty cell and '1'-'9' marks a clue, solve the puzzle. Every row, column, and 3x3 box must contain digits 1-9 exactly once. The input board has exactly one solution.",
+    "task": "Print the solved 9x9 board as 9 lines of 9 digits with no spaces.",
+    "input_format": "9 lines each containing 9 characters ('1'-'9' or '.').",
+    "output_format": "Print 9 lines each containing 9 digits of the solved board.",
+    "constraints": [
+        "Board is 9 x 9",
+        "Input cells are '.' or '1'-'9'",
+        "Exactly one solution exists"
+    ],
+    "examples": [
+        {
+            "input": "53..7....\n6..195...\n.98....6.\n8...6...3\n4..8.3..1\n7...2...6\n.6....28.\n...419..5\n....8..79",
+            "output": "534678912\n672195348\n198342567\n859761423\n426853791\n713924856\n961537284\n287419635\n345286179",
+            "explanation": "Each empty cell is filled so every row, column, and 3x3 box holds 1-9 exactly once."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Constraint Checking",
+        "module_key": "constraint-checking",
+        "reason": "Digits are placed only when no row, column, or box conflict exists, and wrong guesses are undone by backtracking."
+    },
+    "complexity": {
+        "time": "O(9^E) worst case where E is empty cells, heavily pruned by constraints",
+        "space": "O(1) board plus O(E) recursion"
+    },
+    "hint": [
+        "Find the next empty cell and try digits 1-9.",
+        "Accept a digit only when its row, column, and 3x3 box are conflict-free.",
+        "Undo the digit after the recursive call returns."
+    ],
+    "real_world_takeaway": "Backtracking plus constraint checks is how Sudoku and other rule-based puzzles are solved completely.",
+    "tags": [
+        "backtracking",
+        "constraint-checking",
+        "grid",
+        "sudoku",
+        "puzzle"
+    ]
+}

@@ -1,0 +1,63 @@
+{
+    "problem_id": "PROB-PS-003",
+    "scenario_id": "SCN-PS-032",
+    "sequence": 3,
+    "title": "Find the Hidden Word (DFS + Backtracking on Grid)",
+    "difficulty": "Medium",
+    "concepts": [
+        "Grid Graph",
+        "Depth-First Search",
+        "Backtracking"
+    ],
+    "real_world_story": "A word-puzzle game hides a secret word on a letter board. The player traces the word through neighboring tiles without lifting the finger from any tile twice, and the game must verify the trace instantly.",
+    "real_world_connection": {
+        "system": "Word search puzzle verifier",
+        "input_represents": "Letter board where each cell is a tile",
+        "query_represents": "The hidden word to find",
+        "algorithm_represents": "Starting DFS from every matching tile and undoing each step to try the next neighbor"
+    },
+    "problem_statement": "Given an R x C board of uppercase letters and a word W, determine whether W can be formed by starting at any cell and moving 4-directionally (up, down, left, right). The same cell may not be used more than once in the word path.",
+    "task": "Return 1 if the word exists on the board, otherwise 0.",
+    "input_format": "The first line contains two integers R and C. The next R lines each contain a string of C uppercase letters. The final line contains the word W.",
+    "output_format": "Print 1 if the word exists, otherwise 0.",
+    "constraints": [
+        "1 <= R, C <= 20",
+        "1 <= W.length <= R * C",
+        "Board and word contain only A-Z"
+    ],
+    "examples": [
+        {
+            "input": "3 4\nABCE\nSFCS\nADEE\nABCCED",
+            "output": "1",
+            "explanation": "ABCCED can be traced from (0,0) A -> (0,1) B -> (0,2) C -> (1,2) C -> (2,2) E -> (2,1) D."
+        },
+        {
+            "input": "3 4\nABCE\nSFCS\nADEE\nABCB",
+            "output": "0",
+            "explanation": "ABCB cannot be traced without reusing a cell."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Graph DFS",
+        "module_key": "graph-dfs",
+        "reason": "Each trace is a depth-first path with visited marking and undo, exploring neighbors until the full word is matched."
+    },
+    "complexity": {
+        "time": "O(R * C * 4^L) worst case where L is word length",
+        "space": "O(L)"
+    },
+    "hint": [
+        "Start DFS from every cell matching the first letter.",
+        "Mark a cell visited before recursing and unmark it afterward.",
+        "Return true as soon as the last letter is matched."
+    ],
+    "real_world_takeaway": "DFS with backtracking verifies word traces on puzzle grids without revisiting tiles.",
+    "tags": [
+        "graphs",
+        "dfs",
+        "graph-dfs",
+        "backtracking",
+        "grid",
+        "word-search"
+    ]
+}

@@ -1,0 +1,55 @@
+{
+    "problem_id": "PROB-PS-002",
+    "scenario_id": "SCN-PS-032",
+    "sequence": 2,
+    "title": "Generate Every Parenthesis Arrangement (Backtracking)",
+    "difficulty": "Medium",
+    "concepts": [
+        "Backtracking",
+        "Combinatorial Generation",
+        "Recursion"
+    ],
+    "real_world_story": "A puzzle designer needs every valid way to arrange N pairs of parentheses for a new bracket-placement level. Each arrangement must be balanced, and none may be missing.",
+    "real_world_connection": {
+        "system": "Puzzle level generator",
+        "input_represents": "The number of parenthesis pairs N",
+        "query_represents": "Every balanced arrangement to include in the level",
+        "algorithm_represents": "Trying '(' then ')' at each step and undoing choices that break validity"
+    },
+    "problem_statement": "Given an integer N, generate all combinations of N pairs of well-formed parentheses. Return them in lexicographic order with '(' smaller than ')'.",
+    "task": "Print every valid parentheses string, one per line, in lexicographic order. Print nothing extra when N is 0 except an empty line set (no output lines).",
+    "input_format": "A single line containing integer N.",
+    "output_format": "Print each valid combination on its own line in lexicographic order.",
+    "constraints": [
+        "0 <= N <= 8"
+    ],
+    "examples": [
+        {
+            "input": "3",
+            "output": "((()))\n(()())\n(())()\n()(())\n()()()",
+            "explanation": "There are 5 balanced arrangements of 3 pairs, listed in lexicographic order."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Backtracking",
+        "module_key": "backtracking",
+        "reason": "Each position tries '(' or ')' while open and close counts stay valid, undoing each choice to explore the next option."
+    },
+    "complexity": {
+        "time": "O(4^N / sqrt(N))",
+        "space": "O(N) recursion plus output"
+    },
+    "hint": [
+        "Track how many '(' and ')' have been placed.",
+        "Add '(' when open < N and ')' when close < open.",
+        "Trying '(' before ')' produces lexicographic order."
+    ],
+    "real_world_takeaway": "Backtracking enumerates every valid puzzle configuration without missing or repeating one.",
+    "tags": [
+        "backtracking",
+        "recursion",
+        "combinatorics",
+        "puzzle",
+        "generate-parentheses"
+    ]
+}

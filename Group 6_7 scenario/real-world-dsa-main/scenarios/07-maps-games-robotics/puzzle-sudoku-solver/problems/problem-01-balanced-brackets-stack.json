@@ -1,0 +1,61 @@
+{
+    "problem_id": "PROB-PS-001",
+    "scenario_id": "SCN-PS-032",
+    "sequence": 1,
+    "title": "Balanced Brackets Check (Stack Operations)",
+    "difficulty": "Easy",
+    "concepts": [
+        "Stack",
+        "Stack Operations",
+        "Balanced Sequence"
+    ],
+    "real_world_story": "A code editor must highlight bracket mistakes instantly. Every time a player or programmer types a formula with (), [] and {}, the validator must decide whether all brackets open and close in the correct order.",
+    "real_world_connection": {
+        "system": "Puzzle and editor bracket validator",
+        "input_represents": "A bracket string typed by the user",
+        "query_represents": "The full sequence to validate",
+        "algorithm_represents": "Pushing openers on a stack and popping on closers to check nesting"
+    },
+    "problem_statement": "Given a string s containing only the characters '(', ')', '{', '}', '[' and ']', determine whether the bracket sequence is valid. A sequence is valid when every opener is closed by the same bracket type in the correct nested order.",
+    "task": "Return 1 if the bracket sequence is valid, otherwise 0.",
+    "input_format": "A single line containing the bracket string s. The line may be empty, which means an empty sequence.",
+    "output_format": "Print 1 if the sequence is valid, otherwise 0.",
+    "constraints": [
+        "0 <= s.length <= 10000",
+        "s contains only the characters ()[]{}"
+    ],
+    "examples": [
+        {
+            "input": "()[]{}",
+            "output": "1",
+            "explanation": "Each opener is closed by the matching closer in order, so the sequence is valid."
+        },
+        {
+            "input": "(]",
+            "output": "0",
+            "explanation": "'(' was closed by ']' instead of ')', so the sequence is invalid."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Stack Operations",
+        "module_key": "stack",
+        "reason": "Openers are pushed and each closer must pop the matching opener, which is exactly last-in-first-out stack validation."
+    },
+    "complexity": {
+        "time": "O(N)",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Push every opener onto a stack.",
+        "On a closer, the stack must be non-empty and its top must match.",
+        "The sequence is valid only when the stack is empty at the end."
+    ],
+    "real_world_takeaway": "Stacks validate nested puzzle and code structures in one linear pass.",
+    "tags": [
+        "stack",
+        "stack-operations",
+        "strings",
+        "puzzle",
+        "validation"
+    ]
+}

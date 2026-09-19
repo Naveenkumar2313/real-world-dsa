@@ -1,0 +1,61 @@
+{
+    "problem_id": "PROB-PS-005",
+    "scenario_id": "SCN-PS-032",
+    "sequence": 5,
+    "title": "Count Every Queen Arrangement (DFS + Backtracking)",
+    "difficulty": "Hard",
+    "concepts": [
+        "Depth-First Search",
+        "Backtracking",
+        "Combinatorial Counting"
+    ],
+    "real_world_story": "A puzzle designer wants to know how many solutions an N-Queens board puzzle has. Queens must be placed so no two share a row, column, or diagonal, and every distinct arrangement must be counted.",
+    "real_world_connection": {
+        "system": "Puzzle difficulty analyzer",
+        "input_represents": "Empty N x N board",
+        "query_represents": "Every safe queen placement",
+        "algorithm_represents": "Placing one queen per row with DFS and undoing placements that attack another queen"
+    },
+    "problem_statement": "Given an integer N, count all distinct ways to place N queens on an N x N chessboard so no two queens attack each other (no shared row, column, or diagonal).",
+    "task": "Return the number of distinct valid arrangements.",
+    "input_format": "A single line containing integer N.",
+    "output_format": "Print the number of distinct valid queen arrangements.",
+    "constraints": [
+        "1 <= N <= 10"
+    ],
+    "examples": [
+        {
+            "input": "4",
+            "output": "2",
+            "explanation": "A 4x4 board has exactly 2 safe arrangements."
+        },
+        {
+            "input": "1",
+            "output": "1",
+            "explanation": "A 1x1 board has exactly 1 arrangement."
+        }
+    ],
+    "expected_algorithm": {
+        "name": "Backtracking",
+        "module_key": "backtracking",
+        "reason": "One queen is placed per row with column and diagonal pruning, and each placement is undone to explore the next option."
+    },
+    "complexity": {
+        "time": "O(N!) with pruning",
+        "space": "O(N)"
+    },
+    "hint": [
+        "Place queens row by row so rows never clash.",
+        "Track used columns, main diagonals, and anti-diagonals.",
+        "Remove the queen after recursing to the next row."
+    ],
+    "real_world_takeaway": "DFS with pruning counts every valid combinatorial puzzle layout without enumerating hopeless branches.",
+    "tags": [
+        "backtracking",
+        "dfs",
+        "graph-dfs",
+        "combinatorics",
+        "n-queens",
+        "puzzle"
+    ]
+}
