@@ -5,7 +5,7 @@ export const maze_pathfinding_problems = [
       difficulty: 'Easy',
       description: 'A game character must move from spawn to treasure through a maze with walls. Given R x C maze of 0 free and 1 wall, start (sr,sc) and destination (dr,dc), find minimum 4-direction steps.',
       constraints: ['1 <= R, C <= 500', '0 <= sr, dr < R', '0 <= sc, dc < C'],
-      examples: [{ input: '3 3|0 0 0|1 1 0|0 0 0|0 0 2 2', output: '4', explanation: 'Right,right,down,down = 4 steps.' }],
+      examples: [{ input: '3 3\\n0 0 0\\n1 1 0\\n0 0 0\\n0 0 2 2', output: '4', explanation: 'The shortest route is (0,0) -> (0,1) -> (0,2) -> (1,2) -> (2,2) with 4 steps.' }],
       testCases: [
           { input: '3 3\n0 0 0\n1 1 0\n0 0 0\n0 0 2 2', expectedOutput: '4', hidden: false },
           { input: '2 2\n0 1\n1 0\n0 0 1 1', expectedOutput: '-1', hidden: false },
@@ -27,7 +27,7 @@ print(shortest_path(grid, sr, sc, dr, dc))`,
   return -1;
 }
 
-const lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\n");
+const lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");
 const [r, c] = lines[0].split(" ").map(Number);
 const grid = lines.slice(1, 1 + r).map(l => l.split(" ").map(Number));
 const [sr, sc, dr, dc] = lines[1 + r].split(" ").map(Number);
@@ -98,7 +98,7 @@ int main() {
       difficulty: 'Easy',
       description: 'A robot has limited battery and can make at most K moves. Given R x C maze of 0 free and 1 wall, start, destination and limit K, decide if reachable within K moves using DFS with depth limit.',
       constraints: ['1 <= R, C <= 100', '0 <= K <= R*C'],
-      examples: [{ input: 'E2x', output: '1', explanation: 'Shortest route fits within K.' }],
+      examples: [{ input: '3 3\\n0 0 0\\n1 1 0\\n0 0 0\\n0 0 2 2 4', output: '1', explanation: 'The shortest route needs 4 moves, which fits exactly within K = 4.' }],
       testCases: [
           { input: '3 3\n0 0 0\n1 1 0\n0 0 0\n0 0 2 2 4', expectedOutput: '1', hidden: false },
           { input: '3 3\n0 0 0\n1 1 0\n0 0 0\n0 0 2 2 3', expectedOutput: '0', hidden: false },
@@ -121,7 +121,7 @@ print(1 if reachable_within_k(grid, sr, sc, dr, dc, k) else 0)`,
   return false;
 }
 
-const lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\n");
+const lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");
 const [r, c] = lines[0].split(" ").map(Number);
 const grid = lines.slice(1, 1 + r).map(l => l.split(" ").map(Number));
 const [sr, sc, dr, dc, k] = lines[1 + r].split(" ").map(Number);
@@ -193,7 +193,7 @@ int main() {
       difficulty: 'Easy',
       description: 'A cleaning robot must know reachable floor. Given R x C grid of 0 free and 1 wall plus start, count all free cells reachable through free cells only.',
       constraints: ['1 <= R, C <= 500'],
-      examples: [{ input: 'E3x', output: '3', explanation: 'Three cells reachable.' }],
+      examples: [{ input: '3 3\\n0 0 1\\n0 1 0\\n1 0 0\\n0 0', output: '3', explanation: 'From (0,0) the robot can reach (0,0), (0,1), and (1,0). Walls block the rest.' }],
       testCases: [
           { input: '3 3\n0 0 1\n0 1 0\n1 0 0\n0 0', expectedOutput: '3', hidden: false },
           { input: '2 2\n1 1\n1 1\n0 0', expectedOutput: '0', hidden: false },
@@ -215,7 +215,7 @@ print(flood_fill_count(grid, sr, sc))`,
   return 0;
 }
 
-const lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\n");
+const lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");
 const [r, c] = lines[0].split(" ").map(Number);
 const grid = lines.slice(1, 1 + r).map(l => l.split(" ").map(Number));
 const [sr, sc] = lines[1 + r].split(" ").map(Number);
@@ -284,7 +284,7 @@ int main() {
       difficulty: 'Medium',
       description: 'A delivery drone crosses a city grid with no-fly zones. Given R x C maze, start and destination, find minimum steps using A* with Manhattan heuristic.',
       constraints: ['1 <= R, C <= 500'],
-      examples: [{ input: 'E4x', output: '4', explanation: 'Same 4-step route.' }],
+      examples: [{ input: '3 3\\n0 0 0\\n1 1 0\\n0 0 0\\n0 0 2 2', output: '4', explanation: 'A* with Manhattan distance finds the same 4-step shortest route: right, right, down, down.' }],
       testCases: [
           { input: '3 3\n0 0 0\n1 1 0\n0 0 0\n0 0 2 2', expectedOutput: '4', hidden: false },
           { input: '2 2\n0 1\n1 0\n0 0 1 1', expectedOutput: '-1', hidden: false },
@@ -306,7 +306,7 @@ print(astar_path(grid, sr, sc, dr, dc))`,
   return -1;
 }
 
-const lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\n");
+const lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");
 const [r, c] = lines[0].split(" ").map(Number);
 const grid = lines.slice(1, 1 + r).map(l => l.split(" ").map(Number));
 const [sr, sc, dr, dc] = lines[1 + r].split(" ").map(Number);
@@ -377,7 +377,7 @@ int main() {
       difficulty: 'Medium',
       description: 'A puzzle designer counts maze solutions. Given small R x C maze, start and destination, count all valid routes without revisiting cells.',
       constraints: ['1 <= R, C <= 7'],
-      examples: [{ input: 'E5x', output: '2', explanation: 'Right-down and down-right.' }],
+      examples: [{ input: '2 2\\n0 0\\n0 0\\n0 0 1 1', output: '2', explanation: 'The two routes are right-then-down and down-then-right.' }],
       testCases: [
           { input: '2 2\n0 0\n0 0\n0 0 1 1', expectedOutput: '2', hidden: false },
           { input: '2 2\n0 1\n1 0\n0 0 1 1', expectedOutput: '0', hidden: false },
@@ -400,7 +400,7 @@ print(count_routes(grid, sr, sc, dr, dc))`,
   return 0;
 }
 
-const lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\n");
+const lines = require("fs").readFileSync("/dev/stdin","utf8").trim().split("\\n");
 const [r, c] = lines[0].split(" ").map(Number);
 const grid = lines.slice(1, 1 + r).map(l => l.split(" ").map(Number));
 const [sr, sc, dr, dc] = lines[1 + r].split(" ").map(Number);
